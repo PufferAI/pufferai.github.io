@@ -1,0 +1,991 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pufferlib package &mdash; PufferLib v0.1.1 0.1.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.1.1
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#license">License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Environment Bindings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#custom-environment-binding">Custom Environment Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#rllib">RLLib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#cleanrl">CleanRL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html">Emulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#binding">Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#pytorch-spec">PyTorch Spec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-binding">CleanRL Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#rllib-binding">RLlib Binding</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PufferLib v0.1.1</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>pufferlib package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/autodoc/pufferlib.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="module-pufferlib">
+<span id="pufferlib-package"></span><h1>pufferlib package<a class="headerlink" href="#module-pufferlib" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.bindings.html">pufferlib.bindings package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.bindings.base.html">pufferlib.bindings.base module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.auto"><code class="docutils literal notranslate"><span class="pre">auto()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Base"><code class="docutils literal notranslate"><span class="pre">Base</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Base.custom_model_config"><code class="docutils literal notranslate"><span class="pre">Base.custom_model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy"><code class="docutils literal notranslate"><span class="pre">Policy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.critic"><code class="docutils literal notranslate"><span class="pre">Policy.critic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.encode_observations"><code class="docutils literal notranslate"><span class="pre">Policy.encode_observations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.decode_actions"><code class="docutils literal notranslate"><span class="pre">Policy.decode_actions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.T_destination"><code class="docutils literal notranslate"><span class="pre">Policy.T_destination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.add_module"><code class="docutils literal notranslate"><span class="pre">Policy.add_module()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.apply"><code class="docutils literal notranslate"><span class="pre">Policy.apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.bfloat16"><code class="docutils literal notranslate"><span class="pre">Policy.bfloat16()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.buffers"><code class="docutils literal notranslate"><span class="pre">Policy.buffers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.children"><code class="docutils literal notranslate"><span class="pre">Policy.children()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.cpu"><code class="docutils literal notranslate"><span class="pre">Policy.cpu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.cuda"><code class="docutils literal notranslate"><span class="pre">Policy.cuda()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.double"><code class="docutils literal notranslate"><span class="pre">Policy.double()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.dump_patches"><code class="docutils literal notranslate"><span class="pre">Policy.dump_patches</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.eval"><code class="docutils literal notranslate"><span class="pre">Policy.eval()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.extra_repr"><code class="docutils literal notranslate"><span class="pre">Policy.extra_repr()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.float"><code class="docutils literal notranslate"><span class="pre">Policy.float()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.forward"><code class="docutils literal notranslate"><span class="pre">Policy.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.get_buffer"><code class="docutils literal notranslate"><span class="pre">Policy.get_buffer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.get_extra_state"><code class="docutils literal notranslate"><span class="pre">Policy.get_extra_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.get_parameter"><code class="docutils literal notranslate"><span class="pre">Policy.get_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.get_submodule"><code class="docutils literal notranslate"><span class="pre">Policy.get_submodule()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.half"><code class="docutils literal notranslate"><span class="pre">Policy.half()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.ipu"><code class="docutils literal notranslate"><span class="pre">Policy.ipu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.load_state_dict"><code class="docutils literal notranslate"><span class="pre">Policy.load_state_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.modules"><code class="docutils literal notranslate"><span class="pre">Policy.modules()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.named_buffers"><code class="docutils literal notranslate"><span class="pre">Policy.named_buffers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.named_children"><code class="docutils literal notranslate"><span class="pre">Policy.named_children()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.named_modules"><code class="docutils literal notranslate"><span class="pre">Policy.named_modules()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.named_parameters"><code class="docutils literal notranslate"><span class="pre">Policy.named_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.parameters"><code class="docutils literal notranslate"><span class="pre">Policy.parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.register_backward_hook"><code class="docutils literal notranslate"><span class="pre">Policy.register_backward_hook()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.register_buffer"><code class="docutils literal notranslate"><span class="pre">Policy.register_buffer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.register_forward_hook"><code class="docutils literal notranslate"><span class="pre">Policy.register_forward_hook()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.register_forward_pre_hook"><code class="docutils literal notranslate"><span class="pre">Policy.register_forward_pre_hook()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.register_full_backward_hook"><code class="docutils literal notranslate"><span class="pre">Policy.register_full_backward_hook()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.register_load_state_dict_post_hook"><code class="docutils literal notranslate"><span class="pre">Policy.register_load_state_dict_post_hook()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.register_module"><code class="docutils literal notranslate"><span class="pre">Policy.register_module()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.register_parameter"><code class="docutils literal notranslate"><span class="pre">Policy.register_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.requires_grad_"><code class="docutils literal notranslate"><span class="pre">Policy.requires_grad_()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.set_extra_state"><code class="docutils literal notranslate"><span class="pre">Policy.set_extra_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.share_memory"><code class="docutils literal notranslate"><span class="pre">Policy.share_memory()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.state_dict"><code class="docutils literal notranslate"><span class="pre">Policy.state_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.to"><code class="docutils literal notranslate"><span class="pre">Policy.to()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.to_empty"><code class="docutils literal notranslate"><span class="pre">Policy.to_empty()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.train"><code class="docutils literal notranslate"><span class="pre">Policy.train()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.type"><code class="docutils literal notranslate"><span class="pre">Policy.type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.xpu"><code class="docutils literal notranslate"><span class="pre">Policy.xpu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.zero_grad"><code class="docutils literal notranslate"><span class="pre">Policy.zero_grad()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Policy.training"><code class="docutils literal notranslate"><span class="pre">Policy.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.bindings.nethack.html">pufferlib.bindings.nethack module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.NetHack"><code class="docutils literal notranslate"><span class="pre">NetHack</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.NetHack.custom_model_config"><code class="docutils literal notranslate"><span class="pre">NetHack.custom_model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy"><code class="docutils literal notranslate"><span class="pre">Policy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.critic"><code class="docutils literal notranslate"><span class="pre">Policy.critic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.encode_observations"><code class="docutils literal notranslate"><span class="pre">Policy.encode_observations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.decode_actions"><code class="docutils literal notranslate"><span class="pre">Policy.decode_actions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.T_destination"><code class="docutils literal notranslate"><span class="pre">Policy.T_destination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.add_module"><code class="docutils literal notranslate"><span class="pre">Policy.add_module()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.apply"><code class="docutils literal notranslate"><span class="pre">Policy.apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.bfloat16"><code class="docutils literal notranslate"><span class="pre">Policy.bfloat16()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.buffers"><code class="docutils literal notranslate"><span class="pre">Policy.buffers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.children"><code class="docutils literal notranslate"><span class="pre">Policy.children()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.cpu"><code class="docutils literal notranslate"><span class="pre">Policy.cpu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.cuda"><code class="docutils literal notranslate"><span class="pre">Policy.cuda()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.double"><code class="docutils literal notranslate"><span class="pre">Policy.double()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.dump_patches"><code class="docutils literal notranslate"><span class="pre">Policy.dump_patches</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.eval"><code class="docutils literal notranslate"><span class="pre">Policy.eval()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.extra_repr"><code class="docutils literal notranslate"><span class="pre">Policy.extra_repr()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.float"><code class="docutils literal notranslate"><span class="pre">Policy.float()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.forward"><code class="docutils literal notranslate"><span class="pre">Policy.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.get_buffer"><code class="docutils literal notranslate"><span class="pre">Policy.get_buffer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.get_extra_state"><code class="docutils literal notranslate"><span class="pre">Policy.get_extra_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.get_parameter"><code class="docutils literal notranslate"><span class="pre">Policy.get_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.get_submodule"><code class="docutils literal notranslate"><span class="pre">Policy.get_submodule()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.half"><code class="docutils literal notranslate"><span class="pre">Policy.half()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.ipu"><code class="docutils literal notranslate"><span class="pre">Policy.ipu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.load_state_dict"><code class="docutils literal notranslate"><span class="pre">Policy.load_state_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.modules"><code class="docutils literal notranslate"><span class="pre">Policy.modules()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.named_buffers"><code class="docutils literal notranslate"><span class="pre">Policy.named_buffers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.named_children"><code class="docutils literal notranslate"><span class="pre">Policy.named_children()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.named_modules"><code class="docutils literal notranslate"><span class="pre">Policy.named_modules()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.named_parameters"><code class="docutils literal notranslate"><span class="pre">Policy.named_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.parameters"><code class="docutils literal notranslate"><span class="pre">Policy.parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.register_backward_hook"><code class="docutils literal notranslate"><span class="pre">Policy.register_backward_hook()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.register_buffer"><code class="docutils literal notranslate"><span class="pre">Policy.register_buffer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.register_forward_hook"><code class="docutils literal notranslate"><span class="pre">Policy.register_forward_hook()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.register_forward_pre_hook"><code class="docutils literal notranslate"><span class="pre">Policy.register_forward_pre_hook()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.register_full_backward_hook"><code class="docutils literal notranslate"><span class="pre">Policy.register_full_backward_hook()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.register_load_state_dict_post_hook"><code class="docutils literal notranslate"><span class="pre">Policy.register_load_state_dict_post_hook()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.register_module"><code class="docutils literal notranslate"><span class="pre">Policy.register_module()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.register_parameter"><code class="docutils literal notranslate"><span class="pre">Policy.register_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.requires_grad_"><code class="docutils literal notranslate"><span class="pre">Policy.requires_grad_()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.set_extra_state"><code class="docutils literal notranslate"><span class="pre">Policy.set_extra_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.share_memory"><code class="docutils literal notranslate"><span class="pre">Policy.share_memory()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.state_dict"><code class="docutils literal notranslate"><span class="pre">Policy.state_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.to"><code class="docutils literal notranslate"><span class="pre">Policy.to()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.to_empty"><code class="docutils literal notranslate"><span class="pre">Policy.to_empty()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.train"><code class="docutils literal notranslate"><span class="pre">Policy.train()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.type"><code class="docutils literal notranslate"><span class="pre">Policy.type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.xpu"><code class="docutils literal notranslate"><span class="pre">Policy.xpu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.zero_grad"><code class="docutils literal notranslate"><span class="pre">Policy.zero_grad()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Policy.training"><code class="docutils literal notranslate"><span class="pre">Policy.training</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop"><code class="docutils literal notranslate"><span class="pre">Crop</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.forward"><code class="docutils literal notranslate"><span class="pre">Crop.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.T_destination"><code class="docutils literal notranslate"><span class="pre">Crop.T_destination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.add_module"><code class="docutils literal notranslate"><span class="pre">Crop.add_module()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.apply"><code class="docutils literal notranslate"><span class="pre">Crop.apply()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.bfloat16"><code class="docutils literal notranslate"><span class="pre">Crop.bfloat16()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.buffers"><code class="docutils literal notranslate"><span class="pre">Crop.buffers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.children"><code class="docutils literal notranslate"><span class="pre">Crop.children()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.cpu"><code class="docutils literal notranslate"><span class="pre">Crop.cpu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.cuda"><code class="docutils literal notranslate"><span class="pre">Crop.cuda()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.double"><code class="docutils literal notranslate"><span class="pre">Crop.double()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.dump_patches"><code class="docutils literal notranslate"><span class="pre">Crop.dump_patches</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.eval"><code class="docutils literal notranslate"><span class="pre">Crop.eval()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.extra_repr"><code class="docutils literal notranslate"><span class="pre">Crop.extra_repr()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.float"><code class="docutils literal notranslate"><span class="pre">Crop.float()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.get_buffer"><code class="docutils literal notranslate"><span class="pre">Crop.get_buffer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.get_extra_state"><code class="docutils literal notranslate"><span class="pre">Crop.get_extra_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.get_parameter"><code class="docutils literal notranslate"><span class="pre">Crop.get_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.get_submodule"><code class="docutils literal notranslate"><span class="pre">Crop.get_submodule()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.half"><code class="docutils literal notranslate"><span class="pre">Crop.half()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.ipu"><code class="docutils literal notranslate"><span class="pre">Crop.ipu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.load_state_dict"><code class="docutils literal notranslate"><span class="pre">Crop.load_state_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.modules"><code class="docutils literal notranslate"><span class="pre">Crop.modules()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.named_buffers"><code class="docutils literal notranslate"><span class="pre">Crop.named_buffers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.named_children"><code class="docutils literal notranslate"><span class="pre">Crop.named_children()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.named_modules"><code class="docutils literal notranslate"><span class="pre">Crop.named_modules()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.named_parameters"><code class="docutils literal notranslate"><span class="pre">Crop.named_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.parameters"><code class="docutils literal notranslate"><span class="pre">Crop.parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.register_backward_hook"><code class="docutils literal notranslate"><span class="pre">Crop.register_backward_hook()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.register_buffer"><code class="docutils literal notranslate"><span class="pre">Crop.register_buffer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.register_forward_hook"><code class="docutils literal notranslate"><span class="pre">Crop.register_forward_hook()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.register_forward_pre_hook"><code class="docutils literal notranslate"><span class="pre">Crop.register_forward_pre_hook()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.register_full_backward_hook"><code class="docutils literal notranslate"><span class="pre">Crop.register_full_backward_hook()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.register_load_state_dict_post_hook"><code class="docutils literal notranslate"><span class="pre">Crop.register_load_state_dict_post_hook()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.register_module"><code class="docutils literal notranslate"><span class="pre">Crop.register_module()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.register_parameter"><code class="docutils literal notranslate"><span class="pre">Crop.register_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.requires_grad_"><code class="docutils literal notranslate"><span class="pre">Crop.requires_grad_()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.set_extra_state"><code class="docutils literal notranslate"><span class="pre">Crop.set_extra_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.share_memory"><code class="docutils literal notranslate"><span class="pre">Crop.share_memory()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.state_dict"><code class="docutils literal notranslate"><span class="pre">Crop.state_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.to"><code class="docutils literal notranslate"><span class="pre">Crop.to()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.to_empty"><code class="docutils literal notranslate"><span class="pre">Crop.to_empty()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.train"><code class="docutils literal notranslate"><span class="pre">Crop.train()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.type"><code class="docutils literal notranslate"><span class="pre">Crop.type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.xpu"><code class="docutils literal notranslate"><span class="pre">Crop.xpu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.zero_grad"><code class="docutils literal notranslate"><span class="pre">Crop.zero_grad()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.bindings.nethack.html#pufferlib.bindings.nethack.Crop.training"><code class="docutils literal notranslate"><span class="pre">Crop.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.cleanrl.html">pufferlib.cleanrl module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.cleanrl.html#pufferlib.cleanrl.make_cleanrl_policy"><code class="docutils literal notranslate"><span class="pre">make_cleanrl_policy()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.emulation.html">pufferlib.emulation module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.emulation.html#pufferlib.emulation.PufferWrapper"><code class="docutils literal notranslate"><span class="pre">PufferWrapper()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.emulation.html#pufferlib.emulation.unpack_batched_obs"><code class="docutils literal notranslate"><span class="pre">unpack_batched_obs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.evaluation.html">pufferlib.evaluation module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.group"><code class="docutils literal notranslate"><span class="pre">group()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.ungroup"><code class="docutils literal notranslate"><span class="pre">ungroup()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.serve_rl_model"><code class="docutils literal notranslate"><span class="pre">serve_rl_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.query_action"><code class="docutils literal notranslate"><span class="pre">query_action()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.run_game"><code class="docutils literal notranslate"><span class="pre">run_game()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.Tournament"><code class="docutils literal notranslate"><span class="pre">Tournament</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.Tournament.init"><code class="docutils literal notranslate"><span class="pre">Tournament.init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.Tournament.add"><code class="docutils literal notranslate"><span class="pre">Tournament.add()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.Tournament.remove"><code class="docutils literal notranslate"><span class="pre">Tournament.remove()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.Tournament.server"><code class="docutils literal notranslate"><span class="pre">Tournament.server()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.Tournament.run_match"><code class="docutils literal notranslate"><span class="pre">Tournament.run_match()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.LocalTournament"><code class="docutils literal notranslate"><span class="pre">LocalTournament</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.LocalTournament.add"><code class="docutils literal notranslate"><span class="pre">LocalTournament.add()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.LocalTournament.init"><code class="docutils literal notranslate"><span class="pre">LocalTournament.init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.LocalTournament.remove"><code class="docutils literal notranslate"><span class="pre">LocalTournament.remove()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.LocalTournament.run_match"><code class="docutils literal notranslate"><span class="pre">LocalTournament.run_match()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.LocalTournament.server"><code class="docutils literal notranslate"><span class="pre">LocalTournament.server()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.ServedTournament"><code class="docutils literal notranslate"><span class="pre">ServedTournament</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.ServedTournament.init"><code class="docutils literal notranslate"><span class="pre">ServedTournament.init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.ServedTournament.add"><code class="docutils literal notranslate"><span class="pre">ServedTournament.add()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.ServedTournament.remove"><code class="docutils literal notranslate"><span class="pre">ServedTournament.remove()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.ServedTournament.run_match"><code class="docutils literal notranslate"><span class="pre">ServedTournament.run_match()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.ServedTournament.server"><code class="docutils literal notranslate"><span class="pre">ServedTournament.server()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.frameworks.html">pufferlib.frameworks module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy"><code class="docutils literal notranslate"><span class="pre">BasePolicy</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.critic"><code class="docutils literal notranslate"><span class="pre">BasePolicy.critic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.encode_observations"><code class="docutils literal notranslate"><span class="pre">BasePolicy.encode_observations()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.decode_actions"><code class="docutils literal notranslate"><span class="pre">BasePolicy.decode_actions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.T_destination"><code class="docutils literal notranslate"><span class="pre">BasePolicy.T_destination</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.add_module"><code class="docutils literal notranslate"><span class="pre">BasePolicy.add_module()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.apply"><code class="docutils literal notranslate"><span class="pre">BasePolicy.apply()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.bfloat16"><code class="docutils literal notranslate"><span class="pre">BasePolicy.bfloat16()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.buffers"><code class="docutils literal notranslate"><span class="pre">BasePolicy.buffers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.children"><code class="docutils literal notranslate"><span class="pre">BasePolicy.children()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.cpu"><code class="docutils literal notranslate"><span class="pre">BasePolicy.cpu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.cuda"><code class="docutils literal notranslate"><span class="pre">BasePolicy.cuda()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.double"><code class="docutils literal notranslate"><span class="pre">BasePolicy.double()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.dump_patches"><code class="docutils literal notranslate"><span class="pre">BasePolicy.dump_patches</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.eval"><code class="docutils literal notranslate"><span class="pre">BasePolicy.eval()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.extra_repr"><code class="docutils literal notranslate"><span class="pre">BasePolicy.extra_repr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.float"><code class="docutils literal notranslate"><span class="pre">BasePolicy.float()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.forward"><code class="docutils literal notranslate"><span class="pre">BasePolicy.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.get_buffer"><code class="docutils literal notranslate"><span class="pre">BasePolicy.get_buffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.get_extra_state"><code class="docutils literal notranslate"><span class="pre">BasePolicy.get_extra_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.get_parameter"><code class="docutils literal notranslate"><span class="pre">BasePolicy.get_parameter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.get_submodule"><code class="docutils literal notranslate"><span class="pre">BasePolicy.get_submodule()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.half"><code class="docutils literal notranslate"><span class="pre">BasePolicy.half()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.ipu"><code class="docutils literal notranslate"><span class="pre">BasePolicy.ipu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.load_state_dict"><code class="docutils literal notranslate"><span class="pre">BasePolicy.load_state_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.modules"><code class="docutils literal notranslate"><span class="pre">BasePolicy.modules()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.named_buffers"><code class="docutils literal notranslate"><span class="pre">BasePolicy.named_buffers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.named_children"><code class="docutils literal notranslate"><span class="pre">BasePolicy.named_children()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.named_modules"><code class="docutils literal notranslate"><span class="pre">BasePolicy.named_modules()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.named_parameters"><code class="docutils literal notranslate"><span class="pre">BasePolicy.named_parameters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.parameters"><code class="docutils literal notranslate"><span class="pre">BasePolicy.parameters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.register_backward_hook"><code class="docutils literal notranslate"><span class="pre">BasePolicy.register_backward_hook()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.register_buffer"><code class="docutils literal notranslate"><span class="pre">BasePolicy.register_buffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.register_forward_hook"><code class="docutils literal notranslate"><span class="pre">BasePolicy.register_forward_hook()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.register_forward_pre_hook"><code class="docutils literal notranslate"><span class="pre">BasePolicy.register_forward_pre_hook()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.register_full_backward_hook"><code class="docutils literal notranslate"><span class="pre">BasePolicy.register_full_backward_hook()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.register_load_state_dict_post_hook"><code class="docutils literal notranslate"><span class="pre">BasePolicy.register_load_state_dict_post_hook()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.register_module"><code class="docutils literal notranslate"><span class="pre">BasePolicy.register_module()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.register_parameter"><code class="docutils literal notranslate"><span class="pre">BasePolicy.register_parameter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.requires_grad_"><code class="docutils literal notranslate"><span class="pre">BasePolicy.requires_grad_()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.set_extra_state"><code class="docutils literal notranslate"><span class="pre">BasePolicy.set_extra_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.share_memory"><code class="docutils literal notranslate"><span class="pre">BasePolicy.share_memory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.state_dict"><code class="docutils literal notranslate"><span class="pre">BasePolicy.state_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.to"><code class="docutils literal notranslate"><span class="pre">BasePolicy.to()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.to_empty"><code class="docutils literal notranslate"><span class="pre">BasePolicy.to_empty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.train"><code class="docutils literal notranslate"><span class="pre">BasePolicy.train()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.type"><code class="docutils literal notranslate"><span class="pre">BasePolicy.type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.xpu"><code class="docutils literal notranslate"><span class="pre">BasePolicy.xpu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.zero_grad"><code class="docutils literal notranslate"><span class="pre">BasePolicy.zero_grad()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy.training"><code class="docutils literal notranslate"><span class="pre">BasePolicy.training</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.make_recurrent_policy"><code class="docutils literal notranslate"><span class="pre">make_recurrent_policy()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.rating.html">pufferlib.rating module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.rating.html#pufferlib.rating.rank"><code class="docutils literal notranslate"><span class="pre">rank()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.rating.html#pufferlib.rating.OpenSkillRating"><code class="docutils literal notranslate"><span class="pre">OpenSkillRating</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rating.html#pufferlib.rating.OpenSkillRating.stats"><code class="docutils literal notranslate"><span class="pre">OpenSkillRating.stats</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rating.html#pufferlib.rating.OpenSkillRating.set_anchor"><code class="docutils literal notranslate"><span class="pre">OpenSkillRating.set_anchor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rating.html#pufferlib.rating.OpenSkillRating.add_policy"><code class="docutils literal notranslate"><span class="pre">OpenSkillRating.add_policy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rating.html#pufferlib.rating.OpenSkillRating.remove_policy"><code class="docutils literal notranslate"><span class="pre">OpenSkillRating.remove_policy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rating.html#pufferlib.rating.OpenSkillRating.update"><code class="docutils literal notranslate"><span class="pre">OpenSkillRating.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.rllib.html">pufferlib.rllib module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.make_rllib_tuner"><code class="docutils literal notranslate"><span class="pre">make_rllib_tuner()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.register_env"><code class="docutils literal notranslate"><span class="pre">register_env()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.read_checkpoints"><code class="docutils literal notranslate"><span class="pre">read_checkpoints()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.create_policies"><code class="docutils literal notranslate"><span class="pre">create_policies()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.make_rllib_policy"><code class="docutils literal notranslate"><span class="pre">make_rllib_policy()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.RLPredictor"><code class="docutils literal notranslate"><span class="pre">RLPredictor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.RLPredictor.predict"><code class="docutils literal notranslate"><span class="pre">RLPredictor.predict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.RLPredictor.from_checkpoint"><code class="docutils literal notranslate"><span class="pre">RLPredictor.from_checkpoint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.RLPredictor.from_pandas_udf"><code class="docutils literal notranslate"><span class="pre">RLPredictor.from_pandas_udf()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.RLPredictor.get_preprocessor"><code class="docutils literal notranslate"><span class="pre">RLPredictor.get_preprocessor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.RLPredictor.set_preprocessor"><code class="docutils literal notranslate"><span class="pre">RLPredictor.set_preprocessor()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.Callbacks"><code class="docutils literal notranslate"><span class="pre">Callbacks</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.Callbacks.on_train_result"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_train_result()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.Callbacks.on_episode_end"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_episode_end()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.Callbacks.on_algorithm_init"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_algorithm_init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.Callbacks.on_create_policy"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_create_policy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.Callbacks.on_episode_start"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_episode_start()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.Callbacks.on_episode_step"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_episode_step()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.Callbacks.on_learn_on_batch"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_learn_on_batch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.Callbacks.on_postprocess_trajectory"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_postprocess_trajectory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.Callbacks.on_sample_end"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_sample_end()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.Callbacks.on_sub_environment_created"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_sub_environment_created()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.rllib.html#pufferlib.rllib.Callbacks.on_trainer_init"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_trainer_init()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.torch.html">pufferlib.torch module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.forward"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.T_destination"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.T_destination</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.add_module"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.add_module()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.all_weights"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.all_weights</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.apply"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.apply()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.bfloat16"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.bfloat16()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.buffers"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.buffers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.check_forward_args"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.check_forward_args()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.check_hidden_size"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.check_hidden_size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.check_input"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.check_input()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.children"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.children()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.cpu"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.cpu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.cuda"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.cuda()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.double"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.double()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.dump_patches"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.dump_patches</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.eval"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.eval()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.extra_repr"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.extra_repr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.flatten_parameters"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.flatten_parameters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.float"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.float()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.get_buffer"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.get_buffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.get_expected_cell_size"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.get_expected_cell_size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.get_expected_hidden_size"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.get_expected_hidden_size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.get_extra_state"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.get_extra_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.get_parameter"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.get_parameter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.get_submodule"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.get_submodule()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.half"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.half()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.ipu"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.ipu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.load_state_dict"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.load_state_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.modules"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.modules()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.named_buffers"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.named_buffers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.named_children"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.named_children()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.named_modules"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.named_modules()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.named_parameters"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.named_parameters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.parameters"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.parameters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.permute_hidden"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.permute_hidden()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.register_backward_hook"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.register_backward_hook()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.register_buffer"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.register_buffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.register_forward_hook"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.register_forward_hook()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.register_forward_pre_hook"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.register_forward_pre_hook()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.register_full_backward_hook"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.register_full_backward_hook()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.register_load_state_dict_post_hook"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.register_load_state_dict_post_hook()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.register_module"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.register_module()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.register_parameter"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.register_parameter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.requires_grad_"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.requires_grad_()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.reset_parameters"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.reset_parameters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.set_extra_state"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.set_extra_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.share_memory"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.share_memory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.state_dict"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.state_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.to"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.to()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.to_empty"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.to_empty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.train"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.train()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.type"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.xpu"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.xpu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.zero_grad"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.zero_grad()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.mode"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.mode</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.input_size"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.input_size</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.hidden_size"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.hidden_size</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.num_layers"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.num_layers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.bias"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.bias</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.batch_first"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.batch_first</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.dropout"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.dropout</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.bidirectional"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.bidirectional</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.proj_size"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.proj_size</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.torch.html#pufferlib.torch.BatchFirstLSTM.training"><code class="docutils literal notranslate"><span class="pre">BatchFirstLSTM.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.utils.html">pufferlib.utils module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.check_env"><code class="docutils literal notranslate"><span class="pre">check_env()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.is_dict_space"><code class="docutils literal notranslate"><span class="pre">is_dict_space()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.is_multiagent"><code class="docutils literal notranslate"><span class="pre">is_multiagent()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.current_datetime"><code class="docutils literal notranslate"><span class="pre">current_datetime()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.myprint"><code class="docutils literal notranslate"><span class="pre">myprint()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.dotdict"><code class="docutils literal notranslate"><span class="pre">dotdict</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.dotdict.clear"><code class="docutils literal notranslate"><span class="pre">dotdict.clear()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.dotdict.copy"><code class="docutils literal notranslate"><span class="pre">dotdict.copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.dotdict.fromkeys"><code class="docutils literal notranslate"><span class="pre">dotdict.fromkeys()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.dotdict.get"><code class="docutils literal notranslate"><span class="pre">dotdict.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.dotdict.items"><code class="docutils literal notranslate"><span class="pre">dotdict.items()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.dotdict.keys"><code class="docutils literal notranslate"><span class="pre">dotdict.keys()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.dotdict.pop"><code class="docutils literal notranslate"><span class="pre">dotdict.pop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.dotdict.popitem"><code class="docutils literal notranslate"><span class="pre">dotdict.popitem()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.dotdict.setdefault"><code class="docutils literal notranslate"><span class="pre">dotdict.setdefault()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.dotdict.update"><code class="docutils literal notranslate"><span class="pre">dotdict.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.dotdict.values"><code class="docutils literal notranslate"><span class="pre">dotdict.values()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.vecenvs.html">pufferlib.vecenvs module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.vecenvs.html#pufferlib.vecenvs.make_remote_envs"><code class="docutils literal notranslate"><span class="pre">make_remote_envs()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.vecenvs.html#pufferlib.vecenvs.VecEnvs"><code class="docutils literal notranslate"><span class="pre">VecEnvs</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.vecenvs.html#pufferlib.vecenvs.VecEnvs.single_observation_space"><code class="docutils literal notranslate"><span class="pre">VecEnvs.single_observation_space</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.vecenvs.html#pufferlib.vecenvs.VecEnvs.single_action_space"><code class="docutils literal notranslate"><span class="pre">VecEnvs.single_action_space</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.vecenvs.html#pufferlib.vecenvs.VecEnvs.reset"><code class="docutils literal notranslate"><span class="pre">VecEnvs.reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.vecenvs.html#pufferlib.vecenvs.VecEnvs.close"><code class="docutils literal notranslate"><span class="pre">VecEnvs.close()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.vecenvs.html#pufferlib.vecenvs.VecEnvs.step"><code class="docutils literal notranslate"><span class="pre">VecEnvs.step()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.version.html">pufferlib.version module</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Joseph Suarez.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    
+
+  <style>
+    :root {
+      --foreground: #000000;
+      --background: #061a1a;
+      --accent:     #005050;
+      --text:       #f1f1f1;
+      --title:      #66dcdc;
+      --monochrome: #f1f1f1;
+      --link:       #00bbbb;
+    }
+
+    body {
+      color: var(--text);
+    }
+
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {
+      background: var(--background);
+    }
+    /* Sidebar */
+    .wy-nav-side {
+      background: var(--foreground);
+    }
+    .wy-nav-content {
+      background: var(--background);
+    }
+    .wy-nav-content-wrap {
+      background: var(--foreground);
+    }
+
+    .wy-table-responsive table td, .wy-table-responsive table th {
+      /* !important prevents the common CSS stylesheets from
+             overriding this as on RTD they are loaded after this stylesheet */
+      white-space: normal !important;
+    }
+       
+    .wy-table-responsive {
+      overflow: visible !important;
+    }
+
+    //This one is the one that does something?
+    .row-odd {
+      background: #ff0000;
+    }
+
+    .row-even {
+      background: var(--accent);
+    }
+
+    html.writer-html5 .rst-content table.docutils th {
+      border: 1px solid var(--accent);
+    }
+
+    /* Top line */
+    hr {
+      border-top-color: teal;
+      border-top-style: solid;
+      border-top-width: 3px;
+    }
+
+    html.writer-html4 .rst-content dl:not(.docutils) > dt, html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) > dt {
+      background: var(--foreground);
+      color: var(--text);
+      border-top: var(--accent);
+    }
+
+html.writer-html4 .rst-content dl:not(.docutils) dl:not(.field-list) > dt, html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) dl:not(.field-list) > dt {
+      background: var(--foreground);
+      color: var(--text);
+      border-top: var(--accent);
+    }
+
+html.writer-html4 .rst-content dl:not(.docutils) dl:not(.field-list) > dt, html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) dl:not(.field-list) > dt {
+      background: var(--foreground);
+      color: var(--text);
+      border-top: var(--accent);
+    }
+
+
+
+    /* ****** Begin Tables ****** */
+
+    /*Don't even think about changing this.
+    Spent 3 hours pulling this from an rtd bitbucket PR*/ 
+    wy-table-odd td, .wy-table-striped tr:nth-child(2n-1) td, .rst-content table.docutils:not(.field-list) tr:nth-child(2n-1) td {
+      background-color: var(--foreground);
+    }
+
+    wy-table-even td, .wy-table-striped tr:nth-child(2n) td, .rst-content table.docutils:not(.field-list) tr:nth-child(2n) td {
+      background-color: var(--background);
+    }
+
+    /* Outer table */
+    .wy-table-bordered-all, .rst-content table.docutils {
+      border: 1px solid #0f0;
+        border-top-color: var(--accent);
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-right-color: var(--accent);
+        border-right-style: solid;
+        border-right-width: 1px;
+        border-bottom-color: var(--accent);
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-left-color: var(--accent);
+        border-left-style: solid;
+        border-left-width: 1px;
+        border-image-outset: 0;
+        border-image-repeat: stretch;
+        border-image-slice: 100%;
+        border-image-source: none;
+        border-image-width: 1;
+    }
+
+    /* Table header underline */
+    .wy-table thead th, .rst-content table.docutils thead th, .rst-content table.field-list thead th {
+        font-weight: bold;
+        border-bottom-color: rgb(055, 0, 0);
+        border-bottom-style: solid;
+        border-bottom-width: 0px;
+    }
+
+    /* Inner table border */
+    .wy-table-bordered-all td, .rst-content table.docutils td {
+        border-bottom-color: rgb(255, 0, 0);
+        border-bottom-style: solid;
+        border-bottom-width: 0px;
+        border-left-color: rgb(255, 0, 0);
+        border-left-style: solid;
+        border-left-width: 0px;
+    }
+    /* ****** End Tables ****** */
+
+    /* ****** Start selection for left sidebar ****** */
+    .wy-menu-vertical li.current{
+      background: var(--foreground);
+    }
+
+    .wy-menu-vertical li.toctree-l1.current > a{
+      background: var(--foreground);
+      border-top-color: lime;
+      border-top-style: solid;
+      border-top-width: 3px;
+      border-bottom-color: lime;
+      border-bottom-style: solid;
+      border-bottom-width: 3px;
+      
+    }
+
+    .rst-content pre.literal-block, .rst-content div[class^="highlight"] {
+      border-top-color: var(--accent);
+      border-top-style: solid;
+      border-top-width: 1px;
+      border-right-color: var(--accent);
+      border-right-style: solid;
+      border-right-width: 1px;
+      border-bottom-color: var(--accent);
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+      border-left-color: var(--accent);
+      border-left-style: solid;
+      border-left-width: 1px;
+      border-image-outset: 0;
+      border-image-repeat: stretch;
+      border-image-slice: 100%;
+      border-image-source: none;
+      border-image-width: 1;
+    }
+
+    .wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a {
+      display: block;
+      background: var(--accent);
+      padding: .4045em 4.045em;
+    }
+
+    .wy-menu-vertical li.toctree-l2.current > a {
+      background: var(--foreground);
+      padding: .4045em 2.427em;
+    }
+
+    .wy-menu-vertical li.toctree-l3.current li.toctree-l4 > a {
+      display: block;
+      background: var(--foreground);
+      padding: .4045em 5.663em;
+    }
+
+    .wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a {
+      display: block;
+      background: var(--foreground);
+      padding: .4045em 4.045em;
+    }
+
+    /* ****** End selection for left sidebar ****** */
+
+    /* Bullet(?) blocks */
+    .rst-content dl:not(.docutils) dt {
+      display: table;
+      margin: 6px 0;
+      margin-top: 6px;
+      font-size: 90%;
+      line-height: normal;
+      background: var(--foreground);
+      color: var(--text);
+      border-top: solid 6px var(--accent);
+      padding: 6px;
+      position: relative;
+    }
+
+    /* ****** Start Code Blocks ****** */
+    .highlight-python {
+      background: var(--accent);
+      border: var(--accent);
+    }
+
+    .highlight {
+      background: var(--foreground);
+      color: var(--accent);
+    }
+    /* ****** End Code Blocks ****** */
+
+    /* Buttons */
+    .btn-neutral {
+      background-color: var(--accent) !important;
+      color: var(--title) !important;
+    }
+
+    /* Buttons */
+    .btn-neutral:visited {
+      background-color: var(--accent) !important;
+      color: var(--title) !important;
+    }
+
+    .rst-content dl:not(.docutils) dl dt {
+      margin-bottom: 6px;
+      border-left: solid 0px var(--foreground);
+      background: var(--background);
+      color: var(--text);
+      }
+
+    code, .rst-content tt, .rst-content code {
+      background-color: var(--foreground);
+      border-top-width: 0px;
+      border-bottom-width: 0px;
+      border-left-width: 0px;
+      border-right-width: 0px;
+    }
+
+    .rst-content dl:not(.docutils) dl dt {
+      border-left-color: var(--background);
+    }
+
+    .rst-content tt, .rst-content tt, .rst-content code {
+      color: var(--title);
+    }
+
+    .rst-content tt.xref, a .rst-content tt, .rst-content tt.xref, .rst-content code.xref, a .rst-content tt, a .rst-content code {
+      color: var(--title);
+    }
+
+    .wy-menu-vertical li.toctree-l2 a, .wy-menu-vertical li.toctree-l3 a, .wy-menu-vertical li.toctree-l4 a {
+      color: var(--text);
+    }
+
+    .wy-menu-vertical li.on a, .wy-menu-vertical li.current > a {
+      color: #00ff00;
+    }
+
+    .wy-menu-vertical li.current a {
+      border-right: solid 1px (--background);
+      padding: .4045em 2.427em;
+    }
+
+    .wy-menu-vertical header, .wy-menu-vertical p.caption {
+       color: var(--title);
+       line-height: 32px;
+       font-weight: bold;
+       text-transform: uppercase;
+       font-size: 85%;
+       white-space: nowrap;
+    }
+
+    footer {
+      color: var(--accent);
+    }
+
+    p {
+      color: var(--text);
+    }
+    h1 {
+      color: var(--title);
+      font-size: 150%
+    }
+
+    h2 {
+      color: var(--accent);
+      font-size: 125%
+    }
+
+    h3 {
+      color: var(--accent);
+    }
+
+    h4 {
+      color: var(--accent);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      padding-left: 1em; 
+      text-indent: -.7em;
+    }
+
+    li {
+      content: "• ";
+      color: var(--title); /* or whatever color you prefer */
+      }
+
+    a:link {
+      color: var(--link);
+    }
+
+    a:visited {
+      color: var(--link);
+    }
+
+    a:hover {
+      color: lime;
+    }
+
+    a:active {
+      color: lime;
+    }
+
+
+  </style>
+
+
+</body>
+</html>
