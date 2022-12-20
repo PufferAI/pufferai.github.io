@@ -92,14 +92,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#support">Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#license">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Environment Bindings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#custom-environment-binding">Custom Environment Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Quick Demo on Neural MMO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#standalone-binding">Standalone Binding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#rllib">RLLib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#cleanrl">CleanRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#environment-bindings">Environment Bindings</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
@@ -207,6 +209,7 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.utils.</span></span><span class="sig-name descname"><span class="pre">dotdict</span></span><a class="headerlink" href="#pufferlib.utils.dotdict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 <p>dot.notation access to dictionary attributes</p>
+<p>TODO: Err on access bad key</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.utils.dotdict.clear">
 <span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None.</span>&#160; <span class="pre">Remove</span> <span class="pre">all</span> <span class="pre">items</span> <span class="pre">from</span> <span class="pre">D.</span></span></span><a class="headerlink" href="#pufferlib.utils.dotdict.clear" title="Permalink to this definition">¶</a></dt>
@@ -273,6 +276,12 @@ In either case, this is followed by: for k in F:  D[k] = F[k]</p>
 <span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">an</span> <span class="pre">object</span> <span class="pre">providing</span> <span class="pre">a</span> <span class="pre">view</span> <span class="pre">on</span> <span class="pre">D's</span> <span class="pre">values</span></span></span><a class="headerlink" href="#pufferlib.utils.dotdict.values" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pufferlib.utils.Suppress">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.utils.</span></span><span class="sig-name descname"><span class="pre">Suppress</span></span><a class="headerlink" href="#pufferlib.utils.Suppress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 </dd></dl>
 
 </section>

@@ -1,4 +1,6 @@
-.. |icon| image:: /resource/header.png
+.. image:: /resource/header.png
+
+|
 
 This is the current core API. Advanced users can check the PufferLib source for additional tools, but note that these are not yet as well tested.
 

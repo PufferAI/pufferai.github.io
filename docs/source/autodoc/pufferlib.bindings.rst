@@ -13,3 +13,4 @@ pufferlib.bindings package
 
    pufferlib.bindings.base
    pufferlib.bindings.nethack
+   pufferlib.bindings.registry

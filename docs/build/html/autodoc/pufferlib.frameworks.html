@@ -92,14 +92,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#support">Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#license">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Environment Bindings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#custom-environment-binding">Custom Environment Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Quick Demo on Neural MMO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#standalone-binding">Standalone Binding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#rllib">RLLib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#cleanrl">CleanRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#environment-bindings">Environment Bindings</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
@@ -1309,7 +1311,7 @@ See <code class="xref py py-meth docutils literal notranslate"><span class="pre"
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pufferlib.frameworks.make_recurrent_policy">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.frameworks.</span></span><span class="sig-name descname"><span class="pre">make_recurrent_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Policy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_state_first</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.frameworks.make_recurrent_policy" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pufferlib.frameworks.</span></span><span class="sig-name descname"><span class="pre">make_recurrent_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Policy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_first</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.frameworks.make_recurrent_policy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wraps the given policy with an LSTM</p>
 <p>Called for you by framework-specific bindings</p>
 </dd></dl>

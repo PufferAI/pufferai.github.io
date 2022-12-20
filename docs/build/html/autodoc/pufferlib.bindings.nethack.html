@@ -92,14 +92,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#support">Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#license">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Environment Bindings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#custom-environment-binding">Custom Environment Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Quick Demo on Neural MMO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#standalone-binding">Standalone Binding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#rllib">RLLib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#cleanrl">CleanRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#environment-bindings">Environment Bindings</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
@@ -179,7 +181,7 @@
 <span id="pufferlib-bindings-nethack-module"></span><h1>pufferlib.bindings.nethack module<a class="headerlink" href="#module-pufferlib.bindings.nethack" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="pufferlib.bindings.nethack.NetHack">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.bindings.nethack.</span></span><span class="sig-name descname"><span class="pre">NetHack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rllib_dones</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.bindings.nethack.NetHack" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.bindings.nethack.</span></span><span class="sig-name descname"><span class="pre">NetHack</span></span><a class="headerlink" href="#pufferlib.bindings.nethack.NetHack" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="pufferlib.bindings.base.html#pufferlib.bindings.base.Base" title="pufferlib.bindings.base.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></a></p>
 <p>Base class for PufferLib bindings</p>
 <dl class="field-list simple">
@@ -202,7 +204,7 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pufferlib.bindings.nethack.Policy">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.bindings.nethack.</span></span><span class="sig-name descname"><span class="pre">Policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observation_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_actions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_lstm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_layers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_layers</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.bindings.nethack.Policy" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.bindings.nethack.</span></span><span class="sig-name descname"><span class="pre">Policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observation_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_actions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_layers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_layers</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.bindings.nethack.Policy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="pufferlib.frameworks.html#pufferlib.frameworks.BasePolicy" title="pufferlib.frameworks.BasePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasePolicy</span></code></a></p>
 <p>Pure PyTorch base policy</p>
 <p>This spec allows PufferLib to repackage your policy
@@ -222,7 +224,7 @@ for compatibility with RL frameworks</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.bindings.nethack.Policy.decode_actions">
-<span class="sig-name descname"><span class="pre">decode_actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookup</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.bindings.nethack.Policy.decode_actions" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">decode_actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookup</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.bindings.nethack.Policy.decode_actions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Decodes hidden state into a multidiscrete action space</p>
 </dd></dl>
 

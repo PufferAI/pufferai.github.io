@@ -92,14 +92,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#support">Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#license">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Environment Bindings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#custom-environment-binding">Custom Environment Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Quick Demo on Neural MMO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#standalone-binding">Standalone Binding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#rllib">RLLib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#cleanrl">CleanRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#environment-bindings">Environment Bindings</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
@@ -177,12 +179,6 @@
             
   <section id="module-pufferlib.rllib">
 <span id="pufferlib-rllib-module"></span><h1>pufferlib.rllib module<a class="headerlink" href="#module-pufferlib.rllib" title="Permalink to this heading">¶</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="pufferlib.rllib.make_rllib_tuner">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.rllib.</span></span><span class="sig-name descname"><span class="pre">make_rllib_tuner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">binding</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PPO'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_gpus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_envs_per_worker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rollout_fragment_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sgd_minibatch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_sgd_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_seq_len</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoints_to_keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_frequency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.rllib.make_rllib_tuner" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates an RLlib tuner with sane defaults</p>
-</dd></dl>
-
 <dl class="py function">
 <dt class="sig sig-object py" id="pufferlib.rllib.register_env">
 <span class="sig-prename descclassname"><span class="pre">pufferlib.rllib.</span></span><span class="sig-name descname"><span class="pre">register_env</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_creator</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.rllib.register_env" title="Permalink to this definition">¶</a></dt>

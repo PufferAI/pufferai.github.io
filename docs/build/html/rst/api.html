@@ -44,7 +44,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Environment Bindings" href="examples.html" /> 
+    <link rel="prev" title="Quick Demo on Neural MMO" href="examples.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -93,14 +93,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="landing.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="landing.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="landing.html#support">Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="landing.html#license">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Environment Bindings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html#custom-environment-binding">Custom Environment Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Quick Demo on Neural MMO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html#standalone-binding">Standalone Binding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html#rllib">RLLib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html#cleanrl">CleanRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html#environment-bindings">Environment Bindings</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul class="current">
@@ -176,13 +178,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p>This is the current core API. Advanced users can check the PufferLib source for additional tools, but note that these are not yet as well tested.</p>
+  <img alt="../_images/header.png" src="../_images/header.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>This is the current core API. Advanced users can check the PufferLib source for additional tools, but note that these are not yet as well tested.</p>
 <section id="emulation">
 <h1>Emulation<a class="headerlink" href="#emulation" title="Permalink to this heading">¶</a></h1>
 <p>This is the core PufferLib wrapper layer that improves your environment’s compatibility with RL libraries.</p>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">PufferWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_parser=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_shaper=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rllib_dones=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_obs=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_atn=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_horizon=1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_num_agents=128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">PufferWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_parser=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_shaper=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_obs=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_atn=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_horizon=1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_num_agents=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_env_prints=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Wrap the provided env</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -190,7 +196,6 @@
 <li><p><strong>Env</strong> – An environment instance, class, or creator function</p></li>
 <li><p><strong>feature_parser</strong> – A function that transforms an observation</p></li>
 <li><p><strong>reward_shaper</strong> – A function that transforms the reward</p></li>
-<li><p><strong>rllib_dones</strong> – Boolean specifying whether to include __all__ in env dones</p></li>
 <li><p><strong>emulate_flat_obs</strong> – Boolean specifying whether to flatten observations</p></li>
 <li><p><strong>emulate_flat_atn</strong> – Boolean specifying whether to flatten actions</p></li>
 <li><p><strong>emulate_const_horizon</strong> – Int specifying max simulation steps before manual reset</p></li>
@@ -352,12 +357,6 @@ for compatibility with RL frameworks</p>
 <p>Allows you to wrap your environment and policy for use with RLlib</p>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.rllib.</span></span><span class="sig-name descname"><span class="pre">make_rllib_tuner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">binding</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PPO'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_gpus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_envs_per_worker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rollout_fragment_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sgd_minibatch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_sgd_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_seq_len</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoints_to_keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_frequency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Creates an RLlib tuner with sane defaults</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py">
 <span class="sig-prename descclassname"><span class="pre">pufferlib.rllib.</span></span><span class="sig-name descname"><span class="pre">register_env</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_creator</span></span></em><span class="sig-paren">)</span></dt>
 <dd></dd></dl>
 
@@ -454,7 +453,7 @@ with their custom logics.</p></li>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="examples.html" class="btn btn-neutral float-left" title="Environment Bindings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples.html" class="btn btn-neutral float-left" title="Quick Demo on Neural MMO" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

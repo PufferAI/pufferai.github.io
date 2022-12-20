@@ -92,14 +92,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#support">Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#license">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Environment Bindings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#custom-environment-binding">Custom Environment Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Quick Demo on Neural MMO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#standalone-binding">Standalone Binding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#rllib">RLLib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#cleanrl">CleanRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#environment-bindings">Environment Bindings</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
@@ -179,7 +181,7 @@
 <span id="pufferlib-emulation-module"></span><h1>pufferlib.emulation module<a class="headerlink" href="#module-pufferlib.emulation" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="pufferlib.emulation.PufferWrapper">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">PufferWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_parser=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_shaper=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rllib_dones=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_obs=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_atn=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_horizon=1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_num_agents=128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.PufferWrapper" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">PufferWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_parser=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_shaper=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_obs=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_atn=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_horizon=1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_num_agents=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_env_prints=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.PufferWrapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wrap the provided env</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -187,7 +189,6 @@
 <li><p><strong>Env</strong> – An environment instance, class, or creator function</p></li>
 <li><p><strong>feature_parser</strong> – A function that transforms an observation</p></li>
 <li><p><strong>reward_shaper</strong> – A function that transforms the reward</p></li>
-<li><p><strong>rllib_dones</strong> – Boolean specifying whether to include __all__ in env dones</p></li>
 <li><p><strong>emulate_flat_obs</strong> – Boolean specifying whether to flatten observations</p></li>
 <li><p><strong>emulate_flat_atn</strong> – Boolean specifying whether to flatten actions</p></li>
 <li><p><strong>emulate_const_horizon</strong> – Int specifying max simulation steps before manual reset</p></li>

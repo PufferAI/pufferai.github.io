@@ -44,7 +44,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Environment Bindings" href="examples.html" />
+    <link rel="next" title="Quick Demo on Neural MMO" href="examples.html" />
     <link rel="prev" title="Index" href="../index.html" /> 
 </head>
 
@@ -94,14 +94,16 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#support">Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#license">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Environment Bindings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html#custom-environment-binding">Custom Environment Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Quick Demo on Neural MMO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html#standalone-binding">Standalone Binding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html#rllib">RLLib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html#cleanrl">CleanRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html#environment-bindings">Environment Bindings</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
@@ -178,21 +180,52 @@
            <div itemprop="articleBody">
             
   <img alt="../_images/header.png" src="../_images/header.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p><strong>Quick links:</strong> <a class="reference external" href="https://github.com/pufferai/pufferlib">Github</a> | <a class="reference external" href="https://discord.gg/spT4huaGYV">Discord</a> | <a class="reference external" href="https://twitter.com/jsuarez5341">Twitter</a></p>
 <section id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h1>
 <p><strong>WIP – first stable release of PufferLib should be out by Christmas</strong></p>
-<p>PufferLib in a wrapper layer over gym/pettingzoo environments that provides better compatibility with standard RL frameworks, particularly for complex environments. It allows you to spend less time debugging framework-specific code and more time working on generalizable components.</p>
+<p>You have an environment, a PyTorch model, and an RL framework that are designed to work together but don’t. PufferLib is a wrapper layer that provide better compatibility between <a class="reference external" href="https://github.com/openai/gym">Gym</a> / <a class="reference external" href="https://pettingzoo.farama.org">PettingZoo</a> environments and standard reinforcement learning frameworks. You write a native PyTorch network and a short binding for your environment; PufferLib takes care of the rest.</p>
+<dl class="simple">
+<dt>We currently support the following frameworks:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/vwxyzjn/cleanrl">CleanRL</a> - Simple single-file PPO implementation suited for 80% of academic research</p></li>
+<li><p><a class="reference external" href="https://docs.ray.io/en/latest/rllib/index.html">RLLib</a> - Industry-grade reinforcement learning library with more features and corresponding overhead</p></li>
+</ul>
+</dd>
+</dl>
+<p>We plan to add additional bindings in the future. These mainly provide a wrapper utility that creates a framework-compliant network from a raw PyTorch model. If you decide to write one of these yourself, please consider opening a pull request to contribute it to the library.</p>
+<dl class="simple">
+<dt>PufferLib is currently tested against the following environments and environment platforms:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/mgbellemare/Arcade-Learning-Environment">Atari (ALE)</a> - Beam Rider, Breakout, Enduro, Pong, Qbert, Seaquest, Space Invaders. Includes option to test against all ALE environments.</p></li>
+<li><p><a class="reference external" href="https://www.gymlibrary.dev/environments/box2d/">Box2D (Gym)</a> - Cart Pole</p></li>
+<li><p><a class="reference external" href="https://pettingzoo.farama.org/environments/butterfly/">Butterfly (PettingZoo)</a> - Knights Archers Zombies, Cooperative Pong</p></li>
+<li><p><a class="reference external" href="https://github.com/Bam4d/Griddly">Griddly</a> - Spiders</p></li>
+<li><p><a class="reference external" href="https://github.com/geek-ai/MAgent">MAgent</a> - Default configuration</p></li>
+<li><p><a class="reference external" href="https://github.com/Farama-Foundation/MicroRTS-Py">Gym MicroRTS</a> - Default configuration</p></li>
+<li><p><a class="reference external" href="https://github.com/facebookresearch/nle">Nethack (NLE)</a></p></li>
+<li><p><a class="reference external" href="https://neuralmmo.github.io">Neural MMO</a> - Default configuration</p></li>
+</ul>
+</dd>
+</dl>
+<p>You can add bindings to new environments in only a few lines of code. We encourage you to contribute these to our test cases, as this helps us improve the stability of the library.</p>
 </section>
 <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h1>
-<div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">Packaged installation</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<p>To install only the base library:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pufferlib</span>
 </pre></div>
 </div>
+<p>To install the base library and specific environments:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pufferlib</span><span class="p">[</span><span class="n">nmmo</span><span class="p">,</span><span class="n">magent</span><span class="p">]</span>
+</pre></div>
 </div>
-<p>If you want to contribute to PufferLib, use the PufferTank Docker. This installs several environments for testing.</p>
+<p>Some of these environments have additional dependencies not installable through pip. For easy access to all of the testing environments, use the <a class="reference external" href="https://github.com/pufferai/puffertank">PufferTank</a> Docker. We suggest this setup for contributing to PufferLib.</p>
+</section>
+<section id="support">
+<h1>Support<a class="headerlink" href="#support" title="Permalink to this heading">¶</a></h1>
+<p>We have started a community <a class="reference external" href="https://discord.gg/spT4huaGYV">Discord</a> for development and support. If you are using PufferLib in conjunction with Neural MMO, note that I run both projects and would be happy to help get you set up.</p>
 </section>
 <section id="license">
 <h1>License<a class="headerlink" href="#license" title="Permalink to this heading">¶</a></h1>
@@ -205,7 +238,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="examples.html" class="btn btn-neutral float-right" title="Environment Bindings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Quick Demo on Neural MMO" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="../index.html" class="btn btn-neutral float-left" title="Index" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
