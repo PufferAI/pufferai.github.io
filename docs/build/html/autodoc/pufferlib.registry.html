@@ -1,0 +1,650 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pufferlib.registry package &mdash; PufferLib v0.1.1 0.1.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.1.1
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#support">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#license">License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Quick Demo on Neural MMO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#standalone-binding">Standalone Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#rllib">RLLib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#cleanrl">CleanRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#environment-bindings">Environment Bindings</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html">Emulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#binding">Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-binding">CleanRL Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#rllib-binding">RLlib Binding</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PufferLib v0.1.1</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>pufferlib.registry package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/autodoc/pufferlib.registry.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="module-pufferlib.registry">
+<span id="pufferlib-registry-package"></span><h1>pufferlib.registry package<a class="headerlink" href="#module-pufferlib.registry" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.nethack.html">pufferlib.registry.nethack module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.NetHack"><code class="docutils literal notranslate"><span class="pre">NetHack</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.NetHack.custom_model_config"><code class="docutils literal notranslate"><span class="pre">NetHack.custom_model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Policy"><code class="docutils literal notranslate"><span class="pre">Policy</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Policy.critic"><code class="docutils literal notranslate"><span class="pre">Policy.critic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Policy.encode_observations"><code class="docutils literal notranslate"><span class="pre">Policy.encode_observations()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Policy.decode_actions"><code class="docutils literal notranslate"><span class="pre">Policy.decode_actions()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop"><code class="docutils literal notranslate"><span class="pre">Crop</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.forward"><code class="docutils literal notranslate"><span class="pre">Crop.forward()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.T_destination"><code class="docutils literal notranslate"><span class="pre">Crop.T_destination</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.add_module"><code class="docutils literal notranslate"><span class="pre">Crop.add_module()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.apply"><code class="docutils literal notranslate"><span class="pre">Crop.apply()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.bfloat16"><code class="docutils literal notranslate"><span class="pre">Crop.bfloat16()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.buffers"><code class="docutils literal notranslate"><span class="pre">Crop.buffers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.children"><code class="docutils literal notranslate"><span class="pre">Crop.children()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.cpu"><code class="docutils literal notranslate"><span class="pre">Crop.cpu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.cuda"><code class="docutils literal notranslate"><span class="pre">Crop.cuda()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.double"><code class="docutils literal notranslate"><span class="pre">Crop.double()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.dump_patches"><code class="docutils literal notranslate"><span class="pre">Crop.dump_patches</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.eval"><code class="docutils literal notranslate"><span class="pre">Crop.eval()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.extra_repr"><code class="docutils literal notranslate"><span class="pre">Crop.extra_repr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.float"><code class="docutils literal notranslate"><span class="pre">Crop.float()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.get_buffer"><code class="docutils literal notranslate"><span class="pre">Crop.get_buffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.get_extra_state"><code class="docutils literal notranslate"><span class="pre">Crop.get_extra_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.get_parameter"><code class="docutils literal notranslate"><span class="pre">Crop.get_parameter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.get_submodule"><code class="docutils literal notranslate"><span class="pre">Crop.get_submodule()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.half"><code class="docutils literal notranslate"><span class="pre">Crop.half()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.ipu"><code class="docutils literal notranslate"><span class="pre">Crop.ipu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.load_state_dict"><code class="docutils literal notranslate"><span class="pre">Crop.load_state_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.modules"><code class="docutils literal notranslate"><span class="pre">Crop.modules()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.named_buffers"><code class="docutils literal notranslate"><span class="pre">Crop.named_buffers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.named_children"><code class="docutils literal notranslate"><span class="pre">Crop.named_children()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.named_modules"><code class="docutils literal notranslate"><span class="pre">Crop.named_modules()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.named_parameters"><code class="docutils literal notranslate"><span class="pre">Crop.named_parameters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.parameters"><code class="docutils literal notranslate"><span class="pre">Crop.parameters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.register_backward_hook"><code class="docutils literal notranslate"><span class="pre">Crop.register_backward_hook()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.register_buffer"><code class="docutils literal notranslate"><span class="pre">Crop.register_buffer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.register_forward_hook"><code class="docutils literal notranslate"><span class="pre">Crop.register_forward_hook()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.register_forward_pre_hook"><code class="docutils literal notranslate"><span class="pre">Crop.register_forward_pre_hook()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.register_full_backward_hook"><code class="docutils literal notranslate"><span class="pre">Crop.register_full_backward_hook()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.register_load_state_dict_post_hook"><code class="docutils literal notranslate"><span class="pre">Crop.register_load_state_dict_post_hook()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.register_module"><code class="docutils literal notranslate"><span class="pre">Crop.register_module()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.register_parameter"><code class="docutils literal notranslate"><span class="pre">Crop.register_parameter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.requires_grad_"><code class="docutils literal notranslate"><span class="pre">Crop.requires_grad_()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.set_extra_state"><code class="docutils literal notranslate"><span class="pre">Crop.set_extra_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.share_memory"><code class="docutils literal notranslate"><span class="pre">Crop.share_memory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.state_dict"><code class="docutils literal notranslate"><span class="pre">Crop.state_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.to"><code class="docutils literal notranslate"><span class="pre">Crop.to()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.to_empty"><code class="docutils literal notranslate"><span class="pre">Crop.to_empty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.train"><code class="docutils literal notranslate"><span class="pre">Crop.train()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.type"><code class="docutils literal notranslate"><span class="pre">Crop.type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.xpu"><code class="docutils literal notranslate"><span class="pre">Crop.xpu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.zero_grad"><code class="docutils literal notranslate"><span class="pre">Crop.zero_grad()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.training"><code class="docutils literal notranslate"><span class="pre">Crop.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.registry.html">pufferlib.registry.registry module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.print_setup_error"><code class="docutils literal notranslate"><span class="pre">print_setup_error()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_all_atari_bindings"><code class="docutils literal notranslate"><span class="pre">make_all_atari_bindings()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_atari_bindings"><code class="docutils literal notranslate"><span class="pre">make_atari_bindings()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_butterfly_bindings"><code class="docutils literal notranslate"><span class="pre">make_butterfly_bindings()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_classic_control_bindings"><code class="docutils literal notranslate"><span class="pre">make_classic_control_bindings()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_griddly_bindings"><code class="docutils literal notranslate"><span class="pre">make_griddly_bindings()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_magent_bindings"><code class="docutils literal notranslate"><span class="pre">make_magent_bindings()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_microrts_bindings"><code class="docutils literal notranslate"><span class="pre">make_microrts_bindings()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_nethack_bindings"><code class="docutils literal notranslate"><span class="pre">make_nethack_bindings()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_neuralmmo_bindings"><code class="docutils literal notranslate"><span class="pre">make_neuralmmo_bindings()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_smac_bindings"><code class="docutils literal notranslate"><span class="pre">make_smac_bindings()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_all_bindings"><code class="docutils literal notranslate"><span class="pre">make_all_bindings()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Joseph Suarez.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    
+
+  <style>
+    :root {
+      --foreground: #000000;
+      --background: #061a1a;
+      --accent:     #005050;
+      --text:       #f1f1f1;
+      --title:      #66dcdc;
+      --monochrome: #f1f1f1;
+      --link:       #00bbbb;
+    }
+
+    body {
+      color: var(--text);
+    }
+
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {
+      background: var(--background);
+    }
+    /* Sidebar */
+    .wy-nav-side {
+      background: var(--foreground);
+    }
+    .wy-nav-content {
+      background: var(--background);
+    }
+    .wy-nav-content-wrap {
+      background: var(--foreground);
+    }
+
+    .wy-table-responsive table td, .wy-table-responsive table th {
+      /* !important prevents the common CSS stylesheets from
+             overriding this as on RTD they are loaded after this stylesheet */
+      white-space: normal !important;
+    }
+       
+    .wy-table-responsive {
+      overflow: visible !important;
+    }
+
+    //This one is the one that does something?
+    .row-odd {
+      background: #ff0000;
+    }
+
+    .row-even {
+      background: var(--accent);
+    }
+
+    html.writer-html5 .rst-content table.docutils th {
+      border: 1px solid var(--accent);
+    }
+
+    /* Top line */
+    hr {
+      border-top-color: teal;
+      border-top-style: solid;
+      border-top-width: 3px;
+    }
+
+    html.writer-html4 .rst-content dl:not(.docutils) > dt, html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) > dt {
+      background: var(--foreground);
+      color: var(--text);
+      border-top: var(--accent);
+    }
+
+html.writer-html4 .rst-content dl:not(.docutils) dl:not(.field-list) > dt, html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) dl:not(.field-list) > dt {
+      background: var(--foreground);
+      color: var(--text);
+      border-top: var(--accent);
+    }
+
+html.writer-html4 .rst-content dl:not(.docutils) dl:not(.field-list) > dt, html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) dl:not(.field-list) > dt {
+      background: var(--foreground);
+      color: var(--text);
+      border-top: var(--accent);
+    }
+
+
+
+    /* ****** Begin Tables ****** */
+
+    /*Don't even think about changing this.
+    Spent 3 hours pulling this from an rtd bitbucket PR*/ 
+    wy-table-odd td, .wy-table-striped tr:nth-child(2n-1) td, .rst-content table.docutils:not(.field-list) tr:nth-child(2n-1) td {
+      background-color: var(--foreground);
+    }
+
+    wy-table-even td, .wy-table-striped tr:nth-child(2n) td, .rst-content table.docutils:not(.field-list) tr:nth-child(2n) td {
+      background-color: var(--background);
+    }
+
+    /* Outer table */
+    .wy-table-bordered-all, .rst-content table.docutils {
+      border: 1px solid #0f0;
+        border-top-color: var(--accent);
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-right-color: var(--accent);
+        border-right-style: solid;
+        border-right-width: 1px;
+        border-bottom-color: var(--accent);
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-left-color: var(--accent);
+        border-left-style: solid;
+        border-left-width: 1px;
+        border-image-outset: 0;
+        border-image-repeat: stretch;
+        border-image-slice: 100%;
+        border-image-source: none;
+        border-image-width: 1;
+    }
+
+    /* Table header underline */
+    .wy-table thead th, .rst-content table.docutils thead th, .rst-content table.field-list thead th {
+        font-weight: bold;
+        border-bottom-color: rgb(055, 0, 0);
+        border-bottom-style: solid;
+        border-bottom-width: 0px;
+    }
+
+    /* Inner table border */
+    .wy-table-bordered-all td, .rst-content table.docutils td {
+        border-bottom-color: rgb(255, 0, 0);
+        border-bottom-style: solid;
+        border-bottom-width: 0px;
+        border-left-color: rgb(255, 0, 0);
+        border-left-style: solid;
+        border-left-width: 0px;
+    }
+    /* ****** End Tables ****** */
+
+    /* ****** Start selection for left sidebar ****** */
+    .wy-menu-vertical li.current{
+      background: var(--foreground);
+    }
+
+    .wy-menu-vertical li.toctree-l1.current > a{
+      background: var(--foreground);
+      border-top-color: lime;
+      border-top-style: solid;
+      border-top-width: 3px;
+      border-bottom-color: lime;
+      border-bottom-style: solid;
+      border-bottom-width: 3px;
+      
+    }
+
+    .rst-content pre.literal-block, .rst-content div[class^="highlight"] {
+      border-top-color: var(--accent);
+      border-top-style: solid;
+      border-top-width: 1px;
+      border-right-color: var(--accent);
+      border-right-style: solid;
+      border-right-width: 1px;
+      border-bottom-color: var(--accent);
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+      border-left-color: var(--accent);
+      border-left-style: solid;
+      border-left-width: 1px;
+      border-image-outset: 0;
+      border-image-repeat: stretch;
+      border-image-slice: 100%;
+      border-image-source: none;
+      border-image-width: 1;
+    }
+
+    .wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a {
+      display: block;
+      background: var(--accent);
+      padding: .4045em 4.045em;
+    }
+
+    .wy-menu-vertical li.toctree-l2.current > a {
+      background: var(--foreground);
+      padding: .4045em 2.427em;
+    }
+
+    .wy-menu-vertical li.toctree-l3.current li.toctree-l4 > a {
+      display: block;
+      background: var(--foreground);
+      padding: .4045em 5.663em;
+    }
+
+    .wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a {
+      display: block;
+      background: var(--foreground);
+      padding: .4045em 4.045em;
+    }
+
+    /* ****** End selection for left sidebar ****** */
+
+    /* Bullet(?) blocks */
+    .rst-content dl:not(.docutils) dt {
+      display: table;
+      margin: 6px 0;
+      margin-top: 6px;
+      font-size: 90%;
+      line-height: normal;
+      background: var(--foreground);
+      color: var(--text);
+      border-top: solid 6px var(--accent);
+      padding: 6px;
+      position: relative;
+    }
+
+    /* ****** Start Code Blocks ****** */
+    .highlight-python {
+      background: var(--accent);
+      border: var(--accent);
+    }
+
+    .highlight {
+      background: var(--foreground);
+      color: var(--accent);
+    }
+    /* ****** End Code Blocks ****** */
+
+    /* Buttons */
+    .btn-neutral {
+      background-color: var(--accent) !important;
+      color: var(--title) !important;
+    }
+
+    /* Buttons */
+    .btn-neutral:visited {
+      background-color: var(--accent) !important;
+      color: var(--title) !important;
+    }
+
+    .rst-content dl:not(.docutils) dl dt {
+      margin-bottom: 6px;
+      border-left: solid 0px var(--foreground);
+      background: var(--background);
+      color: var(--text);
+      }
+
+    code, .rst-content tt, .rst-content code {
+      background-color: var(--foreground);
+      border-top-width: 0px;
+      border-bottom-width: 0px;
+      border-left-width: 0px;
+      border-right-width: 0px;
+    }
+
+    .rst-content dl:not(.docutils) dl dt {
+      border-left-color: var(--background);
+    }
+
+    .rst-content tt, .rst-content tt, .rst-content code {
+      color: var(--title);
+    }
+
+    .rst-content tt.xref, a .rst-content tt, .rst-content tt.xref, .rst-content code.xref, a .rst-content tt, a .rst-content code {
+      color: var(--title);
+    }
+
+    .wy-menu-vertical li.toctree-l2 a, .wy-menu-vertical li.toctree-l3 a, .wy-menu-vertical li.toctree-l4 a {
+      color: var(--text);
+    }
+
+    .wy-menu-vertical li.on a, .wy-menu-vertical li.current > a {
+      color: #00ff00;
+    }
+
+    .wy-menu-vertical li.current a {
+      border-right: solid 1px (--background);
+      padding: .4045em 2.427em;
+    }
+
+    .wy-menu-vertical header, .wy-menu-vertical p.caption {
+       color: var(--title);
+       line-height: 32px;
+       font-weight: bold;
+       text-transform: uppercase;
+       font-size: 85%;
+       white-space: nowrap;
+    }
+
+    footer {
+      color: var(--accent);
+    }
+
+    p {
+      color: var(--text);
+    }
+    h1 {
+      color: var(--title);
+      font-size: 150%
+    }
+
+    h2 {
+      color: var(--accent);
+      font-size: 125%
+    }
+
+    h3 {
+      color: var(--accent);
+    }
+
+    h4 {
+      color: var(--accent);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      padding-left: 1em; 
+      text-indent: -.7em;
+    }
+
+    li {
+      content: "• ";
+      color: var(--title); /* or whatever color you prefer */
+      }
+
+    a:link {
+      color: var(--link);
+    }
+
+    a:visited {
+      color: var(--link);
+    }
+
+    a:hover {
+      color: lime;
+    }
+
+    a:active {
+      color: lime;
+    }
+
+
+  </style>
+
+
+</body>
+</html>

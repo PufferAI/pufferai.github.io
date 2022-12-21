@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pufferlib.torch module &mdash; PufferLib v0.1.1 0.1.1 documentation</title>
+  <title>pufferlib.frameworks.cleanrl module &mdash; PufferLib v0.1.1 0.1.1 documentation</title>
   
 
   
@@ -157,13 +157,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>pufferlib.torch module</li>
+      <li>pufferlib.frameworks.cleanrl module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/autodoc/pufferlib.torch.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/autodoc/pufferlib.frameworks.cleanrl.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -176,19 +176,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="module-pufferlib.torch">
-<span id="pufferlib-torch-module"></span><h1>pufferlib.torch module<a class="headerlink" href="#module-pufferlib.torch" title="Permalink to this heading">¶</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="pufferlib.torch.BatchFirstLSTM">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.torch.</span></span><span class="sig-name descname"><span class="pre">BatchFirstLSTM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.torch.BatchFirstLSTM" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">LSTM</span></code></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="pufferlib.torch.BatchFirstLSTM.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.torch.BatchFirstLSTM.forward" title="Permalink to this definition">¶</a></dt>
-<dd><p>input: B x T x H
-h&amp;c: B x T x H</p>
-</dd></dl>
-
+  <section id="module-pufferlib.frameworks.cleanrl">
+<span id="pufferlib-frameworks-cleanrl-module"></span><h1>pufferlib.frameworks.cleanrl module<a class="headerlink" href="#module-pufferlib.frameworks.cleanrl" title="Permalink to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="pufferlib.frameworks.cleanrl.make_cleanrl_policy">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.frameworks.cleanrl.</span></span><span class="sig-name descname"><span class="pre">make_cleanrl_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.frameworks.cleanrl.make_cleanrl_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrap a PyTorch network for compatibility with CleanRL</p>
+<p>policy_cls must subclass the PufferLib base PyTorch class</p>
 </dd></dl>
 
 </section>

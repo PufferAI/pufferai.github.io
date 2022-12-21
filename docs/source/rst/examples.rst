@@ -17,7 +17,7 @@ Standalone Binding
 
 A more realistic example implementing one of the official NLE baselines. This is a standalone binding without the trainer stub at the bottom.
 
-.. literalinclude:: ../../../../pufferlib/pufferlib/bindings/nethack.py
+.. literalinclude:: ../../../../pufferlib/pufferlib/registry/nethack.py
 
 RLLib
 #####
@@ -38,5 +38,5 @@ Environment Bindings
 
 We provide default bindings for all tested environments. The default model is a one-layer linear network, optionally wrapped in an LSTM: don't expect it to train well, but it should at least run and give you a starting point. Here are all of the binding definitions:
 
-.. literalinclude:: ../../../../pufferlib/pufferlib/bindings/registry.py
+.. literalinclude:: ../../../../pufferlib/pufferlib/registry/registry.py
 

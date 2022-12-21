@@ -1,7 +1,7 @@
-pufferlib.bindings.registry module
+pufferlib.registry.registry module
 ==================================
 
-.. automodule:: pufferlib.bindings.registry
+.. automodule:: pufferlib.registry.registry
    :members:
    :undoc-members:
    :inherited-members:

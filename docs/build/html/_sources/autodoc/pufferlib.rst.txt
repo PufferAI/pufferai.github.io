@@ -11,18 +11,17 @@ pufferlib package
 .. toctree::
    :maxdepth: 4
 
-   pufferlib.bindings
+   pufferlib.frameworks
+   pufferlib.registry
 
 
 .. toctree::
    :maxdepth: 4
 
-   pufferlib.cleanrl
+   pufferlib.binding
    pufferlib.emulation
    pufferlib.evaluation
-   pufferlib.frameworks
    pufferlib.rating
-   pufferlib.rllib
    pufferlib.torch
    pufferlib.utils
    pufferlib.vecenvs

@@ -1,7 +1,7 @@
-pufferlib.bindings.nethack module
+pufferlib.frameworks.rllib module
 =================================
 
-.. automodule:: pufferlib.bindings.nethack
+.. automodule:: pufferlib.frameworks.rllib
    :members:
    :undoc-members:
    :inherited-members:

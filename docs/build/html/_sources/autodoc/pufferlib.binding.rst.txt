@@ -1,7 +1,7 @@
-pufferlib.cleanrl module
+pufferlib.binding module
 ========================
 
-.. automodule:: pufferlib.cleanrl
+.. automodule:: pufferlib.binding
    :members:
    :undoc-members:
    :inherited-members:
