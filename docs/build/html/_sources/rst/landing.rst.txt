@@ -36,7 +36,7 @@ You can add bindings to new environments in only a few lines of code. We encoura
 Installation
 ############
 
-The base library is a minimal installation. We provide several optional extras:
+Most features require PyTorch. Install this first (we tested on 1.12.0+cu116, included in PufferTank). The base library is a minimal installation. We provide several optional extras:
 
 .. code-block:: python
    
@@ -47,7 +47,7 @@ The base library is a minimal installation. We provide several optional extras:
    pip install pufferlib[tests] # All test environments
    pip install pufferlib[atari,box2d,butterfly,magent,microrts,nethack,nmmo] # Individual environments
 
-Some of the extra environments have additional dependencies not installable through pip. For easy access to all of the testing environments, use the `PufferTank <https://github.com/pufferai/puffertank>`_ Docker. We suggest this setup for contributing to PufferLib.
+Many of these test environments have additional dependencies not installable through pip. For easy access to all of the testing environments, use the `PufferTank <https://github.com/pufferai/puffertank>`_ Docker. We suggest this setup for contributing to PufferLib.
 
 Support
 #######
