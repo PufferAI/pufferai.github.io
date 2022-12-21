@@ -36,19 +36,18 @@ You can add bindings to new environments in only a few lines of code. We encoura
 Installation
 ############
 
-To install only the base library:
+The base library is a minimal installation. We provide several optional extras:
 
 .. code-block:: python
    
    pip install pufferlib
+   pip install pufferlib[rllib] # Compatible Ray/RLlib versions
+   pip install pufferlib[docs] #Build docs locally
 
-To install the base library and specific environments:
+   pip install pufferlib[tests] # All test environments
+   pip install pufferlib[atari,box2d,butterfly,magent,microrts,nethack,nmmo] # Individual environments
 
-.. code-block:: python
-   
-   pip install pufferlib[nmmo,magent]
-
-Some of these environments have additional dependencies not installable through pip. For easy access to all of the testing environments, use the `PufferTank <https://github.com/pufferai/puffertank>`_ Docker. We suggest this setup for contributing to PufferLib.
+Some of the extra environments have additional dependencies not installable through pip. For easy access to all of the testing environments, use the `PufferTank <https://github.com/pufferai/puffertank>`_ Docker. We suggest this setup for contributing to PufferLib.
 
 Support
 #######

@@ -212,15 +212,16 @@
 </section>
 <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h1>
-<p>To install only the base library:</p>
+<p>The base library is a minimal installation. We provide several optional extras:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pufferlib</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">pufferlib</span><span class="p">[</span><span class="n">rllib</span><span class="p">]</span> <span class="c1"># Compatible Ray/RLlib versions</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">pufferlib</span><span class="p">[</span><span class="n">docs</span><span class="p">]</span> <span class="c1">#Build docs locally</span>
+
+<span class="n">pip</span> <span class="n">install</span> <span class="n">pufferlib</span><span class="p">[</span><span class="n">tests</span><span class="p">]</span> <span class="c1"># All test environments</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">pufferlib</span><span class="p">[</span><span class="n">atari</span><span class="p">,</span><span class="n">box2d</span><span class="p">,</span><span class="n">butterfly</span><span class="p">,</span><span class="n">magent</span><span class="p">,</span><span class="n">microrts</span><span class="p">,</span><span class="n">nethack</span><span class="p">,</span><span class="n">nmmo</span><span class="p">]</span> <span class="c1"># Individual environments</span>
 </pre></div>
 </div>
-<p>To install the base library and specific environments:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pufferlib</span><span class="p">[</span><span class="n">nmmo</span><span class="p">,</span><span class="n">magent</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>Some of these environments have additional dependencies not installable through pip. For easy access to all of the testing environments, use the <a class="reference external" href="https://github.com/pufferai/puffertank">PufferTank</a> Docker. We suggest this setup for contributing to PufferLib.</p>
+<p>Some of the extra environments have additional dependencies not installable through pip. For easy access to all of the testing environments, use the <a class="reference external" href="https://github.com/pufferai/puffertank">PufferTank</a> Docker. We suggest this setup for contributing to PufferLib.</p>
 </section>
 <section id="support">
 <h1>Support<a class="headerlink" href="#support" title="Permalink to this heading">¶</a></h1>
