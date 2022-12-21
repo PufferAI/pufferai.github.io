@@ -5,13 +5,10 @@
 .. role:: python(code)
     :language: python
 
-
 **Quick links:** `Github <https://github.com/pufferai/pufferlib>`_ | `Discord <https://discord.gg/spT4huaGYV>`_ | `Twitter <https://twitter.com/jsuarez5341>`_
 
 Introduction
 ############
-
-**WIP -- first stable release of PufferLib should be out by Christmas**
 
 You have an environment, a PyTorch model, and an RL framework that are designed to work together but don't. PufferLib is a wrapper layer that provide better compatibility between `Gym <https://github.com/openai/gym>`_ / `PettingZoo <https://pettingzoo.farama.org>`_ environments and standard reinforcement learning frameworks. You write a native PyTorch network and a short binding for your environment; PufferLib takes care of the rest.
 
@@ -42,7 +39,7 @@ Most features require PyTorch. Install this first (we tested on 1.12.0+cu116, in
    
    pip install pufferlib
    pip install pufferlib[rllib] # Compatible Ray/RLlib versions
-   pip install pufferlib[docs] #Build docs locally
+   pip install pufferlib[docs] # Build docs locally
 
    pip install pufferlib[tests] # All test environments
    pip install pufferlib[atari,box2d,butterfly,magent,microrts,nethack,nmmo] # Individual environments
