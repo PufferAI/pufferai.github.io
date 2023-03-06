@@ -12,8 +12,8 @@ You have an environment, a PyTorch model, and a reinforcement learning framework
 
 Join our community `Discord <https://discord.gg/spT4huaGYV>`_ to get support or if you are interested in contributing to the project.
 
-| `Demo: <https://github.com/pufferai/pufferlib/simple_cleanrl.py>`_ Neural MMO on minimally modified CleanRL. Use as an introductory reference.
-| `Demo: <https://github.com/pufferai/pufferlib/cleanrl_ppo_lstm.py>`_ Neural MMO on our customized version of CleanRL. Use as a template for your projects.
+| :ref:`Minimal CleanRL Demo` Neural MMO on minimally modified CleanRL. Use as an introductory reference.
+| :ref:`Custom CleanRL Demo` Neural MMO on our customized version of CleanRL. Use as a template for your projects.
 
 .. literalinclude:: ../../../../pufferlib/tests/test_docs_nmmo.py
 
