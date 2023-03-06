@@ -91,9 +91,10 @@
             
               <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="landing.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="landing.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="landing.html#support">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="landing.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="landing.html#included-frameworks-and-environments">Included frameworks and environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="landing.html#authorship">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="landing.html#contributing">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="landing.html#license">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
@@ -185,35 +186,75 @@
 <section id="emulation">
 <h1>Emulation<a class="headerlink" href="#emulation" title="Permalink to this heading">¶</a></h1>
 <p>This is the core PufferLib wrapper layer that improves your environment’s compatibility with RL libraries.</p>
-<dl class="py function">
+<dl class="py class">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">PufferWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_parser=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_shaper=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_obs=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_atn=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_horizon=1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_num_agents=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_env_prints=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Wrap the provided env</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">Binding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_cls=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_creator=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_args=[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_kwargs={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_name=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_parser=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_shaper=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_includes_reset=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_obs=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_atn=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_horizon=1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_num_agents=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_env_prints=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_episode_statistics=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Base class for PufferLib bindings</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>Env</strong> – An environment instance, class, or creator function</p></li>
-<li><p><strong>feature_parser</strong> – A function that transforms an observation</p></li>
-<li><p><strong>reward_shaper</strong> – A function that transforms the reward</p></li>
-<li><p><strong>emulate_flat_obs</strong> – Boolean specifying whether to flatten observations</p></li>
-<li><p><strong>emulate_flat_atn</strong> – Boolean specifying whether to flatten actions</p></li>
-<li><p><strong>emulate_const_horizon</strong> – Int specifying max simulation steps before manual reset</p></li>
-<li><p><strong>emulate_const_num_agents</strong> – Int specifying max number of agents to pad</p></li>
-<li><p><strong>obs_dtype</strong> – Specify observation datatype if not float 32.</p></li>
+<li><p><strong>env_name</strong> – Name of the environment</p></li>
+<li><p><strong>env_cls</strong> – Environment class to wrap</p></li>
+<li><p><strong>env_args</strong> – Arguments for env_cls</p></li>
+<li><p><strong>env_kwargs</strong> – Keyword arguments for env_cls</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><p>A pettingzoo compliant PufferEnv class</p>
-<p>If you specified an env class or creator function, this class
-takes the same args/kwargs as the original</p>
-<p>This environment defines an additional method that returns observation
-space before any flattening but after feature parsing:</p>
-<blockquote>
-<div><p>structured_observation_space(agent: int)</p>
-</div></blockquote>
-</p>
-</dd>
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_env_cls</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">raw_env_creator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">env_cls</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">env_creator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_observation_space</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_action_space</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_single_observation_space</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_single_action_space</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">default_agent</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">max_agents</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">env_name</span></span></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py function">
@@ -304,7 +345,7 @@ for compatibility with RL frameworks</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.binding.</span></span><span class="sig-name descname"><span class="pre">make_recurrent_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Policy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_first</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">pufferlib.binding.</span></span><span class="sig-name descname"><span class="pre">make_recurrent_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Policy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_first</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Wraps the given policy with an LSTM</p>
 <p>Called for you by framework-specific bindings</p>
 </dd></dl>

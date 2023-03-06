@@ -11,5 +11,7 @@ pufferlib.registry package
 .. toctree::
    :maxdepth: 4
 
+   pufferlib.registry.atari
    pufferlib.registry.nethack
+   pufferlib.registry.nmmo
    pufferlib.registry.registry

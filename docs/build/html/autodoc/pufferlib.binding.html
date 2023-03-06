@@ -90,9 +90,10 @@
             
               <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#support">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#included-frameworks-and-environments">Included frameworks and environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#authorship">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#contributing">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#license">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
@@ -257,7 +258,7 @@ for compatibility with RL frameworks</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pufferlib.binding.make_recurrent_policy">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.binding.</span></span><span class="sig-name descname"><span class="pre">make_recurrent_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Policy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_first</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.binding.make_recurrent_policy" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pufferlib.binding.</span></span><span class="sig-name descname"><span class="pre">make_recurrent_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Policy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_first</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.binding.make_recurrent_policy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wraps the given policy with an LSTM</p>
 <p>Called for you by framework-specific bindings</p>
 </dd></dl>
