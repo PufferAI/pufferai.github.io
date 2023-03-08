@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pufferlib.registry.nethack module &mdash; PufferLib v0.1.2 0.1.2 documentation</title>
+  <title>pufferlib.registry.nethack module &mdash; PufferLib v0.2.0 0.2.0 documentation</title>
   
 
   
@@ -57,7 +57,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.1.2
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.0
           
 
           
@@ -107,8 +107,10 @@
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html">Emulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#binding">Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-binding">CleanRL Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#registry">Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#vectorization">Vectorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-integration">CleanRL Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html#rllib-binding">RLlib Binding</a></li>
 </ul>
 
@@ -125,7 +127,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.1.2</a>
+          <a href="../index.html">PufferLib v0.2.0</a>
         
       </nav>
 
@@ -180,14 +182,14 @@
   <section id="module-pufferlib.registry.nethack">
 <span id="pufferlib-registry-nethack-module"></span><h1>pufferlib.registry.nethack module<a class="headerlink" href="#module-pufferlib.registry.nethack" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="pufferlib.registry.nethack.create_binding">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.nethack.</span></span><span class="sig-name descname"><span class="pre">create_binding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.nethack.create_binding" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pufferlib.registry.nethack.make_binding">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.nethack.</span></span><span class="sig-name descname"><span class="pre">make_binding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.nethack.make_binding" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pufferlib.registry.nethack.Policy">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.registry.nethack.</span></span><span class="sig-name descname"><span class="pre">Policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.nethack.Policy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="pufferlib.binding.html#pufferlib.binding.Policy" title="pufferlib.binding.Policy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Policy</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="pufferlib.models.html#pufferlib.models.Policy" title="pufferlib.models.Policy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Policy</span></code></a></p>
 <p>Pure PyTorch base policy</p>
 <p>This spec allows PufferLib to repackage your policy
 for compatibility with RL frameworks</p>
@@ -195,19 +197,23 @@ for compatibility with RL frameworks</p>
 <dt class="sig sig-object py" id="pufferlib.registry.nethack.Policy.critic">
 <span class="sig-name descname"><span class="pre">critic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.nethack.Policy.critic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the value function from the hidden state</p>
+<p>Returns a single value for each batch element</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.registry.nethack.Policy.encode_observations">
 <span class="sig-name descname"><span class="pre">encode_observations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_outputs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.nethack.Policy.encode_observations" title="Permalink to this definition">¶</a></dt>
 <dd><p>Encodes observations into a flat vector.</p>
-<p>Call pufferlib.emulation.unpack_batched_obs to unflatten obs</p>
+<p>Call pufferlib.emulation.unpack_batched_obs to unflatten obs
+Returns a tuple of (hidden, lookup) where lookup is an optional
+mechanism to return additional encoding information</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.registry.nethack.Policy.decode_actions">
 <span class="sig-name descname"><span class="pre">decode_actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookup</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.nethack.Policy.decode_actions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Decodes hidden state into a multidiscrete action space</p>
+<p>Returns a tensor of logits for each action space dimension</p>
 </dd></dl>
 
 </dd></dl>

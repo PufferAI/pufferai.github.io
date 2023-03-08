@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pufferlib.emulation module &mdash; PufferLib v0.1.2 0.1.2 documentation</title>
+  <title>pufferlib.emulation module &mdash; PufferLib v0.2.0 0.2.0 documentation</title>
   
 
   
@@ -57,7 +57,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.1.2
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.0
           
 
           
@@ -107,8 +107,10 @@
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html">Emulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#binding">Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-binding">CleanRL Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#registry">Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#vectorization">Vectorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-integration">CleanRL Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html#rllib-binding">RLlib Binding</a></li>
 </ul>
 
@@ -125,7 +127,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.1.2</a>
+          <a href="../index.html">PufferLib v0.2.0</a>
         
       </nav>
 
@@ -181,7 +183,7 @@
 <span id="pufferlib-emulation-module"></span><h1>pufferlib.emulation module<a class="headerlink" href="#module-pufferlib.emulation" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="pufferlib.emulation.Binding">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">Binding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_cls=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_creator=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_args=[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_kwargs={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_name=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_parser=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_shaper=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_includes_reset=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_obs=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_atn=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_horizon=1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_num_agents=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_env_prints=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_episode_statistics=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.Binding" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">Binding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_cls=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_creator=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_args=[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_kwargs={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_name=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_parser=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_shaper=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_includes_reset=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_obs=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_atn=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_horizon=1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_num_agents=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_env_prints=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_episode_statistics=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.Binding" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Base class for PufferLib bindings</p>
 <dl class="field-list simple">

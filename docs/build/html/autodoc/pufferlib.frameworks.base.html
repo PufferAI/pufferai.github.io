@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pufferlib.vecenvs module &mdash; PufferLib v0.1.2 0.1.2 documentation</title>
+  <title>pufferlib.frameworks.base module &mdash; PufferLib v0.2.0 0.2.0 documentation</title>
   
 
   
@@ -57,7 +57,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.1.2
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.0
           
 
           
@@ -107,8 +107,10 @@
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html">Emulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#binding">Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-binding">CleanRL Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#registry">Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#vectorization">Vectorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-integration">CleanRL Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html#rllib-binding">RLlib Binding</a></li>
 </ul>
 
@@ -125,7 +127,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.1.2</a>
+          <a href="../index.html">PufferLib v0.2.0</a>
         
       </nav>
 
@@ -158,13 +160,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>pufferlib.vecenvs module</li>
+      <li>pufferlib.frameworks.base module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/autodoc/pufferlib.vecenvs.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/autodoc/pufferlib.frameworks.base.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -177,67 +179,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="module-pufferlib.vecenvs">
-<span id="pufferlib-vecenvs-module"></span><h1>pufferlib.vecenvs module<a class="headerlink" href="#module-pufferlib.vecenvs" title="Permalink to this heading">¶</a></h1>
+  <section id="module-pufferlib.frameworks.base">
+<span id="pufferlib-frameworks-base-module"></span><h1>pufferlib.frameworks.base module<a class="headerlink" href="#module-pufferlib.frameworks.base" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="pufferlib.vecenvs.make_remote_envs">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.vecenvs.</span></span><span class="sig-name descname"><span class="pre">make_remote_envs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_creator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vecenvs.make_remote_envs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="pufferlib.vecenvs.VecEnvs">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.vecenvs.</span></span><span class="sig-name descname"><span class="pre">VecEnvs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">binding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">envs_per_worker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vecenvs.VecEnvs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py property">
-<dt class="sig sig-object py" id="pufferlib.vecenvs.VecEnvs.single_observation_space">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_observation_space</span></span><a class="headerlink" href="#pufferlib.vecenvs.VecEnvs.single_observation_space" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pufferlib.vecenvs.VecEnvs.single_action_space">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_action_space</span></span><a class="headerlink" href="#pufferlib.vecenvs.VecEnvs.single_action_space" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pufferlib.vecenvs.VecEnvs.close">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vecenvs.VecEnvs.close" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pufferlib.vecenvs.VecEnvs.profile">
-<span class="sig-name descname"><span class="pre">profile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vecenvs.VecEnvs.profile" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pufferlib.vecenvs.VecEnvs.seed">
-<span class="sig-name descname"><span class="pre">seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vecenvs.VecEnvs.seed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pufferlib.vecenvs.VecEnvs.async_reset">
-<span class="sig-name descname"><span class="pre">async_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vecenvs.VecEnvs.async_reset" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pufferlib.vecenvs.VecEnvs.recv">
-<span class="sig-name descname"><span class="pre">recv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vecenvs.VecEnvs.recv" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pufferlib.vecenvs.VecEnvs.send">
-<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vecenvs.VecEnvs.send" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pufferlib.vecenvs.VecEnvs.reset">
-<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vecenvs.VecEnvs.reset" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pufferlib.vecenvs.VecEnvs.step">
-<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vecenvs.VecEnvs.step" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<dt class="sig sig-object py" id="pufferlib.frameworks.base.make_recurrent_policy">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.frameworks.base.</span></span><span class="sig-name descname"><span class="pre">make_recurrent_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Policy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_first</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.frameworks.base.make_recurrent_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wraps the given policy with an LSTM</p>
+<p>Called for you by framework-specific bindings</p>
 </dd></dl>
 
 </section>

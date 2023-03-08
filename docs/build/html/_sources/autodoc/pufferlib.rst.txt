@@ -18,11 +18,11 @@ pufferlib package
 .. toctree::
    :maxdepth: 4
 
-   pufferlib.binding
    pufferlib.emulation
    pufferlib.evaluation
+   pufferlib.models
    pufferlib.rating
    pufferlib.torch
    pufferlib.utils
-   pufferlib.vecenvs
+   pufferlib.vectorization
    pufferlib.version

@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Installation &mdash; PufferLib v0.1.2 0.1.2 documentation</title>
+  <title>Installation &mdash; PufferLib v0.2.0 0.2.0 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.1.2
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.0
           
 
           
@@ -109,8 +109,10 @@
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Emulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#binding">Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#cleanrl-binding">CleanRL Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#registry">Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#vectorization">Vectorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#cleanrl-integration">CleanRL Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html#rllib-binding">RLlib Binding</a></li>
 </ul>
 
@@ -127,7 +129,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.1.2</a>
+          <a href="../index.html">PufferLib v0.2.0</a>
         
       </nav>
 
@@ -196,7 +198,7 @@
 
 <span class="kn">import</span> <span class="nn">pufferlib</span>
 <span class="kn">import</span> <span class="nn">pufferlib.emulation</span>
-<span class="kn">from</span> <span class="nn">pufferlib.vecenvs</span> <span class="kn">import</span> <span class="n">VecEnvs</span>
+<span class="kn">import</span> <span class="nn">pufferlib.vectorization</span>
 
 <span class="c1"># Wrap Neural MMO with PufferLib</span>
 <span class="n">binding</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">emulation</span><span class="o">.</span><span class="n">Binding</span><span class="p">(</span>
@@ -205,7 +207,7 @@
     <span class="p">)</span>
 
 <span class="c1"># Vectorize 4 environments across 2 cores</span>
-<span class="n">envs</span> <span class="o">=</span> <span class="n">VecEnvs</span><span class="p">(</span><span class="n">binding</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">envs_per_worker</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">envs</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">vectorization</span><span class="o">.</span><span class="n">RayVecEnv</span><span class="p">(</span><span class="n">binding</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">envs_per_worker</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">envs</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 
 <span class="c1"># Standard Gym API. See custom CleanRL demo for async API.</span>

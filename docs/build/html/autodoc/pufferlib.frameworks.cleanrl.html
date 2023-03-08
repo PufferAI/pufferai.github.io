@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pufferlib.frameworks.cleanrl module &mdash; PufferLib v0.1.2 0.1.2 documentation</title>
+  <title>pufferlib.frameworks.cleanrl module &mdash; PufferLib v0.2.0 0.2.0 documentation</title>
   
 
   
@@ -57,7 +57,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.1.2
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.0
           
 
           
@@ -107,8 +107,10 @@
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html">Emulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#binding">Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-binding">CleanRL Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#registry">Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#vectorization">Vectorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-integration">CleanRL Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html#rllib-binding">RLlib Binding</a></li>
 </ul>
 
@@ -125,7 +127,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.1.2</a>
+          <a href="../index.html">PufferLib v0.2.0</a>
         
       </nav>
 
@@ -180,8 +182,8 @@
   <section id="module-pufferlib.frameworks.cleanrl">
 <span id="pufferlib-frameworks-cleanrl-module"></span><h1>pufferlib.frameworks.cleanrl module<a class="headerlink" href="#module-pufferlib.frameworks.cleanrl" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="pufferlib.frameworks.cleanrl.make_cleanrl_policy">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.frameworks.cleanrl.</span></span><span class="sig-name descname"><span class="pre">make_cleanrl_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.frameworks.cleanrl.make_cleanrl_policy" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pufferlib.frameworks.cleanrl.make_policy">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.frameworks.cleanrl.</span></span><span class="sig-name descname"><span class="pre">make_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.frameworks.cleanrl.make_policy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wrap a PyTorch network for compatibility with CleanRL</p>
 <p>policy_cls must subclass the PufferLib base PyTorch class</p>
 </dd></dl>

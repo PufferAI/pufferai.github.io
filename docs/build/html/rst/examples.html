@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Environment Registry &mdash; PufferLib v0.1.2 0.1.2 documentation</title>
+  <title>Environment Registry &mdash; PufferLib v0.2.0 0.2.0 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.1.2
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.0
           
 
           
@@ -109,8 +109,10 @@
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Emulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#binding">Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#cleanrl-binding">CleanRL Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#registry">Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#vectorization">Vectorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#cleanrl-integration">CleanRL Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html#rllib-binding">RLlib Binding</a></li>
 </ul>
 
@@ -127,7 +129,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.1.2</a>
+          <a href="../index.html">PufferLib v0.2.0</a>
         
       </nav>
 
@@ -186,174 +188,6 @@
 <section id="environment-registry">
 <h1>Environment Registry<a class="headerlink" href="#environment-registry" title="Permalink to this heading">¶</a></h1>
 <p>All of our builtin bindings for test environments. Yes, it is this easy.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pdb</span> <span class="kn">import</span> <span class="n">set_trace</span> <span class="k">as</span> <span class="n">T</span>
-
-<span class="kn">import</span> <span class="nn">gym</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="kn">import</span> <span class="nn">pufferlib</span>
-<span class="kn">import</span> <span class="nn">pufferlib.binding</span>
-<span class="kn">import</span> <span class="nn">pufferlib.utils</span>
-
-
-<span class="k">def</span> <span class="nf">print_setup_error</span><span class="p">(</span><span class="n">env</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">env</span><span class="si">}</span><span class="s1">: Binding setup failed and will not be available.&#39;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">make_all_atari_bindings</span><span class="p">():</span>
-    <span class="sd">&#39;&#39;&#39;Make every single Atari binding. Not used for standard tests&#39;&#39;&#39;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">env_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">gym</span><span class="o">.</span><span class="n">envs</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">all</span><span class="p">()]</span>
-        <span class="k">with</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Suppress</span><span class="p">():</span>
-            <span class="n">envs</span> <span class="o">=</span> <span class="p">[</span><span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">env_ids</span><span class="p">]</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">print_setup_error</span><span class="p">(</span><span class="s1">&#39;Atari (ale)&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[</span>
-            <span class="n">pufferlib</span><span class="o">.</span><span class="n">binding</span><span class="o">.</span><span class="n">auto</span><span class="p">(</span>
-                <span class="n">env</span><span class="o">=</span><span class="n">e</span><span class="p">,</span>
-                <span class="n">env_name</span><span class="o">=</span><span class="n">env_id</span><span class="p">,</span>
-            <span class="p">)</span>
-            <span class="k">for</span> <span class="n">env_id</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">env_ids</span><span class="p">,</span> <span class="n">envs</span><span class="p">)</span>
-        <span class="p">]</span>
-  
-<span class="k">def</span> <span class="nf">make_atari_bindings</span><span class="p">():</span>
-    <span class="sd">&#39;&#39;&#39;Make DQN paper Atari games&#39;&#39;&#39;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">env_ids</span> <span class="o">=</span> <span class="s1">&#39;BeamRiderNoFrameskip-v4 BreakoutNoFrameskip-v4 EnduroNoFrameskip-v4 PongNoFrameskip-v4 QbertNoFrameskip-v4 SeaquestNoFrameskip-v4 SpaceInvadersNoFrameskip-v4&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-        <span class="n">envs</span> <span class="o">=</span> <span class="p">[</span><span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">Atari</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">env_ids</span><span class="p">]</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="n">print_setup_error</span><span class="p">(</span><span class="s1">&#39;Atari (ale)&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">envs</span>
-
-<span class="k">def</span> <span class="nf">make_butterfly_bindings</span><span class="p">():</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">pettingzoo.butterfly</span> <span class="kn">import</span> <span class="n">knights_archers_zombies_v8</span> <span class="k">as</span> <span class="n">kaz</span>
-        <span class="kn">from</span> <span class="nn">pettingzoo.butterfly</span> <span class="kn">import</span> <span class="n">cooperative_pong_v5</span> <span class="k">as</span> <span class="n">pong</span>
-        <span class="kn">from</span> <span class="nn">pettingzoo.utils.conversions</span> <span class="kn">import</span> <span class="n">aec_to_parallel_wrapper</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">print_setup_error</span><span class="p">(</span><span class="s1">&#39;Bufferfly (pettingzoo)&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[</span>
-            <span class="n">pufferlib</span><span class="o">.</span><span class="n">binding</span><span class="o">.</span><span class="n">auto</span><span class="p">(</span>
-                <span class="n">env_cls</span><span class="o">=</span><span class="n">aec_to_parallel_wrapper</span><span class="p">,</span>
-                <span class="n">env_args</span><span class="o">=</span><span class="p">[</span><span class="n">kaz</span><span class="o">.</span><span class="n">raw_env</span><span class="p">()],</span>
-                <span class="n">env_name</span><span class="o">=</span><span class="s1">&#39;kaz&#39;</span><span class="p">,</span>
-            <span class="p">),</span>
-            <span class="n">pufferlib</span><span class="o">.</span><span class="n">binding</span><span class="o">.</span><span class="n">auto</span><span class="p">(</span>
-                <span class="n">env_cls</span><span class="o">=</span><span class="n">aec_to_parallel_wrapper</span><span class="p">,</span>
-                <span class="n">env_args</span><span class="o">=</span><span class="p">[</span><span class="n">pong</span><span class="o">.</span><span class="n">raw_env</span><span class="p">()],</span>
-                <span class="n">env_name</span><span class="o">=</span><span class="s1">&#39;cooperative-pong&#39;</span><span class="p">,</span>
-            <span class="p">),</span>
-        <span class="p">]</span>
-
-<span class="k">def</span> <span class="nf">make_classic_control_bindings</span><span class="p">():</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">gym.envs</span> <span class="kn">import</span> <span class="n">classic_control</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">print_setup_error</span><span class="p">(</span><span class="s1">&#39;Classic Control (gym)&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">binding</span><span class="o">.</span><span class="n">auto</span><span class="p">(</span>
-            <span class="n">env_cls</span><span class="o">=</span><span class="n">classic_control</span><span class="o">.</span><span class="n">CartPoleEnv</span><span class="p">,</span>
-            <span class="n">env_name</span><span class="o">=</span><span class="s1">&#39;CartPole&#39;</span><span class="p">,</span>
-        <span class="p">)</span>
- 
-<span class="k">def</span> <span class="nf">make_griddly_bindings</span><span class="p">():</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">griddly</span>
-        <span class="n">env_cls</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;GDY-Spiders-v0&#39;</span><span class="p">)</span>
-        <span class="n">env_cls</span><span class="p">()</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">print_setup_error</span><span class="p">(</span><span class="s1">&#39;Spiders-v0 (griddly)&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">binding</span><span class="o">.</span><span class="n">auto</span><span class="p">(</span>
-            <span class="n">env_cls</span><span class="o">=</span><span class="n">env_cls</span><span class="p">,</span>
-            <span class="n">obs_dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">,</span>
-        <span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">make_magent_bindings</span><span class="p">():</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">pettingzoo.magent</span> <span class="kn">import</span> <span class="n">battle_v3</span>
-        <span class="kn">from</span> <span class="nn">pettingzoo.utils.conversions</span> <span class="kn">import</span> <span class="n">aec_to_parallel_wrapper</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">print_setup_error</span><span class="p">(</span><span class="s1">&#39;MAgent (pettingzoo)&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">binding</span><span class="o">.</span><span class="n">auto</span><span class="p">(</span>
-            <span class="n">env_cls</span><span class="o">=</span><span class="n">aec_to_parallel_wrapper</span><span class="p">,</span>
-            <span class="n">env_args</span><span class="o">=</span><span class="p">[</span><span class="n">battle_v3</span><span class="o">.</span><span class="n">env</span><span class="p">()],</span>
-            <span class="n">env_name</span><span class="o">=</span><span class="s1">&#39;MAgent&#39;</span><span class="p">,</span>
-        <span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">make_microrts_bindings</span><span class="p">():</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">gym_microrts.envs</span> <span class="kn">import</span> <span class="n">GlobalAgentCombinedRewardEnv</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">print_setup_error</span><span class="p">(</span><span class="s1">&#39;Gym Microrts&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">binding</span><span class="o">.</span><span class="n">auto</span><span class="p">(</span>
-            <span class="n">env_cls</span><span class="o">=</span><span class="n">GlobalAgentCombinedRewardEnv</span><span class="p">,</span>
-            <span class="n">env_name</span><span class="o">=</span><span class="s1">&#39;Gym Microrts&#39;</span><span class="p">,</span>
-        <span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">make_nethack_bindings</span><span class="p">():</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">nle</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">print_setup_error</span><span class="p">(</span><span class="s1">&#39;NetHack (nle)&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">NetHack</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">make_neuralmmo_bindings</span><span class="p">():</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">nmmo</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">print_setup_error</span><span class="p">(</span><span class="s1">&#39;Neural MMO (nmmo)&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">binding</span><span class="o">.</span><span class="n">auto</span><span class="p">(</span>
-            <span class="n">env_cls</span><span class="o">=</span><span class="n">nmmo</span><span class="o">.</span><span class="n">Env</span><span class="p">,</span>
-            <span class="n">env_name</span><span class="o">=</span><span class="s1">&#39;Neural MMO&#39;</span><span class="p">,</span>
-        <span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">make_smac_bindings</span><span class="p">():</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">smac.env.pettingzoo.StarCraft2PZEnv</span> <span class="kn">import</span> <span class="n">_parallel_env</span> <span class="k">as</span> <span class="n">smac_env</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">print_setup_error</span><span class="p">(</span><span class="s1">&#39;SMAC&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">binding</span><span class="o">.</span><span class="n">auto</span><span class="p">(</span>
-            <span class="n">env_cls</span><span class="o">=</span><span class="n">smac_env</span><span class="p">,</span>
-            <span class="n">env_args</span><span class="o">=</span><span class="p">[</span><span class="mi">1000</span><span class="p">],</span>
-            <span class="n">env_name</span><span class="o">=</span><span class="s1">&#39;SMAC&#39;</span><span class="p">,</span>
-        <span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">make_all_bindings</span><span class="p">():</span>
-    <span class="n">make_fns</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">make_atari_bindings</span><span class="p">,</span> <span class="c1"># Well, almost all</span>
-        <span class="n">make_butterfly_bindings</span><span class="p">,</span>
-        <span class="n">make_classic_control_bindings</span><span class="p">,</span>
-        <span class="n">make_magent_bindings</span><span class="p">,</span>
-        <span class="n">make_nethack_bindings</span><span class="p">,</span>
-        <span class="n">make_neuralmmo_bindings</span><span class="p">,</span>
-        <span class="n">make_smac_bindings</span><span class="p">,</span>
-    <span class="p">]</span>
-
-    <span class="n">bindings</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">make_fns</span><span class="p">:</span>
-        <span class="n">bind</span> <span class="o">=</span> <span class="n">f</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">bind</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">continue</span>
-        <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">bind</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">list</span><span class="p">:</span>
-            <span class="n">bind</span> <span class="o">=</span> <span class="p">[</span><span class="n">bind</span><span class="p">]</span>
-
-        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">bind</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="n">b</span><span class="o">.</span><span class="n">env_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-            <span class="k">assert</span> <span class="n">b</span><span class="o">.</span><span class="n">env_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">bindings</span><span class="p">,</span> <span class="s1">&#39;Duplicate env name&#39;</span>
-            <span class="n">bindings</span><span class="p">[</span><span class="n">b</span><span class="o">.</span><span class="n">env_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span>
-
-    <span class="k">return</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">dotdict</span><span class="p">(</span><span class="n">bindings</span><span class="p">)</span>
-</pre></div>
-</div>
 </section>
 <section id="extended-atari-binding">
 <h1>Extended Atari Binding<a class="headerlink" href="#extended-atari-binding" title="Permalink to this heading">¶</a></h1>
@@ -376,7 +210,8 @@
 <span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">pufferlib</span>
-<span class="kn">import</span> <span class="nn">pufferlib.binding</span>
+<span class="kn">import</span> <span class="nn">pufferlib.emulation</span>
+<span class="kn">import</span> <span class="nn">pufferlib.models</span>
 
 
 <span class="c1"># Broken in SB3</span>
@@ -410,7 +245,7 @@
                 <span class="n">obs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">obs</span>
 
-<span class="k">def</span> <span class="nf">env_creator</span><span class="p">(</span><span class="n">env_name</span><span class="p">,</span> <span class="n">framestack</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">make_env</span><span class="p">(</span><span class="n">env_name</span><span class="p">,</span> <span class="n">framestack</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">with</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Suppress</span><span class="p">():</span>
             <span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">env_name</span><span class="p">)</span>
@@ -430,24 +265,30 @@
 
     <span class="k">return</span> <span class="n">env</span>
 
-<span class="k">def</span> <span class="nf">create_binding</span><span class="p">(</span><span class="n">env_name</span><span class="p">,</span> <span class="n">framestack</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">emulation</span><span class="o">.</span><span class="n">Binding</span><span class="p">(</span>
-        <span class="n">env_creator</span><span class="o">=</span><span class="n">env_creator</span><span class="p">,</span>
-        <span class="n">default_args</span><span class="o">=</span><span class="p">[</span><span class="n">env_name</span><span class="p">,</span> <span class="n">framestack</span><span class="p">],</span>
-        <span class="n">env_name</span><span class="o">=</span><span class="n">env_name</span><span class="p">,</span>
-        <span class="n">env_includes_reset</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">emulate_flat_atn</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">record_episode_statistics</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">make_binding</span><span class="p">(</span><span class="n">env_name</span><span class="p">,</span> <span class="n">framestack</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">make_env</span><span class="p">(</span><span class="n">env_name</span><span class="p">,</span> <span class="n">framestack</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">SetupError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">env_name</span><span class="si">}</span><span class="s1"> (ale)&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">emulation</span><span class="o">.</span><span class="n">Binding</span><span class="p">(</span>
+            <span class="n">env_creator</span><span class="o">=</span><span class="n">make_env</span><span class="p">,</span>
+            <span class="n">default_args</span><span class="o">=</span><span class="p">[</span><span class="n">env_name</span><span class="p">,</span> <span class="n">framestack</span><span class="p">],</span>
+            <span class="n">env_name</span><span class="o">=</span><span class="n">env_name</span><span class="p">,</span>
+            <span class="n">env_includes_reset</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">emulate_flat_atn</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">record_episode_statistics</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">layer_init</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">bias_const</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
     <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">orthogonal_</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">std</span><span class="p">)</span>
     <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">constant_</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span> <span class="n">bias_const</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">layer</span>
 
-<span class="k">class</span> <span class="nc">Policy</span><span class="p">(</span><span class="n">pufferlib</span><span class="o">.</span><span class="n">binding</span><span class="o">.</span><span class="n">Policy</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Policy</span><span class="p">(</span><span class="n">pufferlib</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Policy</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binding</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">framestack</span><span class="p">,</span> <span class="n">input_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">binding</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">binding</span><span class="o">.</span><span class="n">raw_single_observation_space</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_actions</span> <span class="o">=</span> <span class="n">binding</span><span class="o">.</span><span class="n">raw_single_action_space</span><span class="o">.</span><span class="n">n</span>
 
@@ -514,10 +355,10 @@
 <span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">pufferlib</span>
-<span class="kn">import</span> <span class="nn">pufferlib.binding</span>
+<span class="kn">import</span> <span class="nn">pufferlib.models</span>
 <span class="kn">import</span> <span class="nn">pufferlib.registry.nmmo</span>
 <span class="kn">import</span> <span class="nn">pufferlib.frameworks.cleanrl</span>
-<span class="kn">from</span> <span class="nn">pufferlib.vecenvs</span> <span class="kn">import</span> <span class="n">VecEnvs</span>
+<span class="kn">import</span> <span class="nn">pufferlib.vectorization</span>
 
 
 <span class="k">def</span> <span class="nf">parse_args</span><span class="p">():</span>
@@ -611,7 +452,7 @@
     <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">constant_</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span> <span class="n">bias_const</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">layer</span>
 
-<span class="k">class</span> <span class="nc">Agent</span><span class="p">(</span><span class="n">pufferlib</span><span class="o">.</span><span class="n">binding</span><span class="o">.</span><span class="n">Policy</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Agent</span><span class="p">(</span><span class="n">pufferlib</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Policy</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binding</span><span class="p">,</span> <span class="n">input_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">512</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;Simple custom PyTorch policy subclassing the pufferlib BasePolicy</span>
 <span class="sd">        </span>
@@ -676,16 +517,15 @@
     <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="ow">and</span> <span class="n">args</span><span class="o">.</span><span class="n">cuda</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
 
     <span class="c1"># env setup</span>
-    <span class="n">binding</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">nmmo</span><span class="o">.</span><span class="n">create_binding</span><span class="p">()</span>
-
-    <span class="n">envs</span> <span class="o">=</span> <span class="n">VecEnvs</span><span class="p">(</span>
+    <span class="n">binding</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">nmmo</span><span class="o">.</span><span class="n">make_binding</span><span class="p">()</span>
+    <span class="n">envs</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">vectorization</span><span class="o">.</span><span class="n">RayVecEnv</span><span class="p">(</span>
         <span class="n">binding</span><span class="p">,</span>
         <span class="n">num_workers</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">num_envs</span> <span class="o">//</span> <span class="n">binding</span><span class="o">.</span><span class="n">max_agents</span><span class="p">,</span>
         <span class="n">envs_per_worker</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">envs</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
 
-    <span class="n">agent</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">frameworks</span><span class="o">.</span><span class="n">cleanrl</span><span class="o">.</span><span class="n">make_cleanrl_policy</span><span class="p">(</span>
+    <span class="n">agent</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">frameworks</span><span class="o">.</span><span class="n">cleanrl</span><span class="o">.</span><span class="n">make_policy</span><span class="p">(</span>
         <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">nmmo</span><span class="o">.</span><span class="n">Policy</span><span class="p">,</span>
         <span class="n">lstm_layers</span><span class="o">=</span><span class="mi">1</span>
     <span class="p">)(</span><span class="n">binding</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
@@ -868,10 +708,8 @@
 <span class="kn">import</span> <span class="nn">psutil</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
 
-<span class="kn">import</span> <span class="nn">gym</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
@@ -880,7 +718,7 @@
 
 <span class="kn">import</span> <span class="nn">pufferlib</span>
 <span class="kn">import</span> <span class="nn">pufferlib.frameworks.cleanrl</span>
-<span class="kn">from</span> <span class="nn">pufferlib.vecenvs</span> <span class="kn">import</span> <span class="n">VecEnvs</span>
+<span class="kn">import</span> <span class="nn">pufferlib.vectorization</span>
 
 
 <span class="k">def</span> <span class="nf">train</span><span class="p">(</span>
@@ -952,7 +790,7 @@
 
     <span class="n">buffers</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_buffers</span><span class="p">):</span>
-        <span class="n">vec</span> <span class="o">=</span> <span class="n">VecEnvs</span><span class="p">(</span>
+        <span class="n">vec</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">vectorization</span><span class="o">.</span><span class="n">RayVecEnv</span><span class="p">(</span>
             <span class="n">binding</span><span class="p">,</span>
             <span class="n">num_workers</span><span class="o">=</span><span class="n">num_cores</span><span class="p">,</span>
             <span class="n">envs_per_worker</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">envs_per_worker</span><span class="p">),</span>
@@ -1176,8 +1014,8 @@
             <span class="n">epoch_return</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">epoch_returns</span><span class="p">)</span>
             <span class="n">epoch_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">epoch_lengths</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">epoch_return</span> <span class="o">=</span> <span class="mi">0</span>
-            <span class="n">epoch_length</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">epoch_return</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="n">epoch_length</span> <span class="o">=</span> <span class="mf">0.0</span>
 
         <span class="nb">print</span><span class="p">(</span>
             <span class="sa">f</span><span class="s1">&#39;Epoch: </span><span class="si">{</span><span class="n">update</span><span class="si">}</span><span class="s1"> - Mean Return: </span><span class="si">{</span><span class="n">epoch_return</span><span class="si">:</span><span class="s1">&lt;5.4</span><span class="si">}</span><span class="s1">, Episode Length: </span><span class="si">{</span><span class="n">epoch_length</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
@@ -1205,101 +1043,92 @@
     <span class="n">writer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">pufferlib.registry</span>
-
     <span class="k">if</span> <span class="n">__debug__</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;WARNING: Running in debug mode. This will be slower than normal due to extensive checks in PufferLib emulation. Run with -O to disable debug mode.&#39;</span><span class="p">)</span>
+
+    <span class="kn">import</span> <span class="nn">sys</span>
+    <span class="k">assert</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="s1">&#39;nmmo nethack breakout atari&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+    <span class="n">cuda</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span>
+    <span class="n">track</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># WandB tracking</span>
 
     <span class="c1"># Note: the dependencies for these demos are not currently compatible</span>
     <span class="c1"># Run pip install -e .[atari] or .[nethack] to install the dependencies for a specific demo </span>
     <span class="c1"># This will be resolved in a future update</span>
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;nmmo&#39;</span><span class="p">:</span>
+        <span class="c1"># Neural MMO requires the CarperAI fork of the nmmo-environment repo</span>
+        <span class="kn">import</span> <span class="nn">pufferlib.registry.nmmo</span>
+        <span class="n">binding</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">nmmo</span><span class="o">.</span><span class="n">make_binding</span><span class="p">()</span>
+        <span class="n">agent</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">frameworks</span><span class="o">.</span><span class="n">cleanrl</span><span class="o">.</span><span class="n">make_policy</span><span class="p">(</span>
+            <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">nmmo</span><span class="o">.</span><span class="n">Policy</span><span class="p">,</span>
+            <span class="n">lstm_layers</span><span class="o">=</span><span class="mi">1</span>
+        <span class="p">)(</span><span class="n">binding</span><span class="p">)</span>
 
-    <span class="kn">import</span> <span class="nn">pufferlib.registry.atari</span>
-    <span class="n">binding</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">atari</span><span class="o">.</span><span class="n">create_binding</span><span class="p">(</span><span class="s1">&#39;BreakoutNoFrameskip-v4&#39;</span><span class="p">,</span> <span class="n">framestack</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">agent</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">frameworks</span><span class="o">.</span><span class="n">cleanrl</span><span class="o">.</span><span class="n">make_cleanrl_policy</span><span class="p">(</span>
-        <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">atari</span><span class="o">.</span><span class="n">Policy</span><span class="p">,</span>
-        <span class="n">lstm_layers</span><span class="o">=</span><span class="mi">1</span>
-    <span class="p">)(</span><span class="n">binding</span><span class="p">,</span> <span class="n">framestack</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">train</span><span class="p">(</span>
+            <span class="n">binding</span><span class="p">,</span>
+            <span class="n">agent</span><span class="p">,</span>
+            <span class="n">cuda</span><span class="o">=</span><span class="n">cuda</span><span class="p">,</span>
+            <span class="n">total_timesteps</span><span class="o">=</span><span class="mi">10_000_000</span><span class="p">,</span>
+            <span class="n">track</span><span class="o">=</span><span class="n">track</span><span class="p">,</span>
+            <span class="n">num_envs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">num_cores</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">num_minibatches</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">num_agents</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+            <span class="n">wandb_project_name</span><span class="o">=</span><span class="s1">&#39;pufferlib&#39;</span><span class="p">,</span>
+            <span class="n">wandb_entity</span><span class="o">=</span><span class="s1">&#39;jsuarez&#39;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;nethack&#39;</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">pufferlib.registry.nethack</span>
+        <span class="n">binding</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">nethack</span><span class="o">.</span><span class="n">make_binding</span><span class="p">()</span>
+        <span class="n">agent</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">frameworks</span><span class="o">.</span><span class="n">cleanrl</span><span class="o">.</span><span class="n">make_policy</span><span class="p">(</span>
+            <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">nethack</span><span class="o">.</span><span class="n">Policy</span><span class="p">,</span>
+            <span class="n">lstm_layers</span><span class="o">=</span><span class="mi">1</span>
+        <span class="p">)(</span><span class="n">binding</span><span class="p">)</span>
 
-    <span class="n">train</span><span class="p">(</span>
-        <span class="n">binding</span><span class="p">,</span>
-        <span class="n">agent</span><span class="p">,</span>
-        <span class="n">cuda</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">total_timesteps</span><span class="o">=</span><span class="mi">10_000_000</span><span class="p">,</span>
-        <span class="n">track</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">num_envs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="n">num_cores</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="n">num_buffers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-        <span class="n">num_minibatches</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-        <span class="n">num_agents</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">wandb_project_name</span><span class="o">=</span><span class="s1">&#39;pufferlib&#39;</span><span class="p">,</span>
-        <span class="n">wandb_entity</span><span class="o">=</span><span class="s1">&#39;jsuarez&#39;</span><span class="p">,</span>
-    <span class="p">)</span>
+        <span class="n">train</span><span class="p">(</span>
+            <span class="n">binding</span><span class="p">,</span>
+            <span class="n">agent</span><span class="p">,</span> 
+            <span class="n">cuda</span><span class="o">=</span><span class="n">cuda</span><span class="p">,</span>
+            <span class="n">total_timesteps</span><span class="o">=</span><span class="mi">10_000_000</span><span class="p">,</span>
+            <span class="n">track</span><span class="o">=</span><span class="n">track</span><span class="p">,</span>
+            <span class="n">num_envs</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+            <span class="n">num_cores</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+            <span class="n">num_minibatches</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">num_agents</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">wandb_project_name</span><span class="o">=</span><span class="s1">&#39;pufferlib&#39;</span><span class="p">,</span>
+            <span class="n">wandb_entity</span><span class="o">=</span><span class="s1">&#39;jsuarez&#39;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">pufferlib.registry.atari</span>
+        <span class="n">bindings</span> <span class="o">=</span> <span class="p">[</span><span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">atari</span><span class="o">.</span><span class="n">make_binding</span><span class="p">(</span><span class="s1">&#39;BreakoutNoFrameskip-v4&#39;</span><span class="p">,</span> <span class="n">framestack</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;atari&#39;</span><span class="p">:</span>
+            <span class="n">bindings</span> <span class="o">+=</span> <span class="p">[</span>
+                <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">atari</span><span class="o">.</span><span class="n">make_binding</span><span class="p">(</span><span class="s1">&#39;BeamRiderNoFrameskip-v4&#39;</span><span class="p">,</span> <span class="n">framestack</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">atari</span><span class="o">.</span><span class="n">make_binding</span><span class="p">(</span><span class="s1">&#39;PongNoFrameskip-v4&#39;</span><span class="p">,</span> <span class="n">framestack</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">atari</span><span class="o">.</span><span class="n">make_binding</span><span class="p">(</span><span class="s1">&#39;EnduroNoFrameskip-v4&#39;</span><span class="p">,</span> <span class="n">framestack</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">atari</span><span class="o">.</span><span class="n">make_binding</span><span class="p">(</span><span class="s1">&#39;QbertNoFrameskip-v4&#39;</span><span class="p">,</span> <span class="n">framestack</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">atari</span><span class="o">.</span><span class="n">make_binding</span><span class="p">(</span><span class="s1">&#39;SeaquestNoFrameskip-v4&#39;</span><span class="p">,</span> <span class="n">framestack</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">atari</span><span class="o">.</span><span class="n">make_binding</span><span class="p">(</span><span class="s1">&#39;SpaceInvadersNoFrameskip-v4&#39;</span><span class="p">,</span> <span class="n">framestack</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="p">]</span>
+ 
+        <span class="k">for</span> <span class="n">binding</span> <span class="ow">in</span> <span class="n">bindings</span><span class="p">:</span>
+            <span class="n">agent</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">frameworks</span><span class="o">.</span><span class="n">cleanrl</span><span class="o">.</span><span class="n">make_policy</span><span class="p">(</span>
+                <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">atari</span><span class="o">.</span><span class="n">Policy</span><span class="p">,</span>
+                <span class="n">lstm_layers</span><span class="o">=</span><span class="mi">1</span>
+            <span class="p">)(</span><span class="n">binding</span><span class="p">,</span> <span class="n">framestack</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    # Neural MMO requires the CarperAI fork of the nmmo-environment repo</span>
-<span class="sd">    import pufferlib.registry.nmmo</span>
-<span class="sd">    binding = pufferlib.registry.nmmo.create_binding()</span>
-<span class="sd">    agent = pufferlib.frameworks.cleanrl.make_cleanrl_policy(</span>
-<span class="sd">        pufferlib.registry.nmmo.Policy,</span>
-<span class="sd">        lstm_layers=1</span>
-<span class="sd">    )(binding)</span>
-
-<span class="sd">    train(</span>
-<span class="sd">        binding,</span>
-<span class="sd">        agent,</span>
-<span class="sd">        cuda=True,</span>
-<span class="sd">        total_timesteps=10_000_000,</span>
-<span class="sd">        track=True,</span>
-<span class="sd">        num_envs=2,</span>
-<span class="sd">        num_cores=2,</span>
-<span class="sd">        num_minibatches=1,</span>
-<span class="sd">        num_agents=128,</span>
-<span class="sd">        wandb_project_name=&#39;pufferlib&#39;,</span>
-<span class="sd">        wandb_entity=&#39;jsuarez&#39;,</span>
-<span class="sd">    )</span>
-
-<span class="sd">    import pufferlib.registry.nethack</span>
-<span class="sd">    binding = pufferlib.registry.nethack.create_binding()</span>
-<span class="sd">    agent = pufferlib.frameworks.cleanrl.make_cleanrl_policy(</span>
-<span class="sd">        pufferlib.registry.nethack.Policy,</span>
-<span class="sd">        lstm_layers=1</span>
-<span class="sd">    )(binding)</span>
-<span class="sd">    train(</span>
-<span class="sd">        binding,</span>
-<span class="sd">        agent, </span>
-<span class="sd">        cuda=True,</span>
-<span class="sd">        total_timesteps=10_000_000,</span>
-<span class="sd">        track=True,</span>
-<span class="sd">        num_envs=12,</span>
-<span class="sd">        num_cores=4,</span>
-<span class="sd">        num_minibatches=1,</span>
-<span class="sd">        num_agents=1,</span>
-<span class="sd">        wandb_project_name=&#39;pufferlib&#39;,</span>
-<span class="sd">        wandb_entity=&#39;jsuarez&#39;,</span>
-<span class="sd">    )</span>
-
-
-<span class="sd">    bindings = pufferlib.registry.make_atari_bindings()</span>
-<span class="sd">    bindings = {e.env_name: e for e in bindings}</span>
-
-<span class="sd">    envs = &#39;BreakoutNoFrameskip-v4 PongNoFrameskip-v4 BeamRiderNoFrameskip-v4&#39;.split()</span>
-<span class="sd">    bindings = {k: bindings[k] for k in envs}</span>
-
-<span class="sd">    for name, binding in bindings.items():</span>
-<span class="sd">        test_cleanrl.train(</span>
-<span class="sd">            binding,</span>
-<span class="sd">            num_cores=8, </span>
-<span class="sd">            #num_envs=1,</span>
-<span class="sd">            #num_minibatches=1,</span>
-<span class="sd">            #num_buffers=2,</span>
-<span class="sd">            cuda=True,</span>
-<span class="sd">            total_timesteps=10_000_000,</span>
-<span class="sd">            track=True,</span>
-<span class="sd">            wandb_project_name=&#39;pufferlib&#39;,</span>
-<span class="sd">            wandb_entity=&#39;jsuarez&#39;,</span>
-<span class="sd">        )</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+            <span class="n">train</span><span class="p">(</span>
+                <span class="n">binding</span><span class="p">,</span>
+                <span class="n">agent</span><span class="p">,</span>
+                <span class="n">num_cores</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> 
+                <span class="n">num_envs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                <span class="n">num_buffers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">cuda</span><span class="o">=</span><span class="n">cuda</span><span class="p">,</span>
+                <span class="n">total_timesteps</span><span class="o">=</span><span class="mi">10_000_000</span><span class="p">,</span>
+                <span class="n">track</span><span class="o">=</span><span class="n">track</span><span class="p">,</span>
+                <span class="n">wandb_project_name</span><span class="o">=</span><span class="s1">&#39;pufferlib&#39;</span><span class="p">,</span>
+                <span class="n">wandb_entity</span><span class="o">=</span><span class="s1">&#39;jsuarez&#39;</span><span class="p">,</span>
+            <span class="p">)</span>
 </pre></div>
 </div>
 </section>
