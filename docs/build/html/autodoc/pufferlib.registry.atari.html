@@ -113,6 +113,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-integration">CleanRL Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html#rllib-binding">RLlib Binding</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Blog</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
+</ul>
 
             
           
@@ -398,25 +402,28 @@ info (dict): contains auxiliary diagnostic information (helpful for debugging, l
 <dl class="py function">
 <dt class="sig sig-object py" id="pufferlib.registry.atari.make_env">
 <span class="sig-prename descclassname"><span class="pre">pufferlib.registry.atari.</span></span><span class="sig-name descname"><span class="pre">make_env</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">framestack</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.atari.make_env" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Atari creation function with default CleanRL preprocessing based on Stable Baselines3 wrappers</p>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pufferlib.registry.atari.make_binding">
 <span class="sig-prename descclassname"><span class="pre">pufferlib.registry.atari.</span></span><span class="sig-name descname"><span class="pre">make_binding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">framestack</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.atari.make_binding" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Atari binding creation function</p>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pufferlib.registry.atari.layer_init">
 <span class="sig-prename descclassname"><span class="pre">pufferlib.registry.atari.</span></span><span class="sig-name descname"><span class="pre">layer_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.4142135623730951</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias_const</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.atari.layer_init" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>CleanRL’s default layer initialization</p>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pufferlib.registry.atari.Policy">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.registry.atari.</span></span><span class="sig-name descname"><span class="pre">Policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.atari.Policy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="pufferlib.models.html#pufferlib.models.Policy" title="pufferlib.models.Policy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Policy</span></code></a></p>
-<p>Pure PyTorch base policy</p>
-<p>This spec allows PufferLib to repackage your policy
-for compatibility with RL frameworks</p>
+<p>The CleanRL default Atari policy: a stack of three convolutions followed by a linear layer</p>
+<p>Takes framestack as a mandatory keyword arguments. Suggested default is 1 frame
+with LSTM or 4 frames without.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.registry.atari.Policy.critic">
 <span class="sig-name descname"><span class="pre">critic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.atari.Policy.critic" title="Permalink to this definition">¶</a></dt>
@@ -427,17 +434,47 @@ for compatibility with RL frameworks</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.registry.atari.Policy.encode_observations">
 <span class="sig-name descname"><span class="pre">encode_observations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flat_observations</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.atari.Policy.encode_observations" title="Permalink to this definition">¶</a></dt>
-<dd><p>Encodes observations into a flat vector.</p>
-<p>Call pufferlib.emulation.unpack_batched_obs to unflatten obs
-Returns a tuple of (hidden, lookup) where lookup is an optional
-mechanism to return additional encoding information</p>
+<dd><p>Encodes a batch of observations into hidden states</p>
+<p>Call pufferlib.emulation.unpack_batched_obs at the start of this
+function to unflatten observations to their original structured form:</p>
+<dl class="simple">
+<dt>observations = pufferlib.emulation.unpack_batched_obs(</dt><dd><p>self.binding.raw_single_observation_space, env_outputs)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>flat_observations</strong> – A tensor of shape (batch, …, obs_size)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor of (batch, …, hidden_size)
+lookup: Tensor of (batch, …) that can be used to return additional embeddings</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>hidden</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.registry.atari.Policy.decode_actions">
 <span class="sig-name descname"><span class="pre">decode_actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flat_hidden</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookup</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.atari.Policy.decode_actions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Decodes hidden state into a multidiscrete action space</p>
-<p>Returns a tensor of logits for each action space dimension</p>
+<dd><p>Decodes a batch of hidden states into multidiscrete actions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flat_hidden</strong> – Tensor of (batch, …, hidden_size)</p></li>
+<li><p><strong>lookup</strong> – Tensor of (batch, …), if returned by encode_observations</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor of (batch, …, action_size)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>actions</p>
+</dd>
+</dl>
+<p>actions is a concatenated tensor of logits for each action space dimension.
+It should be of shape (batch, …, sum(action_space.nvec))</p>
 </dd></dl>
 
 </dd></dl>

@@ -1,12 +1,17 @@
-.. image:: /resource/header.png
-
-|
-
 .. role:: python(code)
     :language: python
 
-**Quick links:** `Github <https://github.com/pufferai/pufferlib>`_ | `Discord <https://discord.gg/spT4huaGYV>`_ | `Twitter <https://twitter.com/jsuarez5341>`_
+.. raw:: html
 
+    <center>
+      <video width=100% height="auto" nocontrols autoplay playsinline muted loop>
+        <source src="_static/banner.webm" type="video/webm">
+        <source src="_static/banner.mp4" type="video/mp4">
+        Your browser does not support this video.
+      </video>
+    </center>
+
+**Quick links:** `Github <https://github.com/pufferai/pufferlib>`_ | `Baselines <https://api.wandb.ai/links/jsuarez/wue9qkr0>`_ | `Discord <https://discord.gg/spT4huaGYV>`_ | `Twitter <https://twitter.com/jsuarez5341>`_
 
 You have an environment, a PyTorch model, and a reinforcement learning framework that are designed to work together but don't. PufferLib is a wrapper layer that makes RL on complex game environments as simple as RL on Atari. You write a native PyTorch network and a short binding for your environment; PufferLib takes care of the rest.
 

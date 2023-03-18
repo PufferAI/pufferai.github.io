@@ -115,6 +115,10 @@
 <li class="toctree-l1"><a class="reference internal" href="api.html#cleanrl-integration">CleanRL Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html#rllib-binding">RLlib Binding</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Blog</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
+</ul>
 
             
           
@@ -245,7 +249,9 @@
                 <span class="n">obs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">obs</span>
 
+
 <span class="k">def</span> <span class="nf">make_env</span><span class="p">(</span><span class="n">env_name</span><span class="p">,</span> <span class="n">framestack</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Atari creation function with default CleanRL preprocessing based on Stable Baselines3 wrappers&#39;&#39;&#39;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">with</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Suppress</span><span class="p">():</span>
             <span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">env_name</span><span class="p">)</span>
@@ -267,6 +273,7 @@
 
 
 <span class="k">def</span> <span class="nf">make_binding</span><span class="p">(</span><span class="n">env_name</span><span class="p">,</span> <span class="n">framestack</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Atari binding creation function&#39;&#39;&#39;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">make_env</span><span class="p">(</span><span class="n">env_name</span><span class="p">,</span> <span class="n">framestack</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span>
@@ -276,18 +283,22 @@
             <span class="n">env_creator</span><span class="o">=</span><span class="n">make_env</span><span class="p">,</span>
             <span class="n">default_args</span><span class="o">=</span><span class="p">[</span><span class="n">env_name</span><span class="p">,</span> <span class="n">framestack</span><span class="p">],</span>
             <span class="n">env_name</span><span class="o">=</span><span class="n">env_name</span><span class="p">,</span>
-            <span class="n">env_includes_reset</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">emulate_flat_atn</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">record_episode_statistics</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">layer_init</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">bias_const</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;CleanRL&#39;s default layer initialization&#39;&#39;&#39;</span>
     <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">orthogonal_</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">std</span><span class="p">)</span>
     <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">constant_</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span> <span class="n">bias_const</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">layer</span>
 
 <span class="k">class</span> <span class="nc">Policy</span><span class="p">(</span><span class="n">pufferlib</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Policy</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binding</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">framestack</span><span class="p">,</span> <span class="n">input_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;The CleanRL default Atari policy: a stack of three convolutions followed by a linear layer</span>
+<span class="sd">        </span>
+<span class="sd">        Takes framestack as a mandatory keyword arguments. Suggested default is 1 frame</span>
+<span class="sd">        with LSTM or 4 frames without.&#39;&#39;&#39;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">binding</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">binding</span><span class="o">.</span><span class="n">raw_single_observation_space</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_actions</span> <span class="o">=</span> <span class="n">binding</span><span class="o">.</span><span class="n">raw_single_action_space</span><span class="o">.</span><span class="n">n</span>
@@ -321,7 +332,6 @@
         <span class="k">if</span> <span class="n">concat</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">action</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">action</span><span class="p">]</span>
-
 </pre></div>
 </div>
 </section>
@@ -1042,6 +1052,9 @@
     <span class="n">envs</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="n">writer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
+    <span class="k">if</span> <span class="n">track</span><span class="p">:</span>
+        <span class="n">wandb</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">__debug__</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;WARNING: Running in debug mode. This will be slower than normal due to extensive checks in PufferLib emulation. Run with -O to disable debug mode.&#39;</span><span class="p">)</span>
@@ -1124,7 +1137,7 @@
                 <span class="n">num_envs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
                 <span class="n">num_buffers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
                 <span class="n">cuda</span><span class="o">=</span><span class="n">cuda</span><span class="p">,</span>
-                <span class="n">total_timesteps</span><span class="o">=</span><span class="mi">10_000_000</span><span class="p">,</span>
+                <span class="n">total_timesteps</span><span class="o">=</span><span class="mi">30_000</span><span class="p">,</span>
                 <span class="n">track</span><span class="o">=</span><span class="n">track</span><span class="p">,</span>
                 <span class="n">wandb_project_name</span><span class="o">=</span><span class="s1">&#39;pufferlib&#39;</span><span class="p">,</span>
                 <span class="n">wandb_entity</span><span class="o">=</span><span class="s1">&#39;jsuarez&#39;</span><span class="p">,</span>

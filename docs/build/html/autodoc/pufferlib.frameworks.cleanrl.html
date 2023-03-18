@@ -113,6 +113,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-integration">CleanRL Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html#rllib-binding">RLlib Binding</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Blog</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
+</ul>
 
             
           
@@ -184,8 +188,18 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="pufferlib.frameworks.cleanrl.make_policy">
 <span class="sig-prename descclassname"><span class="pre">pufferlib.frameworks.cleanrl.</span></span><span class="sig-name descname"><span class="pre">make_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.frameworks.cleanrl.make_policy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wrap a PyTorch network for compatibility with CleanRL</p>
-<p>policy_cls must subclass the PufferLib base PyTorch class</p>
+<dd><p>Wrap a PyTorch model for use with CleanRL</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>policy_cls</strong> – A pufferlib.models.Policy subclass that implements the PufferLib model API</p></li>
+<li><p><strong>lstm_layers</strong> – The number of LSTM layers to use. If 0, no LSTM is used</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new PyTorch class wrapping your model that implements the CleanRL API</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

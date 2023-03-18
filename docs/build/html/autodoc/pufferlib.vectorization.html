@@ -113,6 +113,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-integration">CleanRL Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html#rllib-binding">RLlib Binding</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Blog</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
+</ul>
 
             
           
@@ -184,61 +188,98 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="pufferlib.vectorization.make_remote_envs">
 <span class="sig-prename descclassname"><span class="pre">pufferlib.vectorization.</span></span><span class="sig-name descname"><span class="pre">make_remote_envs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_creator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vectorization.make_remote_envs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Creates n serial environments on a single remote process</p>
+<p>Called for you by RayVecEnvs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>env_creator</strong> – A function that creates a single environment</p></li>
+<li><p><strong>n</strong> – The number of environments to create</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A Ray-backed RemoteEnvs object. Used internally by RayVecEnvs</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pufferlib.vectorization.RayVecEnv">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.vectorization.</span></span><span class="sig-name descname"><span class="pre">RayVecEnv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">binding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">envs_per_worker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vectorization.RayVecEnv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Creates env_per_worker serial environments on each of num_workers remote processes</p>
+<p>Synchronous API: Use env.reset() and env.step(actions)</p>
+<p>Asynchronous API: Use env.async_reset(), env.send(actions), and env.recv(actions)
+This confers no advantage unless you are using multiple RayVecEnvs in a double-buffered
+or multi-buffered configuration. See the PufferLib custom CleanRL demo for an example.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>binding</strong> – A pufferlib.emulation.Binding object</p></li>
+<li><p><strong>num_workers</strong> – The number of remote processes to create</p></li>
+<li><p><strong>envs_per_worker</strong> – The number of serial environments to create on each remote process</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="pufferlib.vectorization.RayVecEnv.single_observation_space">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_observation_space</span></span><a class="headerlink" href="#pufferlib.vectorization.RayVecEnv.single_observation_space" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Convenience function; returns self.binding.single_observation_space</p>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pufferlib.vectorization.RayVecEnv.single_action_space">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_action_space</span></span><a class="headerlink" href="#pufferlib.vectorization.RayVecEnv.single_action_space" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Convenience function; returns self.binding.single_action_space</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.vectorization.RayVecEnv.close">
 <span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vectorization.RayVecEnv.close" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Not implemented yet</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.vectorization.RayVecEnv.profile">
 <span class="sig-name descname"><span class="pre">profile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vectorization.RayVecEnv.profile" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns profiling timers from all remote environments</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.vectorization.RayVecEnv.seed">
 <span class="sig-name descname"><span class="pre">seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vectorization.RayVecEnv.seed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the seed for all remote environments</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.vectorization.RayVecEnv.async_reset">
 <span class="sig-name descname"><span class="pre">async_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vectorization.RayVecEnv.async_reset" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Asynchronously reset environments. Does not block.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.vectorization.RayVecEnv.recv">
 <span class="sig-name descname"><span class="pre">recv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vectorization.RayVecEnv.recv" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Receive observations from remote async environments. Blocks.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.vectorization.RayVecEnv.send">
 <span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vectorization.RayVecEnv.send" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Send observations to remote async environments. Does not block.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.vectorization.RayVecEnv.reset">
 <span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vectorization.RayVecEnv.reset" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Syncronously resets remote environments. Blocks.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.vectorization.RayVecEnv.step">
 <span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.vectorization.RayVecEnv.step" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Syncronously steps remote environments. Blocks.</p>
+</dd></dl>
 
 </dd></dl>
 
