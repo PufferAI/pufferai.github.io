@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pufferlib.registry.registry module &mdash; PufferLib v0.1.2 0.1.2 documentation</title>
+  <title>pufferlib.frameworks.base module &mdash; PufferLib v0.2.0 0.2.0 documentation</title>
   
 
   
@@ -57,7 +57,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.1.2
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.0
           
 
           
@@ -90,25 +90,32 @@
             
               <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#support">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#included-frameworks-and-environments">Included frameworks and environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#authorship">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#contributing">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#license">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Quick Demo on Neural MMO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#standalone-binding">Standalone Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#rllib">RLLib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#cleanrl">CleanRL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#environment-bindings">Environment Bindings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Environment Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#extended-atari-binding">Extended Atari Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#minimal-cleanrl-demo">Minimal CleanRL Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#custom-cleanrl-demo">Custom CleanRL Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#rllib-demo">RLLib Demo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html">Emulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#binding">Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-binding">CleanRL Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#registry">Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#vectorization">Vectorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-integration">CleanRL Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html#rllib-binding">RLlib Binding</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Blog</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
 </ul>
 
             
@@ -124,7 +131,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.1.2</a>
+          <a href="../index.html">PufferLib v0.2.0</a>
         
       </nav>
 
@@ -157,13 +164,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>pufferlib.registry.registry module</li>
+      <li>pufferlib.frameworks.base module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/autodoc/pufferlib.registry.registry.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/autodoc/pufferlib.frameworks.base.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -176,69 +183,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="module-pufferlib.registry.registry">
-<span id="pufferlib-registry-registry-module"></span><h1>pufferlib.registry.registry module<a class="headerlink" href="#module-pufferlib.registry.registry" title="Permalink to this heading">¶</a></h1>
+  <section id="module-pufferlib.frameworks.base">
+<span id="pufferlib-frameworks-base-module"></span><h1>pufferlib.frameworks.base module<a class="headerlink" href="#module-pufferlib.frameworks.base" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="pufferlib.registry.registry.print_setup_error">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.registry.</span></span><span class="sig-name descname"><span class="pre">print_setup_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.registry.print_setup_error" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pufferlib.registry.registry.make_all_atari_bindings">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.registry.</span></span><span class="sig-name descname"><span class="pre">make_all_atari_bindings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.registry.make_all_atari_bindings" title="Permalink to this definition">¶</a></dt>
-<dd><p>Make every single Atari binding. Not used for standard tests</p>
+<dt class="sig sig-object py" id="pufferlib.frameworks.base.make_recurrent_policy">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.frameworks.base.</span></span><span class="sig-name descname"><span class="pre">make_recurrent_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Policy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_first</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.frameworks.base.make_recurrent_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wraps the given policy with an LSTM</p>
+<p>Called for you by framework-specific bindings</p>
 </dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pufferlib.registry.registry.make_atari_bindings">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.registry.</span></span><span class="sig-name descname"><span class="pre">make_atari_bindings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.registry.make_atari_bindings" title="Permalink to this definition">¶</a></dt>
-<dd><p>Make DQN paper Atari games</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pufferlib.registry.registry.make_butterfly_bindings">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.registry.</span></span><span class="sig-name descname"><span class="pre">make_butterfly_bindings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.registry.make_butterfly_bindings" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pufferlib.registry.registry.make_classic_control_bindings">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.registry.</span></span><span class="sig-name descname"><span class="pre">make_classic_control_bindings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.registry.make_classic_control_bindings" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pufferlib.registry.registry.make_griddly_bindings">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.registry.</span></span><span class="sig-name descname"><span class="pre">make_griddly_bindings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.registry.make_griddly_bindings" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pufferlib.registry.registry.make_magent_bindings">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.registry.</span></span><span class="sig-name descname"><span class="pre">make_magent_bindings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.registry.make_magent_bindings" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pufferlib.registry.registry.make_microrts_bindings">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.registry.</span></span><span class="sig-name descname"><span class="pre">make_microrts_bindings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.registry.make_microrts_bindings" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pufferlib.registry.registry.make_nethack_bindings">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.registry.</span></span><span class="sig-name descname"><span class="pre">make_nethack_bindings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.registry.make_nethack_bindings" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pufferlib.registry.registry.make_neuralmmo_bindings">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.registry.</span></span><span class="sig-name descname"><span class="pre">make_neuralmmo_bindings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.registry.make_neuralmmo_bindings" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pufferlib.registry.registry.make_smac_bindings">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.registry.</span></span><span class="sig-name descname"><span class="pre">make_smac_bindings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.registry.make_smac_bindings" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="pufferlib.registry.registry.make_all_bindings">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.registry.</span></span><span class="sig-name descname"><span class="pre">make_all_bindings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.registry.make_all_bindings" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </section>
 

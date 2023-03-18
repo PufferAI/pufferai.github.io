@@ -1,7 +1,7 @@
-pufferlib.registry.registry module
+pufferlib.registry.microrts module
 ==================================
 
-.. automodule:: pufferlib.registry.registry
+.. automodule:: pufferlib.registry.microrts
    :members:
    :undoc-members:
    :inherited-members:

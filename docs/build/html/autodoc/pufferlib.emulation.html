@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pufferlib.emulation module &mdash; PufferLib v0.1.2 0.1.2 documentation</title>
+  <title>pufferlib.emulation module &mdash; PufferLib v0.2.0 0.2.0 documentation</title>
   
 
   
@@ -57,7 +57,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.1.2
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.0
           
 
           
@@ -90,25 +90,32 @@
             
               <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#support">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#included-frameworks-and-environments">Included frameworks and environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#authorship">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#contributing">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#license">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Quick Demo on Neural MMO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#standalone-binding">Standalone Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#rllib">RLLib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#cleanrl">CleanRL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#environment-bindings">Environment Bindings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Environment Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#extended-atari-binding">Extended Atari Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#minimal-cleanrl-demo">Minimal CleanRL Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#custom-cleanrl-demo">Custom CleanRL Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#rllib-demo">RLLib Demo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html">Emulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#binding">Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-binding">CleanRL Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#registry">Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#vectorization">Vectorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-integration">CleanRL Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html#rllib-binding">RLlib Binding</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Blog</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
 </ul>
 
             
@@ -124,7 +131,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.1.2</a>
+          <a href="../index.html">PufferLib v0.2.0</a>
         
       </nav>
 
@@ -178,35 +185,112 @@
             
   <section id="module-pufferlib.emulation">
 <span id="pufferlib-emulation-module"></span><h1>pufferlib.emulation module<a class="headerlink" href="#module-pufferlib.emulation" title="Permalink to this heading">¶</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="pufferlib.emulation.PufferWrapper">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">PufferWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_parser=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_shaper=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_obs=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_atn=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_horizon=1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_num_agents=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_env_prints=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.PufferWrapper" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wrap the provided env</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pufferlib.emulation.Binding">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">Binding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_cls=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_creator=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_args=[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_kwargs={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_name=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_parser=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_shaper=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_obs=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_atn=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_horizon=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_num_agents=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_env_prints=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_episode_statistics=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.Binding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>PufferLib’s core Binding class.</p>
+<p>Wraps the provided Gym or PettingZoo environment in a PufferEnv that
+behaves like a normal PettingZoo environment with several simplifications:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The observation space is flattened to a single vector</p></li>
+<li><p>The action space is flattened to a single vector</p></li>
+<li><p>The environment caches observation and action spaces for improved performance</p></li>
+<li><p>The environment is reset to a fixed horizon</p></li>
+<li><p>The environment is padded to a fixed number of agents in sorted order</p></li>
+<li><p>If originally single-agent, the environment is wrapped in a PettingZoo environment</p></li>
+<li><p>The environment records additional statistics</p></li>
+<li><p>The environment has suppressed stdout and stderr to avoid poluting the console</p></li>
+<li><p>The environment contains additional error checking</p></li>
+</ul>
+</div></blockquote>
+<p>The Binding class additionally provides utility functions for interacting with complex
+observation and action spaces.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>Env</strong> – An environment instance, class, or creator function</p></li>
-<li><p><strong>feature_parser</strong> – A function that transforms an observation</p></li>
-<li><p><strong>reward_shaper</strong> – A function that transforms the reward</p></li>
-<li><p><strong>emulate_flat_obs</strong> – Boolean specifying whether to flatten observations</p></li>
-<li><p><strong>emulate_flat_atn</strong> – Boolean specifying whether to flatten actions</p></li>
-<li><p><strong>emulate_const_horizon</strong> – Int specifying max simulation steps before manual reset</p></li>
-<li><p><strong>emulate_const_num_agents</strong> – Int specifying max number of agents to pad</p></li>
-<li><p><strong>obs_dtype</strong> – Specify observation datatype if not float 32.</p></li>
+<li><p><strong>env_cls</strong> – Environment class to wrap. Specify this or env_creator</p></li>
+<li><p><strong>env_creator</strong> – Environment creation function to wrap. Specify this or env_cls</p></li>
+<li><p><strong>default_args</strong> – Default arguments for binding.env_creator and binding.raw_env_creator</p></li>
+<li><p><strong>default_kwargs</strong> – Default keyword arguments for binding.env_creator and binding.raw_env_creator</p></li>
+<li><p><strong>env_name</strong> – Name of the environment</p></li>
+<li><p><strong>feature_parser</strong> – Feature parser to use</p></li>
+<li><p><strong>reward_shaper</strong> – Reward shaper to use</p></li>
+<li><p><strong>emulate_flat_obs</strong> – Whether the observation space requires flattening</p></li>
+<li><p><strong>emulate_flat_atn</strong> – Whether the action space requires flattening</p></li>
+<li><p><strong>emulate_const_horizon</strong> – Fixed max horizon for resets, None if not applicable</p></li>
+<li><p><strong>emulate_const_num_agents</strong> – Whether to pad to len(env.possible_agents) observations</p></li>
+<li><p><strong>suppress_env_prints</strong> – Whether to consume all environment prints</p></li>
+<li><p><strong>record_episode_statistics</strong> – Whether to record additional episode statistics</p></li>
+<li><p><strong>obs_dtype</strong> – Observation data type</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><p>A pettingzoo compliant PufferEnv class</p>
-<p>If you specified an env class or creator function, this class
-takes the same args/kwargs as the original</p>
-<p>This environment defines an additional method that returns observation
-space before any flattening but after feature parsing:</p>
-<blockquote>
-<div><p>structured_observation_space(agent: int)</p>
-</div></blockquote>
-</p>
-</dd>
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="pufferlib.emulation.Binding.raw_env_cls">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_env_cls</span></span><a class="headerlink" href="#pufferlib.emulation.Binding.raw_env_cls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the original, unwrapped environment class used to create this binding, if available</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.emulation.Binding.raw_env_creator">
+<span class="sig-name descname"><span class="pre">raw_env_creator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.Binding.raw_env_creator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the original, unwrapped env_creator function used to create this binding</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pufferlib.emulation.Binding.env_cls">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">env_cls</span></span><a class="headerlink" href="#pufferlib.emulation.Binding.env_cls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns wrapped PufferEnv class created by this binding</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.emulation.Binding.env_creator">
+<span class="sig-name descname"><span class="pre">env_creator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.Binding.env_creator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the wrapped PufferEnv env_creator function created by this binding</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pufferlib.emulation.Binding.single_observation_space">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_observation_space</span></span><a class="headerlink" href="#pufferlib.emulation.Binding.single_observation_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the wrapped, flat observation space of a single agent.</p>
+<p>PufferLib currently assumes that all agents share the same observation space</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pufferlib.emulation.Binding.single_action_space">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_action_space</span></span><a class="headerlink" href="#pufferlib.emulation.Binding.single_action_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the wrapped, flat action space of a single agent.</p>
+<p>PufferLib currently assumes that all agents share the same action space</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pufferlib.emulation.Binding.raw_single_observation_space">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_single_observation_space</span></span><a class="headerlink" href="#pufferlib.emulation.Binding.raw_single_observation_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the unwrapped, structured observation space of a single agent.</p>
+<p>PufferLib currently assumes that all agents share the same observation space</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pufferlib.emulation.Binding.raw_single_action_space">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_single_action_space</span></span><a class="headerlink" href="#pufferlib.emulation.Binding.raw_single_action_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the unwrapped, structured action space of a single agent.</p>
+<p>PufferLib currently assumes that all agents share the same action space</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pufferlib.emulation.Binding.max_agents">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">max_agents</span></span><a class="headerlink" href="#pufferlib.emulation.Binding.max_agents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the maximum number of agents in the environment</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pufferlib.emulation.Binding.env_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">env_name</span></span><a class="headerlink" href="#pufferlib.emulation.Binding.env_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the environment name</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py function">

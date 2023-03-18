@@ -47,6 +47,7 @@ extensions = [
       'sphinx.ext.coverage', 
       'sphinx.ext.napoleon',
       'sphinxcontrib.youtube',
+      'sphinx.ext.autosectionlabel',
    ]
 
 #Don't sort method names

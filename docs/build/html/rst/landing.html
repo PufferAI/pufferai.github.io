@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Introduction &mdash; PufferLib v0.1.2 0.1.2 documentation</title>
+  <title>Installation &mdash; PufferLib v0.2.0 0.2.0 documentation</title>
   
 
   
@@ -44,7 +44,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Quick Demo on Neural MMO" href="examples.html" />
+    <link rel="next" title="Environment Registry" href="examples.html" />
     <link rel="prev" title="Index" href="../index.html" /> 
 </head>
 
@@ -59,7 +59,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.1.2
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.0
           
 
           
@@ -92,25 +92,32 @@
             
               <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#support">Support</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#included-frameworks-and-environments">Included frameworks and environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#authorship">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#contributing">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#license">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Quick Demo on Neural MMO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html#standalone-binding">Standalone Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html#rllib">RLLib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html#cleanrl">CleanRL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html#environment-bindings">Environment Bindings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Environment Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html#extended-atari-binding">Extended Atari Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html#minimal-cleanrl-demo">Minimal CleanRL Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html#custom-cleanrl-demo">Custom CleanRL Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html#rllib-demo">RLLib Demo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Emulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#binding">Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#cleanrl-binding">CleanRL Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#registry">Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#vectorization">Vectorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#cleanrl-integration">CleanRL Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html#rllib-binding">RLlib Binding</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Blog</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
 </ul>
 
             
@@ -126,7 +133,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.1.2</a>
+          <a href="../index.html">PufferLib v0.2.0</a>
         
       </nav>
 
@@ -159,7 +166,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Introduction</li>
+      <li>Installation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -178,40 +185,48 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <img alt="../_images/header.png" src="../_images/header.png" />
+  <center>
+  <video width=100% height="auto" nocontrols autoplay playsinline muted loop>
+    <source src="_static/banner.webm" type="video/webm">
+    <source src="_static/banner.mp4" type="video/mp4">
+    Your browser does not support this video.
+  </video>
+</center><p><strong>Quick links:</strong> <a class="reference external" href="https://github.com/pufferai/pufferlib">Github</a> | <a class="reference external" href="https://api.wandb.ai/links/jsuarez/wue9qkr0">Baselines</a> | <a class="reference external" href="https://discord.gg/spT4huaGYV">Discord</a> | <a class="reference external" href="https://twitter.com/jsuarez5341">Twitter</a></p>
+<p>You have an environment, a PyTorch model, and a reinforcement learning framework that are designed to work together but don’t. PufferLib is a wrapper layer that makes RL on complex game environments as simple as RL on Atari. You write a native PyTorch network and a short binding for your environment; PufferLib takes care of the rest.</p>
+<p>Join our community <a class="reference external" href="https://discord.gg/spT4huaGYV">Discord</a> to get support or if you are interested in contributing to the project.</p>
 <div class="line-block">
-<div class="line"><br /></div>
+<div class="line"><a class="reference internal" href="examples.html#minimal-cleanrl-demo"><span class="std std-ref">Minimal CleanRL Demo</span></a> Neural MMO on minimally modified CleanRL. Use as an introductory reference.</div>
+<div class="line"><a class="reference internal" href="examples.html#custom-cleanrl-demo"><span class="std std-ref">Custom CleanRL Demo</span></a> Neural MMO on our customized version of CleanRL. Use as a template for your projects.</div>
 </div>
-<p><strong>Quick links:</strong> <a class="reference external" href="https://github.com/pufferai/pufferlib">Github</a> | <a class="reference external" href="https://discord.gg/spT4huaGYV">Discord</a> | <a class="reference external" href="https://twitter.com/jsuarez5341">Twitter</a></p>
-<section id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h1>
-<p>You have an environment, a PyTorch model, and an RL framework that are designed to work together but don’t. PufferLib is a wrapper layer that provide better compatibility between <a class="reference external" href="https://github.com/openai/gym">Gym</a> / <a class="reference external" href="https://pettingzoo.farama.org">PettingZoo</a> environments and standard reinforcement learning frameworks. You write a native PyTorch network and a short binding for your environment; PufferLib takes care of the rest.</p>
-<dl class="simple">
-<dt>We currently support the following frameworks:</dt><dd><ul class="simple">
-<li><p><a class="reference external" href="https://github.com/vwxyzjn/cleanrl">CleanRL</a> - Simple single-file PPO implementation suited for 80% of academic research</p></li>
-<li><p><a class="reference external" href="https://docs.ray.io/en/latest/rllib/index.html">RLLib</a> - Industry-grade reinforcement learning library with more features and corresponding overhead</p></li>
-</ul>
-</dd>
-</dl>
-<p>We plan to add additional bindings in the future. These mainly provide a wrapper utility that creates a framework-compliant network from a raw PyTorch model. If you decide to write one of these yourself, please consider opening a pull request to contribute it to the library.</p>
-<dl class="simple">
-<dt>PufferLib is currently tested against the following environments and environment platforms:</dt><dd><ul class="simple">
-<li><p><a class="reference external" href="https://github.com/mgbellemare/Arcade-Learning-Environment">Atari (ALE)</a> - Beam Rider, Breakout, Enduro, Pong, Qbert, Seaquest, Space Invaders. Includes option to test against all ALE environments.</p></li>
-<li><p><a class="reference external" href="https://www.gymlibrary.dev/environments/box2d/">Box2D (Gym)</a> - Cart Pole</p></li>
-<li><p><a class="reference external" href="https://pettingzoo.farama.org/environments/butterfly/">Butterfly (PettingZoo)</a> - Knights Archers Zombies, Cooperative Pong</p></li>
-<li><p><a class="reference external" href="https://github.com/Bam4d/Griddly">Griddly</a> - Spiders</p></li>
-<li><p><a class="reference external" href="https://github.com/geek-ai/MAgent">MAgent</a> - Default configuration</p></li>
-<li><p><a class="reference external" href="https://github.com/Farama-Foundation/MicroRTS-Py">Gym MicroRTS</a> - Default configuration</p></li>
-<li><p><a class="reference external" href="https://github.com/facebookresearch/nle">Nethack (NLE)</a></p></li>
-<li><p><a class="reference external" href="https://neuralmmo.github.io">Neural MMO</a> - Default configuration</p></li>
-</ul>
-</dd>
-</dl>
-<p>You can add bindings to new environments in only a few lines of code. We encourage you to contribute these to our test cases, as this helps us improve the stability of the library.</p>
-</section>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">### Example PufferLib API usage with Neural MMO</span>
+
+<span class="kn">import</span> <span class="nn">nmmo</span>
+
+<span class="kn">import</span> <span class="nn">pufferlib</span>
+<span class="kn">import</span> <span class="nn">pufferlib.emulation</span>
+<span class="kn">import</span> <span class="nn">pufferlib.vectorization</span>
+
+<span class="c1"># Wrap Neural MMO with PufferLib</span>
+<span class="n">binding</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">emulation</span><span class="o">.</span><span class="n">Binding</span><span class="p">(</span>
+        <span class="n">env_cls</span><span class="o">=</span><span class="n">nmmo</span><span class="o">.</span><span class="n">Env</span><span class="p">,</span>
+        <span class="n">env_name</span><span class="o">=</span><span class="s1">&#39;Neural MMO&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<span class="c1"># Vectorize 4 environments across 2 cores</span>
+<span class="n">envs</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">vectorization</span><span class="o">.</span><span class="n">RayVecEnv</span><span class="p">(</span><span class="n">binding</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">envs_per_worker</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">envs</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Standard Gym API. See custom CleanRL demo for async API.</span>
+<span class="n">obs</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">32</span><span class="p">):</span>
+    <span class="n">atns</span> <span class="o">=</span> <span class="p">[</span><span class="n">binding</span><span class="o">.</span><span class="n">single_action_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">binding</span><span class="o">.</span><span class="n">max_agents</span><span class="p">)]</span>
+    <span class="n">obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">atns</span><span class="p">)</span>
+</pre></div>
+</div>
 <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h1>
-<p>Most features require PyTorch. Install this first (we tested on 1.12.0+cu116, included in PufferTank). The base library is a minimal installation. We provide several optional extras:</p>
+<p><strong>Docker Setup:</strong> <a class="reference external" href="https://github.com/pufferai/puffertank">PufferTank</a> ships with PufferLib and all test environments. Includes a GPU-enabled VSCode Dev Container config file for easy local development. We highly recommend this setup for PufferLib contributors.</p>
+<p><strong>Pip Install:</strong> Requires PyTorch (we tested on 1.12.0+cu116). Does not include non-pip environment dependencies.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pufferlib</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">pufferlib</span><span class="p">[</span><span class="n">rllib</span><span class="p">]</span> <span class="c1"># Compatible Ray/RLlib versions</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">pufferlib</span><span class="p">[</span><span class="n">docs</span><span class="p">]</span> <span class="c1"># Build docs locally</span>
@@ -220,15 +235,47 @@
 <span class="n">pip</span> <span class="n">install</span> <span class="n">pufferlib</span><span class="p">[</span><span class="n">atari</span><span class="p">,</span><span class="n">box2d</span><span class="p">,</span><span class="n">butterfly</span><span class="p">,</span><span class="n">magent</span><span class="p">,</span><span class="n">microrts</span><span class="p">,</span><span class="n">nethack</span><span class="p">,</span><span class="n">nmmo</span><span class="p">]</span> <span class="c1"># Individual environments</span>
 </pre></div>
 </div>
-<p>Many of these test environments have additional dependencies not installable through pip. For easy access to all of the testing environments, use the <a class="reference external" href="https://github.com/pufferai/puffertank">PufferTank</a> Docker. We suggest this setup for contributing to PufferLib.</p>
 </section>
-<section id="support">
-<h1>Support<a class="headerlink" href="#support" title="Permalink to this heading">¶</a></h1>
-<p>We have started a community <a class="reference external" href="https://discord.gg/spT4huaGYV">Discord</a> for development and support. If you are using PufferLib in conjunction with Neural MMO, note that I run both projects and would be happy to help get you set up.</p>
+<section id="included-frameworks-and-environments">
+<h1>Included frameworks and environments<a class="headerlink" href="#included-frameworks-and-environments" title="Permalink to this heading">¶</a></h1>
+<p>Frameworks are supported by a 50-150 line wrapper that formats a native PyTorch policy for compatibility with the given model API. We currently support the following frameworks:</p>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/vwxyzjn/cleanrl">CleanRL</a> - Simple single-file PPO implementation suited for 80% of academic research</div>
+<div class="line"><a class="reference external" href="https://docs.ray.io/en/latest/rllib/index.html">RLLib</a> - Industry-grade reinforcement learning library with more features and corresponding overhead</div>
+</div>
+<p>Environments are supported by a 1-line call that wraps the provided class or environment creator in a PufferEnv. PufferLib is compatible with both <a class="reference external" href="https://github.com/openai/gym">Gym</a> and <a class="reference external" href="https://pettingzoo.farama.org">PettingZoo</a> environments and includes bindings for the following projects:</p>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/mgbellemare/Arcade-Learning-Environment">Atari (ALE)</a> - Beam Rider, Breakout, Enduro, Pong, Qbert, Seaquest, Space Invaders. Includes option to test against all ALE environments.</div>
+<div class="line"><a class="reference external" href="https://www.gymlibrary.dev/environments/box2d/">Box2D (Gym)</a> - Cart Pole</div>
+<div class="line"><a class="reference external" href="https://pettingzoo.farama.org/environments/butterfly/">Butterfly (PettingZoo)</a> - Knights Archers Zombies, Cooperative Pong</div>
+<div class="line"><a class="reference external" href="https://github.com/Bam4d/Griddly">Griddly</a> - Spiders</div>
+<div class="line"><a class="reference external" href="https://github.com/geek-ai/MAgent">MAgent</a> - Default configuration</div>
+<div class="line"><a class="reference external" href="https://github.com/Farama-Foundation/MicroRTS-Py">Gym MicroRTS</a> - Default configuration</div>
+<div class="line"><a class="reference external" href="https://github.com/facebookresearch/nle">Nethack (NLE)</a></div>
+<div class="line"><a class="reference external" href="https://neuralmmo.github.io">Neural MMO</a> - Default configuration</div>
+</div>
+</section>
+<section id="authorship">
+<h1>Authorship<a class="headerlink" href="#authorship" title="Permalink to this heading">¶</a></h1>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://people.csail.mit.edu/jsuarez">Joseph Suarez:</a> Creator of PufferLib. If you are using PufferLib in conjunction with <a class="reference external" href="https://neuralmmo.github.io">Neural MMO</a>, note that I run both projects and would be happy to help get you set up.</div>
+</div>
+</section>
+<section id="contributing">
+<h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this heading">¶</a></h1>
+<p>We welcome contributions from the community. Please communicate with us on <a class="reference external" href="https://discord.gg/spT4huaGYV">Discord</a> before opening an issue or pull request on Github. We are particularly interested in contributions to the following areas:</p>
+<div class="line-block">
+<div class="line"><strong>Framework bindings:</strong> We currently support CleanRL and RLLib. We would like to add bindings for other frameworks such as Stable Baselines and Tianshou.</div>
+<div class="line"><strong>Environment bindings:</strong> We would like to improve our test coverage by adding bindings for additional environments. This also requires specifying any external dependencies in PufferTank.</div>
+<div class="line"><strong>Testing:</strong> PufferLib is a stability-crucial library. We would like to add better coverage to our test suite.</div>
+<div class="line"><strong>Performance:</strong> We would like to improve the performance of our vectorized environments. Our current implementation is a bottleneck for many projects.</div>
+<div class="line"><strong>Baselines:</strong> We would like to add more rigerous performance and regression evaluations to out test suite.</div>
+<div class="line"><strong>Documentation:</strong> We would like to improve our documentation and examples.</div>
+</div>
 </section>
 <section id="license">
 <h1>License<a class="headerlink" href="#license" title="Permalink to this heading">¶</a></h1>
-<p>PufferLib is FOSS under the MIT license. This is the full set of tools maintained by PufferAI; we do not have private repositories with additional utilities.</p>
+<p>PufferLib is free and open-source software under the MIT license. This is the full set of tools maintained by PufferAI; we do not have private repositories with additional utilities.</p>
 </section>
 
 
@@ -237,7 +284,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="examples.html" class="btn btn-neutral float-right" title="Quick Demo on Neural MMO" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Environment Registry" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="../index.html" class="btn btn-neutral float-left" title="Index" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pufferlib.frameworks.rllib module &mdash; PufferLib v0.1.2 0.1.2 documentation</title>
+  <title>pufferlib.frameworks.rllib module &mdash; PufferLib v0.2.0 0.2.0 documentation</title>
   
 
   
@@ -57,7 +57,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.1.2
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.0
           
 
           
@@ -90,25 +90,32 @@
             
               <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#support">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#included-frameworks-and-environments">Included frameworks and environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#authorship">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#contributing">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#license">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Quick Demo on Neural MMO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#standalone-binding">Standalone Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#rllib">RLLib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#cleanrl">CleanRL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#environment-bindings">Environment Bindings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Environment Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#extended-atari-binding">Extended Atari Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#minimal-cleanrl-demo">Minimal CleanRL Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#custom-cleanrl-demo">Custom CleanRL Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#rllib-demo">RLLib Demo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html">Emulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#binding">Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-binding">CleanRL Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#registry">Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#vectorization">Vectorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-integration">CleanRL Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html#rllib-binding">RLlib Binding</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Blog</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
 </ul>
 
             
@@ -124,7 +131,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.1.2</a>
+          <a href="../index.html">PufferLib v0.2.0</a>
         
       </nav>
 
@@ -178,6 +185,8 @@
             
   <section id="module-pufferlib.frameworks.rllib">
 <span id="pufferlib-frameworks-rllib-module"></span><h1>pufferlib.frameworks.rllib module<a class="headerlink" href="#module-pufferlib.frameworks.rllib" title="Permalink to this heading">¶</a></h1>
+<p>RLlib support under construction as we focus on stable CleanRL support for v0.2</p>
+<p>Still supported via Discord, but not officially stable</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pufferlib.frameworks.rllib.register_env">
 <span class="sig-prename descclassname"><span class="pre">pufferlib.frameworks.rllib.</span></span><span class="sig-name descname"><span class="pre">register_env</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_creator</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.frameworks.rllib.register_env" title="Permalink to this definition">¶</a></dt>
@@ -194,9 +203,21 @@
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pufferlib.frameworks.rllib.make_rllib_policy">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.frameworks.rllib.</span></span><span class="sig-name descname"><span class="pre">make_rllib_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_layers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.frameworks.rllib.make_rllib_policy" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="pufferlib.frameworks.rllib.make_policy">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.frameworks.rllib.</span></span><span class="sig-name descname"><span class="pre">make_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_layers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.frameworks.rllib.make_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrap a PyTorch model for use with RLLib</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>policy_cls</strong> – A pufferlib.models.Policy subclass that implements the PufferLib model API</p></li>
+<li><p><strong>lstm_layers</strong> – The number of LSTM layers to use. If 0, no LSTM is used</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new RLlib model class wrapping your model</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pufferlib.frameworks.rllib.RLPredictor">

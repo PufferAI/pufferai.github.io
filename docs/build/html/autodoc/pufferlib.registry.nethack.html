@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pufferlib.registry.nethack module &mdash; PufferLib v0.1.2 0.1.2 documentation</title>
+  <title>pufferlib.registry.nethack module &mdash; PufferLib v0.2.0 0.2.0 documentation</title>
   
 
   
@@ -57,7 +57,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.1.2
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.0
           
 
           
@@ -90,25 +90,32 @@
             
               <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#support">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#included-frameworks-and-environments">Included frameworks and environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#authorship">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#contributing">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#license">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Quick Demo on Neural MMO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#standalone-binding">Standalone Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#rllib">RLLib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#cleanrl">CleanRL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#environment-bindings">Environment Bindings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Environment Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#extended-atari-binding">Extended Atari Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#minimal-cleanrl-demo">Minimal CleanRL Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#custom-cleanrl-demo">Custom CleanRL Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#rllib-demo">RLLib Demo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html">Emulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#binding">Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-binding">CleanRL Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#registry">Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#vectorization">Vectorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-integration">CleanRL Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html#rllib-binding">RLlib Binding</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Blog</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
 </ul>
 
             
@@ -124,7 +131,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.1.2</a>
+          <a href="../index.html">PufferLib v0.2.0</a>
         
       </nav>
 
@@ -178,53 +185,92 @@
             
   <section id="module-pufferlib.registry.nethack">
 <span id="pufferlib-registry-nethack-module"></span><h1>pufferlib.registry.nethack module<a class="headerlink" href="#module-pufferlib.registry.nethack" title="Permalink to this heading">¶</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="pufferlib.registry.nethack.NetHack">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.registry.nethack.</span></span><span class="sig-name descname"><span class="pre">NetHack</span></span><a class="headerlink" href="#pufferlib.registry.nethack.NetHack" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="pufferlib.binding.html#pufferlib.binding.Base" title="pufferlib.binding.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></a></p>
-<p>Base class for PufferLib bindings</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>env_name</strong> – Name of the environment</p></li>
-<li><p><strong>env_cls</strong> – Environment class to wrap</p></li>
-<li><p><strong>env_args</strong> – Arguments for env_cls</p></li>
-<li><p><strong>env_kwargs</strong> – Keyword arguments for env_cls</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py property">
-<dt class="sig sig-object py" id="pufferlib.registry.nethack.NetHack.custom_model_config">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">custom_model_config</span></span><a class="headerlink" href="#pufferlib.registry.nethack.NetHack.custom_model_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Custom Policy arguments for this environment</p>
-</dd></dl>
-
+<dl class="py function">
+<dt class="sig sig-object py" id="pufferlib.registry.nethack.make_binding">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.nethack.</span></span><span class="sig-name descname"><span class="pre">make_binding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.nethack.make_binding" title="Permalink to this definition">¶</a></dt>
+<dd><p>NetHack binding creation function</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pufferlib.registry.nethack.Policy">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.registry.nethack.</span></span><span class="sig-name descname"><span class="pre">Policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.nethack.Policy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="pufferlib.binding.html#pufferlib.binding.Policy" title="pufferlib.binding.Policy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Policy</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="pufferlib.models.html#pufferlib.models.Policy" title="pufferlib.models.Policy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Policy</span></code></a></p>
+<p>Default NetHack Learning Environment policy ported from the nle release</p>
 <p>Pure PyTorch base policy</p>
 <p>This spec allows PufferLib to repackage your policy
 for compatibility with RL frameworks</p>
+<p>encode_observations -&gt; decode_actions is PufferLib’s equivalent of PyTorch forward
+This structure provides additional flexibility for us to include an LSTM
+between the encoder and decoder.</p>
+<p>To port a policy to PufferLib, simply put everything from forward() before the
+recurrent cell (or, if no recurrent cell, everything before the action head)
+into encode_observations and put everything after into decode_actions.</p>
+<p>You can delete the recurrent cell from forward(). PufferLib handles this for you
+with its framework-specific wrappers. Since each frameworks treats temporal data a bit
+differently, this approach lets you write a single PyTorch network for multiple frameworks.</p>
+<p>Specify the value function in critic(). This is a single value for each batch element.
+It is called on the output of the recurrent cell (or, if no recurrent cell,
+the output of encode_observations)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>binding</strong> – A pufferlib.emulation.Binding object</p></li>
+<li><p><strong>input_size</strong> – The size of the input to the recurrent cell</p></li>
+<li><p><strong>hidden_size</strong> – The size of the output of the recurrent cell</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.registry.nethack.Policy.critic">
 <span class="sig-name descname"><span class="pre">critic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.nethack.Policy.critic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the value function from the hidden state</p>
+<p>Returns a single value for each batch element</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.registry.nethack.Policy.encode_observations">
 <span class="sig-name descname"><span class="pre">encode_observations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_outputs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.nethack.Policy.encode_observations" title="Permalink to this definition">¶</a></dt>
-<dd><p>Encodes observations into a flat vector.</p>
-<p>Call pufferlib.emulation.unpack_batched_obs to unflatten obs</p>
+<dd><p>Encodes a batch of observations into hidden states</p>
+<p>Call pufferlib.emulation.unpack_batched_obs at the start of this
+function to unflatten observations to their original structured form:</p>
+<dl class="simple">
+<dt>observations = pufferlib.emulation.unpack_batched_obs(</dt><dd><p>self.binding.raw_single_observation_space, env_outputs)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>flat_observations</strong> – A tensor of shape (batch, …, obs_size)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor of (batch, …, hidden_size)
+lookup: Tensor of (batch, …) that can be used to return additional embeddings</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>hidden</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.registry.nethack.Policy.decode_actions">
 <span class="sig-name descname"><span class="pre">decode_actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookup</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.nethack.Policy.decode_actions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Decodes hidden state into a multidiscrete action space</p>
+<dd><p>Decodes a batch of hidden states into multidiscrete actions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flat_hidden</strong> – Tensor of (batch, …, hidden_size)</p></li>
+<li><p><strong>lookup</strong> – Tensor of (batch, …), if returned by encode_observations</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor of (batch, …, action_size)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>actions</p>
+</dd>
+</dl>
+<p>actions is a concatenated tensor of logits for each action space dimension.
+It should be of shape (batch, …, sum(action_space.nvec))</p>
 </dd></dl>
 
 </dd></dl>

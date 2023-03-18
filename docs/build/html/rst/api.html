@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Emulation &mdash; PufferLib v0.1.2 0.1.2 documentation</title>
+  <title>Emulation &mdash; PufferLib v0.2.0 0.2.0 documentation</title>
   
 
   
@@ -44,7 +44,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Quick Demo on Neural MMO" href="examples.html" /> 
+    <link rel="next" title="PufferLib v0.2: Ready to Take on the Big Fish" href="blog.html" />
+    <link rel="prev" title="Environment Registry" href="examples.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -58,7 +59,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.1.2
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.0
           
 
           
@@ -91,25 +92,43 @@
             
               <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="landing.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="landing.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="landing.html#support">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="landing.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="landing.html#included-frameworks-and-environments">Included frameworks and environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="landing.html#authorship">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="landing.html#contributing">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="landing.html#license">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Quick Demo on Neural MMO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html#standalone-binding">Standalone Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html#rllib">RLLib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html#cleanrl">CleanRL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html#environment-bindings">Environment Bindings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Environment Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html#extended-atari-binding">Extended Atari Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html#minimal-cleanrl-demo">Minimal CleanRL Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html#custom-cleanrl-demo">Custom CleanRL Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html#rllib-demo">RLLib Demo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Emulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#binding">Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#cleanrl-binding">CleanRL Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#registry">Registry</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#atari">Atari</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#butterfly">Butterfly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#classic-control">Classic Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#griddly">Griddly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#magent">MAgent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#microrts">MicroRTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nethack">NetHack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#neural-mmo">Neural MMO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#starcraft-multiagent-challenge">Starcraft Multiagent Challenge</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#vectorization">Vectorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#cleanrl-integration">CleanRL Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#rllib-binding">RLlib Binding</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Blog</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
 </ul>
 
             
@@ -125,7 +144,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.1.2</a>
+          <a href="../index.html">PufferLib v0.2.0</a>
         
       </nav>
 
@@ -184,36 +203,112 @@
 <p>This is the current core API. Advanced users can check the PufferLib source for additional tools, but note that these are not yet as well tested.</p>
 <section id="emulation">
 <h1>Emulation<a class="headerlink" href="#emulation" title="Permalink to this heading">¶</a></h1>
-<p>This is the core PufferLib wrapper layer that improves your environment’s compatibility with RL libraries.</p>
-<dl class="py function">
+<p>This is the core feature of PufferLib - bind your environment for compatibility with RL libraries</p>
+<dl class="py class">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">PufferWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_parser=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_shaper=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_obs=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_atn=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_horizon=1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_num_agents=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_env_prints=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Wrap the provided env</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">Binding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_cls=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_creator=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_args=[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_kwargs={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_name=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_parser=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_shaper=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_obs=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_atn=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_horizon=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_num_agents=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_env_prints=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_episode_statistics=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>PufferLib’s core Binding class.</p>
+<p>Wraps the provided Gym or PettingZoo environment in a PufferEnv that
+behaves like a normal PettingZoo environment with several simplifications:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The observation space is flattened to a single vector</p></li>
+<li><p>The action space is flattened to a single vector</p></li>
+<li><p>The environment caches observation and action spaces for improved performance</p></li>
+<li><p>The environment is reset to a fixed horizon</p></li>
+<li><p>The environment is padded to a fixed number of agents in sorted order</p></li>
+<li><p>If originally single-agent, the environment is wrapped in a PettingZoo environment</p></li>
+<li><p>The environment records additional statistics</p></li>
+<li><p>The environment has suppressed stdout and stderr to avoid poluting the console</p></li>
+<li><p>The environment contains additional error checking</p></li>
+</ul>
+</div></blockquote>
+<p>The Binding class additionally provides utility functions for interacting with complex
+observation and action spaces.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>Env</strong> – An environment instance, class, or creator function</p></li>
-<li><p><strong>feature_parser</strong> – A function that transforms an observation</p></li>
-<li><p><strong>reward_shaper</strong> – A function that transforms the reward</p></li>
-<li><p><strong>emulate_flat_obs</strong> – Boolean specifying whether to flatten observations</p></li>
-<li><p><strong>emulate_flat_atn</strong> – Boolean specifying whether to flatten actions</p></li>
-<li><p><strong>emulate_const_horizon</strong> – Int specifying max simulation steps before manual reset</p></li>
-<li><p><strong>emulate_const_num_agents</strong> – Int specifying max number of agents to pad</p></li>
-<li><p><strong>obs_dtype</strong> – Specify observation datatype if not float 32.</p></li>
+<li><p><strong>env_cls</strong> – Environment class to wrap. Specify this or env_creator</p></li>
+<li><p><strong>env_creator</strong> – Environment creation function to wrap. Specify this or env_cls</p></li>
+<li><p><strong>default_args</strong> – Default arguments for binding.env_creator and binding.raw_env_creator</p></li>
+<li><p><strong>default_kwargs</strong> – Default keyword arguments for binding.env_creator and binding.raw_env_creator</p></li>
+<li><p><strong>env_name</strong> – Name of the environment</p></li>
+<li><p><strong>feature_parser</strong> – Feature parser to use</p></li>
+<li><p><strong>reward_shaper</strong> – Reward shaper to use</p></li>
+<li><p><strong>emulate_flat_obs</strong> – Whether the observation space requires flattening</p></li>
+<li><p><strong>emulate_flat_atn</strong> – Whether the action space requires flattening</p></li>
+<li><p><strong>emulate_const_horizon</strong> – Fixed max horizon for resets, None if not applicable</p></li>
+<li><p><strong>emulate_const_num_agents</strong> – Whether to pad to len(env.possible_agents) observations</p></li>
+<li><p><strong>suppress_env_prints</strong> – Whether to consume all environment prints</p></li>
+<li><p><strong>record_episode_statistics</strong> – Whether to record additional episode statistics</p></li>
+<li><p><strong>obs_dtype</strong> – Observation data type</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><p>A pettingzoo compliant PufferEnv class</p>
-<p>If you specified an env class or creator function, this class
-takes the same args/kwargs as the original</p>
-<p>This environment defines an additional method that returns observation
-space before any flattening but after feature parsing:</p>
-<blockquote>
-<div><p>structured_observation_space(agent: int)</p>
-</div></blockquote>
-</p>
-</dd>
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_env_cls</span></span></dt>
+<dd><p>Returns the original, unwrapped environment class used to create this binding, if available</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">raw_env_creator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Returns the original, unwrapped env_creator function used to create this binding</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">env_cls</span></span></dt>
+<dd><p>Returns wrapped PufferEnv class created by this binding</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">env_creator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Returns the wrapped PufferEnv env_creator function created by this binding</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_observation_space</span></span></dt>
+<dd><p>Returns the wrapped, flat observation space of a single agent.</p>
+<p>PufferLib currently assumes that all agents share the same observation space</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_action_space</span></span></dt>
+<dd><p>Returns the wrapped, flat action space of a single agent.</p>
+<p>PufferLib currently assumes that all agents share the same action space</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_single_observation_space</span></span></dt>
+<dd><p>Returns the unwrapped, structured observation space of a single agent.</p>
+<p>PufferLib currently assumes that all agents share the same observation space</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_single_action_space</span></span></dt>
+<dd><p>Returns the unwrapped, structured action space of a single agent.</p>
+<p>PufferLib currently assumes that all agents share the same action space</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">max_agents</span></span></dt>
+<dd><p>Returns the maximum number of agents in the environment</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">env_name</span></span></dt>
+<dd><p>Returns the environment name</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py function">
@@ -224,106 +319,605 @@ space before any flattening but after feature parsing:</p>
 </dd></dl>
 
 </section>
-<section id="binding">
-<h1>Binding<a class="headerlink" href="#binding" title="Permalink to this heading">¶</a></h1>
-<p>Utilities for creating a PufferLib binding for a specific environment. The automatic binding should work for most environments.</p>
-<dl class="py function">
+<section id="registry">
+<h1>Registry<a class="headerlink" href="#registry" title="Permalink to this heading">¶</a></h1>
+<p>Builtin bindings and policies for test environments</p>
+<section id="atari">
+<h2>Atari<a class="headerlink" href="#atari" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.binding.</span></span><span class="sig-name descname"><span class="pre">auto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_cls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Create binding for the specified environment</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.registry.atari.</span></span><span class="sig-name descname"><span class="pre">NoopResetEnv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noop_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sample initial states by taking random number of no-ops on reset.
+No-op is assumed to be action 0.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>env_name</strong> – Name of the environment. Inferred from the class if not specified.</p></li>
-<li><p><strong>env</strong> – Environment object to wrap. Alternatively, specify env_cls</p></li>
-<li><p><strong>env_cls</strong> – Environment class to wrap. Alternatively, specify env</p></li>
-<li><p><strong>env_args</strong> – Arguments for env_cls</p></li>
-<li><p><strong>env_kwargs</strong> – Keyword arguments for env_cls</p></li>
-<li><p><strong>**kwargs</strong> – Allows you to specify PufferWrapper arguments directly</p></li>
+<li><p><strong>env</strong> – the environment to wrap</p></li>
+<li><p><strong>noop_max</strong> – the maximum value of no-ops to run</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span></dt>
+<dd><p>Resets the environment to an initial state and returns an initial
+observation.</p>
+<p>This method should also reset the environment’s random number
+generator(s) if <cite>seed</cite> is an integer or if the environment has not
+yet initialized a random number generator. If the environment already
+has a random number generator and <cite>reset</cite> is called with <cite>seed=None</cite>,
+the RNG should not be reset.
+Moreover, <cite>reset</cite> should (in the typical use case) be called with an
+integer seed right after initialization and then never again.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the initial observation.
+info (optional dictionary): a dictionary containing extra information, this is only returned if return_info is set to true</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>observation (object)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.atari.</span></span><span class="sig-name descname"><span class="pre">make_env</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">framestack</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Atari creation function with default CleanRL preprocessing based on Stable Baselines3 wrappers</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.atari.</span></span><span class="sig-name descname"><span class="pre">make_binding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">framestack</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Atari binding creation function</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.atari.</span></span><span class="sig-name descname"><span class="pre">layer_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.4142135623730951</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias_const</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>CleanRL’s default layer initialization</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.registry.atari.</span></span><span class="sig-name descname"><span class="pre">Policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>The CleanRL default Atari policy: a stack of three convolutions followed by a linear layer</p>
+<p>Takes framestack as a mandatory keyword arguments. Suggested default is 1 frame
+with LSTM or 4 frames without.</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">critic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Computes the value function from the hidden state</p>
+<p>Returns a single value for each batch element</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">encode_observations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flat_observations</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Encodes a batch of observations into hidden states</p>
+<p>Call pufferlib.emulation.unpack_batched_obs at the start of this
+function to unflatten observations to their original structured form:</p>
+<dl class="simple">
+<dt>observations = pufferlib.emulation.unpack_batched_obs(</dt><dd><p>self.binding.raw_single_observation_space, env_outputs)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>flat_observations</strong> – A tensor of shape (batch, …, obs_size)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor of (batch, …, hidden_size)
+lookup: Tensor of (batch, …) that can be used to return additional embeddings</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>hidden</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">decode_actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flat_hidden</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookup</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Decodes a batch of hidden states into multidiscrete actions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flat_hidden</strong> – Tensor of (batch, …, hidden_size)</p></li>
+<li><p><strong>lookup</strong> – Tensor of (batch, …), if returned by encode_observations</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>env_creator: Function that creates a wrapped environment
-single_observation_space: Observation space of a single agent
-single_action_space: Action space of a single agent</p>
+<dd class="field-even"><p>Tensor of (batch, …, action_size)</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A PufferLib binding with the following properties</p>
+<dd class="field-odd"><p>actions</p>
 </dd>
 </dl>
+<p>actions is a concatenated tensor of logits for each action space dimension.
+It should be of shape (batch, …, sum(action_space.nvec))</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="butterfly">
+<h2>Butterfly<a class="headerlink" href="#butterfly" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.butterfly.</span></span><span class="sig-name descname"><span class="pre">make_knights_archers_zombies_v10_binding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Knights Archers Zombies binding creation function</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.butterfly.</span></span><span class="sig-name descname"><span class="pre">make_cooperative_pong_v5_binding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Cooperative Pong binding creation function</p>
+</dd></dl>
+
+</section>
+<section id="classic-control">
+<h2>Classic Control<a class="headerlink" href="#classic-control" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.classic_control.</span></span><span class="sig-name descname"><span class="pre">make_cartpole_binding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>CartPole binding creation function</p>
+<p>This environment is a useful test because it works without
+any additional dependencies.</p>
+</dd></dl>
+
+</section>
+<section id="griddly">
+<h2>Griddly<a class="headerlink" href="#griddly" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.griddly.</span></span><span class="sig-name descname"><span class="pre">make_spider_v0_binding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Griddly Spiders binding creation function</p>
+<p>Support for Griddly is WIP because environments do not specify
+their observation spaces until after they are created.</p>
+</dd></dl>
+
+</section>
+<section id="magent">
+<h2>MAgent<a class="headerlink" href="#magent" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.magent.</span></span><span class="sig-name descname"><span class="pre">make_battle_v4_binding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>MAgent Battle binding creation function</p>
+</dd></dl>
+
+</section>
+<section id="microrts">
+<h2>MicroRTS<a class="headerlink" href="#microrts" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.microrts.</span></span><span class="sig-name descname"><span class="pre">make_binding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Gym MicroRTS binding creation function</p>
+<p>Currently only provides a binding for the GlobalAgentCombinedRewardEnv
+setting of the environment.</p>
+</dd></dl>
+
+</section>
+<section id="nethack">
+<h2>NetHack<a class="headerlink" href="#nethack" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.nethack.</span></span><span class="sig-name descname"><span class="pre">make_binding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>NetHack binding creation function</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.binding.</span></span><span class="sig-name descname"><span class="pre">Base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Base class for PufferLib bindings</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.registry.nethack.</span></span><span class="sig-name descname"><span class="pre">Policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Default NetHack Learning Environment policy ported from the nle release</p>
+<p>Pure PyTorch base policy</p>
+<p>This spec allows PufferLib to repackage your policy
+for compatibility with RL frameworks</p>
+<p>encode_observations -&gt; decode_actions is PufferLib’s equivalent of PyTorch forward
+This structure provides additional flexibility for us to include an LSTM
+between the encoder and decoder.</p>
+<p>To port a policy to PufferLib, simply put everything from forward() before the
+recurrent cell (or, if no recurrent cell, everything before the action head)
+into encode_observations and put everything after into decode_actions.</p>
+<p>You can delete the recurrent cell from forward(). PufferLib handles this for you
+with its framework-specific wrappers. Since each frameworks treats temporal data a bit
+differently, this approach lets you write a single PyTorch network for multiple frameworks.</p>
+<p>Specify the value function in critic(). This is a single value for each batch element.
+It is called on the output of the recurrent cell (or, if no recurrent cell,
+the output of encode_observations)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>env_name</strong> – Name of the environment</p></li>
-<li><p><strong>env_cls</strong> – Environment class to wrap</p></li>
-<li><p><strong>env_args</strong> – Arguments for env_cls</p></li>
-<li><p><strong>env_kwargs</strong> – Keyword arguments for env_cls</p></li>
+<li><p><strong>binding</strong> – A pufferlib.emulation.Binding object</p></li>
+<li><p><strong>input_size</strong> – The size of the input to the recurrent cell</p></li>
+<li><p><strong>hidden_size</strong> – The size of the output of the recurrent cell</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="py property">
+<dl class="py method">
 <dt class="sig sig-object py">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">custom_model_config</span></span></dt>
-<dd><p>Custom Policy arguments for this environment</p>
+<span class="sig-name descname"><span class="pre">critic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Computes the value function from the hidden state</p>
+<p>Returns a single value for each batch element</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">encode_observations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_outputs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Encodes a batch of observations into hidden states</p>
+<p>Call pufferlib.emulation.unpack_batched_obs at the start of this
+function to unflatten observations to their original structured form:</p>
+<dl class="simple">
+<dt>observations = pufferlib.emulation.unpack_batched_obs(</dt><dd><p>self.binding.raw_single_observation_space, env_outputs)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>flat_observations</strong> – A tensor of shape (batch, …, obs_size)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor of (batch, …, hidden_size)
+lookup: Tensor of (batch, …) that can be used to return additional embeddings</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>hidden</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">decode_actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookup</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Decodes a batch of hidden states into multidiscrete actions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flat_hidden</strong> – Tensor of (batch, …, hidden_size)</p></li>
+<li><p><strong>lookup</strong> – Tensor of (batch, …), if returned by encode_observations</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor of (batch, …, action_size)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>actions</p>
+</dd>
+</dl>
+<p>actions is a concatenated tensor of logits for each action space dimension.
+It should be of shape (batch, …, sum(action_space.nvec))</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.binding.</span></span><span class="sig-name descname"><span class="pre">Policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.registry.nethack.</span></span><span class="sig-name descname"><span class="pre">Crop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height_target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width_target</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Helper class for NetHackNet below.</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coordinates</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Calculates centered crop around given x,y coordinates.
+Args:
+inputs [B x H x W]
+coordinates [B x 2] x,y coordinates
+Returns:
+[B x H’ x W’] inputs cropped and centered around x,y coordinates.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="neural-mmo">
+<h2>Neural MMO<a class="headerlink" href="#neural-mmo" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.nmmo.</span></span><span class="sig-name descname"><span class="pre">make_binding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Neural MMO binding creation function</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.registry.nmmo.</span></span><span class="sig-name descname"><span class="pre">Policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Default Neural MMO policy</p>
+<p>This is a dummy placeholder used to speed up tests because of the size of the
+Neural MMO observation space. It is not a good policy and will not learn anything.</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">critic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Computes the value function from the hidden state</p>
+<p>Returns a single value for each batch element</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">encode_observations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_outputs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Encodes a batch of observations into hidden states</p>
+<p>Call pufferlib.emulation.unpack_batched_obs at the start of this
+function to unflatten observations to their original structured form:</p>
+<dl class="simple">
+<dt>observations = pufferlib.emulation.unpack_batched_obs(</dt><dd><p>self.binding.raw_single_observation_space, env_outputs)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>flat_observations</strong> – A tensor of shape (batch, …, obs_size)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor of (batch, …, hidden_size)
+lookup: Tensor of (batch, …) that can be used to return additional embeddings</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>hidden</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">decode_actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookup</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Decodes a batch of hidden states into multidiscrete actions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flat_hidden</strong> – Tensor of (batch, …, hidden_size)</p></li>
+<li><p><strong>lookup</strong> – Tensor of (batch, …), if returned by encode_observations</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor of (batch, …, action_size)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>actions</p>
+</dd>
+</dl>
+<p>actions is a concatenated tensor of logits for each action space dimension.
+It should be of shape (batch, …, sum(action_space.nvec))</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="starcraft-multiagent-challenge">
+<h2>Starcraft Multiagent Challenge<a class="headerlink" href="#starcraft-multiagent-challenge" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.smac.</span></span><span class="sig-name descname"><span class="pre">make_binding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Starcraft Multiagent Challenge binding creation function</p>
+<p>Support for SMAC is WIP because environments do not function without
+an action-masked baseline policy.</p>
+</dd></dl>
+
+</section>
+</section>
+<section id="models">
+<h1>Models<a class="headerlink" href="#models" title="Permalink to this heading">¶</a></h1>
+<p>PufferLib model API and default policies</p>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.models.</span></span><span class="sig-name descname"><span class="pre">Policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Pure PyTorch base policy</p>
 <p>This spec allows PufferLib to repackage your policy
 for compatibility with RL frameworks</p>
+<p>encode_observations -&gt; decode_actions is PufferLib’s equivalent of PyTorch forward
+This structure provides additional flexibility for us to include an LSTM
+between the encoder and decoder.</p>
+<p>To port a policy to PufferLib, simply put everything from forward() before the
+recurrent cell (or, if no recurrent cell, everything before the action head)
+into encode_observations and put everything after into decode_actions.</p>
+<p>You can delete the recurrent cell from forward(). PufferLib handles this for you
+with its framework-specific wrappers. Since each frameworks treats temporal data a bit
+differently, this approach lets you write a single PyTorch network for multiple frameworks.</p>
+<p>Specify the value function in critic(). This is a single value for each batch element.
+It is called on the output of the recurrent cell (or, if no recurrent cell,
+the output of encode_observations)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>binding</strong> – A pufferlib.emulation.Binding object</p></li>
+<li><p><strong>input_size</strong> – The size of the input to the recurrent cell</p></li>
+<li><p><strong>hidden_size</strong> – The size of the output of the recurrent cell</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">critic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Computes the value function from the hidden state</p>
+<p>Returns a single value for each batch element</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">encode_observations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flat_observations</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Encodes observations into a flat vector.</p>
-<p>Call pufferlib.emulation.unpack_batched_obs to unflatten obs</p>
+<dd><p>Encodes a batch of observations into hidden states</p>
+<p>Call pufferlib.emulation.unpack_batched_obs at the start of this
+function to unflatten observations to their original structured form:</p>
+<dl class="simple">
+<dt>observations = pufferlib.emulation.unpack_batched_obs(</dt><dd><p>self.binding.raw_single_observation_space, env_outputs)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>flat_observations</strong> – A tensor of shape (batch, …, obs_size)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor of (batch, …, hidden_size)
+lookup: Tensor of (batch, …) that can be used to return additional embeddings</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>hidden</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">decode_actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flat_hidden</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookup</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Decodes hidden state into a multidiscrete action space</p>
+<dd><p>Decodes a batch of hidden states into multidiscrete actions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flat_hidden</strong> – Tensor of (batch, …, hidden_size)</p></li>
+<li><p><strong>lookup</strong> – Tensor of (batch, …), if returned by encode_observations</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor of (batch, …, action_size)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>actions</p>
+</dd>
+</dl>
+<p>actions is a concatenated tensor of logits for each action space dimension.
+It should be of shape (batch, …, sum(action_space.nvec))</p>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="py function">
+<dl class="py class">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.binding.</span></span><span class="sig-name descname"><span class="pre">make_recurrent_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Policy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_first</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Wraps the given policy with an LSTM</p>
-<p>Called for you by framework-specific bindings</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.models.</span></span><span class="sig-name descname"><span class="pre">Default</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Default PyTorch policy, meant for debugging.
+This should run with any environment but is unlikely to learn anything.</p>
+<p>Uses a single linear layer to encode observations and a list of
+linear layers to decode actions. The value function is a single linear layer.</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">critic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Linear value function</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">encode_observations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_outputs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Linear encoder function</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">decode_actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookup</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Concatenated linear decoder function</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
-<section id="cleanrl-binding">
-<h1>CleanRL Binding<a class="headerlink" href="#cleanrl-binding" title="Permalink to this heading">¶</a></h1>
-<p>Allows you to wrap your environment and policy for use with CleanRL</p>
+<section id="vectorization">
+<h1>Vectorization<a class="headerlink" href="#vectorization" title="Permalink to this heading">¶</a></h1>
+<p>Ray-backed vectorization for PufferLib-wrapped environments</p>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.vectorization.</span></span><span class="sig-name descname"><span class="pre">RayVecEnv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">binding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">envs_per_worker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Creates env_per_worker serial environments on each of num_workers remote processes</p>
+<p>Synchronous API: Use env.reset() and env.step(actions)</p>
+<p>Asynchronous API: Use env.async_reset(), env.send(actions), and env.recv(actions)
+This confers no advantage unless you are using multiple RayVecEnvs in a double-buffered
+or multi-buffered configuration. See the PufferLib custom CleanRL demo for an example.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>binding</strong> – A pufferlib.emulation.Binding object</p></li>
+<li><p><strong>num_workers</strong> – The number of remote processes to create</p></li>
+<li><p><strong>envs_per_worker</strong> – The number of serial environments to create on each remote process</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_observation_space</span></span></dt>
+<dd><p>Convenience function; returns self.binding.single_observation_space</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_action_space</span></span></dt>
+<dd><p>Convenience function; returns self.binding.single_action_space</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Not implemented yet</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">profile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Returns profiling timers from all remote environments</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Sets the seed for all remote environments</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">async_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Asynchronously reset environments. Does not block.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">recv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Receive observations from remote async environments. Blocks.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Send observations to remote async environments. Does not block.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Syncronously resets remote environments. Blocks.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Syncronously steps remote environments. Blocks.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="cleanrl-integration">
+<h1>CleanRL Integration<a class="headerlink" href="#cleanrl-integration" title="Permalink to this heading">¶</a></h1>
+<p>Wraps your policies for use with CleanRL</p>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.frameworks.cleanrl.</span></span><span class="sig-name descname"><span class="pre">make_cleanrl_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Wrap a PyTorch network for compatibility with CleanRL</p>
-<p>policy_cls must subclass the PufferLib base PyTorch class</p>
+<span class="sig-prename descclassname"><span class="pre">pufferlib.frameworks.cleanrl.</span></span><span class="sig-name descname"><span class="pre">make_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Wrap a PyTorch model for use with CleanRL</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>policy_cls</strong> – A pufferlib.models.Policy subclass that implements the PufferLib model API</p></li>
+<li><p><strong>lstm_layers</strong> – The number of LSTM layers to use. If 0, no LSTM is used</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new PyTorch class wrapping your model that implements the CleanRL API</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
 <section id="rllib-binding">
 <h1>RLlib Binding<a class="headerlink" href="#rllib-binding" title="Permalink to this heading">¶</a></h1>
-<p>Allows you to wrap your environment and policy for use with RLlib</p>
+<p>Wraps your policies for use with RLlib (WIP)</p>
+<p>RLlib support under construction as we focus on stable CleanRL support for v0.2</p>
+<p>Still supported via Discord, but not officially stable</p>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-prename descclassname"><span class="pre">pufferlib.frameworks.rllib.</span></span><span class="sig-name descname"><span class="pre">register_env</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_creator</span></span></em><span class="sig-paren">)</span></dt>
@@ -341,8 +935,20 @@ for compatibility with RL frameworks</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.frameworks.rllib.</span></span><span class="sig-name descname"><span class="pre">make_rllib_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_layers</span></span></em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">pufferlib.frameworks.rllib.</span></span><span class="sig-name descname"><span class="pre">make_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_layers</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Wrap a PyTorch model for use with RLLib</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>policy_cls</strong> – A pufferlib.models.Policy subclass that implements the PufferLib model API</p></li>
+<li><p><strong>lstm_layers</strong> – The number of LSTM layers to use. If 0, no LSTM is used</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new RLlib model class wrapping your model</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py">
@@ -422,7 +1028,8 @@ with their custom logics.</p></li>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="examples.html" class="btn btn-neutral float-left" title="Quick Demo on Neural MMO" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="blog.html" class="btn btn-neutral float-right" title="PufferLib v0.2: Ready to Take on the Big Fish" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="examples.html" class="btn btn-neutral float-left" title="Environment Registry" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

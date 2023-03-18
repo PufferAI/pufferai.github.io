@@ -11,5 +11,6 @@ pufferlib.frameworks package
 .. toctree::
    :maxdepth: 4
 
+   pufferlib.frameworks.base
    pufferlib.frameworks.cleanrl
    pufferlib.frameworks.rllib

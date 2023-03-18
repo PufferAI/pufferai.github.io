@@ -18,3 +18,9 @@ Index
    :caption: API
 
    rst/api
+
+.. toctree::
+   :maxdepth: 8
+   :caption: Blog
+
+   rst/blog

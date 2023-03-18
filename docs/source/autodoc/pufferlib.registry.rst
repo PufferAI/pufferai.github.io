@@ -11,5 +11,12 @@ pufferlib.registry package
 .. toctree::
    :maxdepth: 4
 
+   pufferlib.registry.atari
+   pufferlib.registry.butterfly
+   pufferlib.registry.classic_control
+   pufferlib.registry.griddly
+   pufferlib.registry.magent
+   pufferlib.registry.microrts
    pufferlib.registry.nethack
-   pufferlib.registry.registry
+   pufferlib.registry.nmmo
+   pufferlib.registry.smac

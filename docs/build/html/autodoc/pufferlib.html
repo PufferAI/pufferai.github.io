@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pufferlib package &mdash; PufferLib v0.1.2 0.1.2 documentation</title>
+  <title>pufferlib package &mdash; PufferLib v0.2.0 0.2.0 documentation</title>
   
 
   
@@ -57,7 +57,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.1.2
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.0
           
 
           
@@ -90,25 +90,32 @@
             
               <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#support">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#included-frameworks-and-environments">Included frameworks and environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#authorship">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#contributing">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#license">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Quick Demo on Neural MMO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#standalone-binding">Standalone Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#rllib">RLLib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#cleanrl">CleanRL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#environment-bindings">Environment Bindings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Environment Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#extended-atari-binding">Extended Atari Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#minimal-cleanrl-demo">Minimal CleanRL Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#custom-cleanrl-demo">Custom CleanRL Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#rllib-demo">RLLib Demo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html">Emulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#binding">Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-binding">CleanRL Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#registry">Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#vectorization">Vectorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-integration">CleanRL Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html#rllib-binding">RLlib Binding</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Blog</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
 </ul>
 
             
@@ -124,7 +131,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.1.2</a>
+          <a href="../index.html">PufferLib v0.2.0</a>
         
       </nav>
 
@@ -181,15 +188,19 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pufferlib.frameworks.html">pufferlib.frameworks package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.frameworks.base.html">pufferlib.frameworks.base module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.base.html#pufferlib.frameworks.base.make_recurrent_policy"><code class="docutils literal notranslate"><span class="pre">make_recurrent_policy()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="pufferlib.frameworks.cleanrl.html">pufferlib.frameworks.cleanrl module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.cleanrl.html#pufferlib.frameworks.cleanrl.make_cleanrl_policy"><code class="docutils literal notranslate"><span class="pre">make_cleanrl_policy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.cleanrl.html#pufferlib.frameworks.cleanrl.make_policy"><code class="docutils literal notranslate"><span class="pre">make_policy()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pufferlib.frameworks.rllib.html">pufferlib.frameworks.rllib module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.register_env"><code class="docutils literal notranslate"><span class="pre">register_env()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.read_checkpoints"><code class="docutils literal notranslate"><span class="pre">read_checkpoints()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.create_policies"><code class="docutils literal notranslate"><span class="pre">create_policies()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.make_rllib_policy"><code class="docutils literal notranslate"><span class="pre">make_rllib_policy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.make_policy"><code class="docutils literal notranslate"><span class="pre">make_policy()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.RLPredictor"><code class="docutils literal notranslate"><span class="pre">RLPredictor</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.RLPredictor.predict"><code class="docutils literal notranslate"><span class="pre">RLPredictor.predict()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.RLPredictor.from_checkpoint"><code class="docutils literal notranslate"><span class="pre">RLPredictor.from_checkpoint()</span></code></a></li>
@@ -217,11 +228,57 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.html">pufferlib.registry package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.nethack.html">pufferlib.registry.nethack module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.NetHack"><code class="docutils literal notranslate"><span class="pre">NetHack</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.NetHack.custom_model_config"><code class="docutils literal notranslate"><span class="pre">NetHack.custom_model_config</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.atari.html">pufferlib.registry.atari module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.reset"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.action_space"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.action_space</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.class_name"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.class_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.close"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.metadata"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.np_random"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.np_random</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.observation_space"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.observation_space</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.render"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.render()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.reward_range"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.reward_range</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.seed"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.seed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.spec"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.spec</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.step"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.step()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.unwrapped"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.unwrapped</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.make_env"><code class="docutils literal notranslate"><span class="pre">make_env()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.make_binding"><code class="docutils literal notranslate"><span class="pre">make_binding()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.layer_init"><code class="docutils literal notranslate"><span class="pre">layer_init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.Policy"><code class="docutils literal notranslate"><span class="pre">Policy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.Policy.critic"><code class="docutils literal notranslate"><span class="pre">Policy.critic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.Policy.encode_observations"><code class="docutils literal notranslate"><span class="pre">Policy.encode_observations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.Policy.decode_actions"><code class="docutils literal notranslate"><span class="pre">Policy.decode_actions()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.butterfly.html">pufferlib.registry.butterfly module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.butterfly.html#pufferlib.registry.butterfly.make_knights_archers_zombies_v10_binding"><code class="docutils literal notranslate"><span class="pre">make_knights_archers_zombies_v10_binding()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.butterfly.html#pufferlib.registry.butterfly.make_cooperative_pong_v5_binding"><code class="docutils literal notranslate"><span class="pre">make_cooperative_pong_v5_binding()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.classic_control.html">pufferlib.registry.classic_control module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.classic_control.html#pufferlib.registry.classic_control.make_cartpole_binding"><code class="docutils literal notranslate"><span class="pre">make_cartpole_binding()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.griddly.html">pufferlib.registry.griddly module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.griddly.html#pufferlib.registry.griddly.make_spider_v0_binding"><code class="docutils literal notranslate"><span class="pre">make_spider_v0_binding()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.magent.html">pufferlib.registry.magent module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.magent.html#pufferlib.registry.magent.make_battle_v4_binding"><code class="docutils literal notranslate"><span class="pre">make_battle_v4_binding()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.microrts.html">pufferlib.registry.microrts module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.microrts.html#pufferlib.registry.microrts.make_binding"><code class="docutils literal notranslate"><span class="pre">make_binding()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.nethack.html">pufferlib.registry.nethack module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.make_binding"><code class="docutils literal notranslate"><span class="pre">make_binding()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Policy"><code class="docutils literal notranslate"><span class="pre">Policy</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Policy.critic"><code class="docutils literal notranslate"><span class="pre">Policy.critic()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Policy.encode_observations"><code class="docutils literal notranslate"><span class="pre">Policy.encode_observations()</span></code></a></li>
@@ -279,19 +336,18 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.registry.html">pufferlib.registry.registry module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.print_setup_error"><code class="docutils literal notranslate"><span class="pre">print_setup_error()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_all_atari_bindings"><code class="docutils literal notranslate"><span class="pre">make_all_atari_bindings()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_atari_bindings"><code class="docutils literal notranslate"><span class="pre">make_atari_bindings()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_butterfly_bindings"><code class="docutils literal notranslate"><span class="pre">make_butterfly_bindings()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_classic_control_bindings"><code class="docutils literal notranslate"><span class="pre">make_classic_control_bindings()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_griddly_bindings"><code class="docutils literal notranslate"><span class="pre">make_griddly_bindings()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_magent_bindings"><code class="docutils literal notranslate"><span class="pre">make_magent_bindings()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_microrts_bindings"><code class="docutils literal notranslate"><span class="pre">make_microrts_bindings()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_nethack_bindings"><code class="docutils literal notranslate"><span class="pre">make_nethack_bindings()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_neuralmmo_bindings"><code class="docutils literal notranslate"><span class="pre">make_neuralmmo_bindings()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_smac_bindings"><code class="docutils literal notranslate"><span class="pre">make_smac_bindings()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.registry.html#pufferlib.registry.registry.make_all_bindings"><code class="docutils literal notranslate"><span class="pre">make_all_bindings()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.nmmo.html">pufferlib.registry.nmmo module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nmmo.html#pufferlib.registry.nmmo.make_binding"><code class="docutils literal notranslate"><span class="pre">make_binding()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nmmo.html#pufferlib.registry.nmmo.Policy"><code class="docutils literal notranslate"><span class="pre">Policy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.nmmo.html#pufferlib.registry.nmmo.Policy.critic"><code class="docutils literal notranslate"><span class="pre">Policy.critic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.nmmo.html#pufferlib.registry.nmmo.Policy.encode_observations"><code class="docutils literal notranslate"><span class="pre">Policy.encode_observations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pufferlib.registry.nmmo.html#pufferlib.registry.nmmo.Policy.decode_actions"><code class="docutils literal notranslate"><span class="pre">Policy.decode_actions()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.smac.html">pufferlib.registry.smac module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.smac.html#pufferlib.registry.smac.make_binding"><code class="docutils literal notranslate"><span class="pre">make_binding()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -300,27 +356,70 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pufferlib.binding.html">pufferlib.binding module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.binding.html#pufferlib.binding.auto"><code class="docutils literal notranslate"><span class="pre">auto()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.binding.html#pufferlib.binding.Base"><code class="docutils literal notranslate"><span class="pre">Base</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.binding.html#pufferlib.binding.Base.custom_model_config"><code class="docutils literal notranslate"><span class="pre">Base.custom_model_config</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.binding.html#pufferlib.binding.Policy"><code class="docutils literal notranslate"><span class="pre">Policy</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.binding.html#pufferlib.binding.Policy.critic"><code class="docutils literal notranslate"><span class="pre">Policy.critic()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.binding.html#pufferlib.binding.Policy.encode_observations"><code class="docutils literal notranslate"><span class="pre">Policy.encode_observations()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.binding.html#pufferlib.binding.Policy.decode_actions"><code class="docutils literal notranslate"><span class="pre">Policy.decode_actions()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.binding.html#pufferlib.binding.make_recurrent_policy"><code class="docutils literal notranslate"><span class="pre">make_recurrent_policy()</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="pufferlib.emulation.html">pufferlib.emulation module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.emulation.html#pufferlib.emulation.PufferWrapper"><code class="docutils literal notranslate"><span class="pre">PufferWrapper()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.emulation.html#pufferlib.emulation.Binding"><code class="docutils literal notranslate"><span class="pre">Binding</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.emulation.html#pufferlib.emulation.Binding.raw_env_cls"><code class="docutils literal notranslate"><span class="pre">Binding.raw_env_cls</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.emulation.html#pufferlib.emulation.Binding.raw_env_creator"><code class="docutils literal notranslate"><span class="pre">Binding.raw_env_creator()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.emulation.html#pufferlib.emulation.Binding.env_cls"><code class="docutils literal notranslate"><span class="pre">Binding.env_cls</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.emulation.html#pufferlib.emulation.Binding.env_creator"><code class="docutils literal notranslate"><span class="pre">Binding.env_creator()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.emulation.html#pufferlib.emulation.Binding.single_observation_space"><code class="docutils literal notranslate"><span class="pre">Binding.single_observation_space</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.emulation.html#pufferlib.emulation.Binding.single_action_space"><code class="docutils literal notranslate"><span class="pre">Binding.single_action_space</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.emulation.html#pufferlib.emulation.Binding.raw_single_observation_space"><code class="docutils literal notranslate"><span class="pre">Binding.raw_single_observation_space</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.emulation.html#pufferlib.emulation.Binding.raw_single_action_space"><code class="docutils literal notranslate"><span class="pre">Binding.raw_single_action_space</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.emulation.html#pufferlib.emulation.Binding.max_agents"><code class="docutils literal notranslate"><span class="pre">Binding.max_agents</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.emulation.html#pufferlib.emulation.Binding.env_name"><code class="docutils literal notranslate"><span class="pre">Binding.env_name</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="pufferlib.emulation.html#pufferlib.emulation.unpack_batched_obs"><code class="docutils literal notranslate"><span class="pre">unpack_batched_obs()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pufferlib.evaluation.html">pufferlib.evaluation module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.evaluation.html">pufferlib.evaluation module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.group"><code class="docutils literal notranslate"><span class="pre">group()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.ungroup"><code class="docutils literal notranslate"><span class="pre">ungroup()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.serve_rl_model"><code class="docutils literal notranslate"><span class="pre">serve_rl_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.query_action"><code class="docutils literal notranslate"><span class="pre">query_action()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.run_game"><code class="docutils literal notranslate"><span class="pre">run_game()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.Tournament"><code class="docutils literal notranslate"><span class="pre">Tournament</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.Tournament.init"><code class="docutils literal notranslate"><span class="pre">Tournament.init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.Tournament.add"><code class="docutils literal notranslate"><span class="pre">Tournament.add()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.Tournament.remove"><code class="docutils literal notranslate"><span class="pre">Tournament.remove()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.Tournament.server"><code class="docutils literal notranslate"><span class="pre">Tournament.server()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.Tournament.run_match"><code class="docutils literal notranslate"><span class="pre">Tournament.run_match()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.LocalTournament"><code class="docutils literal notranslate"><span class="pre">LocalTournament</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.LocalTournament.add"><code class="docutils literal notranslate"><span class="pre">LocalTournament.add()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.LocalTournament.init"><code class="docutils literal notranslate"><span class="pre">LocalTournament.init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.LocalTournament.remove"><code class="docutils literal notranslate"><span class="pre">LocalTournament.remove()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.LocalTournament.run_match"><code class="docutils literal notranslate"><span class="pre">LocalTournament.run_match()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.LocalTournament.server"><code class="docutils literal notranslate"><span class="pre">LocalTournament.server()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.ServedTournament"><code class="docutils literal notranslate"><span class="pre">ServedTournament</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.ServedTournament.init"><code class="docutils literal notranslate"><span class="pre">ServedTournament.init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.ServedTournament.add"><code class="docutils literal notranslate"><span class="pre">ServedTournament.add()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.ServedTournament.remove"><code class="docutils literal notranslate"><span class="pre">ServedTournament.remove()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.ServedTournament.run_match"><code class="docutils literal notranslate"><span class="pre">ServedTournament.run_match()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.evaluation.html#pufferlib.evaluation.ServedTournament.server"><code class="docutils literal notranslate"><span class="pre">ServedTournament.server()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.models.html">pufferlib.models module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.models.html#pufferlib.models.Policy"><code class="docutils literal notranslate"><span class="pre">Policy</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.models.html#pufferlib.models.Policy.critic"><code class="docutils literal notranslate"><span class="pre">Policy.critic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.models.html#pufferlib.models.Policy.encode_observations"><code class="docutils literal notranslate"><span class="pre">Policy.encode_observations()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.models.html#pufferlib.models.Policy.decode_actions"><code class="docutils literal notranslate"><span class="pre">Policy.decode_actions()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.models.html#pufferlib.models.Default"><code class="docutils literal notranslate"><span class="pre">Default</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.models.html#pufferlib.models.Default.critic"><code class="docutils literal notranslate"><span class="pre">Default.critic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.models.html#pufferlib.models.Default.encode_observations"><code class="docutils literal notranslate"><span class="pre">Default.encode_observations()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.models.html#pufferlib.models.Default.decode_actions"><code class="docutils literal notranslate"><span class="pre">Default.decode_actions()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="pufferlib.rating.html">pufferlib.rating module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pufferlib.rating.html#pufferlib.rating.rank"><code class="docutils literal notranslate"><span class="pre">rank()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pufferlib.rating.html#pufferlib.rating.OpenSkillRating"><code class="docutils literal notranslate"><span class="pre">OpenSkillRating</span></code></a><ul>
@@ -341,11 +440,28 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pufferlib.utils.html">pufferlib.utils module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.SetupError"><code class="docutils literal notranslate"><span class="pre">SetupError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.SetupError.args"><code class="docutils literal notranslate"><span class="pre">SetupError.args</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.SetupError.with_traceback"><code class="docutils literal notranslate"><span class="pre">SetupError.with_traceback()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.check_env"><code class="docutils literal notranslate"><span class="pre">check_env()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.is_dict_space"><code class="docutils literal notranslate"><span class="pre">is_dict_space()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.is_multiagent"><code class="docutils literal notranslate"><span class="pre">is_multiagent()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.current_datetime"><code class="docutils literal notranslate"><span class="pre">current_datetime()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.myprint"><code class="docutils literal notranslate"><span class="pre">myprint()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.RandomState"><code class="docutils literal notranslate"><span class="pre">RandomState</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.RandomState.random"><code class="docutils literal notranslate"><span class="pre">RandomState.random()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.RandomState.sample"><code class="docutils literal notranslate"><span class="pre">RandomState.sample()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.RandomState.choice"><code class="docutils literal notranslate"><span class="pre">RandomState.choice()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.Profiler"><code class="docutils literal notranslate"><span class="pre">Profiler</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.Profiler.tik"><code class="docutils literal notranslate"><span class="pre">Profiler.tik()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.Profiler.tok"><code class="docutils literal notranslate"><span class="pre">Profiler.tok()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.profile"><code class="docutils literal notranslate"><span class="pre">profile()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.dotdict"><code class="docutils literal notranslate"><span class="pre">dotdict</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.dotdict.clear"><code class="docutils literal notranslate"><span class="pre">dotdict.clear()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.dotdict.copy"><code class="docutils literal notranslate"><span class="pre">dotdict.copy()</span></code></a></li>
@@ -363,14 +479,19 @@
 <li class="toctree-l2"><a class="reference internal" href="pufferlib.utils.html#pufferlib.utils.Suppress"><code class="docutils literal notranslate"><span class="pre">Suppress</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pufferlib.vecenvs.html">pufferlib.vecenvs module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.vecenvs.html#pufferlib.vecenvs.make_remote_envs"><code class="docutils literal notranslate"><span class="pre">make_remote_envs()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.vecenvs.html#pufferlib.vecenvs.VecEnvs"><code class="docutils literal notranslate"><span class="pre">VecEnvs</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.vecenvs.html#pufferlib.vecenvs.VecEnvs.single_observation_space"><code class="docutils literal notranslate"><span class="pre">VecEnvs.single_observation_space</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.vecenvs.html#pufferlib.vecenvs.VecEnvs.single_action_space"><code class="docutils literal notranslate"><span class="pre">VecEnvs.single_action_space</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.vecenvs.html#pufferlib.vecenvs.VecEnvs.reset"><code class="docutils literal notranslate"><span class="pre">VecEnvs.reset()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.vecenvs.html#pufferlib.vecenvs.VecEnvs.close"><code class="docutils literal notranslate"><span class="pre">VecEnvs.close()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.vecenvs.html#pufferlib.vecenvs.VecEnvs.step"><code class="docutils literal notranslate"><span class="pre">VecEnvs.step()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.vectorization.html">pufferlib.vectorization module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.vectorization.html#pufferlib.vectorization.make_remote_envs"><code class="docutils literal notranslate"><span class="pre">make_remote_envs()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pufferlib.vectorization.html#pufferlib.vectorization.RayVecEnv"><code class="docutils literal notranslate"><span class="pre">RayVecEnv</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.vectorization.html#pufferlib.vectorization.RayVecEnv.single_observation_space"><code class="docutils literal notranslate"><span class="pre">RayVecEnv.single_observation_space</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.vectorization.html#pufferlib.vectorization.RayVecEnv.single_action_space"><code class="docutils literal notranslate"><span class="pre">RayVecEnv.single_action_space</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.vectorization.html#pufferlib.vectorization.RayVecEnv.close"><code class="docutils literal notranslate"><span class="pre">RayVecEnv.close()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.vectorization.html#pufferlib.vectorization.RayVecEnv.profile"><code class="docutils literal notranslate"><span class="pre">RayVecEnv.profile()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.vectorization.html#pufferlib.vectorization.RayVecEnv.seed"><code class="docutils literal notranslate"><span class="pre">RayVecEnv.seed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.vectorization.html#pufferlib.vectorization.RayVecEnv.async_reset"><code class="docutils literal notranslate"><span class="pre">RayVecEnv.async_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.vectorization.html#pufferlib.vectorization.RayVecEnv.recv"><code class="docutils literal notranslate"><span class="pre">RayVecEnv.recv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.vectorization.html#pufferlib.vectorization.RayVecEnv.send"><code class="docutils literal notranslate"><span class="pre">RayVecEnv.send()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.vectorization.html#pufferlib.vectorization.RayVecEnv.reset"><code class="docutils literal notranslate"><span class="pre">RayVecEnv.reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pufferlib.vectorization.html#pufferlib.vectorization.RayVecEnv.step"><code class="docutils literal notranslate"><span class="pre">RayVecEnv.step()</span></code></a></li>
 </ul>
 </li>
 </ul>

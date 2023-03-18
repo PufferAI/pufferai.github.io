@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pufferlib.evaluation module &mdash; PufferLib v0.1.2 0.1.2 documentation</title>
+  <title>pufferlib.evaluation module &mdash; PufferLib v0.2.0 0.2.0 documentation</title>
   
 
   
@@ -57,7 +57,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.1.2
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.0
           
 
           
@@ -90,25 +90,32 @@
             
               <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#support">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#included-frameworks-and-environments">Included frameworks and environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#authorship">Authorship</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#contributing">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/landing.html#license">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Quick Demo on Neural MMO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#standalone-binding">Standalone Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#rllib">RLLib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#cleanrl">CleanRL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#environment-bindings">Environment Bindings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html">Environment Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#extended-atari-binding">Extended Atari Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#minimal-cleanrl-demo">Minimal CleanRL Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#custom-cleanrl-demo">Custom CleanRL Demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/examples.html#rllib-demo">RLLib Demo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html">Emulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#binding">Binding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-binding">CleanRL Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#registry">Registry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#vectorization">Vectorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/api.html#cleanrl-integration">CleanRL Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/api.html#rllib-binding">RLlib Binding</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Blog</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
 </ul>
 
             
@@ -124,7 +131,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.1.2</a>
+          <a href="../index.html">PufferLib v0.2.0</a>
         
       </nav>
 
@@ -176,8 +183,156 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="pufferlib-evaluation-module">
-<h1>pufferlib.evaluation module<a class="headerlink" href="#pufferlib-evaluation-module" title="Permalink to this heading">¶</a></h1>
+  <section id="module-pufferlib.evaluation">
+<span id="pufferlib-evaluation-module"></span><h1>pufferlib.evaluation module<a class="headerlink" href="#module-pufferlib.evaluation" title="Permalink to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="pufferlib.evaluation.group">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.evaluation.</span></span><span class="sig-name descname"><span class="pre">group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy_mapping_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">episode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.group" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pufferlib.evaluation.ungroup">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.evaluation.</span></span><span class="sig-name descname"><span class="pre">ungroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groups</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.ungroup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pufferlib.evaluation.serve_rl_model">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.evaluation.</span></span><span class="sig-name descname"><span class="pre">serve_rl_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">checkpoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Checkpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RLModel'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pufferlib.evaluation.serve_rl_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serve a RL model and return deployment URI.
+This function will start Ray Serve and deploy a model wrapper
+that loads the RL checkpoint into a RLPredictor.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pufferlib.evaluation.query_action">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.evaluation.</span></span><span class="sig-name descname"><span class="pre">query_action</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.query_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform inference on a served RL model.
+This will send a HTTP request to the Ray Serve endpoint of the served
+RL policy model and return the result.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pufferlib.evaluation.run_game">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.evaluation.</span></span><span class="sig-name descname"><span class="pre">run_game</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_creator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy_mapping_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoints</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">episode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">render</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.run_game" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate a served RL policy on a local environment.
+This function will create an RL environment and step through it.
+To obtain the actions, it will query the deployed RL model.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pufferlib.evaluation.Tournament">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.evaluation.</span></span><span class="sig-name descname"><span class="pre">Tournament</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_policies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_creator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy_mapping_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy_sampling_fn=&lt;bound</span> <span class="pre">method</span> <span class="pre">Random.sample</span> <span class="pre">of</span> <span class="pre">&lt;random.Random</span> <span class="pre">object&gt;&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu=1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor_mu=1500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma=33.333333333333336</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.Tournament" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Runs matches for a pool of served policies</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.evaluation.Tournament.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.Tournament.init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.evaluation.Tournament.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.Tournament.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add policy to pool of served models</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.evaluation.Tournament.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.Tournament.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove policy from pool of served models</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.evaluation.Tournament.server">
+<span class="sig-name descname"><span class="pre">server</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tune_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_file=&lt;_io.TextIOWrapper</span> <span class="pre">name='&lt;stdout&gt;'</span> <span class="pre">mode='w'</span> <span class="pre">encoding='utf-8'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sleep_seconds=10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.Tournament.server" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.evaluation.Tournament.run_match">
+<span class="sig-name descname"><span class="pre">run_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">episode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.Tournament.run_match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select participants and run a single game to update ratings</p>
+<p>policy_mapping_fn: Maps agent name to policy id
+policy_sampling_fn: Selects a subset of policies to run for the match
+num_policies: number of policies to use in this match</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pufferlib.evaluation.LocalTournament">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.evaluation.</span></span><span class="sig-name descname"><span class="pre">LocalTournament</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_policies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_creator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy_mapping_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy_sampling_fn=&lt;bound</span> <span class="pre">method</span> <span class="pre">Random.sample</span> <span class="pre">of</span> <span class="pre">&lt;random.Random</span> <span class="pre">object&gt;&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu=1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor_mu=1500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma=33.333333333333336</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.LocalTournament" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pufferlib.evaluation.Tournament" title="pufferlib.evaluation.Tournament"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tournament</span></code></a></p>
+<p>Runs matches for a pool of served policies</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.evaluation.LocalTournament.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy_checkpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.LocalTournament.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add policy to pool of served models</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.evaluation.LocalTournament.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.LocalTournament.init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.evaluation.LocalTournament.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.LocalTournament.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove policy from pool of served models</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.evaluation.LocalTournament.run_match">
+<span class="sig-name descname"><span class="pre">run_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">episode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.LocalTournament.run_match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select participants and run a single game to update ratings</p>
+<p>policy_mapping_fn: Maps agent name to policy id
+policy_sampling_fn: Selects a subset of policies to run for the match
+num_policies: number of policies to use in this match</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.evaluation.LocalTournament.server">
+<span class="sig-name descname"><span class="pre">server</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tune_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_file=&lt;_io.TextIOWrapper</span> <span class="pre">name='&lt;stdout&gt;'</span> <span class="pre">mode='w'</span> <span class="pre">encoding='utf-8'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sleep_seconds=10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.LocalTournament.server" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pufferlib.evaluation.ServedTournament">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.evaluation.</span></span><span class="sig-name descname"><span class="pre">ServedTournament</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_policies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_creator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy_mapping_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy_sampling_fn=&lt;bound</span> <span class="pre">method</span> <span class="pre">Random.sample</span> <span class="pre">of</span> <span class="pre">&lt;random.Random</span> <span class="pre">object&gt;&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu=1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor_mu=1500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma=33.333333333333336</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.ServedTournament" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pufferlib.evaluation.Tournament" title="pufferlib.evaluation.Tournament"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tournament</span></code></a></p>
+<p>Runs matches for a pool of served policies</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.evaluation.ServedTournament.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.ServedTournament.init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.evaluation.ServedTournament.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy_checkpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.ServedTournament.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add policy to pool of served models</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.evaluation.ServedTournament.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.ServedTournament.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove policy from pool of served models</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.evaluation.ServedTournament.run_match">
+<span class="sig-name descname"><span class="pre">run_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">episode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.ServedTournament.run_match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select participants and run a single game to update ratings</p>
+<p>policy_mapping_fn: Maps agent name to policy id
+policy_sampling_fn: Selects a subset of policies to run for the match
+num_policies: number of policies to use in this match</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.evaluation.ServedTournament.server">
+<span class="sig-name descname"><span class="pre">server</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tune_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_file=&lt;_io.TextIOWrapper</span> <span class="pre">name='&lt;stdout&gt;'</span> <span class="pre">mode='w'</span> <span class="pre">encoding='utf-8'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sleep_seconds=10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.evaluation.ServedTournament.server" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 
 
