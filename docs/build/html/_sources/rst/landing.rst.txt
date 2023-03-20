@@ -11,11 +11,11 @@
       </video>
     </center>
 
-**Quick links:** `Github <https://github.com/pufferai/pufferlib>`_ | `Baselines <https://api.wandb.ai/links/jsuarez/wue9qkr0>`_ | `Discord <https://discord.gg/spT4huaGYV>`_ | `Twitter <https://twitter.com/jsuarez5341>`_
+**Quick links:** `Github <https://github.com/pufferai/pufferlib>`_ | `Baselines <https://api.wandb.ai/links/jsuarez/wue9qkr0>`_ | `Discord <https://discord.gg/puffer>`_ | `Twitter <https://twitter.com/jsuarez5341>`_
 
 You have an environment, a PyTorch model, and a reinforcement learning framework that are designed to work together but don't. PufferLib is a wrapper layer that makes RL on complex game environments as simple as RL on Atari. You write a native PyTorch network and a short binding for your environment; PufferLib takes care of the rest.
 
-Join our community `Discord <https://discord.gg/spT4huaGYV>`_ to get support or if you are interested in contributing to the project.
+Join our community `Discord <https://discord.gg/puffer>`_ to get support or if you are interested in contributing to the project.
 
 | :ref:`Minimal CleanRL Demo` Neural MMO on minimally modified CleanRL. Use as an introductory reference.
 | :ref:`Custom CleanRL Demo` Neural MMO on our customized version of CleanRL. Use as a template for your projects.
@@ -69,7 +69,7 @@ Authorship
 Contributing
 ############
 
-We welcome contributions from the community. Please communicate with us on `Discord <https://discord.gg/spT4huaGYV>`_ before opening an issue or pull request on Github. We are particularly interested in contributions to the following areas:
+We welcome contributions from the community. Please communicate with us on `Discord <https://discord.gg/puffer>`_ before opening an issue or pull request on Github. We are particularly interested in contributions to the following areas:
 
 | **Framework bindings:** We currently support CleanRL and RLLib. We would like to add bindings for other frameworks such as Stable Baselines and Tianshou.
 | **Environment bindings:** We would like to improve our test coverage by adding bindings for additional environments. This also requires specifying any external dependencies in PufferTank.

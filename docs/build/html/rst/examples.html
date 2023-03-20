@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Environment Registry &mdash; PufferLib v0.2.0 0.2.0 documentation</title>
+  <title>Environment Registry &mdash; PufferLib v0.2.1 0.2.1 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.0
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.1
           
 
           
@@ -133,7 +133,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.2.0</a>
+          <a href="../index.html">PufferLib v0.2.1</a>
         
       </nav>
 
@@ -339,6 +339,7 @@
 <h1>Minimal CleanRL Demo<a class="headerlink" href="#minimal-cleanrl-demo" title="Permalink to this heading">¶</a></h1>
 <p>Neural MMO on a minimally modified CleanRL. PufferLib provides a compatible network and a more robust environment vectorization layer. Use as an introductory reference</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Minimally modified version of CleanRL ppo_lstm_atari.py to work with PufferLib.</span>
+<span class="c1"># Note that this demo requires the latest CarperAI version of nmmo-environment</span>
 <span class="c1"># We suggest our main cleanrl_ppo_lstm.py demo for most projects</span>
 
 <span class="c1"># docs and experiment results can be found at https://docs.cleanrl.dev/rl-algorithms/ppo/#ppo_atari_lstmpy</span>
@@ -470,7 +471,7 @@
 <span class="sd">        an action decoder, and a critic function. If you use our LSTM support, it will</span>
 <span class="sd">        be added between the encoder and the decoder.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">binding</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">raw_single_observation_space</span> <span class="o">=</span> <span class="n">binding</span><span class="o">.</span><span class="n">raw_single_observation_space</span>
 
         <span class="c1"># A dumb example encoder that applies a linear layer to agent self features</span>
@@ -536,9 +537,7 @@
     <span class="n">envs</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
 
     <span class="n">agent</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">frameworks</span><span class="o">.</span><span class="n">cleanrl</span><span class="o">.</span><span class="n">make_policy</span><span class="p">(</span>
-        <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">nmmo</span><span class="o">.</span><span class="n">Policy</span><span class="p">,</span>
-        <span class="n">lstm_layers</span><span class="o">=</span><span class="mi">1</span>
-    <span class="p">)(</span><span class="n">binding</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">Agent</span><span class="p">,</span> <span class="n">lstm_layers</span><span class="o">=</span><span class="mi">1</span><span class="p">)(</span><span class="n">binding</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 
     <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">learning_rate</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
 
@@ -1063,7 +1062,7 @@
     <span class="k">assert</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="s1">&#39;nmmo nethack breakout atari&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 
     <span class="n">cuda</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span>
-    <span class="n">track</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># WandB tracking</span>
+    <span class="n">track</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># WandB tracking</span>
 
     <span class="c1"># Note: the dependencies for these demos are not currently compatible</span>
     <span class="c1"># Run pip install -e .[atari] or .[nethack] to install the dependencies for a specific demo </span>
@@ -1137,7 +1136,7 @@
                 <span class="n">num_envs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
                 <span class="n">num_buffers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
                 <span class="n">cuda</span><span class="o">=</span><span class="n">cuda</span><span class="p">,</span>
-                <span class="n">total_timesteps</span><span class="o">=</span><span class="mi">30_000</span><span class="p">,</span>
+                <span class="n">total_timesteps</span><span class="o">=</span><span class="mi">10_000_000</span><span class="p">,</span>
                 <span class="n">track</span><span class="o">=</span><span class="n">track</span><span class="p">,</span>
                 <span class="n">wandb_project_name</span><span class="o">=</span><span class="s1">&#39;pufferlib&#39;</span><span class="p">,</span>
                 <span class="n">wandb_entity</span><span class="o">=</span><span class="s1">&#39;jsuarez&#39;</span><span class="p">,</span>
