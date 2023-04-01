@@ -129,6 +129,7 @@
 <p class="caption" role="heading"><span class="caption-text">Blog</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blog.html#pufferagi-the-world-s-first-artificially-intelligent-pufferfish">PufferAGI: The World’s First Artificially Intelligent Pufferfish</a></li>
 </ul>
 
             
@@ -342,17 +343,14 @@ No-op is assumed to be action 0.</p>
 <span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span></dt>
 <dd><p>Resets the environment to an initial state and returns an initial
 observation.</p>
-<p>This method should also reset the environment’s random number
-generator(s) if <cite>seed</cite> is an integer or if the environment has not
-yet initialized a random number generator. If the environment already
-has a random number generator and <cite>reset</cite> is called with <cite>seed=None</cite>,
-the RNG should not be reset.
-Moreover, <cite>reset</cite> should (in the typical use case) be called with an
-integer seed right after initialization and then never again.</p>
+<p>Note that this function should not reset the environment’s random
+number generator(s); random variables in the environment’s state should
+be sampled independently between multiple calls to <cite>reset()</cite>. In other
+words, each call of <cite>reset()</cite> should yield an environment suitable for
+a new episode, independent of previous episodes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>the initial observation.
-info (optional dictionary): a dictionary containing extra information, this is only returned if return_info is set to true</p>
+<dd class="field-odd"><p>the initial observation.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>observation (object)</p>
@@ -444,18 +442,6 @@ It should be of shape (batch, …, sum(action_space.nvec))</p>
 </section>
 <section id="butterfly">
 <h2>Butterfly<a class="headerlink" href="#butterfly" title="Permalink to this heading">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.butterfly.</span></span><span class="sig-name descname"><span class="pre">make_knights_archers_zombies_v10_binding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd><p>Knights Archers Zombies binding creation function</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.butterfly.</span></span><span class="sig-name descname"><span class="pre">make_cooperative_pong_v5_binding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd><p>Cooperative Pong binding creation function</p>
-</dd></dl>
-
 </section>
 <section id="classic-control">
 <h2>Classic Control<a class="headerlink" href="#classic-control" title="Permalink to this heading">¶</a></h2>
@@ -481,12 +467,6 @@ their observation spaces until after they are created.</p>
 </section>
 <section id="magent">
 <h2>MAgent<a class="headerlink" href="#magent" title="Permalink to this heading">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.magent.</span></span><span class="sig-name descname"><span class="pre">make_battle_v4_binding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd><p>MAgent Battle binding creation function</p>
-</dd></dl>
-
 </section>
 <section id="microrts">
 <h2>MicroRTS<a class="headerlink" href="#microrts" title="Permalink to this heading">¶</a></h2>

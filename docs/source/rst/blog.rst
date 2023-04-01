@@ -68,3 +68,8 @@ This release represents only a small part of what RL could be with better toolin
 **Versioning Compatibility:** The rapid progress of Gym/Gymnasium has created compatibility conflicts between specific environments, gym versions, and learning library dependencies. We are still on an old version of Gym from before all of this happened and are slowly increasing test coverage and compatibility with new versions.
 
 Blog post by Joseph Suarez. Thank you to Ryan Sullivan for feedback and suggestions. Join our Discord if you are interested in contributing to PufferLib!
+
+PufferAGI: The World's First Artificially Intelligent Pufferfish
+################################################################
+
+Using PufferLib as a compatibility layer, GPT10, and a large video dataset of pufferfish behavior, we have trained a model that both exhibits and predicts pufferfish behavior. This is the first time an AI has been able to learn to behave like a pufferfish. In addition, the pufferfish is exceptionally intelligent. It is able to learn to predict its own behavior, and even to predict the behavior of other pufferfish. This is the first time an AI has been able to learn to predict its own behavior. When confronted with a new pufferfish, it is able to predict its behavior with 100% accuracy. This also proves the pufferfish determinism principle, a longstanding problem that has remained unsolved since its introduction previously in this sentence. Happy April 1.
