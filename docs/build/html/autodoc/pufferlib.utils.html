@@ -4,11 +4,11 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pufferlib.utils module &mdash; PufferLib v0.2.1 0.2.1 documentation</title>
+  <title>pufferlib.utils module &mdash; PufferLib v0.3.0 0.3.0 documentation</title>
   
 
   
@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
 
   
   
@@ -37,7 +38,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/design-tabs.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -57,7 +58,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.1
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.3.0
           
 
           
@@ -116,7 +117,6 @@
 <p class="caption" role="heading"><span class="caption-text">Blog</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/blog.html#pufferagi-the-world-s-first-artificially-intelligent-pufferfish">PufferAGI: The World’s First Artificially Intelligent Pufferfish</a></li>
 </ul>
 
             
@@ -132,7 +132,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.2.1</a>
+          <a href="../index.html">PufferLib v0.3.0</a>
         
       </nav>
 
@@ -210,6 +210,11 @@ set self.__traceback__ to tb and return self.</p>
 <dd></dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="pufferlib.utils.make_zeros_like">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.utils.</span></span><span class="sig-name descname"><span class="pre">make_zeros_like</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.utils.make_zeros_like" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="pufferlib.utils.is_dict_space">
 <span class="sig-prename descclassname"><span class="pre">pufferlib.utils.</span></span><span class="sig-name descname"><span class="pre">is_dict_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.utils.is_dict_space" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -239,6 +244,11 @@ set self.__traceback__ to tb and return self.</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.utils.RandomState.probabilistic_round">
+<span class="sig-name descname"><span class="pre">probabilistic_round</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.utils.RandomState.probabilistic_round" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.utils.RandomState.sample">
 <span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.utils.RandomState.sample" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -254,6 +264,11 @@ set self.__traceback__ to tb and return self.</p>
 <dt class="sig sig-object py" id="pufferlib.utils.Profiler">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.utils.</span></span><span class="sig-name descname"><span class="pre">Profiler</span></span><a class="headerlink" href="#pufferlib.utils.Profiler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="pufferlib.utils.Profiler.delta">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delta</span></span><a class="headerlink" href="#pufferlib.utils.Profiler.delta" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.utils.Profiler.tik">
 <span class="sig-name descname"><span class="pre">tik</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.utils.Profiler.tik" title="Permalink to this definition">¶</a></dt>
@@ -269,6 +284,11 @@ set self.__traceback__ to tb and return self.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pufferlib.utils.profile">
 <span class="sig-prename descclassname"><span class="pre">pufferlib.utils.</span></span><span class="sig-name descname"><span class="pre">profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.utils.profile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pufferlib.utils.aggregate_profilers">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.utils.</span></span><span class="sig-name descname"><span class="pre">aggregate_profilers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profiler_dicts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.utils.aggregate_profilers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py class">

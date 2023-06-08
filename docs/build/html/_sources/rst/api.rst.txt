@@ -115,9 +115,19 @@ PufferLib model API and default policies
 Vectorization
 #############
 
-Ray-backed vectorization for PufferLib-wrapped environments
+Distributed backends for PufferLib-wrapped environments
 
-.. autoclass:: pufferlib.vectorization.RayVecEnv
+.. autoclass:: pufferlib.vectorization.serial.VecEnv
+   :members:
+   :undoc-members:
+   :noindex:
+
+.. autoclass:: pufferlib.vectorization.multiprocessing.VecEnv
+   :members:
+   :undoc-members:
+   :noindex:
+
+.. autoclass:: pufferlib.vectorization.ray.VecEnv
    :members:
    :undoc-members:
    :noindex:

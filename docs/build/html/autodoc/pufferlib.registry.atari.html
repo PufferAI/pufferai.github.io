@@ -4,11 +4,11 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pufferlib.registry.atari module &mdash; PufferLib v0.2.1 0.2.1 documentation</title>
+  <title>pufferlib.registry.atari module &mdash; PufferLib v0.3.0 0.3.0 documentation</title>
   
 
   
@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
 
   
   
@@ -37,7 +38,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/design-tabs.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -57,7 +58,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.1
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.3.0
           
 
           
@@ -116,7 +117,6 @@
 <p class="caption" role="heading"><span class="caption-text">Blog</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/blog.html#pufferagi-the-world-s-first-artificially-intelligent-pufferfish">PufferAGI: The World’s First Artificially Intelligent Pufferfish</a></li>
 </ul>
 
             
@@ -132,7 +132,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.2.1</a>
+          <a href="../index.html">PufferLib v0.3.0</a>
         
       </nav>
 
@@ -205,14 +205,17 @@ No-op is assumed to be action 0.</p>
 <span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#pufferlib.registry.atari.NoopResetEnv.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resets the environment to an initial state and returns an initial
 observation.</p>
-<p>Note that this function should not reset the environment’s random
-number generator(s); random variables in the environment’s state should
-be sampled independently between multiple calls to <cite>reset()</cite>. In other
-words, each call of <cite>reset()</cite> should yield an environment suitable for
-a new episode, independent of previous episodes.</p>
+<p>This method should also reset the environment’s random number
+generator(s) if <cite>seed</cite> is an integer or if the environment has not
+yet initialized a random number generator. If the environment already
+has a random number generator and <cite>reset</cite> is called with <cite>seed=None</cite>,
+the RNG should not be reset.
+Moreover, <cite>reset</cite> should (in the typical use case) be called with an
+integer seed right after initialization and then never again.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>the initial observation.</p>
+<dd class="field-odd"><p>the initial observation.
+info (optional dictionary): a dictionary containing extra information, this is only returned if return_info is set to true</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>observation (object)</p>
@@ -220,9 +223,9 @@ a new episode, independent of previous episodes.</p>
 </dl>
 </dd></dl>
 
-<dl class="py attribute">
+<dl class="py property">
 <dt class="sig sig-object py" id="pufferlib.registry.atari.NoopResetEnv.action_space">
-<span class="sig-name descname"><span class="pre">action_space</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pufferlib.registry.atari.NoopResetEnv.action_space" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">action_space</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Space</span><span class="p"><span class="pre">[</span></span><span class="pre">ActType</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pufferlib.registry.atari.NoopResetEnv.action_space" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -238,19 +241,35 @@ a new episode, independent of previous episodes.</p>
 garbage collected or when the program exits.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="pufferlib.registry.atari.NoopResetEnv.compute_reward">
-<span class="sig-name descname"><span class="pre">compute_reward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">achieved_goal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired_goal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.atari.NoopResetEnv.compute_reward" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
+<dl class="py property">
 <dt class="sig sig-object py" id="pufferlib.registry.atari.NoopResetEnv.metadata">
-<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'render.modes':</span> <span class="pre">[]}</span></em><a class="headerlink" href="#pufferlib.registry.atari.NoopResetEnv.metadata" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#pufferlib.registry.atari.NoopResetEnv.metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>dict() -&gt; new empty dictionary
+dict(mapping) -&gt; new dictionary initialized from a mapping object’s</p>
+<blockquote>
+<div><p>(key, value) pairs</p>
+</div></blockquote>
+<dl>
+<dt>dict(iterable) -&gt; new dictionary initialized as if via:</dt><dd><p>d = {}
+for k, v in iterable:</p>
+<blockquote>
+<div><p>d[k] = v</p>
+</div></blockquote>
+</dd>
+<dt>dict(<a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs) -&gt; new dictionary initialized with the name=value pairs</dt><dd><p>in the keyword argument list.  For example:  dict(one=1, two=2)</p>
+</dd>
+</dl>
+</dd></dl>
 
-<dl class="py attribute">
+<dl class="py property">
+<dt class="sig sig-object py" id="pufferlib.registry.atari.NoopResetEnv.np_random">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">np_random</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">RandomNumberGenerator</span></em><a class="headerlink" href="#pufferlib.registry.atari.NoopResetEnv.np_random" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes the np_random field if not done already.</p>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="pufferlib.registry.atari.NoopResetEnv.observation_space">
-<span class="sig-name descname"><span class="pre">observation_space</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pufferlib.registry.atari.NoopResetEnv.observation_space" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">observation_space</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Space</span></em><a class="headerlink" href="#pufferlib.registry.atari.NoopResetEnv.observation_space" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -258,8 +277,8 @@ garbage collected or when the program exits.</p>
 <span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'human'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.atari.NoopResetEnv.render" title="Permalink to this definition">¶</a></dt>
 <dd><p>Renders the environment.</p>
 <p>The set of supported modes varies per environment. (And some
-environments do not support rendering at all.) By convention,
-if mode is:</p>
+third-party environments may not support rendering at all.)
+By convention, if mode is:</p>
 <ul class="simple">
 <li><p>human: render to the current display or terminal and
 return nothing. Usually for human consumption.</p></li>
@@ -273,7 +292,7 @@ and ANSI escape sequences (e.g. for colors).</p></li>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <dl class="simple">
-<dt>Make sure that your class’s metadata ‘render.modes’ key includes</dt><dd><p>the list of supported modes. It’s recommended to call super()
+<dt>Make sure that your class’s metadata ‘render_modes’ key includes</dt><dd><p>the list of supported modes. It’s recommended to call super()
 in implementations to use the functionality of this method.</p>
 </dd>
 </dl>
@@ -285,7 +304,7 @@ in implementations to use the functionality of this method.</p>
 </dl>
 <p>Example:</p>
 <dl>
-<dt>class MyEnv(Env):</dt><dd><p>metadata = {‘render.modes’: [‘human’, ‘rgb_array’]}</p>
+<dt>class MyEnv(Env):</dt><dd><p>metadata = {‘render_modes’: [‘human’, ‘rgb_array’]}</p>
 <dl class="simple">
 <dt>def render(self, mode=’human’):</dt><dd><dl class="simple">
 <dt>if mode == ‘rgb_array’:</dt><dd><p>return np.array(…) # return RGB frame suitable for video</p>
@@ -301,10 +320,14 @@ in implementations to use the functionality of this method.</p>
 </dl>
 </dd></dl>
 
-<dl class="py attribute">
+<dl class="py property">
 <dt class="sig sig-object py" id="pufferlib.registry.atari.NoopResetEnv.reward_range">
-<span class="sig-name descname"><span class="pre">reward_range</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(-inf,</span> <span class="pre">inf)</span></em><a class="headerlink" href="#pufferlib.registry.atari.NoopResetEnv.reward_range" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reward_range</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">SupportsFloat</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">SupportsFloat</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pufferlib.registry.atari.NoopResetEnv.reward_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Built-in immutable sequence.</p>
+<p>If no argument is given, the constructor returns an empty tuple.
+If iterable is specified the tuple is initialized from iterable’s items.</p>
+<p>If the argument is a tuple, the return value is the same object.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.registry.atari.NoopResetEnv.seed">
@@ -340,7 +363,7 @@ this won’t be true if seed=None, for example.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pufferlib.registry.atari.NoopResetEnv.step">
-<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.atari.NoopResetEnv.step" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ActType</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ObsType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pufferlib.registry.atari.NoopResetEnv.step" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run one timestep of the environment’s dynamics. When end of
 episode is reached, you are responsible for calling <cite>reset()</cite>
 to reset this environment’s state.</p>
@@ -353,7 +376,7 @@ to reset this environment’s state.</p>
 <dd class="field-even"><p>agent’s observation of the current environment
 reward (float) : amount of reward returned after previous action
 done (bool): whether the episode has ended, in which case further step() calls will return undefined results
-info (dict): contains auxiliary diagnostic information (helpful for debugging, and sometimes learning)</p>
+info (dict): contains auxiliary diagnostic information (helpful for debugging, logging, and sometimes learning)</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>observation (object)</p>
@@ -363,7 +386,7 @@ info (dict): contains auxiliary diagnostic information (helpful for debugging, a
 
 <dl class="py property">
 <dt class="sig sig-object py" id="pufferlib.registry.atari.NoopResetEnv.unwrapped">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unwrapped</span></span><a class="headerlink" href="#pufferlib.registry.atari.NoopResetEnv.unwrapped" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unwrapped</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Env</span></em><a class="headerlink" href="#pufferlib.registry.atari.NoopResetEnv.unwrapped" title="Permalink to this definition">¶</a></dt>
 <dd><p>Completely unwrap this env.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -373,6 +396,34 @@ info (dict): contains auxiliary diagnostic information (helpful for debugging, a
 <dd class="field-even"><p>gym.Env</p>
 </dd>
 </dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pufferlib.registry.atari.AtariFeaturizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.registry.atari.</span></span><span class="sig-name descname"><span class="pre">AtariFeaturizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">teams</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.atari.AtariFeaturizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pufferlib.emulation.html#pufferlib.emulation.Postprocessor" title="pufferlib.emulation.Postprocessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Postprocessor</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.registry.atari.AtariFeaturizer.features">
+<span class="sig-name descname"><span class="pre">features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.atari.AtariFeaturizer.features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default featurizer pads observations to max team size</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.registry.atari.AtariFeaturizer.actions">
+<span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.atari.AtariFeaturizer.actions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.registry.atari.AtariFeaturizer.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">team_obs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.atari.AtariFeaturizer.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.registry.atari.AtariFeaturizer.rewards">
+<span class="sig-name descname"><span class="pre">rewards</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">team_rewards</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_dones</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_infos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.registry.atari.AtariFeaturizer.rewards" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default reward shaper sums team rewards</p>
 </dd></dl>
 
 </dd></dl>

@@ -4,11 +4,11 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Emulation &mdash; PufferLib v0.2.1 0.2.1 documentation</title>
+  <title>Emulation &mdash; PufferLib v0.3.0 0.3.0 documentation</title>
   
 
   
@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
 
   
   
@@ -37,7 +38,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/design-tabs.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -59,7 +60,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.1
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.3.0
           
 
           
@@ -129,7 +130,6 @@
 <p class="caption" role="heading"><span class="caption-text">Blog</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
-<li class="toctree-l1"><a class="reference internal" href="blog.html#pufferagi-the-world-s-first-artificially-intelligent-pufferfish">PufferAGI: The World’s First Artificially Intelligent Pufferfish</a></li>
 </ul>
 
             
@@ -145,7 +145,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.2.1</a>
+          <a href="../index.html">PufferLib v0.3.0</a>
         
       </nav>
 
@@ -207,7 +207,111 @@
 <p>This is the core feature of PufferLib - bind your environment for compatibility with RL libraries</p>
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">Binding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_cls=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_creator=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_args=[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_kwargs={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_name=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_parser=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_shaper=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_obs=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_atn=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_horizon=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_num_agents=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_env_prints=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_episode_statistics=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">Postprocessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">teams</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_id</span></span></em><span class="sig-paren">)</span></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">team_obs</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Default featurizer pads observations to max team size</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">rewards</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">team_rewards</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_dones</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_infos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Default reward shaper sums team rewards</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">GymToPettingZooParallelWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Env</span></span></em><span class="sig-paren">)</span></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">possible_agents</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">AgentID</span><span class="p"><span class="pre">]</span></span></em></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Resets the environment and returns a dictionary of observations (keyed by the agent name)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>receives a dictionary of actions keyed by the agent name.
+Returns the observation dictionary, reward dictionary, done dictionary,
+and info dictionary, where each dictionary is keyed by the agent.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">observation_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Takes in agent and returns the observation space for that agent.</p>
+<p>MUST return the same value for the same agent name</p>
+<p>Default implementation is to return the observation_spaces dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">action_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Takes in agent and returns the action space for that agent.</p>
+<p>MUST return the same value for the same agent name</p>
+<p>Default implementation is to return the action_spaces dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'human'</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Displays a rendered frame from the environment, if supported.
+Alternate render modes in the default environments are <cite>‘rgb_array’</cite>
+which returns a numpy array and is supported by all environments outside
+of classic, and <cite>‘ansi’</cite> which returns the strings printed
+(specific to classic environments).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Closes the rendering window.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Reseeds the environment (making it deterministic).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">agents</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">AgentID</span><span class="p"><span class="pre">]</span></span></em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">make_puffer_env_cls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scope</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw_obs</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">Binding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_cls=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_creator=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_args=[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_kwargs={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_name=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postprocessor_cls=&lt;class</span> <span class="pre">'pufferlib.emulation.Postprocessor'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postprocessor_args=[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postprocessor_kwargs={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">teams=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_obs=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_atn=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_horizon=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_num_agents=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_env_prints=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_episode_statistics=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>PufferLib’s core Binding class.</p>
 <p>Wraps the provided Gym or PettingZoo environment in a PufferEnv that
 behaves like a normal PettingZoo environment with several simplifications:</p>
@@ -234,8 +338,7 @@ observation and action spaces.</p>
 <li><p><strong>default_args</strong> – Default arguments for binding.env_creator and binding.raw_env_creator</p></li>
 <li><p><strong>default_kwargs</strong> – Default keyword arguments for binding.env_creator and binding.raw_env_creator</p></li>
 <li><p><strong>env_name</strong> – Name of the environment</p></li>
-<li><p><strong>feature_parser</strong> – Feature parser to use</p></li>
-<li><p><strong>reward_shaper</strong> – Reward shaper to use</p></li>
+<li><p><strong>postprocessor_cls</strong> – Postprocessor subclass to use</p></li>
 <li><p><strong>emulate_flat_obs</strong> – Whether the observation space requires flattening</p></li>
 <li><p><strong>emulate_flat_atn</strong> – Whether the action space requires flattening</p></li>
 <li><p><strong>emulate_const_horizon</strong> – Fixed max horizon for resets, None if not applicable</p></li>
@@ -258,6 +361,12 @@ observation and action spaces.</p>
 <dd><p>Returns the original, unwrapped env_creator function used to create this binding</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">pz_env_creator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Returns the partially wrapped PettingZoo env_creator function created by this binding</p>
+</dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">env_cls</span></span></dt>
@@ -272,20 +381,6 @@ observation and action spaces.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_observation_space</span></span></dt>
-<dd><p>Returns the wrapped, flat observation space of a single agent.</p>
-<p>PufferLib currently assumes that all agents share the same observation space</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_action_space</span></span></dt>
-<dd><p>Returns the wrapped, flat action space of a single agent.</p>
-<p>PufferLib currently assumes that all agents share the same action space</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_single_observation_space</span></span></dt>
 <dd><p>Returns the unwrapped, structured observation space of a single agent.</p>
 <p>PufferLib currently assumes that all agents share the same observation space</p>
@@ -293,8 +388,29 @@ observation and action spaces.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">featurized_single_observation_space</span></span></dt>
+<dd><p>Returns the wrapped, structured, featurized observation space of a single agent.</p>
+<p>PufferLib currently assumes that all agents share the same observation space</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_observation_space</span></span></dt>
+<dd><p>Returns the wrapped, flat observation space of a single agent.</p>
+<p>PufferLib currently assumes that all agents share the same observation space</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_single_action_space</span></span></dt>
 <dd><p>Returns the unwrapped, structured action space of a single agent.</p>
+<p>PufferLib currently assumes that all agents share the same action space</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_action_space</span></span></dt>
+<dd><p>Returns the wrapped, flat action space of a single agent.</p>
 <p>PufferLib currently assumes that all agents share the same action space</p>
 </dd></dl>
 
@@ -310,14 +426,24 @@ observation and action spaces.</p>
 <dd><p>Returns the environment name</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">unpack_batched_obs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packed_obs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Unpack a batch of observations into the original observation space</p>
+<p>Call this funtion in the forward pass of your network</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">pack_obs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">unpack_batched_obs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs_space</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">packed_obs</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Unpack a batch of observations into the original observation space</p>
-<p>Call this funtion in the forward pass of your network</p>
-</dd></dl>
+<span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">unpack_batched_obs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flat_space</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">packed_obs</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
 
 </section>
 <section id="registry">
@@ -343,19 +469,33 @@ No-op is assumed to be action 0.</p>
 <span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span></dt>
 <dd><p>Resets the environment to an initial state and returns an initial
 observation.</p>
-<p>Note that this function should not reset the environment’s random
-number generator(s); random variables in the environment’s state should
-be sampled independently between multiple calls to <cite>reset()</cite>. In other
-words, each call of <cite>reset()</cite> should yield an environment suitable for
-a new episode, independent of previous episodes.</p>
+<p>This method should also reset the environment’s random number
+generator(s) if <cite>seed</cite> is an integer or if the environment has not
+yet initialized a random number generator. If the environment already
+has a random number generator and <cite>reset</cite> is called with <cite>seed=None</cite>,
+the RNG should not be reset.
+Moreover, <cite>reset</cite> should (in the typical use case) be called with an
+integer seed right after initialization and then never again.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>the initial observation.</p>
+<dd class="field-odd"><p>the initial observation.
+info (optional dictionary): a dictionary containing extra information, this is only returned if return_info is set to true</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>observation (object)</p>
 </dd>
 </dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.registry.atari.</span></span><span class="sig-name descname"><span class="pre">AtariFeaturizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">teams</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_id</span></span></em><span class="sig-paren">)</span></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Default featurizer pads observations to max team size</p>
 </dd></dl>
 
 </dd></dl>
@@ -442,6 +582,18 @@ It should be of shape (batch, …, sum(action_space.nvec))</p>
 </section>
 <section id="butterfly">
 <h2>Butterfly<a class="headerlink" href="#butterfly" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.butterfly.</span></span><span class="sig-name descname"><span class="pre">make_knights_archers_zombies_v10_binding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Knights Archers Zombies binding creation function</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.butterfly.</span></span><span class="sig-name descname"><span class="pre">make_cooperative_pong_v5_binding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Cooperative Pong binding creation function</p>
+</dd></dl>
+
 </section>
 <section id="classic-control">
 <h2>Classic Control<a class="headerlink" href="#classic-control" title="Permalink to this heading">¶</a></h2>
@@ -467,6 +619,12 @@ their observation spaces until after they are created.</p>
 </section>
 <section id="magent">
 <h2>MAgent<a class="headerlink" href="#magent" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.registry.magent.</span></span><span class="sig-name descname"><span class="pre">make_battle_v4_binding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>MAgent Battle binding creation function</p>
+</dd></dl>
+
 </section>
 <section id="microrts">
 <h2>MicroRTS<a class="headerlink" href="#microrts" title="Permalink to this heading">¶</a></h2>
@@ -508,11 +666,7 @@ It is called on the output of the recurrent cell (or, if no recurrent cell,
 the output of encode_observations)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>binding</strong> – A pufferlib.emulation.Binding object</p></li>
-<li><p><strong>input_size</strong> – The size of the input to the recurrent cell</p></li>
-<li><p><strong>hidden_size</strong> – The size of the output of the recurrent cell</p></li>
-</ul>
+<dd class="field-odd"><p><strong>binding</strong> – A pufferlib.emulation.Binding object</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -699,11 +853,7 @@ It is called on the output of the recurrent cell (or, if no recurrent cell,
 the output of encode_observations)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>binding</strong> – A pufferlib.emulation.Binding object</p></li>
-<li><p><strong>input_size</strong> – The size of the input to the recurrent cell</p></li>
-<li><p><strong>hidden_size</strong> – The size of the output of the recurrent cell</p></li>
-</ul>
+<dd class="field-odd"><p><strong>binding</strong> – A pufferlib.emulation.Binding object</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -791,10 +941,131 @@ linear layers to decode actions. The value function is a single linear layer.</p
 </section>
 <section id="vectorization">
 <h1>Vectorization<a class="headerlink" href="#vectorization" title="Permalink to this heading">¶</a></h1>
-<p>Ray-backed vectorization for PufferLib-wrapped environments</p>
+<p>Distributed backends for PufferLib-wrapped environments</p>
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.vectorization.</span></span><span class="sig-name descname"><span class="pre">RayVecEnv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">binding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">envs_per_worker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.vectorization.serial.</span></span><span class="sig-name descname"><span class="pre">VecEnv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">binding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">envs_per_worker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_observation_space</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_action_space</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">profile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">async_reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">recv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.vectorization.multiprocessing.</span></span><span class="sig-name descname"><span class="pre">VecEnv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">binding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">envs_per_worker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Creates env_per_worker serial environments on each of num_workers remote processes</p>
+<p>Synchronous API: Use env.reset() and env.step(actions)</p>
+<p>Asynchronous API: Use env.async_reset(), env.send(actions), and env.recv(actions)
+This confers no advantage unless you are using multiple VecEnvs in a double-buffered
+or multi-buffered configuration. See the PufferLib custom CleanRL demo for an example.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>binding</strong> – A pufferlib.emulation.Binding object</p></li>
+<li><p><strong>num_workers</strong> – The number of remote processes to create</p></li>
+<li><p><strong>envs_per_worker</strong> – The number of serial environments to create on each remote process</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_observation_space</span></span></dt>
+<dd><p>Convenience function; returns self.binding.single_observation_space</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_action_space</span></span></dt>
+<dd><p>Convenience function; returns self.binding.single_action_space</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">profile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Returns profiling timers from all remote environments</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">async_reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Asynchronously reset environments. Does not block.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">recv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Send observations to remote async environments. Does not block.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Syncronously resets remote environments. Blocks.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Syncronously steps remote environments. Blocks.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.vectorization.ray.</span></span><span class="sig-name descname"><span class="pre">VecEnv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">binding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">envs_per_worker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Creates env_per_worker serial environments on each of num_workers remote processes</p>
 <p>Synchronous API: Use env.reset() and env.step(actions)</p>
 <p>Asynchronous API: Use env.async_reset(), env.send(actions), and env.recv(actions)
@@ -835,13 +1106,7 @@ or multi-buffered configuration. See the PufferLib custom CleanRL demo for an ex
 
 <dl class="py method">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Sets the seed for all remote environments</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">async_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<span class="sig-name descname"><span class="pre">async_reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Asynchronously reset environments. Does not block.</p>
 </dd></dl>
 
@@ -859,7 +1124,7 @@ or multi-buffered configuration. See the PufferLib custom CleanRL demo for an ex
 
 <dl class="py method">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Syncronously resets remote environments. Blocks.</p>
 </dd></dl>
 
@@ -877,13 +1142,15 @@ or multi-buffered configuration. See the PufferLib custom CleanRL demo for an ex
 <p>Wraps your policies for use with CleanRL</p>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.frameworks.cleanrl.</span></span><span class="sig-name descname"><span class="pre">make_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lstm_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">pufferlib.frameworks.cleanrl.</span></span><span class="sig-name descname"><span class="pre">make_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recurrent_cls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.nn.LSTM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recurrent_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[512,</span> <span class="pre">128]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recurrent_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'num_layers':</span> <span class="pre">1}</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Wrap a PyTorch model for use with CleanRL</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>policy_cls</strong> – A pufferlib.models.Policy subclass that implements the PufferLib model API</p></li>
-<li><p><strong>lstm_layers</strong> – The number of LSTM layers to use. If 0, no LSTM is used</p></li>
+<li><p><strong>recurrent_cls</strong> – Recurrent cell class to use. Defaults to torch.nn.LSTM.</p></li>
+<li><p><strong>recurrent_args</strong> – Args to pass to recurrent_cls. Defaults to 512, 128 for LSTM.</p></li>
+<li><p><strong>recurrent_kwargs</strong> – Kwargs to pass to recurrent_cls. Defaults to num_layers: 1 for LSTM. Set num_layers to 0 to disable the recurrent cell.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

@@ -4,11 +4,11 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pufferlib.registry package &mdash; PufferLib v0.2.1 0.2.1 documentation</title>
+  <title>pufferlib.registry package &mdash; PufferLib v0.3.0 0.3.0 documentation</title>
   
 
   
@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
 
   
   
@@ -37,7 +38,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/design-tabs.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -57,7 +58,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.1
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.3.0
           
 
           
@@ -116,7 +117,6 @@
 <p class="caption" role="heading"><span class="caption-text">Blog</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/blog.html#pufferagi-the-world-s-first-artificially-intelligent-pufferfish">PufferAGI: The World’s First Artificially Intelligent Pufferfish</a></li>
 </ul>
 
             
@@ -132,7 +132,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.2.1</a>
+          <a href="../index.html">PufferLib v0.3.0</a>
         
       </nav>
 
@@ -188,125 +188,15 @@
 <span id="pufferlib-registry-package"></span><h1>pufferlib.registry package<a class="headerlink" href="#module-pufferlib.registry" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.atari.html">pufferlib.registry.atari module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.reset"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.reset()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.action_space"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.action_space</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.class_name"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.class_name()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.close"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.close()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.compute_reward"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.compute_reward()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.metadata"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.metadata</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.observation_space"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.observation_space</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.render"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.render()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.reward_range"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.reward_range</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.seed"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.seed()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.spec"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.spec</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.step"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.step()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.NoopResetEnv.unwrapped"><code class="docutils literal notranslate"><span class="pre">NoopResetEnv.unwrapped</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.make_env"><code class="docutils literal notranslate"><span class="pre">make_env()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.make_binding"><code class="docutils literal notranslate"><span class="pre">make_binding()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.layer_init"><code class="docutils literal notranslate"><span class="pre">layer_init()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.Policy"><code class="docutils literal notranslate"><span class="pre">Policy</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.Policy.critic"><code class="docutils literal notranslate"><span class="pre">Policy.critic()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.Policy.encode_observations"><code class="docutils literal notranslate"><span class="pre">Policy.encode_observations()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.atari.html#pufferlib.registry.atari.Policy.decode_actions"><code class="docutils literal notranslate"><span class="pre">Policy.decode_actions()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.atari.html">pufferlib.registry.atari module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.butterfly.html">pufferlib.registry.butterfly module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.classic_control.html">pufferlib.registry.classic_control module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.classic_control.html#pufferlib.registry.classic_control.make_cartpole_binding"><code class="docutils literal notranslate"><span class="pre">make_cartpole_binding()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.griddly.html">pufferlib.registry.griddly module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.griddly.html#pufferlib.registry.griddly.make_spider_v0_binding"><code class="docutils literal notranslate"><span class="pre">make_spider_v0_binding()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.classic_control.html">pufferlib.registry.classic_control module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.griddly.html">pufferlib.registry.griddly module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.magent.html">pufferlib.registry.magent module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.microrts.html">pufferlib.registry.microrts module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.microrts.html#pufferlib.registry.microrts.make_binding"><code class="docutils literal notranslate"><span class="pre">make_binding()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.minecraft.html">pufferlib.registry.minecraft module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.minecraft.html#pufferlib.registry.minecraft.make_binding"><code class="docutils literal notranslate"><span class="pre">make_binding()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.nethack.html">pufferlib.registry.nethack module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.make_binding"><code class="docutils literal notranslate"><span class="pre">make_binding()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Policy"><code class="docutils literal notranslate"><span class="pre">Policy</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Policy.critic"><code class="docutils literal notranslate"><span class="pre">Policy.critic()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Policy.encode_observations"><code class="docutils literal notranslate"><span class="pre">Policy.encode_observations()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Policy.decode_actions"><code class="docutils literal notranslate"><span class="pre">Policy.decode_actions()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop"><code class="docutils literal notranslate"><span class="pre">Crop</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.forward"><code class="docutils literal notranslate"><span class="pre">Crop.forward()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.T_destination"><code class="docutils literal notranslate"><span class="pre">Crop.T_destination</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.add_module"><code class="docutils literal notranslate"><span class="pre">Crop.add_module()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.apply"><code class="docutils literal notranslate"><span class="pre">Crop.apply()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.bfloat16"><code class="docutils literal notranslate"><span class="pre">Crop.bfloat16()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.buffers"><code class="docutils literal notranslate"><span class="pre">Crop.buffers()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.children"><code class="docutils literal notranslate"><span class="pre">Crop.children()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.cpu"><code class="docutils literal notranslate"><span class="pre">Crop.cpu()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.cuda"><code class="docutils literal notranslate"><span class="pre">Crop.cuda()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.double"><code class="docutils literal notranslate"><span class="pre">Crop.double()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.dump_patches"><code class="docutils literal notranslate"><span class="pre">Crop.dump_patches</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.eval"><code class="docutils literal notranslate"><span class="pre">Crop.eval()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.extra_repr"><code class="docutils literal notranslate"><span class="pre">Crop.extra_repr()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.float"><code class="docutils literal notranslate"><span class="pre">Crop.float()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.get_buffer"><code class="docutils literal notranslate"><span class="pre">Crop.get_buffer()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.get_extra_state"><code class="docutils literal notranslate"><span class="pre">Crop.get_extra_state()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.get_parameter"><code class="docutils literal notranslate"><span class="pre">Crop.get_parameter()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.get_submodule"><code class="docutils literal notranslate"><span class="pre">Crop.get_submodule()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.half"><code class="docutils literal notranslate"><span class="pre">Crop.half()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.ipu"><code class="docutils literal notranslate"><span class="pre">Crop.ipu()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.load_state_dict"><code class="docutils literal notranslate"><span class="pre">Crop.load_state_dict()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.modules"><code class="docutils literal notranslate"><span class="pre">Crop.modules()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.named_buffers"><code class="docutils literal notranslate"><span class="pre">Crop.named_buffers()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.named_children"><code class="docutils literal notranslate"><span class="pre">Crop.named_children()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.named_modules"><code class="docutils literal notranslate"><span class="pre">Crop.named_modules()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.named_parameters"><code class="docutils literal notranslate"><span class="pre">Crop.named_parameters()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.parameters"><code class="docutils literal notranslate"><span class="pre">Crop.parameters()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.register_backward_hook"><code class="docutils literal notranslate"><span class="pre">Crop.register_backward_hook()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.register_buffer"><code class="docutils literal notranslate"><span class="pre">Crop.register_buffer()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.register_forward_hook"><code class="docutils literal notranslate"><span class="pre">Crop.register_forward_hook()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.register_forward_pre_hook"><code class="docutils literal notranslate"><span class="pre">Crop.register_forward_pre_hook()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.register_full_backward_hook"><code class="docutils literal notranslate"><span class="pre">Crop.register_full_backward_hook()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.register_load_state_dict_post_hook"><code class="docutils literal notranslate"><span class="pre">Crop.register_load_state_dict_post_hook()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.register_module"><code class="docutils literal notranslate"><span class="pre">Crop.register_module()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.register_parameter"><code class="docutils literal notranslate"><span class="pre">Crop.register_parameter()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.requires_grad_"><code class="docutils literal notranslate"><span class="pre">Crop.requires_grad_()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.set_extra_state"><code class="docutils literal notranslate"><span class="pre">Crop.set_extra_state()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.share_memory"><code class="docutils literal notranslate"><span class="pre">Crop.share_memory()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.state_dict"><code class="docutils literal notranslate"><span class="pre">Crop.state_dict()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.to"><code class="docutils literal notranslate"><span class="pre">Crop.to()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.to_empty"><code class="docutils literal notranslate"><span class="pre">Crop.to_empty()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.train"><code class="docutils literal notranslate"><span class="pre">Crop.train()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.type"><code class="docutils literal notranslate"><span class="pre">Crop.type()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.xpu"><code class="docutils literal notranslate"><span class="pre">Crop.xpu()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.zero_grad"><code class="docutils literal notranslate"><span class="pre">Crop.zero_grad()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nethack.html#pufferlib.registry.nethack.Crop.training"><code class="docutils literal notranslate"><span class="pre">Crop.training</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.nmmo.html">pufferlib.registry.nmmo module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.nmmo.html#pufferlib.registry.nmmo.make_binding"><code class="docutils literal notranslate"><span class="pre">make_binding()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.nmmo.html#pufferlib.registry.nmmo.Policy"><code class="docutils literal notranslate"><span class="pre">Policy</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nmmo.html#pufferlib.registry.nmmo.Policy.critic"><code class="docutils literal notranslate"><span class="pre">Policy.critic()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nmmo.html#pufferlib.registry.nmmo.Policy.encode_observations"><code class="docutils literal notranslate"><span class="pre">Policy.encode_observations()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.registry.nmmo.html#pufferlib.registry.nmmo.Policy.decode_actions"><code class="docutils literal notranslate"><span class="pre">Policy.decode_actions()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.smac.html">pufferlib.registry.smac module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.registry.smac.html#pufferlib.registry.smac.make_binding"><code class="docutils literal notranslate"><span class="pre">make_binding()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.microrts.html">pufferlib.registry.microrts module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.nethack.html">pufferlib.registry.nethack module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.nmmo.html">pufferlib.registry.nmmo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.registry.smac.html">pufferlib.registry.smac module</a></li>
 </ul>
 </div>
 </section>

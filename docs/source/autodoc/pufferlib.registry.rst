@@ -17,7 +17,6 @@ pufferlib.registry package
    pufferlib.registry.griddly
    pufferlib.registry.magent
    pufferlib.registry.microrts
-   pufferlib.registry.minecraft
    pufferlib.registry.nethack
    pufferlib.registry.nmmo
    pufferlib.registry.smac

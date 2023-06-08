@@ -4,11 +4,11 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Environment Registry &mdash; PufferLib v0.2.1 0.2.1 documentation</title>
+  <title>Environment Registry &mdash; PufferLib v0.3.0 0.3.0 documentation</title>
   
 
   
@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
 
   
   
@@ -37,7 +38,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/design-tabs.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -59,7 +60,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.1
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.3.0
           
 
           
@@ -118,7 +119,6 @@
 <p class="caption" role="heading"><span class="caption-text">Blog</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
-<li class="toctree-l1"><a class="reference internal" href="blog.html#pufferagi-the-world-s-first-artificially-intelligent-pufferfish">PufferAGI: The World’s First Artificially Intelligent Pufferfish</a></li>
 </ul>
 
             
@@ -134,7 +134,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.2.1</a>
+          <a href="../index.html">PufferLib v0.3.0</a>
         
       </nav>
 
@@ -221,7 +221,7 @@
 
 <span class="c1"># Broken in SB3</span>
 <span class="k">class</span> <span class="nc">NoopResetEnv</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">Wrapper</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Sample initial states by taking random number of no-ops on reset.</span>
 <span class="sd">    No-op is assumed to be action 0.</span>
 
@@ -250,9 +250,12 @@
                 <span class="n">obs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">obs</span>
 
+<span class="k">class</span> <span class="nc">AtariFeaturizer</span><span class="p">(</span><span class="n">pufferlib</span><span class="o">.</span><span class="n">emulation</span><span class="o">.</span><span class="n">Postprocessor</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">features</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">obs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">make_env</span><span class="p">(</span><span class="n">env_name</span><span class="p">,</span> <span class="n">framestack</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Atari creation function with default CleanRL preprocessing based on Stable Baselines3 wrappers&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Atari creation function with default CleanRL preprocessing based on Stable Baselines3 wrappers&#39;&#39;&#39;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">with</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Suppress</span><span class="p">():</span>
             <span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">env_name</span><span class="p">)</span>
@@ -274,7 +277,7 @@
 
 
 <span class="k">def</span> <span class="nf">make_binding</span><span class="p">(</span><span class="n">env_name</span><span class="p">,</span> <span class="n">framestack</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Atari binding creation function&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Atari binding creation function&#39;&#39;&#39;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">make_env</span><span class="p">(</span><span class="n">env_name</span><span class="p">,</span> <span class="n">framestack</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span>
@@ -284,23 +287,24 @@
             <span class="n">env_creator</span><span class="o">=</span><span class="n">make_env</span><span class="p">,</span>
             <span class="n">default_args</span><span class="o">=</span><span class="p">[</span><span class="n">env_name</span><span class="p">,</span> <span class="n">framestack</span><span class="p">],</span>
             <span class="n">env_name</span><span class="o">=</span><span class="n">env_name</span><span class="p">,</span>
+            <span class="n">postprocessor_cls</span><span class="o">=</span><span class="n">AtariFeaturizer</span><span class="p">,</span>
             <span class="n">emulate_flat_atn</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">record_episode_statistics</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">layer_init</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">bias_const</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;CleanRL&#39;s default layer initialization&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;CleanRL&#39;s default layer initialization&#39;&#39;&#39;</span>
     <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">orthogonal_</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">std</span><span class="p">)</span>
     <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">constant_</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span> <span class="n">bias_const</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">layer</span>
 
 <span class="k">class</span> <span class="nc">Policy</span><span class="p">(</span><span class="n">pufferlib</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Policy</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binding</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">framestack</span><span class="p">,</span> <span class="n">input_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;The CleanRL default Atari policy: a stack of three convolutions followed by a linear layer</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binding</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">framestack</span><span class="p">,</span> <span class="n">input_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;The CleanRL default Atari policy: a stack of three convolutions followed by a linear layer</span>
 <span class="sd">        </span>
 <span class="sd">        Takes framestack as a mandatory keyword arguments. Suggested default is 1 frame</span>
 <span class="sd">        with LSTM or 4 frames without.&#39;&#39;&#39;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">binding</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">binding</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">binding</span><span class="o">.</span><span class="n">raw_single_observation_space</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_actions</span> <span class="o">=</span> <span class="n">binding</span><span class="o">.</span><span class="n">raw_single_action_space</span><span class="o">.</span><span class="n">n</span>
 
@@ -312,12 +316,12 @@
             <span class="n">layer_init</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span>
             <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
             <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
-            <span class="n">layer_init</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">*</span> <span class="mi">7</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">)),</span>
+            <span class="n">layer_init</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">*</span> <span class="mi">7</span><span class="p">,</span> <span class="n">input_size</span><span class="p">)),</span>
             <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
         <span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">actor</span> <span class="o">=</span> <span class="n">layer_init</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_actions</span><span class="p">),</span> <span class="n">std</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">value_function</span> <span class="o">=</span> <span class="n">layer_init</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">std</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actor</span> <span class="o">=</span> <span class="n">layer_init</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_actions</span><span class="p">),</span> <span class="n">std</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value_function</span> <span class="o">=</span> <span class="n">layer_init</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">std</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">critic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hidden</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_function</span><span class="p">(</span><span class="n">hidden</span><span class="p">)</span>
@@ -340,6 +344,7 @@
 <h1>Minimal CleanRL Demo<a class="headerlink" href="#minimal-cleanrl-demo" title="Permalink to this heading">¶</a></h1>
 <p>Neural MMO on a minimally modified CleanRL. PufferLib provides a compatible network and a more robust environment vectorization layer. Use as an introductory reference</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Minimally modified version of CleanRL ppo_lstm_atari.py to work with PufferLib.</span>
+<span class="c1"># Note that this demo requires the latest CarperAI version of nmmo-environment</span>
 <span class="c1"># We suggest our main cleanrl_ppo_lstm.py demo for most projects</span>
 
 <span class="c1"># docs and experiment results can be found at https://docs.cleanrl.dev/rl-algorithms/ppo/#ppo_atari_lstmpy</span>
@@ -369,7 +374,7 @@
 <span class="kn">import</span> <span class="nn">pufferlib.models</span>
 <span class="kn">import</span> <span class="nn">pufferlib.registry.nmmo</span>
 <span class="kn">import</span> <span class="nn">pufferlib.frameworks.cleanrl</span>
-<span class="kn">import</span> <span class="nn">pufferlib.vectorization</span>
+<span class="kn">import</span> <span class="nn">pufferlib.vectorization.multiprocessing</span>
 
 
 <span class="k">def</span> <span class="nf">parse_args</span><span class="p">():</span>
@@ -450,7 +455,6 @@
         <span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">wrappers</span><span class="o">.</span><span class="n">ResizeObservation</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="p">(</span><span class="mi">84</span><span class="p">,</span> <span class="mi">84</span><span class="p">))</span>
         <span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">wrappers</span><span class="o">.</span><span class="n">GrayScaleObservation</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
         <span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">wrappers</span><span class="o">.</span><span class="n">FrameStack</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">env</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
         <span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
         <span class="n">env</span><span class="o">.</span><span class="n">observation_space</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">env</span>
@@ -464,19 +468,19 @@
     <span class="k">return</span> <span class="n">layer</span>
 
 <span class="k">class</span> <span class="nc">Agent</span><span class="p">(</span><span class="n">pufferlib</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Policy</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binding</span><span class="p">,</span> <span class="n">input_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">512</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Simple custom PyTorch policy subclassing the pufferlib BasePolicy</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binding</span><span class="p">,</span> <span class="n">input_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">128</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Simple custom PyTorch policy subclassing the pufferlib BasePolicy</span>
 <span class="sd">        </span>
 <span class="sd">        This requires only that you structure your network as an observation encoder,</span>
 <span class="sd">        an action decoder, and a critic function. If you use our LSTM support, it will</span>
 <span class="sd">        be added between the encoder and the decoder.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">binding</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">binding</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">raw_single_observation_space</span> <span class="o">=</span> <span class="n">binding</span><span class="o">.</span><span class="n">raw_single_observation_space</span>
 
         <span class="c1"># A dumb example encoder that applies a linear layer to agent self features</span>
         <span class="n">observation_size</span> <span class="o">=</span> <span class="n">binding</span><span class="o">.</span><span class="n">raw_single_observation_space</span><span class="p">[</span><span class="s1">&#39;Entity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">observation_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">observation_size</span><span class="p">,</span> <span class="n">input_size</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">decoders</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">binding</span><span class="o">.</span><span class="n">single_action_space</span><span class="o">.</span><span class="n">nvec</span><span class="p">])</span>
@@ -486,9 +490,8 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_head</span><span class="p">(</span><span class="n">hidden</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">encode_observations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env_outputs</span><span class="p">):</span>
-        <span class="n">env_outputs</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">emulation</span><span class="o">.</span><span class="n">unpack_batched_obs</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">raw_single_observation_space</span><span class="p">,</span> <span class="n">env_outputs</span><span class="p">)</span>
-        <span class="n">env_outputs</span> <span class="o">=</span> <span class="n">env_outputs</span><span class="p">[</span><span class="s1">&#39;Entity&#39;</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="n">env_outputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">binding</span><span class="o">.</span><span class="n">unpack_batched_obs</span><span class="p">(</span><span class="n">env_outputs</span><span class="p">)</span>
+        <span class="n">env_outputs</span> <span class="o">=</span> <span class="n">env_outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;Entity&#39;</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">env_outputs</span><span class="p">),</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">decode_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hidden</span><span class="p">,</span> <span class="n">lookup</span><span class="p">,</span> <span class="n">concat</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -529,15 +532,14 @@
 
     <span class="c1"># env setup</span>
     <span class="n">binding</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">nmmo</span><span class="o">.</span><span class="n">make_binding</span><span class="p">()</span>
-    <span class="n">envs</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">vectorization</span><span class="o">.</span><span class="n">RayVecEnv</span><span class="p">(</span>
+    <span class="n">envs</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">vectorization</span><span class="o">.</span><span class="n">multiprocessing</span><span class="o">.</span><span class="n">VecEnv</span><span class="p">(</span>
         <span class="n">binding</span><span class="p">,</span>
         <span class="n">num_workers</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">num_envs</span> <span class="o">//</span> <span class="n">binding</span><span class="o">.</span><span class="n">max_agents</span><span class="p">,</span>
         <span class="n">envs_per_worker</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="n">envs</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
 
     <span class="n">agent</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">frameworks</span><span class="o">.</span><span class="n">cleanrl</span><span class="o">.</span><span class="n">make_policy</span><span class="p">(</span>
-            <span class="n">Agent</span><span class="p">,</span> <span class="n">lstm_layers</span><span class="o">=</span><span class="mi">1</span><span class="p">)(</span><span class="n">binding</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">Agent</span><span class="p">)(</span><span class="n">binding</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 
     <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">learning_rate</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
 
@@ -552,7 +554,7 @@
     <span class="c1"># TRY NOT TO MODIFY: start the game</span>
     <span class="n">global_step</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="n">next_obs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">envs</span><span class="o">.</span><span class="n">reset</span><span class="p">())</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">next_obs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">envs</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">seed</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
     <span class="n">next_done</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">num_envs</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
     <span class="n">next_lstm_state</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">lstm</span><span class="o">.</span><span class="n">num_layers</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">num_envs</span><span class="p">,</span> <span class="n">agent</span><span class="o">.</span><span class="n">lstm</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span>
@@ -588,8 +590,8 @@
             <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">info</span><span class="p">:</span>
                 <span class="k">if</span> <span class="s2">&quot;episode&quot;</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
                     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;global_step=</span><span class="si">{</span><span class="n">global_step</span><span class="si">}</span><span class="s2">, episodic_return=</span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;episode&#39;</span><span class="p">][</span><span class="s1">&#39;r&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-                    <span class="n">writer</span><span class="o">.</span><span class="n">add_scalar</span><span class="p">(</span><span class="s2">&quot;charts/episodic_return&quot;</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;episode&quot;</span><span class="p">][</span><span class="s2">&quot;r&quot;</span><span class="p">],</span> <span class="n">global_step</span><span class="p">)</span>
-                    <span class="n">writer</span><span class="o">.</span><span class="n">add_scalar</span><span class="p">(</span><span class="s2">&quot;charts/episodic_length&quot;</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;episode&quot;</span><span class="p">][</span><span class="s2">&quot;l&quot;</span><span class="p">],</span> <span class="n">global_step</span><span class="p">)</span>
+                    <span class="n">writer</span><span class="o">.</span><span class="n">add_scalar</span><span class="p">(</span><span class="s2">&quot;charts/episodic_return&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;episode&quot;</span><span class="p">][</span><span class="s2">&quot;r&quot;</span><span class="p">]),</span> <span class="n">global_step</span><span class="p">)</span>
+                    <span class="n">writer</span><span class="o">.</span><span class="n">add_scalar</span><span class="p">(</span><span class="s2">&quot;charts/episodic_length&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;episode&quot;</span><span class="p">][</span><span class="s2">&quot;l&quot;</span><span class="p">]),</span> <span class="n">global_step</span><span class="p">)</span>
                     <span class="k">break</span>
 
         <span class="c1"># bootstrap value if not done</span>
@@ -727,7 +729,8 @@
 
 <span class="kn">import</span> <span class="nn">pufferlib</span>
 <span class="kn">import</span> <span class="nn">pufferlib.frameworks.cleanrl</span>
-<span class="kn">import</span> <span class="nn">pufferlib.vectorization</span>
+<span class="kn">import</span> <span class="nn">pufferlib.vectorization.multiprocessing</span>
+<span class="kn">import</span> <span class="nn">pufferlib.vectorization.serial</span>
 
 
 <span class="k">def</span> <span class="nf">train</span><span class="p">(</span>
@@ -799,13 +802,13 @@
 
     <span class="n">buffers</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_buffers</span><span class="p">):</span>
-        <span class="n">vec</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">vectorization</span><span class="o">.</span><span class="n">RayVecEnv</span><span class="p">(</span>
-            <span class="n">binding</span><span class="p">,</span>
-            <span class="n">num_workers</span><span class="o">=</span><span class="n">num_cores</span><span class="p">,</span>
-            <span class="n">envs_per_worker</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">envs_per_worker</span><span class="p">),</span>
+        <span class="n">buffers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">pufferlib</span><span class="o">.</span><span class="n">vectorization</span><span class="o">.</span><span class="n">multiprocessing</span><span class="o">.</span><span class="n">VecEnv</span><span class="p">(</span>
+                    <span class="n">binding</span><span class="p">,</span>
+                    <span class="n">num_workers</span><span class="o">=</span><span class="n">num_cores</span><span class="p">,</span>
+                    <span class="n">envs_per_worker</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">envs_per_worker</span><span class="p">),</span>
+                <span class="p">)</span>
         <span class="p">)</span>
-        <span class="n">vec</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">num_cores</span><span class="o">*</span><span class="n">envs_per_worker</span><span class="o">*</span><span class="n">num_agents</span><span class="p">))</span>
-        <span class="n">buffers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
 
     <span class="n">agent</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
     <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
@@ -822,7 +825,7 @@
     <span class="n">global_step</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">next_obs</span><span class="p">,</span> <span class="n">next_done</span><span class="p">,</span> <span class="n">next_lstm_state</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">envs</span> <span class="ow">in</span> <span class="n">buffers</span><span class="p">:</span>
-        <span class="n">envs</span><span class="o">.</span><span class="n">async_reset</span><span class="p">()</span>
+        <span class="n">envs</span><span class="o">.</span><span class="n">async_reset</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">num_cores</span><span class="o">*</span><span class="n">envs_per_worker</span><span class="o">*</span><span class="n">num_agents</span><span class="p">))</span>
         <span class="n">o</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
         <span class="n">next_obs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">o</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
         <span class="n">next_done</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_envs</span> <span class="o">*</span> <span class="n">num_agents</span><span class="p">,))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
@@ -1028,7 +1031,7 @@
 
         <span class="nb">print</span><span class="p">(</span>
             <span class="sa">f</span><span class="s1">&#39;Epoch: </span><span class="si">{</span><span class="n">update</span><span class="si">}</span><span class="s1"> - Mean Return: </span><span class="si">{</span><span class="n">epoch_return</span><span class="si">:</span><span class="s1">&lt;5.4</span><span class="si">}</span><span class="s1">, Episode Length: </span><span class="si">{</span><span class="n">epoch_length</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
-            <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">{</span><span class="n">completion_percentage</span><span class="si">:</span><span class="s1">.3</span><span class="si">}</span><span class="s1">% / </span><span class="si">{</span><span class="n">global_step</span> <span class="o">//</span> <span class="mi">1000</span><span class="si">}</span><span class="s1">K steps - </span><span class="si">{</span><span class="n">uptime</span><span class="si">}</span><span class="s1"> Elapsed, ~</span><span class="si">{</span><span class="n">remaining</span><span class="si">}</span><span class="s1"> Remaining</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">{</span><span class="n">completion_percentage</span><span class="si">:</span><span class="s1">.3</span><span class="si">}</span><span class="s1">% / </span><span class="si">{</span><span class="n">global_step</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="mi">1000</span><span class="si">}</span><span class="s1">K steps - </span><span class="si">{</span><span class="n">uptime</span><span class="si">}</span><span class="s1"> Elapsed, ~</span><span class="si">{</span><span class="n">remaining</span><span class="si">}</span><span class="s1"> Remaining</span><span class="se">\n</span><span class="s1">&#39;</span>
             <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">Steps Per Second: Overall=</span><span class="si">{</span><span class="n">epoch_sps</span><span class="si">}</span><span class="s1">, Env=</span><span class="si">{</span><span class="n">env_sps</span><span class="si">}</span><span class="s1">, Inference=</span><span class="si">{</span><span class="n">inference_sps</span><span class="si">}</span><span class="s1">, Train=</span><span class="si">{</span><span class="n">train_sps</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
         <span class="p">)</span>
 
@@ -1073,7 +1076,6 @@
         <span class="n">binding</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">nmmo</span><span class="o">.</span><span class="n">make_binding</span><span class="p">()</span>
         <span class="n">agent</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">frameworks</span><span class="o">.</span><span class="n">cleanrl</span><span class="o">.</span><span class="n">make_policy</span><span class="p">(</span>
             <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">nmmo</span><span class="o">.</span><span class="n">Policy</span><span class="p">,</span>
-            <span class="n">lstm_layers</span><span class="o">=</span><span class="mi">1</span>
         <span class="p">)(</span><span class="n">binding</span><span class="p">)</span>
 
         <span class="n">train</span><span class="p">(</span>
@@ -1094,7 +1096,6 @@
         <span class="n">binding</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">nethack</span><span class="o">.</span><span class="n">make_binding</span><span class="p">()</span>
         <span class="n">agent</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">frameworks</span><span class="o">.</span><span class="n">cleanrl</span><span class="o">.</span><span class="n">make_policy</span><span class="p">(</span>
             <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">nethack</span><span class="o">.</span><span class="n">Policy</span><span class="p">,</span>
-            <span class="n">lstm_layers</span><span class="o">=</span><span class="mi">1</span>
         <span class="p">)(</span><span class="n">binding</span><span class="p">)</span>
 
         <span class="n">train</span><span class="p">(</span>
@@ -1126,7 +1127,6 @@
         <span class="k">for</span> <span class="n">binding</span> <span class="ow">in</span> <span class="n">bindings</span><span class="p">:</span>
             <span class="n">agent</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">frameworks</span><span class="o">.</span><span class="n">cleanrl</span><span class="o">.</span><span class="n">make_policy</span><span class="p">(</span>
                 <span class="n">pufferlib</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">atari</span><span class="o">.</span><span class="n">Policy</span><span class="p">,</span>
-                <span class="n">lstm_layers</span><span class="o">=</span><span class="mi">1</span>
             <span class="p">)(</span><span class="n">binding</span><span class="p">,</span> <span class="n">framestack</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
             <span class="n">train</span><span class="p">(</span>
@@ -1179,7 +1179,7 @@
         <span class="n">training_steps</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
         <span class="n">checkpoints_to_keep</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
         <span class="n">checkpoint_frequency</span><span class="o">=</span><span class="mi">1</span><span class="p">,):</span>
-    <span class="sd">&#39;&#39;&#39;Creates an RLlib tuner with sane defaults&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Creates an RLlib tuner with sane defaults&#39;&#39;&#39;</span>
 
     <span class="n">ray</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
         <span class="n">include_dashboard</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># WSL Compatibility</span>

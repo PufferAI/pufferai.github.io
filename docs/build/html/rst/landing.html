@@ -4,11 +4,11 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Installation &mdash; PufferLib v0.2.1 0.2.1 documentation</title>
+  <title>Installation &mdash; PufferLib v0.3.0 0.3.0 documentation</title>
   
 
   
@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
 
   
   
@@ -37,7 +38,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/design-tabs.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -59,7 +60,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.1
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.3.0
           
 
           
@@ -118,7 +119,6 @@
 <p class="caption" role="heading"><span class="caption-text">Blog</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
-<li class="toctree-l1"><a class="reference internal" href="blog.html#pufferagi-the-world-s-first-artificially-intelligent-pufferfish">PufferAGI: The World’s First Artificially Intelligent Pufferfish</a></li>
 </ul>
 
             
@@ -134,7 +134,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.2.1</a>
+          <a href="../index.html">PufferLib v0.3.0</a>
         
       </nav>
 
@@ -188,13 +188,13 @@
             
   <center>
   <video width=100% height="auto" nocontrols autoplay playsinline muted loop>
-    <source src="_static/banner.webm" type="video/webm">
-    <source src="_static/banner.mp4" type="video/mp4">
+    <source src="../_static/banner.webm" type="video/webm">
+    <source src="../_static/banner.mp4" type="video/mp4">
     Your browser does not support this video.
   </video>
-</center><p><strong>Quick links:</strong> <a class="reference external" href="https://github.com/pufferai/pufferlib">Github</a> | <a class="reference external" href="https://api.wandb.ai/links/jsuarez/wue9qkr0">Baselines</a> | <a class="reference external" href="https://discord.gg/puffer">Discord</a> | <a class="reference external" href="https://twitter.com/jsuarez5341">Twitter</a></p>
+</center><p><strong>Quick links:</strong> <a class="reference external" href="https://github.com/pufferai/pufferlib">Github</a> | <a class="reference external" href="https://api.wandb.ai/links/jsuarez/wue9qkr0">Baselines</a> | <a class="reference external" href="https://discord.gg/spT4huaGYV">Discord</a> | <a class="reference external" href="https://twitter.com/jsuarez5341">Twitter</a></p>
 <p>You have an environment, a PyTorch model, and a reinforcement learning framework that are designed to work together but don’t. PufferLib is a wrapper layer that makes RL on complex game environments as simple as RL on Atari. You write a native PyTorch network and a short binding for your environment; PufferLib takes care of the rest.</p>
-<p>Join our community <a class="reference external" href="https://discord.gg/puffer">Discord</a> to get support or if you are interested in contributing to the project.</p>
+<p>Join our community <a class="reference external" href="https://discord.gg/spT4huaGYV">Discord</a> to get support or if you are interested in contributing to the project.</p>
 <div class="line-block">
 <div class="line"><a class="reference internal" href="examples.html#minimal-cleanrl-demo"><span class="std std-ref">Minimal CleanRL Demo</span></a> Neural MMO on minimally modified CleanRL. Use as an introductory reference.</div>
 <div class="line"><a class="reference internal" href="examples.html#custom-cleanrl-demo"><span class="std std-ref">Custom CleanRL Demo</span></a> Neural MMO on our customized version of CleanRL. Use as a template for your projects.</div>
@@ -205,7 +205,7 @@
 
 <span class="kn">import</span> <span class="nn">pufferlib</span>
 <span class="kn">import</span> <span class="nn">pufferlib.emulation</span>
-<span class="kn">import</span> <span class="nn">pufferlib.vectorization</span>
+<span class="kn">import</span> <span class="nn">pufferlib.vectorization.serial</span>
 
 <span class="c1"># Wrap Neural MMO with PufferLib</span>
 <span class="n">binding</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">emulation</span><span class="o">.</span><span class="n">Binding</span><span class="p">(</span>
@@ -214,11 +214,10 @@
     <span class="p">)</span>
 
 <span class="c1"># Vectorize 4 environments across 2 cores</span>
-<span class="n">envs</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">vectorization</span><span class="o">.</span><span class="n">RayVecEnv</span><span class="p">(</span><span class="n">binding</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">envs_per_worker</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">envs</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">envs</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">vectorization</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">VecEnv</span><span class="p">(</span><span class="n">binding</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">envs_per_worker</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c1"># Standard Gym API. See custom CleanRL demo for async API.</span>
-<span class="n">obs</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="n">obs</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">32</span><span class="p">):</span>
     <span class="n">atns</span> <span class="o">=</span> <span class="p">[</span><span class="n">binding</span><span class="o">.</span><span class="n">single_action_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">binding</span><span class="o">.</span><span class="n">max_agents</span><span class="p">)]</span>
     <span class="n">obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">atns</span><span class="p">)</span>
@@ -264,7 +263,19 @@
 </section>
 <section id="contributing">
 <h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this heading">¶</a></h1>
-<p>We welcome contributions from the community. Please communicate with us on <a class="reference external" href="https://discord.gg/puffer">Discord</a> before opening an issue or pull request on Github. We are particularly interested in contributions to the following areas:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+List of Contributors<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Joseph Suarez</strong>: Creator and developer of PufferLib</p>
+<p class="sd-card-text"><strong>Nick Jenkins</strong>: Layout for the system architecture diagram. Adversary.design.</p>
+<p class="sd-card-text"><strong>Andranik Tigranyan</strong>: Streamline and animate the pufferfish. Hire him on UpWork if you like what you see here.</p>
+<p class="sd-card-text"><strong>Sara Earle</strong>: Original pufferfish model. Hire her on UpWork if you like what you see here.</p>
+</div>
+</details><p>We welcome contributions from the community. Please communicate with us on <a class="reference external" href="https://discord.gg/spT4huaGYV">Discord</a> before opening an issue or pull request on Github. We are particularly interested in contributions to the following areas:</p>
 <div class="line-block">
 <div class="line"><strong>Framework bindings:</strong> We currently support CleanRL and RLLib. We would like to add bindings for other frameworks such as Stable Baselines and Tianshou.</div>
 <div class="line"><strong>Environment bindings:</strong> We would like to improve our test coverage by adding bindings for additional environments. This also requires specifying any external dependencies in PufferTank.</div>

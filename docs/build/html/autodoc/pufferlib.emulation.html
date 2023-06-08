@@ -4,11 +4,11 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pufferlib.emulation module &mdash; PufferLib v0.2.1 0.2.1 documentation</title>
+  <title>pufferlib.emulation module &mdash; PufferLib v0.3.0 0.3.0 documentation</title>
   
 
   
@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
 
   
   
@@ -37,7 +38,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/design-tabs.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -57,7 +58,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.1
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.3.0
           
 
           
@@ -116,7 +117,6 @@
 <p class="caption" role="heading"><span class="caption-text">Blog</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/blog.html#pufferagi-the-world-s-first-artificially-intelligent-pufferfish">PufferAGI: The World’s First Artificially Intelligent Pufferfish</a></li>
 </ul>
 
             
@@ -132,7 +132,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.2.1</a>
+          <a href="../index.html">PufferLib v0.3.0</a>
         
       </nav>
 
@@ -187,8 +187,136 @@
   <section id="module-pufferlib.emulation">
 <span id="pufferlib-emulation-module"></span><h1>pufferlib.emulation module<a class="headerlink" href="#module-pufferlib.emulation" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
+<dt class="sig sig-object py" id="pufferlib.emulation.Postprocessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">Postprocessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">teams</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.Postprocessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.emulation.Postprocessor.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">team_obs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.Postprocessor.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.emulation.Postprocessor.features">
+<span class="sig-name descname"><span class="pre">features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.Postprocessor.features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default featurizer pads observations to max team size</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.emulation.Postprocessor.actions">
+<span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.Postprocessor.actions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.emulation.Postprocessor.rewards">
+<span class="sig-name descname"><span class="pre">rewards</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">team_rewards</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_dones</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_infos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.Postprocessor.rewards" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default reward shaper sums team rewards</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pufferlib.emulation.GymToPettingZooParallelWrapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">GymToPettingZooParallelWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Env</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.GymToPettingZooParallelWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ParallelEnv</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pufferlib.emulation.GymToPettingZooParallelWrapper.possible_agents">
+<span class="sig-name descname"><span class="pre">possible_agents</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">AgentID</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pufferlib.emulation.GymToPettingZooParallelWrapper.possible_agents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.emulation.GymToPettingZooParallelWrapper.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.GymToPettingZooParallelWrapper.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the environment and returns a dictionary of observations (keyed by the agent name)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.emulation.GymToPettingZooParallelWrapper.step">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.GymToPettingZooParallelWrapper.step" title="Permalink to this definition">¶</a></dt>
+<dd><p>receives a dictionary of actions keyed by the agent name.
+Returns the observation dictionary, reward dictionary, done dictionary,
+and info dictionary, where each dictionary is keyed by the agent.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.emulation.GymToPettingZooParallelWrapper.observation_space">
+<span class="sig-name descname"><span class="pre">observation_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.GymToPettingZooParallelWrapper.observation_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes in agent and returns the observation space for that agent.</p>
+<p>MUST return the same value for the same agent name</p>
+<p>Default implementation is to return the observation_spaces dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.emulation.GymToPettingZooParallelWrapper.action_space">
+<span class="sig-name descname"><span class="pre">action_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.GymToPettingZooParallelWrapper.action_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes in agent and returns the action space for that agent.</p>
+<p>MUST return the same value for the same agent name</p>
+<p>Default implementation is to return the action_spaces dict</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.emulation.GymToPettingZooParallelWrapper.render">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'human'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.GymToPettingZooParallelWrapper.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a rendered frame from the environment, if supported.
+Alternate render modes in the default environments are <cite>‘rgb_array’</cite>
+which returns a numpy array and is supported by all environments outside
+of classic, and <cite>‘ansi’</cite> which returns the strings printed
+(specific to classic environments).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.emulation.GymToPettingZooParallelWrapper.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.GymToPettingZooParallelWrapper.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closes the rendering window.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.emulation.GymToPettingZooParallelWrapper.seed">
+<span class="sig-name descname"><span class="pre">seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.GymToPettingZooParallelWrapper.seed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reseeds the environment (making it deterministic).</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pufferlib.emulation.GymToPettingZooParallelWrapper.max_num_agents">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">max_num_agents</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pufferlib.emulation.GymToPettingZooParallelWrapper.max_num_agents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pufferlib.emulation.GymToPettingZooParallelWrapper.num_agents">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_agents</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#pufferlib.emulation.GymToPettingZooParallelWrapper.num_agents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.emulation.GymToPettingZooParallelWrapper.state">
+<span class="sig-name descname"><span class="pre">state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#pufferlib.emulation.GymToPettingZooParallelWrapper.state" title="Permalink to this definition">¶</a></dt>
+<dd><p>State returns a global view of the environment appropriate for
+centralized training decentralized execution methods like QMIX</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pufferlib.emulation.GymToPettingZooParallelWrapper.unwrapped">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unwrapped</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ParallelEnv</span></em><a class="headerlink" href="#pufferlib.emulation.GymToPettingZooParallelWrapper.unwrapped" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pufferlib.emulation.GymToPettingZooParallelWrapper.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pufferlib.emulation.GymToPettingZooParallelWrapper.metadata" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pufferlib.emulation.GymToPettingZooParallelWrapper.agents">
+<span class="sig-name descname"><span class="pre">agents</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">AgentID</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#pufferlib.emulation.GymToPettingZooParallelWrapper.agents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pufferlib.emulation.make_puffer_env_cls">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">make_puffer_env_cls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scope</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw_obs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.make_puffer_env_cls" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="pufferlib.emulation.Binding">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">Binding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_cls=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_creator=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_args=[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_kwargs={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_name=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_parser=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_shaper=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_obs=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_atn=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_horizon=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_num_agents=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_env_prints=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_episode_statistics=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.Binding" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">Binding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_cls=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_creator=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_args=[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_kwargs={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_name=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postprocessor_cls=&lt;class</span> <span class="pre">'pufferlib.emulation.Postprocessor'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postprocessor_args=[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postprocessor_kwargs={}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">teams=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_obs=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_flat_atn=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_horizon=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_const_num_agents=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_env_prints=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_episode_statistics=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.Binding" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>PufferLib’s core Binding class.</p>
 <p>Wraps the provided Gym or PettingZoo environment in a PufferEnv that
@@ -216,8 +344,7 @@ observation and action spaces.</p>
 <li><p><strong>default_args</strong> – Default arguments for binding.env_creator and binding.raw_env_creator</p></li>
 <li><p><strong>default_kwargs</strong> – Default keyword arguments for binding.env_creator and binding.raw_env_creator</p></li>
 <li><p><strong>env_name</strong> – Name of the environment</p></li>
-<li><p><strong>feature_parser</strong> – Feature parser to use</p></li>
-<li><p><strong>reward_shaper</strong> – Reward shaper to use</p></li>
+<li><p><strong>postprocessor_cls</strong> – Postprocessor subclass to use</p></li>
 <li><p><strong>emulate_flat_obs</strong> – Whether the observation space requires flattening</p></li>
 <li><p><strong>emulate_flat_atn</strong> – Whether the action space requires flattening</p></li>
 <li><p><strong>emulate_const_horizon</strong> – Fixed max horizon for resets, None if not applicable</p></li>
@@ -240,6 +367,12 @@ observation and action spaces.</p>
 <dd><p>Returns the original, unwrapped env_creator function used to create this binding</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.emulation.Binding.pz_env_creator">
+<span class="sig-name descname"><span class="pre">pz_env_creator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.Binding.pz_env_creator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the partially wrapped PettingZoo env_creator function created by this binding</p>
+</dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="pufferlib.emulation.Binding.env_cls">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">env_cls</span></span><a class="headerlink" href="#pufferlib.emulation.Binding.env_cls" title="Permalink to this definition">¶</a></dt>
@@ -253,20 +386,6 @@ observation and action spaces.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="pufferlib.emulation.Binding.single_observation_space">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_observation_space</span></span><a class="headerlink" href="#pufferlib.emulation.Binding.single_observation_space" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the wrapped, flat observation space of a single agent.</p>
-<p>PufferLib currently assumes that all agents share the same observation space</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="pufferlib.emulation.Binding.single_action_space">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_action_space</span></span><a class="headerlink" href="#pufferlib.emulation.Binding.single_action_space" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the wrapped, flat action space of a single agent.</p>
-<p>PufferLib currently assumes that all agents share the same action space</p>
-</dd></dl>
-
-<dl class="py property">
 <dt class="sig sig-object py" id="pufferlib.emulation.Binding.raw_single_observation_space">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_single_observation_space</span></span><a class="headerlink" href="#pufferlib.emulation.Binding.raw_single_observation_space" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the unwrapped, structured observation space of a single agent.</p>
@@ -274,9 +393,30 @@ observation and action spaces.</p>
 </dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="pufferlib.emulation.Binding.featurized_single_observation_space">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">featurized_single_observation_space</span></span><a class="headerlink" href="#pufferlib.emulation.Binding.featurized_single_observation_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the wrapped, structured, featurized observation space of a single agent.</p>
+<p>PufferLib currently assumes that all agents share the same observation space</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pufferlib.emulation.Binding.single_observation_space">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_observation_space</span></span><a class="headerlink" href="#pufferlib.emulation.Binding.single_observation_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the wrapped, flat observation space of a single agent.</p>
+<p>PufferLib currently assumes that all agents share the same observation space</p>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="pufferlib.emulation.Binding.raw_single_action_space">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_single_action_space</span></span><a class="headerlink" href="#pufferlib.emulation.Binding.raw_single_action_space" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the unwrapped, structured action space of a single agent.</p>
+<p>PufferLib currently assumes that all agents share the same action space</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pufferlib.emulation.Binding.single_action_space">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">single_action_space</span></span><a class="headerlink" href="#pufferlib.emulation.Binding.single_action_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the wrapped, flat action space of a single agent.</p>
 <p>PufferLib currently assumes that all agents share the same action space</p>
 </dd></dl>
 
@@ -292,14 +432,24 @@ observation and action spaces.</p>
 <dd><p>Returns the environment name</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.emulation.Binding.unpack_batched_obs">
+<span class="sig-name descname"><span class="pre">unpack_batched_obs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packed_obs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.Binding.unpack_batched_obs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unpack a batch of observations into the original observation space</p>
+<p>Call this funtion in the forward pass of your network</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pufferlib.emulation.Binding.pack_obs">
+<span class="sig-name descname"><span class="pre">pack_obs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.Binding.pack_obs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="pufferlib.emulation.unpack_batched_obs">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">unpack_batched_obs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs_space</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">packed_obs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.unpack_batched_obs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Unpack a batch of observations into the original observation space</p>
-<p>Call this funtion in the forward pass of your network</p>
-</dd></dl>
+<span class="sig-prename descclassname"><span class="pre">pufferlib.emulation.</span></span><span class="sig-name descname"><span class="pre">unpack_batched_obs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flat_space</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">packed_obs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pufferlib.emulation.unpack_batched_obs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </section>
 

@@ -46,6 +46,7 @@ extensions = [
       'sphinx.ext.autodoc', 
       'sphinx.ext.coverage', 
       'sphinx.ext.napoleon',
+      'sphinx_design',
       'sphinxcontrib.youtube',
       'sphinx.ext.autosectionlabel',
    ]
@@ -81,4 +82,4 @@ html_theme_options = {
 html_static_path = ['_static']
 
 #Readable code theme
-pygments_style = 'monokai'
+pygments_style = "monokai"

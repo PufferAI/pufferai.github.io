@@ -4,11 +4,11 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pufferlib.frameworks package &mdash; PufferLib v0.2.1 0.2.1 documentation</title>
+  <title>pufferlib.frameworks package &mdash; PufferLib v0.3.0 0.3.0 documentation</title>
   
 
   
@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
 
   
   
@@ -37,7 +38,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/design-tabs.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -57,7 +58,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> PufferLib v0.2.1
+            <a href="../index.html" class="icon icon-home"> PufferLib v0.3.0
           
 
           
@@ -116,7 +117,6 @@
 <p class="caption" role="heading"><span class="caption-text">Blog</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../rst/blog.html">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/blog.html#pufferagi-the-world-s-first-artificially-intelligent-pufferfish">PufferAGI: The World’s First Artificially Intelligent Pufferfish</a></li>
 </ul>
 
             
@@ -132,7 +132,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PufferLib v0.2.1</a>
+          <a href="../index.html">PufferLib v0.3.0</a>
         
       </nav>
 
@@ -188,43 +188,9 @@
 <span id="pufferlib-frameworks-package"></span><h1>pufferlib.frameworks package<a class="headerlink" href="#module-pufferlib.frameworks" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pufferlib.frameworks.base.html">pufferlib.frameworks.base module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.frameworks.base.html#pufferlib.frameworks.base.make_recurrent_policy"><code class="docutils literal notranslate"><span class="pre">make_recurrent_policy()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pufferlib.frameworks.cleanrl.html">pufferlib.frameworks.cleanrl module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.frameworks.cleanrl.html#pufferlib.frameworks.cleanrl.make_policy"><code class="docutils literal notranslate"><span class="pre">make_policy()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pufferlib.frameworks.rllib.html">pufferlib.frameworks.rllib module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.register_env"><code class="docutils literal notranslate"><span class="pre">register_env()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.read_checkpoints"><code class="docutils literal notranslate"><span class="pre">read_checkpoints()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.create_policies"><code class="docutils literal notranslate"><span class="pre">create_policies()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.make_policy"><code class="docutils literal notranslate"><span class="pre">make_policy()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.RLPredictor"><code class="docutils literal notranslate"><span class="pre">RLPredictor</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.RLPredictor.predict"><code class="docutils literal notranslate"><span class="pre">RLPredictor.predict()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.RLPredictor.from_checkpoint"><code class="docutils literal notranslate"><span class="pre">RLPredictor.from_checkpoint()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.RLPredictor.from_pandas_udf"><code class="docutils literal notranslate"><span class="pre">RLPredictor.from_pandas_udf()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.RLPredictor.get_preprocessor"><code class="docutils literal notranslate"><span class="pre">RLPredictor.get_preprocessor()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.RLPredictor.set_preprocessor"><code class="docutils literal notranslate"><span class="pre">RLPredictor.set_preprocessor()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.Callbacks"><code class="docutils literal notranslate"><span class="pre">Callbacks</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.Callbacks.on_train_result"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_train_result()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.Callbacks.on_episode_end"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_episode_end()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.Callbacks.on_algorithm_init"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_algorithm_init()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.Callbacks.on_create_policy"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_create_policy()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.Callbacks.on_episode_start"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_episode_start()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.Callbacks.on_episode_step"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_episode_step()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.Callbacks.on_learn_on_batch"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_learn_on_batch()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.Callbacks.on_postprocess_trajectory"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_postprocess_trajectory()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.Callbacks.on_sample_end"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_sample_end()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.Callbacks.on_sub_environment_created"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_sub_environment_created()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pufferlib.frameworks.rllib.html#pufferlib.frameworks.rllib.Callbacks.on_trainer_init"><code class="docutils literal notranslate"><span class="pre">Callbacks.on_trainer_init()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.frameworks.base.html">pufferlib.frameworks.base module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.frameworks.cleanrl.html">pufferlib.frameworks.cleanrl module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pufferlib.frameworks.rllib.html">pufferlib.frameworks.rllib module</a></li>
 </ul>
 </div>
 </section>
