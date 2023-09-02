@@ -2,14 +2,19 @@
 
 |
 
-This is the current core API. Advanced users can check the PufferLib source for additional tools, but note that these are not yet as well tested.
+Our current public API. Advanced users can check the PufferLib source for additional utilities, but note that we tend to move these around more often. Contributions welcome!
 
 Emulation
 #########
 
-This is the core feature of PufferLib - bind your environment for compatibility with RL libraries
+Wrap your environments for broad compatibility. Supports passing creator functions, classes, or env objects. The API of the returned PufferEnv is the same as Gym/PettingZoo.
 
-.. automodule:: pufferlib.emulation
+.. autoclass:: pufferlib.emulation.GymPufferEnv
+   :members:
+   :undoc-members:
+   :noindex:
+
+.. autoclass:: pufferlib.emulation.PettingZooPufferEnv
    :members:
    :undoc-members:
    :noindex:
@@ -17,8 +22,7 @@ This is the core feature of PufferLib - bind your environment for compatibility 
 Registry
 ########
 
-Builtin bindings and policies for test environments
-
+make_env functions and policies for included environments.
 
 Atari
 *****
@@ -46,6 +50,13 @@ Classic Control
    :undoc-members:
    :noindex:
 
+Crafter
+*******
+
+.. automodule:: pufferlib.registry.crafter
+   :members:
+   :undoc-members:
+   :noindex:
 
 Griddly
 *******
@@ -91,15 +102,13 @@ Neural MMO
    :undoc-members:
    :noindex:
 
+Procgen
+*******
 
-Starcraft Multiagent Challenge
-******************************
-
-.. automodule:: pufferlib.registry.smac
+.. automodule:: pufferlib.registry.procgen
    :members:
    :undoc-members:
    :noindex:
-
 
 Models
 ######
@@ -111,23 +120,22 @@ PufferLib model API and default policies
    :undoc-members:
    :noindex:
 
-
 Vectorization
 #############
 
 Distributed backends for PufferLib-wrapped environments
 
-.. autoclass:: pufferlib.vectorization.serial.VecEnv
+.. autoclass:: pufferlib.vectorization.Serial
    :members:
    :undoc-members:
    :noindex:
 
-.. autoclass:: pufferlib.vectorization.multiprocessing.VecEnv
+.. autoclass:: pufferlib.vectorization.Multiprocessing
    :members:
    :undoc-members:
    :noindex:
 
-.. autoclass:: pufferlib.vectorization.ray.VecEnv
+.. autoclass:: pufferlib.vectorization.Ray
    :members:
    :undoc-members:
    :noindex:
@@ -135,9 +143,16 @@ Distributed backends for PufferLib-wrapped environments
 CleanRL Integration 
 ###################
 
-Wraps your policies for use with CleanRL
+Wrap your PyTorch policies for use with CleanRL
 
-.. automodule:: pufferlib.frameworks.cleanrl
+.. autoclass:: pufferlib.frameworks.cleanrl.Policy
+   :members:
+   :undoc-members:
+   :noindex:
+
+Recurrence requires you to subclass our base policy instead. See the default policies for examples.
+
+.. autoclass:: pufferlib.frameworks.cleanrl.RecurrentPolicy
    :members:
    :undoc-members:
    :noindex:
@@ -145,7 +160,7 @@ Wraps your policies for use with CleanRL
 RLlib Binding
 #############
 
-Wraps your policies for use with RLlib (WIP)
+Wrap your policies for use with RLlib (WIP)
 
 .. automodule:: pufferlib.frameworks.rllib
    :members:
