@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Emulation" href="api.html" />
 
     <!-- Generated with Sphinx 5.0.0 and Furo 2023.03.27 -->
-        <title>PufferLib v0.2: Ready to Take on the Big Fish - PufferLib 0.4.0 documentation</title>
+        <title>PufferLib 0.4: Ready to Take on Bigger Fish - PufferLib 0.4.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
@@ -190,7 +190,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">PufferLib 0.4.0 documentation</div></a>
+      <a href="../index.html"><div class="brand">PufferLib 0.4.1 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -213,7 +213,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   
-  <span class="sidebar-brand-text">PufferLib 0.4.0 documentation</span>
+  <span class="sidebar-brand-text">PufferLib 0.4.1 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -239,7 +239,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Blog</span></p>
 <ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">PufferLib v0.2: Ready to Take on the Big Fish</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">PufferLib 0.4: Ready to Take on Bigger Fish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#pufferlib-0-2-ready-to-take-on-the-big-fish">PufferLib 0.2: Ready to Take on the Big Fish</a></li>
 </ul>
 
 </div>
@@ -274,8 +275,87 @@
           </label>
         </div>
         <article role="main">
-          <section id="pufferlib-v0-2-ready-to-take-on-the-big-fish">
-<h1>PufferLib v0.2: Ready to Take on the Big Fish<a class="headerlink" href="#pufferlib-v0-2-ready-to-take-on-the-big-fish" title="Permalink to this heading">#</a></h1>
+          <center>
+  <video width=100% height="auto" nocontrols autoplay playsinline muted loop>
+    <source src="../_static/banner.webm" type="video/webm">
+    <source src="../_static/banner.mp4" type="video/mp4">
+    Your browser does not support this video.
+  </video>
+</center><section id="pufferlib-0-4-ready-to-take-on-bigger-fish">
+<h1>PufferLib 0.4: Ready to Take on Bigger Fish<a class="headerlink" href="#pufferlib-0-4-ready-to-take-on-bigger-fish" title="Permalink to this heading">#</a></h1>
+<p>PufferLib 0.4 is out now! Make your RL environments and libraries play nice with one-line wrappers, pain-free vectorization, and more.</p>
+<div class="sd-card sd-sphinx-override sd-w-75 sd-mt-4 sd-mb-2 sd-ml-auto sd-mr-auto sd-shadow-sm sd-card-hover sd-text-center docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><strong>Click to Demo PufferLib in Colab</strong></p>
+</div>
+<a class="sd-stretched-link reference external" href="https://colab.research.google.com/drive/1l1qLjerLwYoLjuKNr9iVc3TZ8gW2QVnz?usp=sharing"></a></div>
+<dl class="simple">
+<dt><strong>New Features</strong></dt><dd><ul class="simple">
+<li><p>One-line wrappers for your Gym and PettingZoo environments</p></li>
+<li><p>Serial, Multiprocessing, and Ray vectorization backends</p></li>
+<li><p>PufferTank, a container preloaded with PufferLib and common environments</p></li>
+</ul>
+</dd>
+</dl>
+<p>More importantly, we have rewritten the entire core for simplicity and extensibility. While this is not a flashy new feature, you will notice significantly fewer rough edges working with PufferLib. For example, your Gym environments are no longer converted to PettingZoo environment internally, and your discrete action spaces are no longer returned as MultiDiscrete: WYSIWYG.</p>
+<section id="emulation">
+<h2>Emulation<a class="headerlink" href="#emulation" title="Permalink to this heading">#</a></h2>
+<p>Previously, PufferLib required you to wrap your environment class in a binding, which then provided creation and additional utilities. Now, you pass in a Gym/PettingZoo environment and get back a Gym/PettingZoo environment. All of the benefits described in our 0.2 blog post are included.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pufferlib.emulation</span>
+<span class="kn">import</span> <span class="nn">nle</span><span class="o">,</span> <span class="nn">nmmo</span>
+
+<span class="k">def</span> <span class="nf">nmmo_creator</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">emulation</span><span class="o">.</span><span class="n">PettingZooPufferEnv</span><span class="p">(</span><span class="n">env_creator</span><span class="o">=</span><span class="n">nmmo</span><span class="o">.</span><span class="n">Env</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">nethack_creator</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">emulation</span><span class="o">.</span><span class="n">GymPufferEnv</span><span class="p">(</span><span class="n">env_creator</span><span class="o">=</span><span class="n">nle</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">NLE</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="vectorization">
+<h2>Vectorization<a class="headerlink" href="#vectorization" title="Permalink to this heading">#</a></h2>
+<p>Previously, PufferLib’s vectorization expected a binding object. Now, you pass it an environment creation function (as above) or a Gym/PettingZoo PufferEnv, if you prefer to subclass directly. Compared to 0.2 PufferLib includes Serial and Multiprocessing backends, in addition to Ray.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pufferlib.vectorization</span>
+<span class="kn">import</span> <span class="nn">nmmo</span>
+
+<span class="n">vec</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">vectorization</span><span class="o">.</span><span class="n">Multiprocessing</span> <span class="c1"># Or Serial or Ray</span>
+<span class="n">envs</span> <span class="o">=</span> <span class="n">vec</span><span class="p">(</span><span class="n">nmmo_creator</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">envs_per_worker</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Synchronous API</span>
+<span class="n">obs</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+<span class="c1"># Async API</span>
+<span class="n">envs</span><span class="o">.</span><span class="n">async_reset</span><span class="p">()</span>
+<span class="n">obs</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="puffertank">
+<h2>PufferTank<a class="headerlink" href="#puffertank" title="Permalink to this heading">#</a></h2>
+<p>Many common RL environments are notoriously hard to set up and use. PufferTank provides containers with several such popular environments tested to work with PufferLib. These are preloaded onto base images so you can build the container over a coffee break.</p>
+</section>
+<section id="policies">
+<h2>Policies<a class="headerlink" href="#policies" title="Permalink to this heading">#</a></h2>
+<p>Previously, PufferLib required you to subclass a PyTorch base class for your models. Now, you can use vanilla PyTorch policies. We still provide a base class as an option, which allows you to use another of our wrappers to handle recurrence for you. Pass your model to our wrappers and we will convert to framework-specific APIs for you.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cleanrl_policy</span> <span class="o">=</span> <span class="n">pufferlib</span><span class="o">.</span><span class="n">frameworks</span><span class="o">.</span><span class="n">cleanrl</span><span class="o">.</span><span class="n">Policy</span><span class="p">(</span><span class="n">policy</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="error-handling">
+<h2>Error Handling<a class="headerlink" href="#error-handling" title="Permalink to this heading">#</a></h2>
+<p>Previously, PufferLib applied expensive runtime checks to all environments by default. These could be disabled by running with -O. This was inconvenient and easily forgotten. Now, these checks only run once at startup with negligible overhead. Thus far, we have observed no bugs with the new version that would have been caught by the previous checks.</p>
+</section>
+<section id="miscellaneous">
+<h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this heading">#</a></h2>
+<p>We have added sane default installations, setup, and policies for several more environments. Check our home page for an updated list.</p>
+<p>The new environment and policy changes means that PufferLib no longer breaks serialization. This is useful for saving environment and model states.</p>
+<p>We have written an optimized flatten and unflatten function for handling observation and actions. This was previously a bottleneck for environments with complex spaces. Expect a separate post on this, since it was an interesting case study for Python extension options.</p>
+<p>We have an experimental custom CleanRL derivative to correctly handle environments with variable numbers of agents, without training on padding. Doing this simply has been a longstanding challenge in RL. More on this once it is more stable.</p>
+<p>Join us on Discord and tell us your pain points. We might just fix them.</p>
+</section>
+</section>
+<section id="pufferlib-0-2-ready-to-take-on-the-big-fish">
+<h1>PufferLib 0.2: Ready to Take on the Big Fish<a class="headerlink" href="#pufferlib-0-2-ready-to-take-on-the-big-fish" title="Permalink to this heading">#</a></h1>
 <p>PufferLib’s goal is to make reinforcement learning on complex game environments as simple as it is on Atari. We released version 0.1 as a preliminary API with limited testing. Now, we’re excited to announce version 0.2, which includes dozens of bug fixes, better testing, a streamlined API, and a working demo on CleanRL.</p>
 <section id="problem-statement">
 <h2>Problem Statement<a class="headerlink" href="#problem-statement" title="Permalink to this heading">#</a></h2>
@@ -371,7 +451,16 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">PufferLib v0.2: Ready to Take on the Big Fish</a><ul>
+<li><a class="reference internal" href="#">PufferLib 0.4: Ready to Take on Bigger Fish</a><ul>
+<li><a class="reference internal" href="#emulation">Emulation</a></li>
+<li><a class="reference internal" href="#vectorization">Vectorization</a></li>
+<li><a class="reference internal" href="#puffertank">PufferTank</a></li>
+<li><a class="reference internal" href="#policies">Policies</a></li>
+<li><a class="reference internal" href="#error-handling">Error Handling</a></li>
+<li><a class="reference internal" href="#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pufferlib-0-2-ready-to-take-on-the-big-fish">PufferLib 0.2: Ready to Take on the Big Fish</a><ul>
 <li><a class="reference internal" href="#problem-statement">Problem Statement</a></li>
 <li><a class="reference internal" href="#cleanrl-demos">CleanRL Demos</a></li>
 <li><a class="reference internal" href="#pufferlib-emulation">PufferLib Emulation</a></li>

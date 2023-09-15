@@ -1,4 +1,105 @@
-PufferLib v0.2: Ready to Take on the Big Fish
+.. role:: python(code)
+    :language: python
+
+.. raw:: html
+
+   <center>
+     <video width=100% height="auto" nocontrols autoplay playsinline muted loop>
+       <source src="../_static/banner.webm" type="video/webm">
+       <source src="../_static/banner.mp4" type="video/mp4">
+       Your browser does not support this video.
+     </video>
+   </center>
+
+PufferLib 0.4: Ready to Take on Bigger Fish
+###########################################
+
+PufferLib 0.4 is out now! Make your RL environments and libraries play nice with one-line wrappers, pain-free vectorization, and more.
+
+.. card::
+  :link: https://colab.research.google.com/drive/1l1qLjerLwYoLjuKNr9iVc3TZ8gW2QVnz?usp=sharing
+  :width: 75%
+  :margin: 4 2 auto auto
+  :text-align: center
+
+  **Click to Demo PufferLib in Colab**
+
+**New Features**
+  - One-line wrappers for your Gym and PettingZoo environments
+  - Serial, Multiprocessing, and Ray vectorization backends
+  - PufferTank, a container preloaded with PufferLib and common environments
+
+More importantly, we have rewritten the entire core for simplicity and extensibility. While this is not a flashy new feature, you will notice significantly fewer rough edges working with PufferLib. For example, your Gym environments are no longer converted to PettingZoo environment internally, and your discrete action spaces are no longer returned as MultiDiscrete: WYSIWYG.
+
+Emulation
+*********
+
+Previously, PufferLib required you to wrap your environment class in a binding, which then provided creation and additional utilities. Now, you pass in a Gym/PettingZoo environment and get back a Gym/PettingZoo environment. All of the benefits described in our 0.2 blog post are included.
+
+.. code-block:: python
+
+  import pufferlib.emulation
+  import nle, nmmo
+
+  def nmmo_creator():
+      return pufferlib.emulation.PettingZooPufferEnv(env_creator=nmmo.Env)
+
+  def nethack_creator():
+      return pufferlib.emulation.GymPufferEnv(env_creator=nle.env.NLE)
+
+Vectorization
+*************
+
+Previously, PufferLib’s vectorization expected a binding object. Now, you pass it an environment creation function (as above) or a Gym/PettingZoo PufferEnv, if you prefer to subclass directly. Compared to 0.2 PufferLib includes Serial and Multiprocessing backends, in addition to Ray.
+
+.. code-block:: python
+
+  import pufferlib.vectorization
+  import nmmo
+
+  vec = pufferlib.vectorization.Multiprocessing # Or Serial or Ray
+  envs = vec(nmmo_creator, num_workers=2, envs_per_worker=2)
+
+  # Synchronous API
+  obs = envs.reset()
+
+  # Async API
+  envs.async_reset()
+  obs, _, _, _ = envs.recv()
+
+PufferTank
+**********
+
+Many common RL environments are notoriously hard to set up and use. PufferTank provides containers with several such popular environments tested to work with PufferLib. These are preloaded onto base images so you can build the container over a coffee break.
+
+Policies
+********
+
+Previously, PufferLib required you to subclass a PyTorch base class for your models. Now, you can use vanilla PyTorch policies. We still provide a base class as an option, which allows you to use another of our wrappers to handle recurrence for you. Pass your model to our wrappers and we will convert to framework-specific APIs for you.
+
+.. code-block:: python
+
+  cleanrl_policy = pufferlib.frameworks.cleanrl.Policy(policy)
+
+Error Handling
+**************
+
+Previously, PufferLib applied expensive runtime checks to all environments by default. These could be disabled by running with -O. This was inconvenient and easily forgotten. Now, these checks only run once at startup with negligible overhead. Thus far, we have observed no bugs with the new version that would have been caught by the previous checks.
+
+Miscellaneous
+*************
+
+We have added sane default installations, setup, and policies for several more environments. Check our home page for an updated list.
+
+The new environment and policy changes means that PufferLib no longer breaks serialization. This is useful for saving environment and model states.
+
+We have written an optimized flatten and unflatten function for handling observation and actions. This was previously a bottleneck for environments with complex spaces. Expect a separate post on this, since it was an interesting case study for Python extension options.
+
+We have an experimental custom CleanRL derivative to correctly handle environments with variable numbers of agents, without training on padding. Doing this simply has been a longstanding challenge in RL. More on this once it is more stable.
+
+Join us on Discord and tell us your pain points. We might just fix them.
+
+PufferLib 0.2: Ready to Take on the Big Fish
 #############################################
 
 PufferLib's goal is to make reinforcement learning on complex game environments as simple as it is on Atari. We released version 0.1 as a preliminary API with limited testing. Now, we're excited to announce version 0.2, which includes dozens of bug fixes, better testing, a streamlined API, and a working demo on CleanRL.

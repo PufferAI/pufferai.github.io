@@ -148,7 +148,7 @@ PufferLib allows you to write vanilla PyTorch policies and use them with multipl
           return actions, value
 
   obs = torch.Tensor(obs)
-  policy = Policy(envs)
+  policy = Policy(envs.driver_env)
   cleanrl_policy = pufferlib.frameworks.cleanrl.Policy(policy)
   actions = cleanrl_policy.get_action_and_value(obs)[0].numpy()
   obs, rewards, dones, infos = envs.step(actions)
@@ -171,7 +171,7 @@ So far, the code above is fully general and does not rely on PufferLib support f
       env_creator=pufferlib.registry.nmmo.make_env,
       num_workers=2, envs_per_worker=2)
 
-  policy = pufferlib.registry.nmmo.Policy(envs)
+  policy = pufferlib.registry.nmmo.Policy(envs.driver_env)
   policy = pufferlib.models.RecurrentWrapper(envs, policy,
       input_size=256, hidden_size=256)
   cleanrl_policy = pufferlib.frameworks.cleanrl.RecurrentPolicy(policy)
