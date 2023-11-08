@@ -44,7 +44,7 @@ You have an environment, a PyTorch model, and a reinforcement learning library t
 
 |
 
-Join our community Discord for support and Discussion, follow my Twitter for news, and star the repo to feed the puffer.
+Join our community Discord for support and Discussion, follow my Twitter for news, and star the repo to feed the puffer. :download:`Whitepaper <../_static/neurips_2023_aloe.pdf>` appearing at NeurIPS 2023 ALOE Workshop. Come say hi!
 
 .. dropdown:: Installation
 
