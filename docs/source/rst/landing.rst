@@ -44,7 +44,7 @@ You have an environment, a PyTorch model, and a reinforcement learning library t
 
 |
 
-Join our community Discord for support and Discussion, follow my Twitter for news, and star the repo to feed the puffer. :download:`Whitepaper <../_static/neurips_2023_aloe.pdf>` appearing at NeurIPS 2023 ALOE Workshop. Come say hi!
+Join our community Discord for support and Discussion, follow my Twitter for news, and star the repo to feed the puffer. We also have a :download:`Whitepaper <../_static/neurips_2023_aloe.pdf>` featured at the NeurIPS 2023 ALOE workshop.
 
 .. dropdown:: Installation
 
@@ -54,7 +54,7 @@ Join our community Discord for support and Discussion, follow my Twitter for new
 
       `PufferTank <https://github.com/pufferai/puffertank>`_ is a GPU container with PufferLib and dependencies for all environments in the registry, including some that are slow and tricky to install.
 
-      If you are new to containers, clone the repository and open it in VSCode. You will need to install the Dev Container plugin as well as Docker Desktop. VSCode will then detect the settings in .devcontainer and set up the container for you.
+      If you have not used containers before and just want everything to work, clone the repository and open it in VSCode. You will need to install the Dev Container plugin as well as Docker Desktop. VSCode will then detect the settings in .devcontainer and set up the container for you.
 
     .. tab-item:: Pip
 
@@ -76,7 +76,7 @@ Join our community Discord for support and Discussion, follow my Twitter for new
 
    **Joseph Suarez**: Creator and developer of PufferLib
 
-   **David Bloomin**: Policy pool/store/selector
+   **David Bloomin**: 0.4 policy pool/store/selector
 
    **Nick Jenkins**: Layout for the system architecture diagram. Adversary.design.
 
@@ -86,40 +86,45 @@ Join our community Discord for support and Discussion, follow my Twitter for new
 
 **You can open this guide in a Colab notebook by clicking the demo button at the top of this page**
 
-Complex environments may have heirarchical observations and actions, variable numbers of agents, and other quirks that make them difficult to work with and incompatible with standard reinforcement learning libraries. PufferLib's emulation layer makes every environment look like it has flat observations and actions and a constant number of agents, with no changes to the underlying environment. Here's how it works with two notoriously complex environments, NetHack and Neural MMO.
+Complex environments may have heirarchical observations and actions, variable numbers of agents, and other quirks that make them difficult to work with and incompatible with standard reinforcement learning libraries. PufferLib's emulation layer makes every environment look like it has flat observations/actions and a constant number of agents. Here's how it works with NetHack and Neural MMO, two notoriously complex environments.
 
 .. code-block:: python
 
   import pufferlib.emulation
+  import pufferlib.wrappers
 
   import nle, nmmo
 
   def nmmo_creator():
-      return pufferlib.emulation.PettingZooPufferEnv(env_creator=nmmo.Env)
+      env = nmmo.Env()
+      env = pufferlib.wrappers.PettingZooTruncatedWrapper(env)
+      return pufferlib.emulation.PettingZooPufferEnv(env=env)
 
   def nethack_creator():
-      return pufferlib.emulation.GymPufferEnv(env_creator=nle.env.NLE)
+      return pufferlib.emulation.GymnasiumPufferEnv(env_creator=nle.env.NLE)
 
-You can pass envs by class, creator function, or object, with or without additional arguments. These wrappers enable us to make some optimizations to vectorization code that would be difficult to implement otherwise. You can choose from a variety of vectorization backends. They all share the same interface with synchronous and asynchronous options.
+The wrappers give you back a Gymnasium/PettingZoo compliant environment. There is no loss of generality and no change to the underlying environment. You can wrap environments by class, creator function, or object, with or without additional arguments. These wrappers enable us to make some optimizations to vectorization code that would be difficult to implement otherwise. You can choose from a variety of vectorization backends. They all share the same interface with synchronous and asynchronous options.
 
 .. code-block:: python
 
   import pufferlib.vectorization
 
-  # vec = pufferlib.vectorization.Serial
-  vec = pufferlib.vectorization.Multiprocessing
+  vec = pufferlib.vectorization.Serial
+  # vec = pufferlib.vectorization.Multiprocessing
   # vec = pufferlib.vectorization.Ray
 
-  envs = vec(nmmo_creator, num_workers=2, envs_per_worker=2)
+  # Vectorization API. Specify total number of environments and number per worker
+  # Setting env_pool=True can be much faster but requires some tweaks to learning code
+  envs = vec(nmmo_creator, num_envs=4, envs_per_worker=2, env_pool=False)
 
-  sync = True
-  if sync:
-      obs = envs.reset()
-  else:
-      envs.async_reset()
-      obs, _, _, _ = envs.recv()
+  # Synchronous API - reset/step
+  # obs = envs.reset()[0]
 
-We suggest Serial for debugging and Multiprocessing for most training runs. Ray is a good option if you need to scale beyond a single machine.
+  # Asynchronous API - async_reset, send/recv
+  envs.async_reset()
+  obs = envs.recv()[0]
+
+Our backends support asynchronous on-policy sampling through a Python implementation of EnvPool. This makes them *faster* than the implementations that ship with most RL libraries. We suggest Serial for debugging and Multiprocessing for most training runs. Ray is a good option if you need to scale beyond a single machine.
 
 PufferLib allows you to write vanilla PyTorch policies and use them with multiple learning libraries. We take care of the details of converting between the different APIs. Here's a policy that will work with *any* environment, with a one-line wrapper for CleanRL.
 
@@ -132,7 +137,7 @@ PufferLib allows you to write vanilla PyTorch policies and use them with multipl
   import pufferlib.frameworks.cleanrl
 
   class Policy(nn.Module):
-      def __init__(self, envs):
+      def __init__(self, env):
           super().__init__()
           self.encoder = nn.Linear(np.prod(
               envs.single_observation_space.shape), 128)
@@ -151,12 +156,10 @@ PufferLib allows you to write vanilla PyTorch policies and use them with multipl
   policy = Policy(envs.driver_env)
   cleanrl_policy = pufferlib.frameworks.cleanrl.Policy(policy)
   actions = cleanrl_policy.get_action_and_value(obs)[0].numpy()
-  obs, rewards, dones, infos = envs.step(actions)
+  obs, rewards, terminals, truncateds, infos, env_id, mask = envs.step(actions)
   envs.close()
 
-There's also a lightweight, fully optional base policy class for PufferLib. It breaks the forward pass into two functions, encode_observations and decode_actions. The advantage of this is that it lets us handle recurrance for you, since every framework does this a bit differently.
-
-So far, the code above is fully general and does not rely on PufferLib support for specific environments. For convenience, we also provide a registry of environments and models. Here's a complete example.
+There's also an optional policy base class for PufferLib. It just breaks the forward pass into an encode and decode step, which allows us to handle recurrance for you. So far, the code above is fully general and does not rely on PufferLib support for specific environments. For convenience, we also provide environment hooks with standard wrappers and baseline models. Here's a complete example.
 
 .. code-block:: python
 
@@ -165,33 +168,32 @@ So far, the code above is fully general and does not rely on PufferLib support f
   import pufferlib.models
   import pufferlib.vectorization
   import pufferlib.frameworks.cleanrl
-  import pufferlib.registry.nmmo
+  import pufferlib.environments.nmmo
 
   envs = pufferlib.vectorization.Multiprocessing(
-      env_creator=pufferlib.registry.nmmo.make_env,
-      num_workers=2, envs_per_worker=2)
+      env_creator=pufferlib.environments.nmmo.make_env,
+      num_envs=4, envs_per_worker=2)
 
-  policy = pufferlib.registry.nmmo.Policy(envs.driver_env)
-  policy = pufferlib.models.RecurrentWrapper(envs, policy,
-      input_size=256, hidden_size=256)
-  cleanrl_policy = pufferlib.frameworks.cleanrl.RecurrentPolicy(policy)
+  policy = pufferlib.environments.nmmo.Policy(envs.driver_env)
+  cleanrl_policy = pufferlib.frameworks.cleanrl.Policy(policy)
 
-  obs = envs.reset()
-  obs = torch.Tensor(obs)
-  state = [torch.zeros((1, 256, 256)), torch.zeros((1, 256, 256))]
-  actions = cleanrl_policy.get_action_and_value(obs, state)[0].numpy()
-  obs, rewards, dones, infos = envs.step(actions)
+  env_outputs = envs.reset()[0]
+  obs = torch.Tensor(env_outputs)
+  actions = cleanrl_policy.get_action_and_value(obs)[0].numpy()
+  obs, rewards, terminals, truncateds, infos, env_id, mask = envs.step(actions)
   envs.close()
 
-It's that simple -- almost. If you have an environment with structured observations, you'll hvae to unpack them in the network forward pass since PufferLif will flatten them in emulation. We provide a utility for this -- just be sure to save a reference to your environment inside of the model so you have access to the observation space.
+It's that simple -- almost. If you have an environment with structured observations, you'll have to unpack them in the network forward pass since PufferLib will flatten them in emulation. We provide a utility for this.
 
 .. code-block:: python
 
-  env_outputs = pufferlib.emulation.unpack_batched_obs(
-      env_outputs, self.envs.flat_observation_space
+  obs = pufferlib.emulation.unpack_batched_obs(
+      env_outputs,
+      envs.driver_env.flat_observation_space,
+      envs.driver_env.flat_observation_structure
   )
 
-That's all you need to get started. The PufferLib repository contains full-length CleanRL scripts with PufferLib integration.
+That's all you need to get started. The PufferLib repository contains full-length CleanRL scripts with PufferLib integration. SB3 and other integrations coming soon!
 
 Libraries
 #########
@@ -223,7 +225,7 @@ PufferLib provides *pufferlib.frameworks* for the the learning libraries below. 
 
 Or view it on GitHub `here <https://github.com/PufferAI/PufferLib/blob/experimental/cleanrl_ppo_atari.py>`_
 
-We are also working on a heavily customized version of CleanRL PPO with support for recurrent and non-recurrent models, async environment execution, variable agent populations, self-play, and experiment management. This is the version we use for our research and the NeurIPS 2023 Neural MMO Competition. It's still under development, but you can try it out `here <https://github.com/PufferAI/PufferLib/blob/experimental/clean_pufferl.py>`_ 
+PufferLib also includes a heavily customized version of CleanRL PPO with support for recurrent and non-recurrent models, async environment execution, variable agent populations, self-play, and experiment management. This is the version we use for our research and the NeurIPS 2023 Neural MMO Competition. You can try it out `here <https://github.com/PufferAI/PufferLib/blob/experimental/clean_pufferl.py>`_ 
 
 .. raw:: html
 
@@ -238,12 +240,12 @@ We are also working on a heavily customized version of CleanRL PPO with support 
         </div>
     </div>
 
-While RLlib is great on paper, there are currently a few issues. The pre-gymnasium 2.0 release is very buggy and has next to no error checking on the user API. The latest version may be more stable, but it pins a very recent version of Gymnasium that breaks compatiblity with many environments. We have a simple running script `here <https://github.com/PufferAI/PufferLib/blob/experimental/rllib_ppo.py>`_ that works with 2.0 for now. We will update this when the situation improves.
+We have previously supported RLLib and may again in the future. RLlib has not received updates in a while, and the current release is very buggy. We will update this if the situation improves.
 
 Environments
 ############
 
-We also provide a registry of environments and models that are supported out of the box. These environments are already set up for you in PufferTank and are used in our test cases to ensure they work with PufferLib. Several also include reasonable baseline policies. Join our Discord if you would like to add setup and tests for new environments or improvements to any of the baselines.
+We also provide integrations for many environments out of the box. Non-pip dependencies are already set up for you in PufferTank. Several environments also include reasonable baseline policies. Join our Discord if you would like to add setup and tests for new environments or improvements to any of the baselines.
 
 
 .. raw:: html
@@ -261,12 +263,12 @@ We also provide a registry of environments and models that are supported out of 
 
     <div style="display: flex; align-items: center; margin-bottom: 15px;">
         <div style="flex-shrink: 0; width: 100px; margin-right: 20px;">
-            <a href="https://github.com/Farama-Foundation/Arcade-Learning-Environment" target="_blank">
-                <img src="https://img.shields.io/github/stars/Farama-Foundation/Arcade-Learning-Environment?labelColor=999999&color=66dcdc&cacheSeconds=100000" alt="Star Arcade Learning Environment" width="100px">
+            <a href="https://github.com/PWhiddy/PokemonRedExperiments" target="_blank">
+                <img src="https://img.shields.io/github/stars/PWhiddy/PokemonRedExperiments?labelColor=999999&color=66dcdc&cacheSeconds=100000" alt="Star Pokemon Red" width="100px">
             </a>
         </div>
         <div>
-            <p><a href="https://github.com/Farama-Foundation/Arcade-Learning-Environment">Arcade Learning Environment</a> provides a Gym interface for classic Atari games. This is the most popular benchmark for reinforcement learning algorithms.</p>
+            <p><a href="https://github.com/PWhiddy/PokemonRedExperiments">Pokemon Red</a> is one of the original Pokemon games for gameboy. This project uses the game as an environment for reinforcement learning. We are actively supporting development on this one!</p>
         </div>
     </div>
 
@@ -283,12 +285,23 @@ We also provide a registry of environments and models that are supported out of 
 
     <div style="display: flex; align-items: center; margin-bottom: 15px;">
         <div style="flex-shrink: 0; width: 100px; margin-right: 20px;">
-            <a href="https://github.com/neuralmmo/environment" target="_blank">
-                <img src="https://img.shields.io/github/stars/openai/neural-mmo?labelColor=999999&color=66dcdc&cacheSeconds=100000" alt="Star Neural MMO" width="100px">
+            <a href="https://github.com/Farama-Foundation/Arcade-Learning-Environment" target="_blank">
+                <img src="https://img.shields.io/github/stars/Farama-Foundation/Arcade-Learning-Environment?labelColor=999999&color=66dcdc&cacheSeconds=100000" alt="Star Arcade Learning Environment" width="100px">
             </a>
         </div>
         <div>
-            <p><a href="https://neuralmmo.github.io">Neural MMO</a> is a massively multiagent environment for reinforcement learning. It combines large agent populations with high per-agent complexity and is the most actively maintained (by me) project on this list.</p>
+            <p><a href="https://github.com/Farama-Foundation/Arcade-Learning-Environment">Arcade Learning Environment</a> provides a Gym interface for classic Atari games. This is the most popular benchmark for reinforcement learning algorithms.</p>
+        </div>
+    </div>
+
+    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+        <div style="flex-shrink: 0; width: 100px; margin-right: 20px;">
+            <a href="https://github.com/Farama-Foundation/Minigrid" target="_blank">
+                <img src="https://img.shields.io/github/stars/Farama-Foundation/Minigrid?labelColor=999999&color=66dcdc&cacheSeconds=100000" alt="Star Minigrid" width="100px">
+            </a>
+        </div>
+        <div>
+            <p><a href="https://github.com/Farama-Foundation/Minigrid">Minigrid</a> is a 2D grid-world environment engine and a collection of builtin environments. The target is flexible and computationally efficient RL research.</p>
         </div>
     </div>
 
@@ -300,6 +313,17 @@ We also provide a registry of environments and models that are supported out of 
         </div>
         <div>
             <p><a href="https://github.com/geek-ai/MAgent/blob/master/doc/get_started.md">MAgent</a> is a platform for large-scale agent simulation.</p>
+        </div>
+    </div>
+
+    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+        <div style="flex-shrink: 0; width: 100px; margin-right: 20px;">
+            <a href="https://github.com/neuralmmo/environment" target="_blank">
+                <img src="https://img.shields.io/github/stars/openai/neural-mmo?labelColor=999999&color=66dcdc&cacheSeconds=100000" alt="Star Neural MMO" width="100px">
+            </a>
+        </div>
+        <div>
+            <p><a href="https://neuralmmo.github.io">Neural MMO</a> is a massively multiagent environment for reinforcement learning. It combines large agent populations with high per-agent complexity and is the most actively maintained (by me) project on this list.</p>
         </div>
     </div>
 
@@ -322,6 +346,17 @@ We also provide a registry of environments and models that are supported out of 
         </div>
         <div>
             <p><a href="https://github.com/facebookresearch/nle">Nethack Learning Environment</a> is a port of the classic game NetHack to the Gym API. It combines extreme complexity with high simulation efficiency.</p>
+        </div>
+    </div>
+
+    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+        <div style="flex-shrink: 0; width: 100px; margin-right: 20px;">
+            <a href="https://github.com/facebookresearch/minihack" target="_blank">
+                <img src="https://img.shields.io/github/stars/facebookresearch/minihack?labelColor=999999&color=66dcdc&cacheSeconds=100000" alt="Star MiniHack" width="100px">
+            </a>
+        </div>
+        <div>
+            <p><a href="https://github.com/facebookresearch/nle">MiniHack Learning Environment</a> is a stripped down version of NetHack with support for level editing and custom procedural generation.</p>
         </div>
     </div>
 
@@ -362,11 +397,9 @@ Current Limitations
 ###################
 
 - No continuous action spaces (WIP)
-- Pre-gymnasium Gym and PettingZoo only (WIP)
 - Support for heterogenous observations and actions requires you to specify teams such that each team has the same observation and action space. There's no good way around this.
 
 License
 #######
 
-PufferLib is free and open-source software under the MIT license. This is the full set of tools maintained by PufferAI; we do not have private repositories with additional utilities.
-
+PufferLib is free and open-source software under the MIT license. This is the full set of tools maintained by PufferAI. Dev branches are public and we do not have private repositories with additional utilities.

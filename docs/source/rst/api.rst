@@ -9,7 +9,7 @@ Emulation
 
 Wrap your environments for broad compatibility. Supports passing creator functions, classes, or env objects. The API of the returned PufferEnv is the same as Gym/PettingZoo.
 
-.. autoclass:: pufferlib.emulation.GymPufferEnv
+.. autoclass:: pufferlib.emulation.GymnasiumPufferEnv
    :members:
    :undoc-members:
    :noindex:
@@ -19,93 +19,21 @@ Wrap your environments for broad compatibility. Supports passing creator functio
    :undoc-members:
    :noindex:
 
-Registry
-########
+Environments
+############
 
-make_env functions and policies for included environments.
+All included environments expose make_env and env_creator functions. make_env is the one that you want most of the time. The other one is used to expose e.g. class interfaces for environments that support them so that you can pass around static references.
 
-Atari
-*****
+Additionally, all environments expose a Policy class with a baseline model. Note that not all environments have *custom* policies, and the default simply flattens observations before applying a linear layer. Atari, Procgen, Neural MMO, Nethack/Minihack, and Pokemon Red currently have reasonable policies.
 
-.. automodule:: pufferlib.registry.atari
+The PufferLib Squared environment is used as an example below. Everything is exposed through __init__, so you can call these methods through e.g. pufferlib.environments.squared.make_env
+
+.. automodule:: pufferlib.environments.squared.environment
    :members:
    :undoc-members:
    :noindex:
 
-
-Butterfly
-*********
-
-.. automodule:: pufferlib.registry.butterfly
-   :members:
-   :undoc-members:
-   :noindex:
-
-
-Classic Control
-***************
-
-.. automodule:: pufferlib.registry.classic_control
-   :members:
-   :undoc-members:
-   :noindex:
-
-Crafter
-*******
-
-.. automodule:: pufferlib.registry.crafter
-   :members:
-   :undoc-members:
-   :noindex:
-
-Griddly
-*******
-
-.. automodule:: pufferlib.registry.griddly
-   :members:
-   :undoc-members:
-   :noindex:
-
-
-MAgent
-******
-
-.. automodule:: pufferlib.registry.magent
-   :members:
-   :undoc-members:
-   :noindex:
-
-
-MicroRTS
-********
-
-.. automodule:: pufferlib.registry.microrts
-   :members:
-   :undoc-members:
-   :noindex:
-
-
-NetHack
-*******
-
-.. automodule:: pufferlib.registry.nethack
-   :members:
-   :undoc-members:
-   :noindex:
-
-
-Neural MMO
-**********
-
-.. automodule:: pufferlib.registry.nmmo
-   :members:
-   :undoc-members:
-   :noindex:
-
-Procgen
-*******
-
-.. automodule:: pufferlib.registry.procgen
+.. autoclass:: pufferlib.environments.squared.torch.Policy
    :members:
    :undoc-members:
    :noindex:
@@ -113,7 +41,7 @@ Procgen
 Models
 ######
 
-PufferLib model API and default policies
+PufferLib model default policies and optional API. These are not required to use PufferLib.
 
 .. automodule:: pufferlib.models
    :members:
@@ -150,7 +78,7 @@ Wrap your PyTorch policies for use with CleanRL
    :undoc-members:
    :noindex:
 
-Recurrence requires you to subclass our base policy instead. See the default policies for examples.
+Wrap your PyTorch policies for use with CleanRL but add an LSTM. This requires you to use our policy API. It's pretty simple -- see the default policies for examples.
 
 .. autoclass:: pufferlib.frameworks.cleanrl.RecurrentPolicy
    :members:
@@ -160,9 +88,14 @@ Recurrence requires you to subclass our base policy instead. See the default pol
 RLlib Binding
 #############
 
-Wrap your policies for use with RLlib (WIP)
+Wrap your policies for use with RLlib (Shelved until RLlib is more stable)
 
 .. automodule:: pufferlib.frameworks.rllib
    :members:
    :undoc-members:
    :noindex:
+
+SB3 Binding
+###########
+
+Coming soon!
