@@ -6,7 +6,7 @@
 You have an environment, a PyTorch model, and a reinforcement learning library that are designed to work together but don't. PufferLib provides one-line wrappers that make them play nice.
 
 .. card::
-  :link: https://colab.research.google.com/drive/1l1qLjerLwYoLjuKNr9iVc3TZ8gW2QVnz?usp=sharing
+  :link: https://colab.research.google.com/drive/142tl_9MiEDXX-E5-6kjwZsOmRYPcFrFU?usp=sharing
   :width: 75%
   :margin: 4 2 auto auto
   :text-align: center

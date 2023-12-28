@@ -14,7 +14,7 @@
 PufferLib 0.5: A Bigger EnvPool for Growing Puffers
 ###################################################
 
-This is what reinforcement learning does to your CPU utilization.
+This is what reinforcement learning does to your CPU utilization:
 
 .. figure:: ../_static/0-5_blog_header.png
 
