@@ -28,12 +28,12 @@ Additionally, all environments expose a Policy class with a baseline model. Note
 
 The PufferLib Squared environment is used as an example below. Everything is exposed through __init__, so you can call these methods through e.g. pufferlib.environments.squared.make_env
 
-.. automodule:: pufferlib.environments.squared.environment
+.. autoclass:: pufferlib.environments.ocean.squared.Squared
    :members:
    :undoc-members:
    :noindex:
 
-.. autoclass:: pufferlib.environments.squared.torch.Policy
+.. autoclass:: pufferlib.environments.ocean.torch.Policy
    :members:
    :undoc-members:
    :noindex:
@@ -85,6 +85,11 @@ Wrap your PyTorch policies for use with CleanRL but add an LSTM. This requires y
    :undoc-members:
    :noindex:
 
+SB3 Binding
+###########
+
+Minimal CNN + LSTM example included in demo.py
+
 RLlib Binding
 #############
 
@@ -94,8 +99,3 @@ Wrap your policies for use with RLlib (Shelved until RLlib is more stable)
    :members:
    :undoc-members:
    :noindex:
-
-SB3 Binding
-###########
-
-Coming soon!

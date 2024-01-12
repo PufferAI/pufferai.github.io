@@ -245,7 +245,7 @@ We have previously supported RLLib and may again in the future. RLlib has not re
 Environments
 ############
 
-We also provide integrations for many environments out of the box. Non-pip dependencies are already set up for you in PufferTank. Several environments also include reasonable baseline policies. Join our Discord if you would like to add setup and tests for new environments or improvements to any of the baselines.
+PufferLib ships with Ocean, our first-party testing suite. We also provide integrations for many environments out of the box. Non-pip dependencies are already set up for you in PufferTank. Several environments also include reasonable baseline policies. Join our Discord if you would like to add setup and tests for new environments or improvements to any of the baselines.
 
 
 .. raw:: html

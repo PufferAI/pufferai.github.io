@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="PufferLib 0.5: A Bigger EnvPool for Growing Puffers" href="blog.html" /><link rel="prev" title="Libraries" href="landing.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Squared" href="ocean.html" /><link rel="prev" title="Libraries" href="landing.html" />
 
     <!-- Generated with Sphinx 5.0.0 and Furo 2023.03.27 -->
-        <title>Emulation - PufferLib 0.5.0 documentation</title>
+        <title>Emulation - PufferLib 0.6.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
@@ -190,7 +190,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">PufferLib 0.5.0 documentation</div></a>
+      <a href="../index.html"><div class="brand">PufferLib 0.6.0 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -213,7 +213,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   
-  <span class="sidebar-brand-text">PufferLib 0.5.0 documentation</span>
+  <span class="sidebar-brand-text">PufferLib 0.6.0 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -235,8 +235,16 @@
 <li class="toctree-l1"><a class="reference internal" href="#models">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#vectorization">Vectorization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#cleanrl-integration">CleanRL Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#rllib-binding">RLlib Binding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#sb3-binding">SB3 Binding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#rllib-binding">RLlib Binding</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">🌊 Ocean</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ocean.html">Squared</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ocean.html#password-exploration-environment">Password (exploration environment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ocean.html#stochastic">Stochastic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ocean.html#memory">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ocean.html#bandit">Bandit</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Blog</span></p>
 <ul>
@@ -303,52 +311,12 @@
 <dl class="py method">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Sets the seed for this env’s random number generator(s).</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Some environments use multiple pseudorandom number generators.
-We want to capture all such seeds used in order to ensure that
-there aren’t accidental correlations between multiple generators.</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><dl class="simple">
-<dt>Returns the list of seeds used in this env’s random</dt><dd><p>number generators. The first value in the list should be the
-“main” seed, or the value which a reproducer should pass to
-‘seed’. Often, the main seed equals the provided ‘seed’, but
-this won’t be true if seed=None, for example.</p>
-</dd>
-</dl>
-</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>list&lt;bigint&gt;</p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Resets the environment to an initial state and returns an initial
-observation.</p>
-<p>This method should also reset the environment’s random number
-generator(s) if <cite>seed</cite> is an integer or if the environment has not
-yet initialized a random number generator. If the environment already
-has a random number generator and <cite>reset</cite> is called with <cite>seed=None</cite>,
-the RNG should not be reset.
-Moreover, <cite>reset</cite> should (in the typical use case) be called with an
-integer seed right after initialization and then never again.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>the initial observation.
-info (optional dictionary): a dictionary containing extra information, this is only returned if return_info is set to true</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>observation (object)</p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py">
@@ -359,58 +327,12 @@ info (optional dictionary): a dictionary containing extra information, this is o
 <dl class="py method">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd><p>Renders the environment.</p>
-<p>The set of supported modes varies per environment. (And some
-third-party environments may not support rendering at all.)
-By convention, if mode is:</p>
-<ul class="simple">
-<li><p>human: render to the current display or terminal and
-return nothing. Usually for human consumption.</p></li>
-<li><p>rgb_array: Return an numpy.ndarray with shape (x, y, 3),
-representing RGB values for an x-by-y pixel image, suitable
-for turning into a video.</p></li>
-<li><p>ansi: Return a string (str) or StringIO.StringIO containing a
-terminal-style text representation. The text can include newlines
-and ANSI escape sequences (e.g. for colors).</p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<dl class="simple">
-<dt>Make sure that your class’s metadata ‘render_modes’ key includes</dt><dd><p>the list of supported modes. It’s recommended to call super()
-in implementations to use the functionality of this method.</p>
-</dd>
-</dl>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>mode</strong> (<em>str</em>) – the mode to render with</p>
-</dd>
-</dl>
-<p>Example:</p>
-<dl>
-<dt>class MyEnv(Env):</dt><dd><p>metadata = {‘render_modes’: [‘human’, ‘rgb_array’]}</p>
-<dl class="simple">
-<dt>def render(self, mode=’human’):</dt><dd><dl class="simple">
-<dt>if mode == ‘rgb_array’:</dt><dd><p>return np.array(…) # return RGB frame suitable for video</p>
-</dd>
-<dt>elif mode == ‘human’:</dt><dd><p>… # pop up a window and render</p>
-</dd>
-<dt>else:</dt><dd><p>super(MyEnv, self).render(mode=mode) # just raise an exception</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd><p>Override close in your subclass to perform any necessary cleanup.</p>
-<p>Environments will automatically close() themselves when
-garbage collected or when the program exits.</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py">
@@ -488,15 +410,60 @@ garbage collected or when the program exits.</p>
 <p>All included environments expose make_env and env_creator functions. make_env is the one that you want most of the time. The other one is used to expose e.g. class interfaces for environments that support them so that you can pass around static references.</p>
 <p>Additionally, all environments expose a Policy class with a baseline model. Note that not all environments have <em>custom</em> policies, and the default simply flattens observations before applying a linear layer. Atari, Procgen, Neural MMO, Nethack/Minihack, and Pokemon Red currently have reasonable policies.</p>
 <p>The PufferLib Squared environment is used as an example below. Everything is exposed through __init__, so you can call these methods through e.g. pufferlib.environments.squared.make_env</p>
-<dl class="py function">
+<dl class="py class">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.environments.squared.environment.</span></span><span class="sig-name descname"><span class="pre">make_env</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_to_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_targets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Puffer Squared environment</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.squared.</span></span><span class="sig-name descname"><span class="pre">Squared</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_to_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_targets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Pufferlib Squared environment</p>
+<p>Agent starts at the center of a square grid.
+Targets are placed on the perimeter of the grid.
+Reward is 1 minus the L-inf distance to the closest target.
+This means that reward varies from -1 to 1.
+Reward is not given for targets that have already been hit.</p>
+<p>Observation space: Box(-1, 1, (grid_size, grid_size)). The map.
+Action space: Discrete(8). Which direction to move.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distance_to_target</strong> – The distance from the center to the closest target.</p></li>
+<li><p><strong>num_targets</strong> – The number of targets to randomly generate.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">action_space</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">spaces.Space</span><span class="p"><span class="pre">[</span></span><span class="pre">ActType</span><span class="p"><span class="pre">]</span></span></em></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">observation_space</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">spaces.Space</span><span class="p"><span class="pre">[</span></span><span class="pre">ObsType</span><span class="p"><span class="pre">]</span></span></em></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">pufferlib.environments.squared.torch.</span></span><span class="sig-name descname"><span class="pre">Policy</span></span></dt>
+<span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.torch.</span></span><span class="sig-name descname"><span class="pre">Policy</span></span></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">Default</span></code></p>
 </dd></dl>
 
@@ -583,8 +550,7 @@ It should be of shape (batch, …, sum(action_space.nvec))</p>
 <dd><dl class="py method">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Forward pass for PufferLib compatibility</p>
-</dd></dl>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -624,49 +590,12 @@ with LSTM or 4 frames without.</p>
 <dl class="py method">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">encode_observations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">observations</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Encodes a batch of observations into hidden states</p>
-<p>Call pufferlib.emulation.unpack_batched_obs at the start of this
-function to unflatten observations to their original structured form:</p>
-<dl class="simple">
-<dt>observations = pufferlib.emulation.unpack_batched_obs(</dt><dd><p>self.envs.structured_observation_space, env_outputs)</p>
-</dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>flat_observations</strong> – A tensor of shape (batch, …, obs_size)</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Tensor of (batch, …, hidden_size)
-lookup: Tensor of (batch, …) that can be used to return additional embeddings</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>hidden</p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">decode_actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flat_hidden</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lookup</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Decodes a batch of hidden states into multidiscrete actions</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>flat_hidden</strong> – Tensor of (batch, …, hidden_size)</p></li>
-<li><p><strong>lookup</strong> – Tensor of (batch, …), if returned by encode_observations</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Tensor of (batch, …, action_size)
-value: Tensor of (batch, …)</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>actions</p>
-</dd>
-</dl>
-<p>actions is a concatenated tensor of logits for each action space dimension.
-It should be of shape (batch, …, sum(action_space.nvec))</p>
-</dd></dl>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -949,13 +878,13 @@ faster than multiprocessing on a single machine for specific environments.</p>
 </dd></dl>
 
 </section>
+<section id="sb3-binding">
+<h1>SB3 Binding<a class="headerlink" href="#sb3-binding" title="Permalink to this heading">#</a></h1>
+<p>Minimal CNN + LSTM example included in demo.py</p>
+</section>
 <section id="rllib-binding">
 <h1>RLlib Binding<a class="headerlink" href="#rllib-binding" title="Permalink to this heading">#</a></h1>
 <p>Wrap your policies for use with RLlib (Shelved until RLlib is more stable)</p>
-</section>
-<section id="sb3-binding">
-<h1>SB3 Binding<a class="headerlink" href="#sb3-binding" title="Permalink to this heading">#</a></h1>
-<p>Coming soon!</p>
 </section>
 
         </article>
@@ -963,12 +892,12 @@ faster than multiprocessing on a single machine for specific environments.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="blog.html">
+          <a class="next-page" href="ocean.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">PufferLib 0.5: A Bigger EnvPool for Growing Puffers</div>
+                <div class="title">Squared</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>

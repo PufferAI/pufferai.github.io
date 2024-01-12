@@ -5,7 +5,7 @@ make clean
 #  undoc-members (pollutes with garbage internals)
 #  imported-members (pollutes with inhereted garbage)
 
-SPHINX_APIDOC_OPTIONS=members,undoc-members,inherited-members,show-inheritance sphinx-apidoc -o source/autodoc/ -fMe --implicit-namespaces ../../pufferlib/pufferlib/
+SPHINX_APIDOC_OPTIONS=members,undoc-members sphinx-apidoc -o source/autodoc/ -fMe --implicit-namespaces ../../pufferlib/pufferlib/
 
 #Strip bad headers
 for f in source/autodoc/*.rst; do\

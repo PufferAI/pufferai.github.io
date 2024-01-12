@@ -25,6 +25,7 @@ MOCK_MODULES = []
 autodoc_mock_imports = ["torch"]
 sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
 
+autodoc_inherit_docstrings = False
 
 # -- Project information -----------------------------------------------------
 

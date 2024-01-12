@@ -15,6 +15,12 @@ Index
 
 .. toctree::
    :maxdepth: 8
+   :caption: 🌊 Ocean
+
+   rst/ocean
+
+.. toctree::
+   :maxdepth: 8
    :caption: Blog
 
    rst/blog
