@@ -4,6 +4,8 @@
 
 🌊 Ocean is PufferLib's suite of first-party environments. They are small and can be trained from scratch in 30 seconds to 2 minutes. Use Ocean as a sanity check for your training code instead of overnighting heavier runs.
 
+.. image:: /resource/ocean.png
+
 Squared
 *******
 
