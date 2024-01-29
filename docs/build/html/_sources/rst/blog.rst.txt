@@ -11,8 +11,66 @@
      </video>
    </center>
 
-🐡🌊 An Ocean of Environments for Learning Pufferfish
-#####################################################
+PufferLib 0.7: Puffing Up Performance with Shared Memory
+########################################################
+
+This update doubles training throughput for most environments with no tradeoffs. We have tested Pokemon Red training at over 6000 steps/second on a single desktop, up from around 3000. CleanRL trains Atari 65% faster just by switching to PufferLib's vectorization, without even enabling our extra async features. The approach is a combination of shared memory, PyTorch code optimizations, dependency upgrades, and model compilation.
+
+Sharing Memory with Vectorized Environments
+*******************************************
+
+In PufferLib 0.5, we discovered that the standard Python multiprocessing Queue implementation is 3-10x slower than using Pipes and replaced it accordingly. In this update, we discovered that sending environment data through multiprocessing.Array instead of through Pipe yields an additional ~20% performance improvement. This is the exact code we use:
+
+.. code-block:: python
+
+  shared_mem = [
+      Array('d', agents_per_worker*(3+observation_size))
+      for _ in range(num_workers)
+  ]
+
+Each array has enough memory for all of the observations, rewards, terminals, and truncation signals from the environments on one worker. Only the actions and infos are still communicated via pipes. Since infos can store arbitrary data and are the simplest way to aggregate logs from the environment, we have left this as is. The multiprocessing.Array is also shared with a Numpy array, making it simple to update:
+
+.. code-block:: python
+
+  def _unpack_shared_mem(shared_mem, n):
+      np_buf = np.frombuffer(shared_mem.get_obj(), dtype=float)
+      obs_arr = np_buf[:-3*n]
+      rewards_arr = np_buf[-3*n:-2*n]
+      terminals_arr = np_buf[-2*n:-n]
+      truncated_arr = np_buf[-n:]
+
+      return obs_arr, rewards_arr, terminals_arr, truncated_arr
+
+This function is called only once per worker at the start of training, and the data arrays can be updated in place to update the corresponding shared storage. These slices are views, meaning that they are fast to update without first having to aggregate all the data from a worker into a local array.
+
+.. code-block:: python
+
+  obs_arr[:] = obs.ravel()
+  rewards_arr[:] = reward.ravel()
+  terminals_arr[:] = done.ravel()
+  truncated_arr[:] = truncated.ravel()
+
+PyTorch Indexing
+****************
+
+Slow indexing is a `known issue <https://github.com/pytorch/pytorch/issues/29973>`_ in PyTorch. PufferLib’s customized CleanRL PPO implementation has to do a lot of indexing because it uses an EnvPool-like interface that does synchronous policy updates but asynchronous environment simulation. After profiling, we found that indexing and subsequent copying were taking up 80% of inference and 50% of training. The fix for this was to just use Numpy. Calling np.asarray(tensor) creates a shared memory view in which updating the numpy array also updates the tensor, but it allows you to use 10x faster Numpy indexing to do it. It only works on CPU, but we were already offloading most of the rollout data to CPU anyway to enable large-batch training, and this only adds a few copies per epoch.
+
+Dependency Upgrades & torch.compile
+***********************************
+
+We’ve updated PufferTank to Python 3.11 and PyTorch 2.1 with Cuda 12.1. This enables us to use torch.compile, which you can enable in the demo with the —train.compile flag. This gave us another 20% model throughput in our testing. Python 3.11 also contains a number of performance improvements. The one issue is that 3.11 specifically breaks a few important environments. We’ve included a build of NetHack that works with 3.11, and Neural MMO will be updated soon. If you are having trouble with any specific environment, let us know on the Discord.
+
+
+Attribution
+***********
+
+Thanks to ThatGuy in the Pokemon Red RL Discord for profiling and optimizing clean_pufferl and Bet Adsorption for assistance
+
+Thanks to Aleksei Petrenko, the creator of Sample Factory, for useful discussions and pointers to optimizations in the Sample Factory code base. Aleksei also has a useful pip package, faster-fifo, that fixes the horrible performance of Python’s native multiprocessing.Queue. It’s much simpler than raw Pipes and nearly as fast.
+
+
+PufferLib 0.6: 🐡🌊 An Ocean of Environments for Learning Pufferfish
+####################################################################
 
 Ocean is a small suite of environments that train from scratch in 30 seconds and render in a terminal. Each environment is a sanity check for a common implementation bug. Use Ocean as a quick verification test whenever you make small code changes.
 

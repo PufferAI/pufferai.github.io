@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Squared" href="ocean.html" />
 
     <!-- Generated with Sphinx 5.0.0 and Furo 2023.03.27 -->
-        <title>🐡🌊 An Ocean of Environments for Learning Pufferfish - PufferLib 0.6.0 documentation</title>
+        <title>PufferLib 0.7: Puffing Up Performance with Shared Memory - PufferLib 0.7.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
@@ -190,7 +190,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">PufferLib 0.6.0 documentation</div></a>
+      <a href="../index.html"><div class="brand">PufferLib 0.7.0 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -201,7 +201,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -213,7 +213,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   
-  <span class="sidebar-brand-text">PufferLib 0.6.0 documentation</span>
+  <span class="sidebar-brand-text">PufferLib 0.7.0 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -244,11 +244,14 @@
 <li class="toctree-l1"><a class="reference internal" href="ocean.html#password-exploration-environment">Password (exploration environment)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ocean.html#stochastic">Stochastic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ocean.html#memory">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ocean.html#multiagent">Multiagent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ocean.html#spaces">Spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ocean.html#bandit">Bandit</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Blog</span></p>
 <ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">🐡🌊 An Ocean of Environments for Learning Pufferfish</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">PufferLib 0.7: Puffing Up Performance with Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#pufferlib-0-6-an-ocean-of-environments-for-learning-pufferfish">PufferLib 0.6: 🐡🌊 An Ocean of Environments for Learning Pufferfish</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#pufferlib-0-5-a-bigger-envpool-for-growing-puffers">PufferLib 0.5: A Bigger EnvPool for Growing Puffers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#pufferlib-0-4-ready-to-take-on-bigger-fish">PufferLib 0.4: Ready to Take on Bigger Fish</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#pufferlib-0-2-ready-to-take-on-the-big-fish">PufferLib 0.2: Ready to Take on the Big Fish</a></li>
@@ -280,7 +283,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -292,8 +295,53 @@
     <source src="../_static/banner.mp4" type="video/mp4">
     Your browser does not support this video.
   </video>
-</center><section id="an-ocean-of-environments-for-learning-pufferfish">
-<h1>🐡🌊 An Ocean of Environments for Learning Pufferfish<a class="headerlink" href="#an-ocean-of-environments-for-learning-pufferfish" title="Permalink to this heading">#</a></h1>
+</center><section id="pufferlib-0-7-puffing-up-performance-with-shared-memory">
+<h1>PufferLib 0.7: Puffing Up Performance with Shared Memory<a class="headerlink" href="#pufferlib-0-7-puffing-up-performance-with-shared-memory" title="Permalink to this heading">#</a></h1>
+<p>This update doubles training throughput for most environments with no tradeoffs. We have tested Pokemon Red training at over 6000 steps/second on a single desktop, up from around 3000. CleanRL trains Atari 65% faster just by switching to PufferLib’s vectorization, without even enabling our extra async features. The approach is a combination of shared memory, PyTorch code optimizations, dependency upgrades, and model compilation.</p>
+<section id="sharing-memory-with-vectorized-environments">
+<h2>Sharing Memory with Vectorized Environments<a class="headerlink" href="#sharing-memory-with-vectorized-environments" title="Permalink to this heading">#</a></h2>
+<p>In PufferLib 0.5, we discovered that the standard Python multiprocessing Queue implementation is 3-10x slower than using Pipes and replaced it accordingly. In this update, we discovered that sending environment data through multiprocessing.Array instead of through Pipe yields an additional ~20% performance improvement. This is the exact code we use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">shared_mem</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Array</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">agents_per_worker</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">+</span><span class="n">observation_size</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_workers</span><span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Each array has enough memory for all of the observations, rewards, terminals, and truncation signals from the environments on one worker. Only the actions and infos are still communicated via pipes. Since infos can store arbitrary data and are the simplest way to aggregate logs from the environment, we have left this as is. The multiprocessing.Array is also shared with a Numpy array, making it simple to update:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_unpack_shared_mem</span><span class="p">(</span><span class="n">shared_mem</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">np_buf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">shared_mem</span><span class="o">.</span><span class="n">get_obj</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">obs_arr</span> <span class="o">=</span> <span class="n">np_buf</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">rewards_arr</span> <span class="o">=</span> <span class="n">np_buf</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">n</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">terminals_arr</span> <span class="o">=</span> <span class="n">np_buf</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="p">:</span><span class="o">-</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">truncated_arr</span> <span class="o">=</span> <span class="n">np_buf</span><span class="p">[</span><span class="o">-</span><span class="n">n</span><span class="p">:]</span>
+
+    <span class="k">return</span> <span class="n">obs_arr</span><span class="p">,</span> <span class="n">rewards_arr</span><span class="p">,</span> <span class="n">terminals_arr</span><span class="p">,</span> <span class="n">truncated_arr</span>
+</pre></div>
+</div>
+<p>This function is called only once per worker at the start of training, and the data arrays can be updated in place to update the corresponding shared storage. These slices are views, meaning that they are fast to update without first having to aggregate all the data from a worker into a local array.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">obs_arr</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">obs</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="n">rewards_arr</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">reward</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="n">terminals_arr</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">done</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="n">truncated_arr</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">truncated</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="pytorch-indexing">
+<h2>PyTorch Indexing<a class="headerlink" href="#pytorch-indexing" title="Permalink to this heading">#</a></h2>
+<p>Slow indexing is a <a class="reference external" href="https://github.com/pytorch/pytorch/issues/29973">known issue</a> in PyTorch. PufferLib’s customized CleanRL PPO implementation has to do a lot of indexing because it uses an EnvPool-like interface that does synchronous policy updates but asynchronous environment simulation. After profiling, we found that indexing and subsequent copying were taking up 80% of inference and 50% of training. The fix for this was to just use Numpy. Calling np.asarray(tensor) creates a shared memory view in which updating the numpy array also updates the tensor, but it allows you to use 10x faster Numpy indexing to do it. It only works on CPU, but we were already offloading most of the rollout data to CPU anyway to enable large-batch training, and this only adds a few copies per epoch.</p>
+</section>
+<section id="dependency-upgrades-torch-compile">
+<h2>Dependency Upgrades &amp; torch.compile<a class="headerlink" href="#dependency-upgrades-torch-compile" title="Permalink to this heading">#</a></h2>
+<p>We’ve updated PufferTank to Python 3.11 and PyTorch 2.1 with Cuda 12.1. This enables us to use torch.compile, which you can enable in the demo with the —train.compile flag. This gave us another 20% model throughput in our testing. Python 3.11 also contains a number of performance improvements. The one issue is that 3.11 specifically breaks a few important environments. We’ve included a build of NetHack that works with 3.11, and Neural MMO will be updated soon. If you are having trouble with any specific environment, let us know on the Discord.</p>
+</section>
+<section id="attribution">
+<h2>Attribution<a class="headerlink" href="#attribution" title="Permalink to this heading">#</a></h2>
+<p>Thanks to ThatGuy in the Pokemon Red RL Discord for profiling and optimizing clean_pufferl and Bet Adsorption for assistance</p>
+<p>Thanks to Aleksei Petrenko, the creator of Sample Factory, for useful discussions and pointers to optimizations in the Sample Factory code base. Aleksei also has a useful pip package, faster-fifo, that fixes the horrible performance of Python’s native multiprocessing.Queue. It’s much simpler than raw Pipes and nearly as fast.</p>
+</section>
+</section>
+<section id="pufferlib-0-6-an-ocean-of-environments-for-learning-pufferfish">
+<h1>PufferLib 0.6: 🐡🌊 An Ocean of Environments for Learning Pufferfish<a class="headerlink" href="#pufferlib-0-6-an-ocean-of-environments-for-learning-pufferfish" title="Permalink to this heading">#</a></h1>
 <p>Ocean is a small suite of environments that train from scratch in 30 seconds and render in a terminal. Each environment is a sanity check for a common implementation bug. Use Ocean as a quick verification test whenever you make small code changes.</p>
 <a class="reference internal image-reference" href="../_images/ocean.png"><img alt="../_images/ocean.png" class="align-center" src="../_images/ocean.png" style="width: 100%;" /></a>
 <p><strong>Memory:</strong> The agent is shown one binary token at a time and must recite them back after a pause. Do not make the sequence too long or you start testing credit assignment.</p>
@@ -520,8 +568,55 @@ Don’t use time.sleep(), as this will trigger context switching, or time.time()
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">PufferLib 0.7: Puffing Up Performance with Shared Memory</a><ul>
+<li><a class="reference internal" href="#sharing-memory-with-vectorized-environments">Sharing Memory with Vectorized Environments</a></li>
+<li><a class="reference internal" href="#pytorch-indexing">PyTorch Indexing</a></li>
+<li><a class="reference internal" href="#dependency-upgrades-torch-compile">Dependency Upgrades &amp; torch.compile</a></li>
+<li><a class="reference internal" href="#attribution">Attribution</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pufferlib-0-6-an-ocean-of-environments-for-learning-pufferfish">PufferLib 0.6: 🐡🌊 An Ocean of Environments for Learning Pufferfish</a></li>
+<li><a class="reference internal" href="#pufferlib-0-5-a-bigger-envpool-for-growing-puffers">PufferLib 0.5: A Bigger EnvPool for Growing Puffers</a><ul>
+<li><a class="reference internal" href="#the-simulation-crisis">The Simulation Crisis</a></li>
+<li><a class="reference internal" href="#the-solution">The Solution</a></li>
+<li><a class="reference internal" href="#experiments">Experiments</a></li>
+<li><a class="reference internal" href="#technical-details-and-gotchas">Technical Details and Gotchas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pufferlib-0-4-ready-to-take-on-bigger-fish">PufferLib 0.4: Ready to Take on Bigger Fish</a><ul>
+<li><a class="reference internal" href="#emulation">Emulation</a></li>
+<li><a class="reference internal" href="#vectorization">Vectorization</a></li>
+<li><a class="reference internal" href="#puffertank">PufferTank</a></li>
+<li><a class="reference internal" href="#policies">Policies</a></li>
+<li><a class="reference internal" href="#error-handling">Error Handling</a></li>
+<li><a class="reference internal" href="#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pufferlib-0-2-ready-to-take-on-the-big-fish">PufferLib 0.2: Ready to Take on the Big Fish</a><ul>
+<li><a class="reference internal" href="#problem-statement">Problem Statement</a></li>
+<li><a class="reference internal" href="#cleanrl-demos">CleanRL Demos</a></li>
+<li><a class="reference internal" href="#pufferlib-emulation">PufferLib Emulation</a></li>
+<li><a class="reference internal" href="#pufferlib-vectorization">PufferLib Vectorization</a></li>
+<li><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
