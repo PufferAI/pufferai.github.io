@@ -6,7 +6,7 @@
 You have an environment, a PyTorch model, and a reinforcement learning library that are designed to work together but don't. PufferLib provides one-line wrappers that make them play nice.
 
 .. card::
-  :link: https://colab.research.google.com/drive/142tl_9MiEDXX-E5-6kjwZsOmRYPcFrFU?usp=sharing
+  :link: https://colab.research.google.com/drive/1pK5QQG9-MfVdbUNr2vXr2l6zJBS-au1V?usp=sharing
   :width: 75%
   :margin: 4 2 auto auto
   :text-align: center
@@ -76,6 +76,10 @@ Join our community Discord for support and Discussion, follow my Twitter for new
 
    **Joseph Suarez**: Creator and developer of PufferLib
 
+   **thatguy**: Several performance improvements w/ torch compilation, major pokerl contributor.
+
+   **Kyoung Whan Choe (최경환)**: Testing and bug fixes
+
    **David Bloomin**: 0.4 policy pool/store/selector
 
    **Nick Jenkins**: Layout for the system architecture diagram. Adversary.design.
@@ -85,6 +89,9 @@ Join our community Discord for support and Discussion, follow my Twitter for new
    **Sara Earle**: Original pufferfish model. Hire her on UpWork if you like what you see here.
 
 **You can open this guide in a Colab notebook by clicking the demo button at the top of this page**
+
+Emulation
+#########
 
 Complex environments may have heirarchical observations and actions, variable numbers of agents, and other quirks that make them difficult to work with and incompatible with standard reinforcement learning libraries. PufferLib's emulation layer makes every environment look like it has flat observations/actions and a constant number of agents. Here's how it works with NetHack and Neural MMO, two notoriously complex environments.
 
@@ -107,22 +114,16 @@ The wrappers give you back a Gymnasium/PettingZoo compliant environment. There i
 
 .. code-block:: python
 
-  import pufferlib.vectorization
-
-  vec = pufferlib.vectorization.Serial
-  # vec = pufferlib.vectorization.Multiprocessing
-  # vec = pufferlib.vectorization.Ray
-
-  # Vectorization API. Specify total number of environments and number per worker
-  # Setting env_pool=True can be much faster but requires some tweaks to learning code
-  envs = vec(nmmo_creator, num_envs=4, envs_per_worker=2, env_pool=False)
+  import pufferlib.vector
+  backend = pufferlib.vector.Serial #or Multiprocessing, Ray
+  envs = pufferlib.vector.make(nmmo_creator, backend=backend, num_envs=4)
 
   # Synchronous API - reset/step
-  # obs = envs.reset()[0]
+  obs, infos = envs.reset()
 
   # Asynchronous API - async_reset, send/recv
   envs.async_reset()
-  obs = envs.recv()[0]
+  obs, rewards, terminals, truncateds, infos, env_id, mask = envs.recv()
 
 Our backends support asynchronous on-policy sampling through a Python implementation of EnvPool. This makes them *faster* than the implementations that ship with most RL libraries. We suggest Serial for debugging and Multiprocessing for most training runs. Ray is a good option if you need to scale beyond a single machine.
 
@@ -156,51 +157,68 @@ PufferLib allows you to write vanilla PyTorch policies and use them with multipl
   policy = Policy(envs.driver_env)
   cleanrl_policy = pufferlib.frameworks.cleanrl.Policy(policy)
   actions = cleanrl_policy.get_action_and_value(obs)[0].numpy()
-  obs, rewards, terminals, truncateds, infos, env_id, mask = envs.step(actions)
+  obs, rewards, terminals, truncateds, infos = envs.step(actions)
   envs.close()
 
-There's also an optional policy base class for PufferLib. It just breaks the forward pass into an encode and decode step, which allows us to handle recurrance for you. So far, the code above is fully general and does not rely on PufferLib support for specific environments. For convenience, we also provide environment hooks with standard wrappers and baseline models. Here's a complete example.
+Optionally, you can class break the forward pass into an encode and decode step, which allows us to handle recurrance for you. So far, the code above is fully general and does not rely on PufferLib support for specific environments. For convenience, we also provide environment hooks with standard wrappers and baseline models. Here's a complete example.
 
 .. code-block:: python
 
   import torch
 
   import pufferlib.models
-  import pufferlib.vectorization
+  import pufferlib.vector
   import pufferlib.frameworks.cleanrl
   import pufferlib.environments.nmmo
 
-  envs = pufferlib.vectorization.Multiprocessing(
-      env_creator=pufferlib.environments.nmmo.make_env,
-      num_envs=4, envs_per_worker=2)
+  make_env = pufferlib.environments.nmmo.env_creator()
+  envs = pufferlib.vector.make(make_env, backend=backend, num_envs=4)
 
   policy = pufferlib.environments.nmmo.Policy(envs.driver_env)
   cleanrl_policy = pufferlib.frameworks.cleanrl.Policy(policy)
 
   env_outputs = envs.reset()[0]
-  obs = torch.Tensor(env_outputs)
+  obs = torch.from_numpy(env_outputs)
   actions = cleanrl_policy.get_action_and_value(obs)[0].numpy()
-  obs, rewards, terminals, truncateds, infos, env_id, mask = envs.step(actions)
+  next_obs, rewards, terminals, truncateds, infos = envs.step(actions)
   envs.close()
 
 It's that simple -- almost. If you have an environment with structured observations, you'll have to unpack them in the network forward pass since PufferLib will flatten them in emulation. We provide a utility for this.
 
 .. code-block:: python
 
-  obs = pufferlib.emulation.unpack_batched_obs(
-      env_outputs,
-      envs.driver_env.flat_observation_space,
-      envs.driver_env.flat_observation_structure
-  )
+  dtype = pufferlib.pytorch.nativize_dtype(envs.driver_env.emulated)
+  env_outputs = pufferlib.pytorch.nativize_tensor(obs, dtype)
+  print('Packed tensor:', obs.shape)
+  print('Unpacked:', env_outputs.keys())
 
-That's all you need to get started. The PufferLib repository contains full-length CleanRL scripts with PufferLib integration. SB3 and other integrations coming soon!
+That's all you need to get started. The PufferLib repository contains full-length CleanRL scripts with PufferLib integration. Single-agent environments should work with SB3, and other integrations will be based on demand - so let us know what you want!
+
+Vectorization
+#############
+
+Our Multiprocessing backend is fast -- much faster than Gymnasium's in most cases. Atari runs 50-60% faster synchronous and 5x faster async by our latest benchmark, and some environments like NetHack can be 10x faster even synchronous, with no API changes. PufferLib implements the following optimizations:
+
+**A Python implementation of EnvPool.** Simulates more envs than are needed per batch and returns batches of observations as soon as they are ready. Requires using the async send/recv instead of the sync step API.
+
+**Multiple environments per worker.** Important for fast environments.
+
+**Shared memory.** Unlike Gymnasium's implementation, we use a single buffer that is shared across environments.
+
+**Shared flags.** Workers busy-wait on an unlocked flag instead of signaling via pipes or queues. This virtually eliminates interprocess communication overhead. Pipes are used once per episode to communicate aggregated infos.
+
+**Zero-copy batching.** Because we use a single buffer for shared memory, we can return observations from contiguous subsets of workers without ever copying observations. Only does not work for full-async mode.
+
+**Native multiagent support.** It's not an extra wrapper or slow bolt-on feature. PufferLib treats single-agent and multi-agent environments the same. API differences are handled at the emulation level.
+
+Most of these optimizations are made possible by a hard assumption on PufferLib emulation. This means that we do not need to handle structured data within the vectorization layer itself.
 
 Libraries
 #########
 
 PufferLib's emulation layer adheres to the Gym and PettingZoo APIs: you can use it with *any* environment and learning library (subject to Limitations). The libraries and environments below are just the ones we've tested. We also provide additional tools to make them easier to work with.
 
-PufferLib provides *pufferlib.frameworks* for the the learning libraries below. These are short wrappers over your vanilla PyTorch policy that handles learning library API details for you. Additionally, if you use our *optional* model API, which just requires you to split your *forward* function into an *encode* and *decode* portion, we can handle recurrance for you. This is the approach we use in our default policies.
+PufferLib provides *pufferlib.frameworks* for the the learning libraries below. These are short wrappers over your vanilla PyTorch policy that handles learning library API details for you. Additionally, if you split your *forward* function into an *encode* and *decode* portion, we can handle recurrance for you. This is the approach we use in our default policies.
 
 .. raw:: html
 
@@ -216,7 +234,7 @@ PufferLib provides *pufferlib.frameworks* for the the learning libraries below. 
     </div>
 
 .. card::
-  :link: https://colab.research.google.com/drive/1OMcaJnCAF1UiCJxKIxSS-RdZTuonItYT?usp=sharing
+  :link: https://colab.research.google.com/drive/1Zj4_vT36VlMsk0JHVx2cxxW27VdeS3mJ?usp=sharing
   :width: 75%
   :margin: 4 2 auto auto
   :text-align: center
@@ -245,7 +263,7 @@ We have previously supported RLLib and may again in the future. RLlib has not re
 Environments
 ############
 
-PufferLib ships with Ocean, our first-party testing suite. We also provide integrations for many environments out of the box. Non-pip dependencies are already set up for you in PufferTank. Several environments also include reasonable baseline policies. Join our Discord if you would like to add setup and tests for new environments or improvements to any of the baselines.
+PufferLib ships with Ocean, our first-party testing suite, which will let you catch 90% of implementation bugs in a 10 second training run. We also provide integrations for many environments out of the box. Non-pip dependencies are already set up for you in PufferTank. Several environments also include reasonable baseline policies. Join our Discord if you would like to add setup and tests for new environments or improvements to any of the baselines.
 
 
 .. raw:: html
@@ -396,10 +414,10 @@ PufferLib ships with Ocean, our first-party testing suite. We also provide integ
 Current Limitations
 ###################
 
-- No continuous action spaces (WIP)
-- Support for heterogenous observations and actions requires you to specify teams such that each team has the same observation and action space. There's no good way around this.
+- No continuous action spaces (planned for after 1.0)
+- Each agent must have the same observation and action space. True of most RL libraries, hard to work around without sacrificing performance or simplicity.
 
 License
 #######
 
-PufferLib is free and open-source software under the MIT license. This is the full set of tools maintained by PufferAI. Dev branches are public and we do not have private repositories with additional utilities.
+PufferLib is free and open-source software under the MIT license.

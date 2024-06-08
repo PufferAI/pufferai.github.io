@@ -2,14 +2,22 @@
 
 |
 
-🌊 Ocean is PufferLib's suite of first-party environments. They are small and can be trained from scratch in 30 seconds to 2 minutes. Use Ocean as a sanity check for your training code instead of overnighting heavier runs.
+🌊 Ocean is PufferLib's suite of first-party environments. They are small and can be trained from scratch in 10 seconds to 2 minutes. Use Ocean as a sanity check for your training code instead of overnighting heavier runs.
 
 .. image:: /resource/ocean.png
+
+Make Functions
+**************
+
+.. automodule:: pufferlib.environments.ocean.environment
+   :members:
+   :undoc-members:
+   :noindex:
 
 Squared
 *******
 
-.. autoclass:: pufferlib.environments.ocean.squared.Squared
+.. autoclass:: pufferlib.environments.ocean.ocean.Squared
    :members:
    :undoc-members:
    :noindex:
@@ -17,7 +25,7 @@ Squared
 Password (exploration environment)
 **********************************
 
-.. autoclass:: pufferlib.environments.ocean.password.Password
+.. autoclass:: pufferlib.environments.ocean.ocean.Password
    :members:
    :undoc-members:
    :noindex:
@@ -25,7 +33,7 @@ Password (exploration environment)
 Stochastic
 **********
 
-.. autoclass:: pufferlib.environments.ocean.stochastic.Stochastic
+.. autoclass:: pufferlib.environments.ocean.ocean.Stochastic
    :members:
    :undoc-members:
    :noindex:
@@ -33,7 +41,7 @@ Stochastic
 Memory
 ******
 
-.. autoclass:: pufferlib.environments.ocean.memory.Memory
+.. autoclass:: pufferlib.environments.ocean.ocean.Memory
    :members:
    :undoc-members:
    :noindex:
@@ -41,7 +49,7 @@ Memory
 Multiagent
 **********
 
-.. autoclass:: pufferlib.environments.ocean.multiagent.Multiagent
+.. autoclass:: pufferlib.environments.ocean.ocean.Multiagent
    :members:
    :undoc-members:
    :noindex:
@@ -49,7 +57,7 @@ Multiagent
 Spaces
 ******
 
-.. autoclass:: pufferlib.environments.ocean.spaces.Spaces
+.. autoclass:: pufferlib.environments.ocean.ocean.Spaces
    :members:
    :undoc-members:
    :noindex:
@@ -57,7 +65,7 @@ Spaces
 Bandit
 ******
 
-.. autoclass:: pufferlib.environments.ocean.bandit.Bandit
+.. autoclass:: pufferlib.environments.ocean.ocean.Bandit
    :members:
    :undoc-members:
    :noindex:

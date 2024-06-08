@@ -22,7 +22,7 @@ class Mock(MagicMock):
         return MagicMock()
 
 MOCK_MODULES = []
-autodoc_mock_imports = ["torch"]
+autodoc_mock_imports = ["torch", "pufferlib.pytorch"]
 sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
 
 autodoc_inherit_docstrings = False

@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="PufferLib 0.7: Puffing Up Performance with Shared Memory" href="blog.html" /><link rel="prev" title="Emulation" href="api.html" />
 
     <!-- Generated with Sphinx 5.0.0 and Furo 2023.03.27 -->
-        <title>Squared - PufferLib 0.7.0 documentation</title>
+        <title>Make Functions - PufferLib 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
@@ -190,7 +190,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">PufferLib 0.7.0 documentation</div></a>
+      <a href="../index.html"><div class="brand">PufferLib 1.0.0 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -213,7 +213,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   
-  <span class="sidebar-brand-text">PufferLib 0.7.0 documentation</span>
+  <span class="sidebar-brand-text">PufferLib 1.0.0 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -223,7 +223,9 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="landing.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="landing.html">Emulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="landing.html#vectorization">Vectorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="landing.html#libraries">Libraries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="landing.html#environments">Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="landing.html#current-limitations">Current Limitations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="landing.html#license">License</a></li>
@@ -240,7 +242,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">🌊 Ocean</span></p>
 <ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Squared</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Make Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#squared">Squared</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#password-exploration-environment">Password (exploration environment)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#stochastic">Stochastic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#memory">Memory</a></li>
@@ -293,13 +296,66 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>🌊 Ocean is PufferLib’s suite of first-party environments. They are small and can be trained from scratch in 30 seconds to 2 minutes. Use Ocean as a sanity check for your training code instead of overnighting heavier runs.</p>
+<p>🌊 Ocean is PufferLib’s suite of first-party environments. They are small and can be trained from scratch in 10 seconds to 2 minutes. Use Ocean as a sanity check for your training code instead of overnighting heavier runs.</p>
 <img alt="../_images/ocean.png" src="../_images/ocean.png" />
+<section id="make-functions">
+<h1>Make Functions<a class="headerlink" href="#make-functions" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.environment.</span></span><span class="sig-name descname"><span class="pre">env_creator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'squared'</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.environment.</span></span><span class="sig-name descname"><span class="pre">make_squared</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_to_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_targets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.environment.</span></span><span class="sig-name descname"><span class="pre">make_bandit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_actions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.environment.</span></span><span class="sig-name descname"><span class="pre">make_memory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mem_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mem_delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.environment.</span></span><span class="sig-name descname"><span class="pre">make_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.environment.</span></span><span class="sig-name descname"><span class="pre">make_performance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delay_mean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bandwidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.environment.</span></span><span class="sig-name descname"><span class="pre">make_performance_empiric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bandwidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.environment.</span></span><span class="sig-name descname"><span class="pre">make_stochastic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.environment.</span></span><span class="sig-name descname"><span class="pre">make_spaces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.environment.</span></span><span class="sig-name descname"><span class="pre">make_multiagent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</section>
 <section id="squared">
 <h1>Squared<a class="headerlink" href="#squared" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.squared.</span></span><span class="sig-name descname"><span class="pre">Squared</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_to_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_targets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.ocean.</span></span><span class="sig-name descname"><span class="pre">Squared</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_to_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_targets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Pufferlib Squared environment</p>
 <p>Agent starts at the center of a square grid.
 Targets are placed on the perimeter of the grid.
@@ -316,6 +372,21 @@ Action space: Discrete(8). Which direction to move.</p>
 </ul>
 </dd>
 </dl>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">MOVES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[(0,</span> <span class="pre">-1),</span> <span class="pre">(0,</span> <span class="pre">1),</span> <span class="pre">(-1,</span> <span class="pre">0),</span> <span class="pre">(1,</span> <span class="pre">0),</span> <span class="pre">(1,</span> <span class="pre">-1),</span> <span class="pre">(-1,</span> <span class="pre">-1),</span> <span class="pre">(1,</span> <span class="pre">1),</span> <span class="pre">(-1,</span> <span class="pre">1)]</span></em></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">observation_space</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">spaces.Space</span><span class="p"><span class="pre">[</span></span><span class="pre">ObsType</span><span class="p"><span class="pre">]</span></span></em></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">action_space</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">spaces.Space</span><span class="p"><span class="pre">[</span></span><span class="pre">ActType</span><span class="p"><span class="pre">]</span></span></em></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
@@ -331,11 +402,6 @@ Action space: Discrete(8). Which direction to move.</p>
 <span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 </section>
@@ -343,7 +409,7 @@ Action space: Discrete(8). Which direction to move.</p>
 <h1>Password (exploration environment)<a class="headerlink" href="#password-exploration-environment" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.password.</span></span><span class="sig-name descname"><span class="pre">Password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hard_fixed_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.ocean.</span></span><span class="sig-name descname"><span class="pre">Password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hard_fixed_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Pufferlib Password environment</p>
 <p>Guess the password, which is a static binary string. Your policy has to
 not determinize before it happens to get the reward, and it also has to
@@ -373,11 +439,6 @@ Action space: Discrete(2). Your guess for the next digit.</p>
 <span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 </section>
@@ -385,7 +446,7 @@ Action space: Discrete(2). Your guess for the next digit.</p>
 <h1>Stochastic<a class="headerlink" href="#stochastic" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.stochastic.</span></span><span class="sig-name descname"><span class="pre">Stochastic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.ocean.</span></span><span class="sig-name descname"><span class="pre">Stochastic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Pufferlib Stochastic environment</p>
 <p>The optimal policy is to play action 0 &lt; p % of the time and action 1 &lt; (1 - p) %
 This is a test of whether your algorithm can learn a nontrivial stochastic policy.
@@ -415,11 +476,6 @@ Action space: Discrete(2). Select action 0 or action 1.</p>
 <span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 </section>
@@ -427,7 +483,7 @@ Action space: Discrete(2). Select action 0 or action 1.</p>
 <h1>Memory<a class="headerlink" href="#memory" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.memory.</span></span><span class="sig-name descname"><span class="pre">Memory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mem_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mem_delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.ocean.</span></span><span class="sig-name descname"><span class="pre">Memory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mem_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mem_delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Pufferlib Memory environment</p>
 <p>Repeat the observed sequence after a delay. It is randomly generated upon every reset. This is a test of memory length and capacity. It starts requiring credit assignment if you make the sequence too long.</p>
 <p>The sequence is presented one digit at a time, followed by a string of 0. The agent should output 0s for the first mem_length + mem_delay steps, then output the sequence.</p>
@@ -456,11 +512,6 @@ Action space: Discrete(2). Your guess for the next digit.</p>
 <span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 </section>
@@ -468,11 +519,21 @@ Action space: Discrete(2). Your guess for the next digit.</p>
 <h1>Multiagent<a class="headerlink" href="#multiagent" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.multiagent.</span></span><span class="sig-name descname"><span class="pre">Multiagent</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.ocean.</span></span><span class="sig-name descname"><span class="pre">Multiagent</span></span></dt>
 <dd><p>Pufferlib Multiagent environment</p>
 <p>Agent 1 must pick action 0 and Agent 2 must pick action 1</p>
 <p>Observation space: Box(0, 1, (1,)). 0 for Agent 1 and 1 for Agent 2
 Action space: Discrete(2). Which action to take.</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">observation_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">action_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
@@ -488,21 +549,6 @@ Action space: Discrete(2). Which action to take.</p>
 <span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">observation_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span></em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">action_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span></em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 </section>
@@ -510,7 +556,7 @@ Action space: Discrete(2). Which action to take.</p>
 <h1>Spaces<a class="headerlink" href="#spaces" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.spaces.</span></span><span class="sig-name descname"><span class="pre">Spaces</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.ocean.</span></span><span class="sig-name descname"><span class="pre">Spaces</span></span></dt>
 <dd><p>Pufferlib Spaces environment</p>
 <p>A simple environment with hierarchical observation and action spaces</p>
 <p>The image action should be 1 if the sum of the image is positive, 0 otherwise
@@ -527,16 +573,6 @@ The flat action should be 1 if the sum of the flat obs is positive, 0 otherwise<
 <span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 </section>
@@ -544,21 +580,15 @@ The flat action should be 1 if the sum of the flat obs is positive, 0 otherwise<
 <h1>Bandit<a class="headerlink" href="#bandit" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.bandit.</span></span><span class="sig-name descname"><span class="pre">Bandit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_actions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hard_fixed_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.ocean.</span></span><span class="sig-name descname"><span class="pre">Bandit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_actions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reward_noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hard_fixed_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Pufferlib Bandit environment</p>
 <p>Simulates a classic multiarmed bandit problem.</p>
 <p>Observation space: Box(0, 1, (1,)). The observation is always 1.
-Action space: Discrete(num_actions). Which arm to pull.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>num_actions</strong> – The number of bandit arms</p></li>
-<li><p><strong>reward_scale</strong> – The scale of the reward</p></li>
-<li><p><strong>reward_noise</strong> – The standard deviation of the reward signal</p></li>
-<li><p><strong>hard_fixed_seed</strong> – All instances of the environment should share the same seed.</p></li>
-</ul>
-</dd>
-</dl>
+Action space: Discrete(num_actions). Which arm to pull.
+:param num_actions: The number of bandit arms
+:param reward_scale: The scale of the reward
+:param reward_noise: The standard deviation of the reward signal
+:param hard_fixed_seed: All instances of the environment should share the same seed.</p>
 <dl class="py method">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
@@ -567,16 +597,6 @@ Action space: Discrete(num_actions). Which arm to pull.</p>
 <dl class="py method">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd></dd></dl>
 
 </dd></dl>

@@ -26,9 +26,9 @@ All included environments expose make_env and env_creator functions. make_env is
 
 Additionally, all environments expose a Policy class with a baseline model. Note that not all environments have *custom* policies, and the default simply flattens observations before applying a linear layer. Atari, Procgen, Neural MMO, Nethack/Minihack, and Pokemon Red currently have reasonable policies.
 
-The PufferLib Squared environment is used as an example below. Everything is exposed through __init__, so you can call these methods through e.g. pufferlib.environments.squared.make_env
+The PufferLib Squared environment is used as an example below. Everything is exposed through __init__, so you can call these methods through e.g. pufferlib.environments.ocean.make_env
 
-.. autoclass:: pufferlib.environments.ocean.squared.Squared
+.. autoclass:: pufferlib.environments.ocean.ocean.Squared
    :members:
    :undoc-members:
    :noindex:
@@ -41,7 +41,7 @@ The PufferLib Squared environment is used as an example below. Everything is exp
 Models
 ######
 
-PufferLib model default policies and optional API. These are not required to use PufferLib.
+PufferLib model default policies. They are vanilla PyTorch policies with no custom PufferLib API. Optionally, you can split the forward pass into encode and decode functions. This allows you to use our convenience wrapper for LSTM support.
 
 .. automodule:: pufferlib.models
    :members:
@@ -53,17 +53,20 @@ Vectorization
 
 Distributed backends for PufferLib-wrapped environments
 
-.. autoclass:: pufferlib.vectorization.Serial
+.. autofunction:: pufferlib.vector.make
+   :noindex:
+
+.. autoclass:: pufferlib.vector.Serial
    :members:
    :undoc-members:
    :noindex:
 
-.. autoclass:: pufferlib.vectorization.Multiprocessing
+.. autoclass:: pufferlib.vector.Multiprocessing
    :members:
    :undoc-members:
    :noindex:
 
-.. autoclass:: pufferlib.vectorization.Ray
+.. autoclass:: pufferlib.vector.Ray
    :members:
    :undoc-members:
    :noindex:
