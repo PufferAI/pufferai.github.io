@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Make Functions" href="ocean.html" />
 
     <!-- Generated with Sphinx 5.0.0 and Furo 2023.03.27 -->
-        <title>PufferLib 0.7: Puffing Up Performance with Shared Memory - PufferLib 1.0.0 documentation</title>
+        <title>The Puffer Stack - PufferLib 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
@@ -253,7 +253,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Blog</span></p>
 <ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">PufferLib 0.7: Puffing Up Performance with Shared Memory</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">The Puffer Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#pufferlib-0-7-puffing-up-performance-with-shared-memory">PufferLib 0.7: Puffing Up Performance with Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#pufferlib-0-6-an-ocean-of-environments-for-learning-pufferfish">PufferLib 0.6: 🐡🌊 An Ocean of Environments for Learning Pufferfish</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#pufferlib-0-5-a-bigger-envpool-for-growing-puffers">PufferLib 0.5: A Bigger EnvPool for Growing Puffers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#pufferlib-0-4-ready-to-take-on-bigger-fish">PufferLib 0.4: Ready to Take on Bigger Fish</a></li>
@@ -298,7 +299,34 @@
     <source src="../_static/banner.mp4" type="video/mp4">
     Your browser does not support this video.
   </video>
-</center><section id="pufferlib-0-7-puffing-up-performance-with-shared-memory">
+</center><section id="the-puffer-stack">
+<h1>The Puffer Stack<a class="headerlink" href="#the-puffer-stack" title="Permalink to this heading">#</a></h1>
+<p>Thank you for 325 stars on PufferLib! As promised, this is a complete teardown of our stack including hardware, containerization, dependency management, and more.</p>
+<img alt="../_images/pufferboxes.jpg" src="../_images/pufferboxes.jpg" />
+<section id="hardware">
+<h2>Hardware<a class="headerlink" href="#hardware" title="Permalink to this heading">#</a></h2>
+<p><strong>8 RTX 4090s, 1 Titan V, 200 cores, and 1056 GB of RAM</strong></p>
+<p>We have 8 Maingear desktops (we call them puffer boxes) with one 24GB RTX 4090 each. The CPUs each have 24 cores. One has an i9 13900k. Five have i9 14900k’s. Two have i9 14900ks’s. Each machine has 128 GB DDR4 RAM. There is also a login/testing machine with a Titan V, 32GB of RAM, and an 8-core i7 9700k. The main machines retail around $4000 each. The 4090s are overkill for most jobs, but we wanted to have the option to scale up models and experiment with new architectures.</p>
+<p>All machines are connected to gigabit ethernet. Power is supplied with a standard 20-amp outlet per 2 machines. Machines sit on a utility rack that is grated to allow air intake from below. Exhaust is backwards, towards the wall, which has about 2 feet of free space. A small industrial fan is angled so as to push hot air away from the back wall. The room is maintained at 80F.</p>
+<p><strong>Issues &amp; Gotchas:</strong> We have had some stability issues that I am 95% certain are caused by faulty 14th gen intel chips. The motherboards are running Intel’s suggested power settings, but a couple of the machines still get occasional crashes. Unrelatedly, the chip architecture is 8 p-cores and 16 e-cores. To get good performance out of these chips, asynchronous environment sampling is a must. We also discovered that these machines would not boot properly from a hard reset when not connected to a monitor. We bought some dummy HDMI plugs to trick the machines into booting headless.</p>
+</section>
+<section id="installation-containerization">
+<h2>Installation &amp; Containerization<a class="headerlink" href="#installation-containerization" title="Permalink to this heading">#</a></h2>
+<p>Machines are installed with a minimal build of Debian 12. The PufferTank repository on Github contains our setup script. For now, this is done manually on each machine. It installs NVIDIA drivers, utilities like git and vim, docker, and Tailscale. We rely on Tailscale for credentialing users and general administration. There is no Slurm, shared file system, or other such layers. Users are assigned one or multiple machines to use for development and experiments.</p>
+<p>Each machine contains a build of PufferTank. Images for PufferTank are available from pufferai on docker hub or through the PufferTank github repository. PufferTank is a 3-stage docker build. There is a base layer that installs (currently) Pytorch 3.4 and Python 3.11, as well as basic utilities. A second layer installs dependencies for tricky RL environments like Nethack and DM Lab. The final layer is a quick build that clones PufferLib, sets a few environment flags, adds a bit of configuration to bash, and also installs Neovim. The idea is that the first layer doesn’t change often, the second layer changes whenever we add new envs, and the third layer is rebuilt quite often.</p>
+<p>Puffer hardware users are booted into PufferTank on login. They can also spin up their own container in seconds, in cases where a fresh install is needed or a machine is being shared.</p>
+</section>
+<section id="pufferlib-dependency-management">
+<h2>PufferLib dependency management<a class="headerlink" href="#pufferlib-dependency-management" title="Permalink to this heading">#</a></h2>
+<p>PufferLib provides a pip package with a long list of optionals, one per environment. There is a common extra that will install all of the environments (or at least the ones that play nice together). This is the default in PufferTank. We set sane default versions of Gym/Gymnasium/PettingZoo for maximum compatibility. Some extras outside of common may override these. PufferLib provides short bindings for each environment, but no registry. We wrap environments in PufferLib’s emulation layer for compatibility, which is a 1-line change. For Gym environments, we apply a Gymnasium compatibility layer. For old PettingZoo environments still based on the Gym API, we apply a similar compatibility layer. For most environments, we apply an episode postprocessing wrapper that cuts down on data transfer during multiprocessing. Some environments have additional wrappers to make them render nicely or fix various quirks. But in general, we keep the stack as thin and as simple as possible. We considered folding the postprocessing wrapper into the vectorization module for this purpose, but enough envs return nonstandard data that this is not worth doing at the present.</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>This is a very simple cluster, but we get a lot of mileage out of it. Most folks don’t realize how fast high-end desktop processors are compared to 10x more expensive server CPUs. One puffer box was 3x faster than the CPU in an 8x A100 server we previously had access to. With discounts, an 8x A100 box is still going to be $100k+. Our entire setup is around $35k. This was a lot of money for me to spend, but it is currently powering 4 different RL projects. And with the prices outside something like Vast, the buy price is only 2-4 months of rental pricing.</p>
+<p>One of the worst things you can do is to adopt heavy tools and then use them wrong. No shared file system, Slurm, etc. means less stuff to manage and less stuff in onboarding. We can get new users onto a machine with their own dev environment that exactly matches their local one in 5 minutes.</p>
+</section>
+</section>
+<section id="pufferlib-0-7-puffing-up-performance-with-shared-memory">
 <h1>PufferLib 0.7: Puffing Up Performance with Shared Memory<a class="headerlink" href="#pufferlib-0-7-puffing-up-performance-with-shared-memory" title="Permalink to this heading">#</a></h1>
 <p>This update doubles training throughput for most environments with no tradeoffs. We have tested Pokemon Red training at over 6000 steps/second on a single desktop, up from around 3000. CleanRL trains Atari 65% faster just by switching to PufferLib’s vectorization, without even enabling our extra async features. The approach is a combination of shared memory, PyTorch code optimizations, dependency upgrades, and model compilation.</p>
 <section id="sharing-memory-with-vectorized-environments">
@@ -583,7 +611,14 @@ Don’t use time.sleep(), as this will trigger context switching, or time.time()
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">PufferLib 0.7: Puffing Up Performance with Shared Memory</a><ul>
+<li><a class="reference internal" href="#">The Puffer Stack</a><ul>
+<li><a class="reference internal" href="#hardware">Hardware</a></li>
+<li><a class="reference internal" href="#installation-containerization">Installation &amp; Containerization</a></li>
+<li><a class="reference internal" href="#pufferlib-dependency-management">PufferLib dependency management</a></li>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pufferlib-0-7-puffing-up-performance-with-shared-memory">PufferLib 0.7: Puffing Up Performance with Shared Memory</a><ul>
 <li><a class="reference internal" href="#sharing-memory-with-vectorized-environments">Sharing Memory with Vectorized Environments</a></li>
 <li><a class="reference internal" href="#pytorch-indexing">PyTorch Indexing</a></li>
 <li><a class="reference internal" href="#dependency-upgrades-torch-compile">Dependency Upgrades &amp; torch.compile</a></li>
