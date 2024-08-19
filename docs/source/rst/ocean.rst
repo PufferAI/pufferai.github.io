@@ -17,7 +17,7 @@ Make Functions
 Squared
 *******
 
-.. autoclass:: pufferlib.environments.ocean.ocean.Squared
+.. autoclass:: pufferlib.environments.ocean.sanity.Squared
    :members:
    :undoc-members:
    :noindex:
@@ -25,7 +25,7 @@ Squared
 Password (exploration environment)
 **********************************
 
-.. autoclass:: pufferlib.environments.ocean.ocean.Password
+.. autoclass:: pufferlib.environments.ocean.sanity.Password
    :members:
    :undoc-members:
    :noindex:
@@ -33,7 +33,7 @@ Password (exploration environment)
 Stochastic
 **********
 
-.. autoclass:: pufferlib.environments.ocean.ocean.Stochastic
+.. autoclass:: pufferlib.environments.ocean.sanity.Stochastic
    :members:
    :undoc-members:
    :noindex:
@@ -41,7 +41,7 @@ Stochastic
 Memory
 ******
 
-.. autoclass:: pufferlib.environments.ocean.ocean.Memory
+.. autoclass:: pufferlib.environments.ocean.sanity.Memory
    :members:
    :undoc-members:
    :noindex:
@@ -49,7 +49,7 @@ Memory
 Multiagent
 **********
 
-.. autoclass:: pufferlib.environments.ocean.ocean.Multiagent
+.. autoclass:: pufferlib.environments.ocean.sanity.Multiagent
    :members:
    :undoc-members:
    :noindex:
@@ -57,7 +57,7 @@ Multiagent
 Spaces
 ******
 
-.. autoclass:: pufferlib.environments.ocean.ocean.Spaces
+.. autoclass:: pufferlib.environments.ocean.sanity.Spaces
    :members:
    :undoc-members:
    :noindex:
@@ -65,7 +65,7 @@ Spaces
 Bandit
 ******
 
-.. autoclass:: pufferlib.environments.ocean.ocean.Bandit
+.. autoclass:: pufferlib.environments.ocean.sanity.Bandit
    :members:
    :undoc-members:
    :noindex:

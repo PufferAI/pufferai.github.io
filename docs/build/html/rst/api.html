@@ -401,47 +401,6 @@
 <p>All included environments expose make_env and env_creator functions. make_env is the one that you want most of the time. The other one is used to expose e.g. class interfaces for environments that support them so that you can pass around static references.</p>
 <p>Additionally, all environments expose a Policy class with a baseline model. Note that not all environments have <em>custom</em> policies, and the default simply flattens observations before applying a linear layer. Atari, Procgen, Neural MMO, Nethack/Minihack, and Pokemon Red currently have reasonable policies.</p>
 <p>The PufferLib Squared environment is used as an example below. Everything is exposed through __init__, so you can call these methods through e.g. pufferlib.environments.ocean.make_env</p>
-<dl class="py class">
-<dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.ocean.</span></span><span class="sig-name descname"><span class="pre">Squared</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_to_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_targets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Pufferlib Squared environment</p>
-<p>Agent starts at the center of a square grid.
-Targets are placed on the perimeter of the grid.
-Reward is 1 minus the L-inf distance to the closest target.
-This means that reward varies from -1 to 1.
-Reward is not given for targets that have already been hit.</p>
-<p>Observation space: Box(-1, 1, (grid_size, grid_size)). The map.
-Action space: Discrete(8). Which direction to move.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>distance_to_target</strong> – The distance from the center to the closest target.</p></li>
-<li><p><strong>num_targets</strong> – The number of targets to randomly generate.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">MOVES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[(0,</span> <span class="pre">-1),</span> <span class="pre">(0,</span> <span class="pre">1),</span> <span class="pre">(-1,</span> <span class="pre">0),</span> <span class="pre">(1,</span> <span class="pre">0),</span> <span class="pre">(1,</span> <span class="pre">-1),</span> <span class="pre">(-1,</span> <span class="pre">-1),</span> <span class="pre">(1,</span> <span class="pre">1),</span> <span class="pre">(-1,</span> <span class="pre">1)]</span></em></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 <dl class="py attribute">
 <dt class="sig sig-object py">
 <span class="sig-prename descclassname"><span class="pre">pufferlib.environments.ocean.torch.</span></span><span class="sig-name descname"><span class="pre">Policy</span></span></dt>

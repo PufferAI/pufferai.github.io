@@ -27,6 +27,25 @@ sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
 
 autodoc_inherit_docstrings = False
 
+# -- Copy wasm files -----------------------------------------------------
+import shutil
+
+def copy_wasm_files(app, exception):
+    if exception is None:  # Build was successful
+        static_dir = os.path.join(app.builder.outdir, '_static')
+        wasm_source = os.path.join(app.srcdir, '_static/snake')
+        wasm_dest = os.path.join(static_dir, 'snake')
+
+        if not os.path.exists(wasm_dest):
+            os.makedirs(wasm_dest)
+
+        for file_name in os.listdir(wasm_source):
+            if file_name.endswith('.wasm'):
+                shutil.copy(os.path.join(wasm_source, file_name), wasm_dest)
+
+def setup(app):
+    app.connect('build-finished', copy_wasm_files)
+
 # -- Project information -----------------------------------------------------
 
 # The full version, including alpha/beta/rc tags

@@ -6,6 +6,14 @@
 You have an environment, a PyTorch model, and a reinforcement learning library that are designed to work together but don't. PufferLib provides one-line wrappers that make them play nice.
 
 .. card::
+  :link: _static/snake/game.html
+  :width: 75%
+  :margin: 4 2 auto auto
+  :text-align: center
+
+  **Play Snake vs RL in your browser!**
+
+.. card::
   :link: https://colab.research.google.com/drive/1pK5QQG9-MfVdbUNr2vXr2l6zJBS-au1V?usp=sharing
   :width: 75%
   :margin: 4 2 auto auto
@@ -44,7 +52,7 @@ You have an environment, a PyTorch model, and a reinforcement learning library t
 
 |
 
-Join our community Discord for support and Discussion, follow my Twitter for news, and star the repo to feed the puffer. We also have a :download:`Whitepaper <../_static/neurips_2023_aloe.pdf>` featured at the NeurIPS 2023 ALOE workshop.
+Join our community Discord for support and Discussion, follow my Twitter for news, and star the repo to feed the puffer. We also have a `whitepaper <https://arxiv.org/abs/2406.12905>`_.
 
 .. dropdown:: Installation
 
