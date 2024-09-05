@@ -14,6 +14,14 @@ You have an environment, a PyTorch model, and a reinforcement learning library t
   **Play Snake vs RL in your browser!**
 
 .. card::
+  :link: _static/moba/game.html
+  :width: 75%
+  :margin: 4 2 auto auto
+  :text-align: center
+
+  **WIP: Play Puffer MOBA vs RL in your browser!**
+
+.. card::
   :link: https://colab.research.google.com/drive/1pK5QQG9-MfVdbUNr2vXr2l6zJBS-au1V?usp=sharing
   :width: 75%
   :margin: 4 2 auto auto

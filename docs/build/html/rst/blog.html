@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Make Functions" href="ocean.html" />
 
     <!-- Generated with Sphinx 5.0.0 and Furo 2023.03.27 -->
@@ -374,7 +374,8 @@
 <section id="pufferlib-0-6-an-ocean-of-environments-for-learning-pufferfish">
 <h1>PufferLib 0.6: 🐡🌊 An Ocean of Environments for Learning Pufferfish<a class="headerlink" href="#pufferlib-0-6-an-ocean-of-environments-for-learning-pufferfish" title="Permalink to this heading">#</a></h1>
 <p>Ocean is a small suite of environments that train from scratch in 30 seconds and render in a terminal. Each environment is a sanity check for a common implementation bug. Use Ocean as a quick verification test whenever you make small code changes.</p>
-<a class="reference internal image-reference" href="../_images/ocean.png"><img alt="../_images/ocean.png" class="align-center" src="../_images/ocean.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/ocean.png"><img alt="../_images/ocean.png" class="align-center" src="../_images/ocean.png" style="width: 100%;" />
+</a>
 <p><strong>Memory:</strong> The agent is shown one binary token at a time and must recite them back after a pause. Do not make the sequence too long or you start testing credit assignment.</p>
 <p><strong>Stochasticity:</strong> The agent is rewarded for learning a particular nondeterministic action distribution. Do not use an architecture with memory or the agent can solve the task without stochasticity.</p>
 <p><strong>Exploration:</strong> The agent is rewarded for guessing a specific binary sequence. Do not tune your entropy coefficients higher than you would use in your actual environments, since that is the point of the test.</p>
