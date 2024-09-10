@@ -946,40 +946,40 @@ function dbg(...args) {
 // === Body ===
 
 var ASM_CONSTS = {
-  168392: () => { if (document.fullscreenElement) return 1; },  
- 168438: () => { return document.getElementById('canvas').width; },  
- 168490: () => { return parseInt(document.getElementById('canvas').style.width); },  
- 168558: () => { document.exitFullscreen(); },  
- 168585: () => { setTimeout(function() { Module.requestFullscreen(false, false); }, 100); },  
- 168658: () => { if (document.fullscreenElement) return 1; },  
- 168704: () => { return document.getElementById('canvas').width; },  
- 168756: () => { return screen.width; },  
- 168781: () => { document.exitFullscreen(); },  
- 168808: () => { setTimeout(function() { Module.requestFullscreen(false, true); setTimeout(function() { canvas.style.width="unset"; }, 100); }, 100); },  
- 168941: () => { if (document.fullscreenElement) return 1; },  
- 168987: () => { return document.getElementById('canvas').width; },  
- 169039: () => { return parseInt(document.getElementById('canvas').style.width); },  
- 169107: () => { if (document.fullscreenElement) return 1; },  
- 169153: () => { return document.getElementById('canvas').width; },  
- 169205: () => { return screen.width; },  
- 169230: () => { if (document.fullscreenElement) return 1; },  
- 169276: () => { return document.getElementById('canvas').width; },  
- 169328: () => { return screen.width; },  
- 169353: () => { document.exitFullscreen(); },  
- 169380: () => { if (document.fullscreenElement) return 1; },  
- 169426: () => { return document.getElementById('canvas').width; },  
- 169478: () => { return parseInt(document.getElementById('canvas').style.width); },  
- 169546: () => { document.exitFullscreen(); },  
- 169573: () => { return screen.width; },  
- 169598: () => { return screen.height; },  
- 169624: () => { return window.screenX; },  
- 169651: () => { return window.screenY; },  
- 169678: ($0) => { navigator.clipboard.writeText(UTF8ToString($0)); },  
- 169731: ($0) => { document.getElementById("canvas").style.cursor = UTF8ToString($0); },  
- 169802: () => { document.getElementById('canvas').style.cursor = 'none'; },  
- 169859: ($0) => { document.getElementById('canvas').style.cursor = UTF8ToString($0); },  
- 169930: () => { if (document.fullscreenElement) return 1; },  
- 169976: () => { if (document.pointerLockElement) return 1; }
+  844504: () => { if (document.fullscreenElement) return 1; },  
+ 844550: () => { return document.getElementById('canvas').width; },  
+ 844602: () => { return parseInt(document.getElementById('canvas').style.width); },  
+ 844670: () => { document.exitFullscreen(); },  
+ 844697: () => { setTimeout(function() { Module.requestFullscreen(false, false); }, 100); },  
+ 844770: () => { if (document.fullscreenElement) return 1; },  
+ 844816: () => { return document.getElementById('canvas').width; },  
+ 844868: () => { return screen.width; },  
+ 844893: () => { document.exitFullscreen(); },  
+ 844920: () => { setTimeout(function() { Module.requestFullscreen(false, true); setTimeout(function() { canvas.style.width="unset"; }, 100); }, 100); },  
+ 845053: () => { if (document.fullscreenElement) return 1; },  
+ 845099: () => { return document.getElementById('canvas').width; },  
+ 845151: () => { return parseInt(document.getElementById('canvas').style.width); },  
+ 845219: () => { if (document.fullscreenElement) return 1; },  
+ 845265: () => { return document.getElementById('canvas').width; },  
+ 845317: () => { return screen.width; },  
+ 845342: () => { if (document.fullscreenElement) return 1; },  
+ 845388: () => { return document.getElementById('canvas').width; },  
+ 845440: () => { return screen.width; },  
+ 845465: () => { document.exitFullscreen(); },  
+ 845492: () => { if (document.fullscreenElement) return 1; },  
+ 845538: () => { return document.getElementById('canvas').width; },  
+ 845590: () => { return parseInt(document.getElementById('canvas').style.width); },  
+ 845658: () => { document.exitFullscreen(); },  
+ 845685: () => { return screen.width; },  
+ 845710: () => { return screen.height; },  
+ 845736: () => { return window.screenX; },  
+ 845763: () => { return window.screenY; },  
+ 845790: ($0) => { navigator.clipboard.writeText(UTF8ToString($0)); },  
+ 845843: ($0) => { document.getElementById("canvas").style.cursor = UTF8ToString($0); },  
+ 845914: () => { document.getElementById('canvas').style.cursor = 'none'; },  
+ 845971: ($0) => { document.getElementById('canvas').style.cursor = UTF8ToString($0); },  
+ 846042: () => { if (document.fullscreenElement) return 1; },  
+ 846088: () => { if (document.pointerLockElement) return 1; }
 };
 function GetWindowInnerWidth() { return window.innerWidth; }
 function GetWindowInnerHeight() { return window.innerHeight; }
@@ -11388,7 +11388,7 @@ var _asyncify_start_unwind = createExportWrapper('asyncify_start_unwind', 1);
 var _asyncify_stop_unwind = createExportWrapper('asyncify_stop_unwind', 0);
 var _asyncify_start_rewind = createExportWrapper('asyncify_start_rewind', 1);
 var _asyncify_stop_rewind = createExportWrapper('asyncify_stop_rewind', 0);
-var ___emscripten_embedded_file_data = Module['___emscripten_embedded_file_data'] = 162048;
+var ___emscripten_embedded_file_data = Module['___emscripten_embedded_file_data'] = 837812;
 
 // include: postamble.js
 // === Auto-generated postamble setup entry stuff ===
